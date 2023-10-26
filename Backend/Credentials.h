@@ -8,5 +8,6 @@ private:
 
 public:
 	Credentials(const std::string& username, const std::string& nonHashedPassword);
+	static std::size_t hashString(const std::string& stringToBeHashed);
 };
 
