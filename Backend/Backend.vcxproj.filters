@@ -25,6 +25,9 @@
       <Filter>Functions</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="UserRegister.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -35,6 +38,9 @@
     </ClInclude>
     <ClInclude Include="CustomHasher.h">
       <Filter>Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="UserRegister.h">
+      <Filter>Models\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
