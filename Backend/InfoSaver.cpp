@@ -27,6 +27,25 @@ int InfoSaver::getPoints(size_t user_id)
 	users = json::parse(i);
 	return users["Points"].template get<int>();
 }
+void InfoSaver::setUsername(size_t user_id, std::string username)
+{
+	json users;
+	std::string user_as_string = std::format("{0}", user_id);
+	std::ifstream i(getFile(user_as_string));
+	users = json::parse(i);
+	std::ofstream f(getFile(user_as_string));
+	users["Username"] = username;
+	f << std::setw(4) << users << std::endl;
+}
+
+std::string InfoSaver::getUsername(size_t user_id)
+{
+	json users;
+	std::string user_as_string = std::format("{0}", user_id);
+	std::ifstream i(getFile(user_as_string));
+	users = json::parse(i);
+	return users["Username"].template get<std::string>();
+}
 
 void InfoSaver::initializeUser(size_t user_id)
 {
