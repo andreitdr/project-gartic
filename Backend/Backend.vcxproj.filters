@@ -10,6 +10,9 @@
     <Filter Include="Models\Headers">
       <UniqueIdentifier>{6d875b8c-b5aa-4b8f-a947-569faa26fda7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Functions">
+      <UniqueIdentifier>{23b7543c-0862-44b5-b338-382c88fd631e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="User.cpp">
@@ -19,6 +22,10 @@
       <Filter>Models</Filter>
     </ClCompile>
     <ClCompile Include="InfoSaver.cpp" />
+    <ClCompile Include="CustomHasher.cpp">
+      <Filter>Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -29,6 +36,9 @@
     </ClInclude>
     <ClInclude Include="InfoSaver.h">
       <Filter>Models\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomHasher.h">
+      <Filter>Functions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
