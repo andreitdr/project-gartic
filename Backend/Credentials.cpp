@@ -11,8 +11,6 @@ Credentials::Credentials(const std::string& username, const std::string& nonHash
 
 std::string Credentials::hashString(const std::string& stringToBeHashed)
 {
-	constexpr std::hash<std::string> _hasher;
-
 	CustomHasher hasher;
 	return hasher.hashString(stringToBeHashed);
 }
