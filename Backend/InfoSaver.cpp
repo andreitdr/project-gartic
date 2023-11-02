@@ -2,7 +2,7 @@
 #include <format>
 #include <fstream>
 
-std::string InfoSaver::getFile(std::string file_prefix, const std::string file_suffix)
+std::string InfoSaver::getFile(const std::string& file_prefix, const std::string& file_suffix)
 {
 	std::string file = file_prefix + file_suffix;
 	return file;

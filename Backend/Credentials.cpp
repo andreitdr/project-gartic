@@ -1,4 +1,3 @@
-#include <map>
 #include "Credentials.h"
 #include "CustomHasher.h"
 
@@ -11,8 +10,7 @@ Credentials::Credentials(const std::string& username, const std::string& nonHash
 
 std::string Credentials::hashString(const std::string& stringToBeHashed)
 {
-	CustomHasher hasher;
-	return hasher.hashString(stringToBeHashed);
+	return CustomHasher :: hashString(stringToBeHashed);
 }
 
 const std::string Credentials::getNonHashedPassword() const

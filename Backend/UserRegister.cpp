@@ -1,6 +1,6 @@
 #include "UserRegister.h"
 
-UserRegister::UserRegister(User& user, Credentials& credentials) : 
+UserRegister::UserRegister(const User& user, const Credentials& credentials) : 
 	m_user(user), m_credentials(credentials) {}
 
 bool UserRegister::registerUser()

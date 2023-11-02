@@ -9,7 +9,7 @@ class InfoSaver
 	static int getPoints(size_t user_id);
 	static void setUsername(size_t user_id, std::string username);
 	static std::string getUsername(size_t user_id);
-	static std::string getFile(std::string file_prefix,const std::string file_suffix = ".json");
+	static std::string getFile(const std::string& file_prefix,const std::string& file_suffix = ".json");
 	static void initializeUser(size_t user_id);
 };
 
