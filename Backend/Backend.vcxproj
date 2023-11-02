@@ -139,6 +139,7 @@
     <ClInclude Include="InfoSaver.h" />
     <ClInclude Include="CustomHasher.h" />
     <ClInclude Include="User.h" />
+    <ClInclude Include="UserLogin.h" />
     <ClInclude Include="UserRegister.h" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +148,7 @@
     <ClCompile Include="CustomHasher.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="User.cpp" />
+    <ClCompile Include="UserLogin.cpp" />
     <ClCompile Include="UserRegister.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
