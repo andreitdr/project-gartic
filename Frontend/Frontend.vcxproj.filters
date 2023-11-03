@@ -43,9 +43,24 @@
     <ClCompile Include="Register.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="JoinGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserProfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomQtWidgets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Register.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="JoinGame.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="UserProfile.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -53,5 +68,16 @@
     <QtUic Include="Register.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="JoinGame.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="UserProfile.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CustomQtWidgets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

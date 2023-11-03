@@ -277,7 +277,6 @@ border-radius: 10px;</string>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="Frontend.qrc"/>
-  <include location="Frontend.qrc"/>
  </resources>
  <connections/>
 </ui>

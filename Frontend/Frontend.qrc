@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="Frontend">
+    <file>assets/images/accept.ico</file>
+    <file>assets/images/cancel.ico</file>
     <file>assets/images/gartic-logo.png</file>
     <file>assets/fonts/nunito/Nunito-Black.ttf</file>
     <file>assets/images/background.png</file>

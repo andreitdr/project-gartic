@@ -2,6 +2,7 @@
 
 #include <QMainWindow>
 #include "ui_Register.h"
+#include "CustomQtWidgets.h"
 
 class Register : public QMainWindow
 {
@@ -17,5 +18,6 @@ private:
 private slots:
 	virtual void on_pushButton_register_clicked();
 	virtual void on_pushButton_goToLogin_clicked();
-	
+signals:
+	void loginWindow();
 };
