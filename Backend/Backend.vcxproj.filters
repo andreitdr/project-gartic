@@ -29,15 +29,13 @@
     <ClCompile Include="UserRegister.cpp">
       <Filter>Models</Filter>
     </ClCompile>
+    <ClCompile Include="infosaver.cppm" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
       <Filter>Models\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Credentials.h">
-      <Filter>Models\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="InfoSaver.h">
       <Filter>Models\Headers</Filter>
     </ClInclude>
     <ClInclude Include="CustomHasher.h">
