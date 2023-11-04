@@ -1,0 +1,23 @@
+<RCC>
+  <qresource prefix="Frontend">
+    <file>assets/images/gartic-logo.png</file>
+    <file>assets/fonts/nunito/Nunito-Black.ttf</file>
+    <file>assets/images/background.png</file>
+    <file>assets/fonts/nunito/Nunito-BlackItalic.ttf</file>
+    <file>assets/fonts/nunito/Nunito-Bold.ttf</file>
+    <file>assets/fonts/nunito/Nunito-BoldItalic.ttf</file>
+    <file>assets/fonts/nunito/Nunito-ExtraBold.ttf</file>
+    <file>assets/fonts/nunito/Nunito-ExtraBoldItalic.ttf</file>
+    <file>assets/fonts/nunito/Nunito-ExtraLight.ttf</file>
+    <file>assets/fonts/nunito/Nunito-ExtraLightItalic.ttf</file>
+    <file>assets/fonts/nunito/Nunito-Italic.ttf</file>
+    <file>assets/fonts/nunito/Nunito-Light.ttf</file>
+    <file>assets/fonts/nunito/Nunito-LightItalic.ttf</file>
+    <file>assets/fonts/nunito/Nunito-Medium.ttf</file>
+    <file>assets/fonts/nunito/Nunito-MediumItalic.ttf</file>
+    <file>assets/fonts/nunito/Nunito-Regular.ttf</file>
+    <file>assets/fonts/nunito/Nunito-SemiBold.ttf</file>
+    <file>assets/fonts/nunito/Nunito-SemiBoldItalic.ttf</file>
+    <file>assets/images/appicon.ico</file>
+  </qresource>
+</RCC>

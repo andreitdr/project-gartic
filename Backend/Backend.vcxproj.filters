@@ -29,6 +29,7 @@
     <ClCompile Include="UserRegister.cpp">
       <Filter>Models</Filter>
     </ClCompile>
+    <ClCompile Include="infosaver.cppm" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
