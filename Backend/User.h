@@ -3,8 +3,10 @@
 class User
 {
 public:
+	friend class UserRegister;
 	const std::string getSurname() const;
 	const std::string getGivenName() const;
+	const std::string getUsername() const;
 
 private:
 	std::string m_surname;

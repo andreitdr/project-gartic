@@ -2,12 +2,12 @@
 #include <format>
 #include <fstream>
 
-std::string InfoSaver::getFile(std::string file_prefix, const std::string file_suffix)
+std::string InfoSaver::getFile(const std::string& file_prefix, const std::string& file_suffix)
 {
 	std::string file = file_prefix + file_suffix;
 	return file;
 }
-void InfoSaver::setPoints(size_t user_id, int point_number)
+void InfoSaver::setPoints(const size_t user_id, int point_number)
 {
 	json users;
 	std::string user_as_string = std::format("{0}", user_id);
@@ -19,7 +19,7 @@ void InfoSaver::setPoints(size_t user_id, int point_number)
 }
 
 
-int InfoSaver::getPoints(size_t user_id)
+int InfoSaver::getPoints(const size_t user_id)
 {
 	json users;
 	std::string user_as_string = std::format("{0}", user_id);
@@ -27,7 +27,7 @@ int InfoSaver::getPoints(size_t user_id)
 	users = json::parse(i);
 	return users["Points"].template get<int>();
 }
-void InfoSaver::setUsername(size_t user_id, std::string username)
+void InfoSaver::setUsername(const size_t user_id,const std::string username)
 {
 	json users;
 	std::string user_as_string = std::format("{0}", user_id);
@@ -38,7 +38,7 @@ void InfoSaver::setUsername(size_t user_id, std::string username)
 	f << std::setw(4) << users << std::endl;
 }
 
-std::string InfoSaver::getUsername(size_t user_id)
+std::string InfoSaver::getUsername(const size_t user_id)
 {
 	json users;
 	std::string user_as_string = std::format("{0}", user_id);
@@ -47,7 +47,7 @@ std::string InfoSaver::getUsername(size_t user_id)
 	return users["Username"].template get<std::string>();
 }
 
-void InfoSaver::initializeUser(size_t user_id)
+void InfoSaver::initializeUser(const size_t user_id)
 {
 	json users;
 	std::string user_as_string = std::format("{0}", user_id);
