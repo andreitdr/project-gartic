@@ -31,10 +31,10 @@
     <ClCompile Include="InfoSaver.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="UserLogin.cpp">
-      <Filter>Models</Filter>
-    </ClCompile>
     <ClCompile Include="infosaver.cppm" />
+    <ClCompile Include="UserLogin.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -50,7 +50,7 @@
       <Filter>Modules\Headers</Filter>
     </ClInclude>
     <ClInclude Include="UserLogin.h">
-      <Filter>Models\Headers</Filter>
+      <Filter>Modules\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
