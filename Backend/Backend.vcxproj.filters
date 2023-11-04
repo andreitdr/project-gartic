@@ -31,6 +31,9 @@
     <ClCompile Include="InfoSaver.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="UserLogin.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
     <ClCompile Include="infosaver.cppm" />
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +48,9 @@
     </ClInclude>
     <ClInclude Include="UserRegister.h">
       <Filter>Modules\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="UserLogin.h">
+      <Filter>Models\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

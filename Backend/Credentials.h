@@ -10,5 +10,8 @@ public:
 	Credentials(const std::string& username, const std::string& nonHashedPassword);
 	std::string hashString(const std::string& stringToBeHashed);
 	const std::string getNonHashedPassword() const;
+
+	const std::string getUsername() const;
+	bool verifyPassword(const std::string& givenPassword);
 };
 
