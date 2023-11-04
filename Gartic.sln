@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Frontend", "Frontend\Fronte
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Logger", "Logger\Logger.vcxproj", "{19DBB93D-4B2B-4247-BB09-1043F472CD73}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameData", "GameData\GameData.vcxproj", "{494AFEE3-3FE0-4153-A304-8A1CBF6782C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{19DBB93D-4B2B-4247-BB09-1043F472CD73}.Release|x64.Build.0 = Release|x64
 		{19DBB93D-4B2B-4247-BB09-1043F472CD73}.Release|x86.ActiveCfg = Release|Win32
 		{19DBB93D-4B2B-4247-BB09-1043F472CD73}.Release|x86.Build.0 = Release|Win32
+		{494AFEE3-3FE0-4153-A304-8A1CBF6782C9}.Debug|x64.ActiveCfg = Debug|x64
+		{494AFEE3-3FE0-4153-A304-8A1CBF6782C9}.Debug|x64.Build.0 = Debug|x64
+		{494AFEE3-3FE0-4153-A304-8A1CBF6782C9}.Debug|x86.ActiveCfg = Debug|Win32
+		{494AFEE3-3FE0-4153-A304-8A1CBF6782C9}.Debug|x86.Build.0 = Debug|Win32
+		{494AFEE3-3FE0-4153-A304-8A1CBF6782C9}.Release|x64.ActiveCfg = Release|x64
+		{494AFEE3-3FE0-4153-A304-8A1CBF6782C9}.Release|x64.Build.0 = Release|x64
+		{494AFEE3-3FE0-4153-A304-8A1CBF6782C9}.Release|x86.ActiveCfg = Release|Win32
+		{494AFEE3-3FE0-4153-A304-8A1CBF6782C9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
