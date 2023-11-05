@@ -3,6 +3,7 @@
 class User
 {
 public:
+	static User EMPTY;
 	friend class UserRegister;
 	const std::string getSurname() const;
 	const std::string getGivenName() const;
