@@ -138,6 +138,7 @@
   <ItemGroup>
     <ClCompile Include="BaseRequest.cppm" />
     <ClCompile Include="BaseResponse.cppm" />
+    <ClCompile Include="UserRegisterResponse.cppm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
