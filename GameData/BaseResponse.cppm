@@ -1,24 +1,44 @@
 export module BaseResponse;
 
 import <string>;
-class BaseResponse
+import <vector>;
+export class BaseResponse
 {
 public:
-	BaseResponse(const std::string& jsonData, bool isSuccess);
-	const std::string GetJsonData() const;
-
+	BaseResponse(const std::string& message, bool isSuccess);
+	const std::vector<std::string> GetResponseMessages() const;
+	const bool GetResponseState() const;
+	void SetResponseState(bool state);
+	void AppendMessage(const std::string& message);
 private:
 	bool m_isSuccess;
-	std::string m_jsonData;
+	std::vector<std::string> m_responseMessages;
 };
 
 
-BaseResponse::BaseResponse(const std::string& jsonData, bool isSuccess) :
-	m_isSuccess(isSuccess), m_jsonData(jsonData) {
-	// Empty ctor
+BaseResponse::BaseResponse(const std::string& message, bool isSuccess) :
+	m_isSuccess(isSuccess) {
+	AppendMessage(message);
 }
 
-const std::string BaseResponse::GetJsonData() const
+void BaseResponse::AppendMessage(const std::string& message)
 {
-	return this->m_jsonData;
+	m_responseMessages.emplace_back(message);
+}
+
+const bool BaseResponse::GetResponseState() const
+{
+	return m_isSuccess;
+}
+
+const std::vector<std::string> BaseResponse::GetResponseMessages() const
+{
+	return m_responseMessages;
+}
+
+void BaseResponse::SetResponseState(bool state)
+{
+	if (!m_isSuccess)
+		return;
+	m_isSuccess = state;
 }
