@@ -1,6 +1,11 @@
 <RCC>
   <qresource prefix="Frontend">
+    <file>assets/images/go-back-ico-white.ico</file>
+    <file>assets/images/profile-badge.png</file>
+    <file>assets/images/letter-avatar-bg.png</file>
     <file>assets/images/accept.ico</file>
+    <file>assets/images/game-history-badge.png</file>
+    <file>assets/images/play-now-badge.png</file>
     <file>assets/images/cancel.ico</file>
     <file>assets/images/gartic-logo.png</file>
     <file>assets/fonts/nunito/Nunito-Black.ttf</file>
