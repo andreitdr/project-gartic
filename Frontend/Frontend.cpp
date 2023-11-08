@@ -8,8 +8,7 @@ Frontend::Frontend(QWidget *parent)
     connect(registerWindow, &Register::loginWindow, this, &Frontend::show);
     joinGameWindow = new JoinGame();
     connect(joinGameWindow, &JoinGame::loginWindow, this, &Frontend::show);
-
-
+    connect(this, SIGNAL(sendUsername(const QString&)), joinGameWindow, SLOT(getUsername(const QString&)));
 }
 
 Frontend::~Frontend()
@@ -36,16 +35,20 @@ void Frontend::on_pushButton_login_clicked()
     );
     else
     //succesful login - to be linked with backend
-    if (username == "1" && password == "1")
-        showSuccessCustomMessageBox(
-            "Gartic - Login",
-            "Successful login. You can play now!",
-            "Play Now",
-            [this]() {
-                joinGameWindow->show();
-                this->close();
-            }
-    );
+        if (/*username == "1" &&*/ password == "1")
+        {
+            emit sendUsername(username);
+            showSuccessCustomMessageBox(
+                "Gartic - Login",
+                "Successful login. You can play now!",
+                "Play Now",
+                [this, username]() {
+                    joinGameWindow->show();
+                    this->close();
+                }
+            );
+        }
+       
     else
         //if username doesn't exist - to be linked with backend
         if (username == "2" && password == "2")

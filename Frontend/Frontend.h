@@ -23,4 +23,7 @@ private:
 private slots:
     virtual void on_pushButton_goToRegister_clicked();
     void on_pushButton_login_clicked();
+
+signals:
+    void sendUsername(const QString&);
 };

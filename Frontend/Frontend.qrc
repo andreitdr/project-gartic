@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="Frontend">
+    <file>assets/images/settings-icon.ico</file>
+    <file>assets/images/go-next-icon-black.ico</file>
     <file>assets/images/go-back-ico-white.ico</file>
     <file>assets/images/profile-badge.png</file>
     <file>assets/images/letter-avatar-bg.png</file>

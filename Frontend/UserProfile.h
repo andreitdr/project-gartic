@@ -13,4 +13,12 @@ public:
 
 private:
 	Ui::UserProfileClass ui;
+	QString m_username;
+
+signals:
+	void joinGameWindow();
+private slots:
+	virtual void on_pushButton_goBackUserProfile_clicked();
+public slots:
+	virtual void getUsername(const QString&);
 };
