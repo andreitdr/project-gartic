@@ -6,7 +6,7 @@
 class UserRegister
 {
 public:
-	UserRegister(User& user, Credentials& credentials);
+	UserRegister(const User& user, const Credentials& credentials);
 
 	bool registerUser();
 

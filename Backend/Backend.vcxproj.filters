@@ -4,47 +4,53 @@
     <Filter Include="API">
       <UniqueIdentifier>{73f4cca4-6371-41d8-b37c-55e8f902cf98}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Models">
-      <UniqueIdentifier>{b7797010-aac4-4eb9-b845-2e3ed783290e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Models\Headers">
-      <UniqueIdentifier>{6d875b8c-b5aa-4b8f-a947-569faa26fda7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Functions">
       <UniqueIdentifier>{23b7543c-0862-44b5-b338-382c88fd631e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{b7797010-aac4-4eb9-b845-2e3ed783290e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Headers">
+      <UniqueIdentifier>{6d875b8c-b5aa-4b8f-a947-569faa26fda7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="User.cpp">
-      <Filter>Models</Filter>
+      <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="Credentials.cpp">
-      <Filter>Models</Filter>
+      <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="InfoSaver.cpp" />
     <ClCompile Include="CustomHasher.cpp">
       <Filter>Functions</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="UserRegister.cpp">
-      <Filter>Models</Filter>
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoSaver.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="infosaver.cppm" />
+    <ClCompile Include="UserLogin.cpp">
+      <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
-      <Filter>Models\Headers</Filter>
+      <Filter>Modules\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Credentials.h">
-      <Filter>Models\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="InfoSaver.h">
-      <Filter>Models\Headers</Filter>
+      <Filter>Modules\Headers</Filter>
     </ClInclude>
     <ClInclude Include="CustomHasher.h">
       <Filter>Functions</Filter>
     </ClInclude>
     <ClInclude Include="UserRegister.h">
-      <Filter>Models\Headers</Filter>
+      <Filter>Modules\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="UserLogin.h">
+      <Filter>Modules\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
