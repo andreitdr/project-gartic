@@ -9,16 +9,22 @@ public:
     std::string getSurname() const;
     std::string getGivenName() const;
     std::string getUsername() const;
+    int getUserID() const;
 
 private:
     std::string m_surname;
     std::string m_givenName;
     std::string m_username;
-    size_t m_user_id;
+    int m_user_id;
 
     size_t GenerateUserId(const std::string& username);
     User(const std::string& surname, const std::string& givenName, const std::string& username);
 };
+
+int User::getUserID() const
+{
+    return m_user_id;
+}
 
 std::string User::getSurname() const
 {
@@ -46,3 +52,15 @@ User::User(const std::string& surname, const std::string& givenName, const std::
 {
     // some other implementations
 }
+
+
+/**
+ * \brief Should not be used for ANYTHING other then Backend/SqlDatabase
+ */
+export __declspec(dllexport) struct UserStructModel
+{
+    std::string m_surname;
+    std::string m_givenName;
+    std::string m_username;
+    int m_user_id;
+};
