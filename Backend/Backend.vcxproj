@@ -146,15 +146,13 @@
     <ClInclude Include="Credentials.h" />
     <ClInclude Include="CustomHasher.h" />
     <ClInclude Include="UserLogin.h" />
-    <ClInclude Include="UserRegister.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Credentials.cpp" />
     <ClCompile Include="CustomHasher.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Gateways\User\UserRegistrationGateway.cppm" />
     <ClCompile Include="SqlDatabase\sqlmodule.cppm" />
     <ClCompile Include="UserLogin.cpp" />
-    <ClCompile Include="UserRegister.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameData\GameData.vcxproj">

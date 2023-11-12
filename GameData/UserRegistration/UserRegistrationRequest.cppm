@@ -5,13 +5,13 @@ import BaseRequest;
 import User;
 
 
-export class __declspec(dllexport) UserRegistrationRequest : public BaseRequest<User>
+export class __declspec(dllexport) UserRegistrationRequest : public BaseRequest<UserStructModel>
 {
     public:
-        UserRegistrationRequest(const User& user);
+        UserRegistrationRequest(const UserStructModel& user);
 };
 
-UserRegistrationRequest::UserRegistrationRequest(const User& user) : BaseRequest(user)
+UserRegistrationRequest::UserRegistrationRequest(const UserStructModel& user) : BaseRequest(user)
 {
     // Empty
 }
