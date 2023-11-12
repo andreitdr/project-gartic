@@ -34,7 +34,8 @@ UserRegisterResponse UserRegistrationGateway::RegisterUser(const UserRegistratio
     }
 
     UserRegisterResponse response;
-    response.SetUser(ApplyChanges(struct_model));
+    user = ApplyChanges(user);
+    response.SetUser(user);
     response.SetResponseState(true);
 
     return response;
@@ -46,7 +47,7 @@ bool UserRegistrationGateway::UserExists(const UserStructModel& user)
     return SqlDatabase::GetDatabase().RecordExists<UserStructModel>(user);
 }
 
-UserStructModel UserRegistrationGateway::ApplyChanges(const UserStructModel& user)
+UserStructModel UserRegistrationGateway::ApplyChanges(UserStructModel user)
 {
     auto database = SqlDatabase::GetDatabase();
     int id = database.Insert(user);

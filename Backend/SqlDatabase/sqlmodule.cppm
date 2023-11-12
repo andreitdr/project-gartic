@@ -19,6 +19,9 @@ public:
 
     template<typename StructType>
     int Insert(StructType object);
+
+    template<typename StructType>
+    StructType GetData(const std::string& query);
     
 
     std::string ExecuteQuery(const std::string& query, const std::string&... params);
@@ -48,6 +51,12 @@ template <typename StructType>
 int SqlDatabase::Insert(StructType object)
 {
     return m_databaseStorage.insert<StructType>(object);
+}
+
+template <typename StructType>
+StructType SqlDatabase::GetData(const std::string& query)
+{
+    return NULL;
 }
 
 SqlDatabase::SqlDatabase(const std::string& fileLocation) : m_filePath(fileLocation)
