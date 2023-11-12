@@ -1,9 +1,9 @@
 ﻿export module UserRegistrationRequest;
 
 import <string>;
-import BaseRequest;
-import User;
 
+export import BaseRequest;
+export import User;
 
 export class __declspec(dllexport) UserRegistrationRequest : public BaseRequest<UserStructModel>
 {

@@ -4,7 +4,6 @@ import <vector>;
 
 export module BaseResponse;
 
-
 export class BaseResponse
 {
 public:

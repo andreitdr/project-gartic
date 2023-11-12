@@ -1,11 +1,10 @@
 import <optional>;
 import <string>;
-import BaseResponse;
-
-import User;
 
 export module UserRegisterResponse;
 
+export import User;
+export import BaseResponse;
 export class __declspec(dllexport) UserRegisterResponse : public BaseResponse
 {
 public:

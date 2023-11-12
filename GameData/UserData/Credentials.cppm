@@ -1,5 +1,5 @@
 ﻿export module Credentials;
-#include <string>
+import <string>;
 
 
 export struct credentials

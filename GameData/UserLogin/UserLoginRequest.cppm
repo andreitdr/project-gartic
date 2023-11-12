@@ -2,6 +2,7 @@
 
 export import BaseRequest;
 export import Credentials;
+
 export __declspec(dllexport) class UserLoginRequest : BaseRequest<credentials>
 {
 public:

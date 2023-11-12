@@ -1,11 +1,11 @@
 ﻿export module UserRegistrationGateway;
 import <string>;
 
-import UserRegistrationRequest;
-import UserRegisterResponse;
+export import UserRegistrationRequest;
+export import UserRegisterResponse;
 
-import User;
-import sqlmodule;
+export import User;
+export import sqlmodule;
 
 export class UserRegistrationGateway
 {

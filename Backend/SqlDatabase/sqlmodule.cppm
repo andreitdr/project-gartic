@@ -1,12 +1,11 @@
 ﻿export module sqlmodule;
-#include <filesystem>
-#include <string>
+import <string>;
+import <filesystem>;
 
-import Credentials;
-import User;
+export import User;
+export import Credentials;
 
-import <sqlite_orm/sqlite_orm.h>;
-
+#include <sqlite_orm/sqlite_orm.h>
 using namespace sqlite_orm;
 
 export class SqlDatabase
