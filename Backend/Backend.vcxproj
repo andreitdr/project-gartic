@@ -147,6 +147,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CustomHasher.cpp" />
+    <ClCompile Include="Gateways\Game\GameManager.cppm" />
+    <ClCompile Include="Gateways\Game\QueueManager.cppm" />
     <ClCompile Include="Gateways\User\UserLoginGateway.cppm" />
     <ClCompile Include="Gateways\User\UserRegistrationGateway.cppm" />
     <ClCompile Include="SqlDatabase\sqlmodule.cppm" />
