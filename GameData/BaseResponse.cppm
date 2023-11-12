@@ -1,7 +1,10 @@
-export module BaseResponse;
 
 import <string>;
 import <vector>;
+
+export module BaseResponse;
+
+
 export class BaseResponse
 {
 public:

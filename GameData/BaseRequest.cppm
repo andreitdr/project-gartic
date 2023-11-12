@@ -1,7 +1,6 @@
-export module BaseRequest;
-
 import <string>;
 
+export module BaseRequest;
 
 export template <typename T>
 class BaseRequest
