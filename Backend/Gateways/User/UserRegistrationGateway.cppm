@@ -1,5 +1,5 @@
 ﻿export module UserRegistrationGateway;
-import <string>;
+import<string>;
 
 export import UserRegistrationRequest;
 export import UserRegisterResponse;
@@ -15,20 +15,13 @@ public:
 private:
     bool UserExists(const UserStructModel& user);
     UserStructModel ApplyChanges(UserStructModel user);
-    
 };
 
 UserRegisterResponse UserRegistrationGateway::RegisterUser(const UserRegistrationRequest& request)
 {
-    const auto user = request.GetObject();
-
-    UserStructModel struct_model;
-    struct_model.m_surname = user.getSurname();
-    struct_model.m_user_id = -1; // temp ID
-    struct_model.m_username = user.getUsername();
-    struct_model.m_givenName = user.getGivenName();
+    auto user = request.GetObject();
     
-    if(UserExists(struct_model))
+    if(UserExists(user))
     {
         return UserRegisterResponse("The user already exists", false);
     }

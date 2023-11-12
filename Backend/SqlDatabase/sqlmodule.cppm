@@ -23,9 +23,6 @@ public:
     template<typename StructType>
     StructType GetData(const std::string& query);
     
-
-    std::string ExecuteQuery(const std::string& query, const std::string&... params);
-    
 private:
     static SqlDatabase k_runningDatabse;
 
@@ -56,6 +53,8 @@ int SqlDatabase::Insert(StructType object)
 template <typename StructType>
 StructType SqlDatabase::GetData(const std::string& query)
 {
+    // get data by reading query result
+    // TODO: Implement this method. GetData in SqlDatabase
     return NULL;
 }
 
@@ -106,11 +105,6 @@ SqlDatabase SqlDatabase::GetDatabase()
     }
 
     throw std::exception("Expected filePath");
-}
-
-std::string SqlDatabase::ExecuteQuery(const std::string& query, const std::string&... params)
-{
-    return std::string("");
 }
 
 

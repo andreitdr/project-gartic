@@ -143,11 +143,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Credentials.h" />
     <ClInclude Include="CustomHasher.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Credentials.cpp" />
     <ClCompile Include="CustomHasher.cpp" />
     <ClCompile Include="Gateways\User\UserLoginGateway.cppm" />
     <ClCompile Include="Gateways\User\UserRegistrationGateway.cppm" />

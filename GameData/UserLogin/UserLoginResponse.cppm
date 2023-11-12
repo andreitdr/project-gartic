@@ -15,6 +15,7 @@ public:
     UserLoginResponse();
     std::optional<credentials> GetCredentials();
     void SetCredentials(const credentials& credentials);
+    
 private:
     std::optional<credentials> m_credentials_;
 };
