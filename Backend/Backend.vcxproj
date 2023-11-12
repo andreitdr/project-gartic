@@ -145,19 +145,21 @@
   <ItemGroup>
     <ClInclude Include="Credentials.h" />
     <ClInclude Include="CustomHasher.h" />
-    <ClInclude Include="User.h" />
     <ClInclude Include="UserLogin.h" />
     <ClInclude Include="UserRegister.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Credentials.cpp" />
-    <ClCompile Include="InfoSaver.cpp" />
     <ClCompile Include="CustomHasher.cpp" />
-    <ClCompile Include="infosaver.cppm" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="User.cpp" />
     <ClCompile Include="UserLogin.cpp" />
     <ClCompile Include="UserRegister.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameData\GameData.vcxproj">
+      <Project>{494afee3-3fe0-4153-a304-8a1cbf6782c9}</Project>
+      <Name>GameData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

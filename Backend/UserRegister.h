@@ -1,5 +1,5 @@
 #pragma once
-#include "User.h"
+import User;
 #include "Credentials.h"
 #include <vector>
 #include <string>
