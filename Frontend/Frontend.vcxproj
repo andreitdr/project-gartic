@@ -91,6 +91,7 @@
   <ItemGroup>
     <ClCompile Include="CustomQtWidgets.cpp" />
     <ClCompile Include="JoinGame.cpp" />
+    <ClCompile Include="PaintWidget.cpp" />
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="UserProfile.cpp" />
     <QtRcc Include="Frontend.qrc" />
@@ -99,6 +100,7 @@
     <ClCompile Include="Frontend.cpp" />
     <ClCompile Include="main.cpp" />
     <QtUic Include="JoinGame.ui" />
+    <QtUic Include="PaintWidget.ui" />
     <QtUic Include="Register.ui" />
     <QtUic Include="UserProfile.ui" />
   </ItemGroup>
@@ -107,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CustomQtWidgets.h" />
+    <QtMoc Include="PaintWidget.h" />
     <QtMoc Include="UserProfile.h" />
     <QtMoc Include="JoinGame.h" />
   </ItemGroup>

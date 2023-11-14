@@ -4,7 +4,6 @@
 Register::Register(QWidget *parent)
 	: QMainWindow(parent)
 {
-	setAttribute(Qt::WA_DeleteOnClose, true);
 	ui.setupUi(this);
 }
 
