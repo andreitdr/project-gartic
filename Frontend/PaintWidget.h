@@ -20,6 +20,7 @@ public:
 	~PaintWidget();
 	void setPenColor(const QColor& newColor);
 	void setPenWidth(int newWidth);
+	void saveImage();
 
 	QColor penColor() const;
 	int penWidth() const;

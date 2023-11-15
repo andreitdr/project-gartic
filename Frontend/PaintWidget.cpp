@@ -22,6 +22,13 @@ void PaintWidget::setPenWidth(int newWidth)
 	m_PenWidth = newWidth;
 }
 
+void PaintWidget::saveImage()
+{
+	/*QString filePath = "C:/Users/pestr/Desktop/test.png";
+	QImage imageToSave = m_image.copy(rect());
+    imageToSave.save(filePath, "PNG");*/
+}
+
 QColor PaintWidget::penColor() const
 {
 	return m_PenColor;
@@ -82,6 +89,7 @@ void PaintWidget::drawLine(const QPoint& endPoint)
 	int rad = (m_PenWidth / 2) + 2;
 	update(QRect(m_lastPoint, endPoint).normalized().adjusted(-rad, -rad, +rad, +rad));
 	m_lastPoint = endPoint;
+	//saveImage();
 }
 
 void PaintWidget::resizeImage(QImage* image, const QSize& newSize)
