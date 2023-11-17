@@ -28,6 +28,12 @@ public:
     
     template <typename TypeAsStruct>
     static int Insert(const TypeAsStruct& model);
+
+    template <typename TypeAsStruct>
+    static TypeAsStruct Get(int id);
+
+    template <typename TypeAsStruct>
+    static bool Exists(const TypeAsStruct& model);
 };
 
 template <typename TypeAsStruct>
@@ -35,5 +41,18 @@ int SqlDatabase::Insert(const TypeAsStruct& model)
 {
     int id = storage.insert(model);
     return id;
+}
+
+template <typename TypeAsStruct>
+TypeAsStruct SqlDatabase::Get(int id)
+{
+    return storage.get<TypeAsStruct>(id);
+}
+
+template <typename TypeAsStruct>
+bool SqlDatabase::Exists(const TypeAsStruct& model)
+{
+    auto result = storage.get_all<TypeAsStruct>(sqlite_orm::where(sqlite_orm::c(&TypeAsStruct::m_user_id) == model.m_user_id));
+    return result.size() > 0;
 }
 

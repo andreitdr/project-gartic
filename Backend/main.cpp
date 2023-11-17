@@ -1,16 +1,14 @@
 ﻿import User;
-#include "SqlDatabase/SqlDatabase.h"
-
+#include <crow.h>
 int main()
 {
- 
-    UserStructModel model;
-    model.m_surname = "surname2";
-    model.m_username = "username1";
-    model.m_givenName = "givenname1";
-    model.m_user_id = -1;
+    crow::SimpleApp app;
 
-    SqlDatabase::Init();
-    SqlDatabase::Insert<UserStructModel>(model);
+    CROW_ROUTE(app, "/")([]{
+        return "Hello World";
+    });
+
+
+    app.port(18080).multithreaded().run();
     return 0;
 }

@@ -152,8 +152,7 @@
     <ClCompile Include="Game\HistoryManager.cppm" />
     <ClCompile Include="Game\QueueManager.cppm" />
     <ClCompile Include="Game\UserManager.cppm" />
-    <ClCompile Include="Gateways\User\UserLoginGateway.cppm" />
-    <ClCompile Include="Gateways\User\UserRegistrationGateway.cppm" />
+    <ClCompile Include="Contexts\User\UserRegistrationContext.cppm" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SqlDatabase\SqlDatabase.cpp" />
   </ItemGroup>
@@ -162,8 +161,13 @@
       <Project>{494afee3-3fe0-4153-a304-8a1cbf6782c9}</Project>
       <Name>GameData</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.vcxproj">
+      <Project>{19dbb93d-4b2b-4247-bb09-1043f472cd73}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="API\User\UserRegistration.h" />
     <ClInclude Include="SqlDatabase\SqlDatabase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

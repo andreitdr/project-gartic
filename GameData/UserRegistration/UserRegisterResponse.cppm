@@ -1,7 +1,7 @@
+export module UserRegisterResponse;
 import <optional>;
 import <string>;
 
-export module UserRegisterResponse;
 
 export import User;
 export import BaseResponse;
@@ -21,7 +21,9 @@ UserRegisterResponse::UserRegisterResponse(const std::string& message, bool stat
 {
 }
 
-UserRegisterResponse::UserRegisterResponse() = default;
+UserRegisterResponse::UserRegisterResponse() : BaseResponse()
+{
+}
 
 void UserRegisterResponse::SetUser(const UserStructModel& user)
 {
