@@ -148,6 +148,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseRequest.cppm" />
+    <ClCompile Include="BaseResponse.cppm" />
     <ClCompile Include="Game\GameManager.cppm" />
     <ClCompile Include="Game\HistoryManager.cppm" />
     <ClCompile Include="Game\QueueManager.cppm" />
@@ -155,18 +157,15 @@
     <ClCompile Include="Contexts\User\UserRegistrationContext.cppm" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SqlDatabase\SqlDatabase.cpp" />
+    <ClCompile Include="UserData\Credentials.cppm" />
+    <ClCompile Include="UserData\User.cppm" />
+    <ClCompile Include="UserLogin\UserLoginRequest.cppm" />
+    <ClCompile Include="UserLogin\UserLoginResponse.cppm" />
+    <ClCompile Include="UserRegistration\UserRegisterResponse.cppm" />
+    <ClCompile Include="UserRegistration\UserRegistrationRequest.cppm" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameData\GameData.vcxproj">
-      <Project>{494afee3-3fe0-4153-a304-8a1cbf6782c9}</Project>
-      <Name>GameData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Logger\Logger.vcxproj">
-      <Project>{19dbb93d-4b2b-4247-bb09-1043f472cd73}</Project>
-      <Name>Logger</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="API\Constants.h" />
     <ClInclude Include="API\User\UserRegistration.h" />
     <ClInclude Include="SqlDatabase\SqlDatabase.h" />
   </ItemGroup>
