@@ -116,11 +116,16 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <EnableModules>true</EnableModules>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+      <AdditionalOptions>/D "_SILENCE_ALL_CXX20_DEPRECATION_WARNINGS" /D "_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -143,16 +148,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CustomHasher.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="CustomHasher.cpp" />
     <ClCompile Include="Game\GameManager.cppm" />
     <ClCompile Include="Game\HistoryManager.cppm" />
     <ClCompile Include="Game\QueueManager.cppm" />
     <ClCompile Include="Game\UserManager.cppm" />
     <ClCompile Include="Gateways\User\UserLoginGateway.cppm" />
     <ClCompile Include="Gateways\User\UserRegistrationGateway.cppm" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="SqlDatabase\sqlmodule.cppm" />
   </ItemGroup>
   <ItemGroup>
@@ -160,9 +162,6 @@
       <Project>{494afee3-3fe0-4153-a304-8a1cbf6782c9}</Project>
       <Name>GameData</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="API\" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
