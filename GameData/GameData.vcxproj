@@ -24,6 +24,7 @@
     <ProjectGuid>{494afee3-3fe0-4153-a304-8a1cbf6782c9}</ProjectGuid>
     <RootNamespace>GameData</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
