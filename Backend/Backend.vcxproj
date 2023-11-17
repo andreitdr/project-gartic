@@ -143,21 +143,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Credentials.h" />
     <ClInclude Include="CustomHasher.h" />
-    <ClInclude Include="User.h" />
-    <ClInclude Include="UserLogin.h" />
-    <ClInclude Include="UserRegister.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Credentials.cpp" />
-    <ClCompile Include="InfoSaver.cpp" />
     <ClCompile Include="CustomHasher.cpp" />
-    <ClCompile Include="infosaver.cppm" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="User.cpp" />
-    <ClCompile Include="UserLogin.cpp" />
-    <ClCompile Include="UserRegister.cpp" />
+    <ClCompile Include="Game\GameManager.cppm" />
+    <ClCompile Include="Game\HistoryManager.cppm" />
+    <ClCompile Include="Game\QueueManager.cppm" />
+    <ClCompile Include="Game\UserManager.cppm" />
+    <ClCompile Include="Gateways\User\UserLoginGateway.cppm" />
+    <ClCompile Include="Gateways\User\UserRegistrationGateway.cppm" />
+    <ClCompile Include="SqlDatabase\sqlmodule.cppm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameData\GameData.vcxproj">
+      <Project>{494afee3-3fe0-4153-a304-8a1cbf6782c9}</Project>
+      <Name>GameData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="API\" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,23 +1,19 @@
-export module UserRegisterResponse;
-
-import BaseResponse;
 import <optional>;
 import <string>;
 
-#include "../../Backend/User.h"
+export module UserRegisterResponse;
 
-
-export class UserRegisterResponse : public BaseResponse
+export import User;
+export import BaseResponse;
+export class __declspec(dllexport) UserRegisterResponse : public BaseResponse
 {
 public:
     UserRegisterResponse(const std::string& message, bool state);
     UserRegisterResponse();
-    void SetUser(const User& user);
-    const std::optional<User> GetUser() const;
+    void SetUser(const UserStructModel& user);
+    std::optional<UserStructModel> GetUser() const;
 private:
-    std::optional<User> m_user;
-    
-
+    std::optional<UserStructModel> m_user;
 };
 
 UserRegisterResponse::UserRegisterResponse(const std::string& message, bool state)
@@ -27,12 +23,12 @@ UserRegisterResponse::UserRegisterResponse(const std::string& message, bool stat
 
 UserRegisterResponse::UserRegisterResponse() = default;
 
-void UserRegisterResponse::SetUser(const User& user)
+void UserRegisterResponse::SetUser(const UserStructModel& user)
 {
     m_user=user;
 }
 
-const std::optional<User> UserRegisterResponse::GetUser() const
+std::optional<UserStructModel> UserRegisterResponse::GetUser() const
 {
     return m_user;
 }

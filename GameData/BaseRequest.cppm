@@ -1,17 +1,25 @@
-export module BaseRequest;
-
 import <string>;
 
+export module BaseRequest;
+
+export template <typename T>
 class BaseRequest
 {
 public:
-	BaseRequest(const std::string& jsonData);
+	BaseRequest(const T& RequestObject);
+	T GetObject() const;
 private:
-	std::string m_jsonData;
+	T m_requestObject;
 
 };
 
-BaseRequest :: BaseRequest(const std::string& jsonData) : m_jsonData(jsonData) {
-	// Empty ctor
+template <typename T>
+BaseRequest<T>::BaseRequest(const T& RequestObject) : m_requestObject(RequestObject)
+{
 }
 
+template <typename T>
+T BaseRequest<T>::GetObject() const
+{
+	return m_requestObject;
+}

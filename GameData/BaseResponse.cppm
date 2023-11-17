@@ -1,14 +1,16 @@
-export module BaseResponse;
 
 import <string>;
 import <vector>;
+
+export module BaseResponse;
+
 export class BaseResponse
 {
 public:
     BaseResponse(const std::string& message, bool isSuccess);
     BaseResponse();
-    const std::vector<std::string> GetResponseMessages() const;
-    const bool GetResponseState() const;
+    std::vector<std::string> GetResponseMessages() const;
+    bool GetResponseState() const;
     void SetResponseState(bool state);
     void AppendMessage(const std::string& message);
 
@@ -33,12 +35,12 @@ void BaseResponse::AppendMessage(const std::string& message)
     m_responseMessages.emplace_back(message);
 }
 
-const bool BaseResponse::GetResponseState() const
+ bool BaseResponse::GetResponseState() const
 {
     return m_isSuccess;
 }
 
-const std::vector<std::string> BaseResponse::GetResponseMessages() const
+ std::vector<std::string> BaseResponse::GetResponseMessages() const
 {
     return m_responseMessages;
 }
