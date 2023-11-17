@@ -155,13 +155,16 @@
     <ClCompile Include="Gateways\User\UserLoginGateway.cppm" />
     <ClCompile Include="Gateways\User\UserRegistrationGateway.cppm" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="SqlDatabase\sqlmodule.cppm" />
+    <ClCompile Include="SqlDatabase\SqlDatabase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameData\GameData.vcxproj">
       <Project>{494afee3-3fe0-4153-a304-8a1cbf6782c9}</Project>
       <Name>GameData</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SqlDatabase\SqlDatabase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
