@@ -3,7 +3,7 @@
 export import BaseRequest;
 export import Credentials;
 
-export __declspec(dllexport) class UserLoginRequest : BaseRequest<credentials>
+export class UserLoginRequest : BaseRequest<credentials>
 {
 public:
     UserLoginRequest(const credentials& userCredentails);

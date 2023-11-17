@@ -8,7 +8,7 @@ export import User;
 export import Credentials;
 
 
-export __declspec(dllexport) class UserLoginResponse : BaseResponse
+export class UserLoginResponse : BaseResponse
 {
 public:
     UserLoginResponse(const std::string& message, bool state);

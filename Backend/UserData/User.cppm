@@ -2,7 +2,7 @@
 
 import <string>;
 
-export __declspec(dllexport) class User
+export class User
 {
 public:
     friend class UserRegister;
@@ -57,7 +57,7 @@ User::User(const std::string& surname, const std::string& givenName, const std::
 /**
  * \brief Should not be used for ANYTHING other then Backend/SqlDatabase
  */
-export __declspec(dllexport) struct UserStructModel
+export struct UserStructModel
 {
     std::string m_surname;
     std::string m_givenName;
