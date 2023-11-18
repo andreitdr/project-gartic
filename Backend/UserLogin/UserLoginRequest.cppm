@@ -1,22 +1,24 @@
 ﻿export module UserLoginRequest;
 
-export import BaseRequest;
 export import Credentials;
 
-export class UserLoginRequest : BaseRequest<credentials>
+export class UserLoginRequest
 {
 public:
-    UserLoginRequest(const credentials& userCredentails);
-    credentials GetObject() const;
+    UserLoginRequest(const Credentials& userCredentails);
+    Credentials GetObject() const;
+
+private:
+    Credentials m_userCredentials;
 
 };
 
-UserLoginRequest::UserLoginRequest(const credentials& userCredentails) : BaseRequest<credentials>(userCredentails)
+UserLoginRequest::UserLoginRequest(const Credentials& userCredentails) : m_userCredentials(userCredentails)
 {
     
 }
 
-credentials UserLoginRequest::GetObject() const
+Credentials UserLoginRequest::GetObject() const
 {
-    return BaseRequest<credentials>::GetObject();
+    return m_userCredentials;
 }

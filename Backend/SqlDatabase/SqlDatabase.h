@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <string>
 #include <sqlite_orm/sqlite_orm.h>
+
 import User;
 import Credentials;
 
@@ -13,8 +14,8 @@ inline auto CreateDatabase(const std::string& fileName)
             sqlite_orm::make_column("Surname", &UserStructModel::m_surname),
             sqlite_orm::make_column("GivenName", &UserStructModel::m_givenName)),
         sqlite_orm::make_table("Credentials",
-            sqlite_orm::make_column("Username", &credentials::m_username),
-            sqlite_orm::make_column("Password", &credentials::m_hashedPassword))
+            sqlite_orm::make_column("Username", &Credentials::m_username),
+            sqlite_orm::make_column("Password", &Credentials::m_hashedPassword))
     );
 }
 
@@ -34,6 +35,9 @@ public:
 
     template <typename TypeAsStruct>
     static bool Exists(const TypeAsStruct& model);
+
+    template <typename TypeAsStruct>
+    static bool Update(const TypeAsStruct& model);
 };
 
 template <typename TypeAsStruct>
@@ -54,5 +58,21 @@ bool SqlDatabase::Exists(const TypeAsStruct& model)
 {
     auto result = storage.get_all<TypeAsStruct>(sqlite_orm::where(sqlite_orm::c(&TypeAsStruct::m_user_id) == model.m_user_id));
     return result.size() > 0;
+}
+
+template <typename TypeAsStruct>
+bool SqlDatabase::Update(const TypeAsStruct& model)
+{
+    try
+    {
+        storage.update(model);
+        return true;
+    }
+    catch(std::exception ex)
+    {
+        // log the exception
+        return false;
+    }
+    
 }
 

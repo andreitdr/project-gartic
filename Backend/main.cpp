@@ -2,8 +2,6 @@
 #include <crow.h>
 #include "API/Constants.h"
 #include "API/User/UserRegistration.h"
-#include <iostream>
-
 #include "SqlDatabase/SqlDatabase.h"
 
 int main()
@@ -17,7 +15,7 @@ int main()
     .methods("GET"_method)
     ([](const crow::request& request){
         auto json = crow::json::load(request.body);
-        std::cout << request.body;
+        
         if(!json)
             return K_CROW_ERROR_INVALID_JSON;
 

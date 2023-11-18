@@ -148,7 +148,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BaseRequest.cppm" />
     <ClCompile Include="BaseResponse.cppm" />
     <ClCompile Include="Game\GameManager.cppm" />
     <ClCompile Include="Game\HistoryManager.cppm" />
@@ -161,7 +160,7 @@
     <ClCompile Include="UserData\User.cppm" />
     <ClCompile Include="UserLogin\UserLoginRequest.cppm" />
     <ClCompile Include="UserLogin\UserLoginResponse.cppm" />
-    <ClCompile Include="UserRegistration\UserRegisterResponse.cppm" />
+    <ClCompile Include="UserRegistration\UserRegistrationResponse.cppm" />
     <ClCompile Include="UserRegistration\UserRegistrationRequest.cppm" />
   </ItemGroup>
   <ItemGroup>

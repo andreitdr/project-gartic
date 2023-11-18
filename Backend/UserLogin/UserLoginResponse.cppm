@@ -13,31 +13,34 @@ export class UserLoginResponse : BaseResponse
 public:
     UserLoginResponse(const std::string& message, bool state);
     UserLoginResponse();
-    std::optional<credentials> GetCredentials();
-    void SetCredentials(const credentials& credentials);
-    void SetResponseState(bool state);
+    
+    std::optional<Credentials> GetCredentials();
+    void SetCredentials(const Credentials& credentials);
     
 private:
-    std::optional<credentials> m_credentials;
+    std::optional<Credentials> m_credentials;
 };
 
-UserLoginResponse::UserLoginResponse() = default;
+UserLoginResponse::UserLoginResponse(const std::string& message, bool state)
+{
+    AppendMessage(message);
+    m_successState = state;
+}
 
-std::optional<credentials> UserLoginResponse::GetCredentials()
+UserLoginResponse::UserLoginResponse() : BaseResponse()
+{
+}
+
+std::optional<Credentials> UserLoginResponse::GetCredentials()
 {
     return m_credentials;
 }
 
-void UserLoginResponse::SetCredentials(const credentials& credentials)
+void UserLoginResponse::SetCredentials(const Credentials& credentials)
 {
-    this->m_credentials = credentials;
+    m_credentials = credentials;
 }
 
-void UserLoginResponse::SetResponseState(bool state)
-{
-    BaseResponse::SetResponseState(state);
-}
 
-UserLoginResponse::UserLoginResponse(const std::string& message, bool state) : BaseResponse(message, state) 
-{}
+
 

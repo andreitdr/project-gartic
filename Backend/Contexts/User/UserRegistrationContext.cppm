@@ -1,6 +1,7 @@
-﻿#include "../../SqlDatabase/SqlDatabase.h"
-export module UserRegistrationContext;
-import<string>;
+﻿export module UserRegistrationContext;
+import <string>;
+
+#include "../../SqlDatabase/SqlDatabase.h"
 
 export import UserRegistrationRequest;
 export import UserRegisterResponse;
@@ -9,24 +10,27 @@ export import User;
 export class UserRegistrationContext
 {
 public:
-    static UserRegisterResponse RegisterUser(const UserRegistrationRequest& request);
+    static UserRegistrationResponse RegisterUser(const UserRegistrationRequest& request);
 
 private:
     static bool UserExists(const UserStructModel& user);
-    static UserStructModel ApplyChanges(UserStructModel user);
+    static void ApplyChangesUser(UserStructModel& user);
+    static void ApplyChangesCredentials(const Credentials& userCredentials);
 };
 
-UserRegisterResponse UserRegistrationContext::RegisterUser(const UserRegistrationRequest& request)
+UserRegistrationResponse UserRegistrationContext::RegisterUser(const UserRegistrationRequest& request)
 {
-    auto user = request.GetObject();
+    auto user = request.GetUser(); // user
+    auto credentials = request.GetCredentials(); // credentials
     
     if(UserExists(user))
     {
-        return UserRegisterResponse("The user already exists", false);
+        return UserRegistrationResponse("The user already exists", false);
     }
 
-    UserRegisterResponse response = UserRegisterResponse("Success", true);
-    user = ApplyChanges(user);
+    UserRegistrationResponse response = UserRegistrationResponse("Success", true);
+    ApplyChangesUser(user);
+    ApplyChangesCredentials(credentials);
     response.SetUser(user);
     
     return response;
@@ -37,10 +41,14 @@ bool UserRegistrationContext::UserExists(const UserStructModel& user)
     return SqlDatabase::Exists(user);
 }
 
-UserStructModel UserRegistrationContext::ApplyChanges(UserStructModel user)
+void UserRegistrationContext::ApplyChangesUser(UserStructModel& user)
 {
     int id = SqlDatabase::Insert(user);
     user.m_user_id = id;
-    return user;
+}
+
+void UserRegistrationContext::ApplyChangesCredentials(const Credentials& userCredentials)
+{
+    SqlDatabase::Insert(userCredentials);
 }
 
