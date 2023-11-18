@@ -20,6 +20,7 @@ inline crow::json::wvalue RegisterUser(crow::json::rvalue& request)
     crow::json::wvalue responseJson = crow::json::wvalue();
     responseJson["SuccessState"] = response.m_successState;
     responseJson["ResponseMessages"] = response.m_messages;
+    responseJson["NewUserID"] = response.GetUser().value().m_user_id;
 
     return responseJson;
 }
