@@ -11,6 +11,4 @@ export struct BaseResponse
     {
         m_messages.emplace_back(message);
     }
-
-    
 };

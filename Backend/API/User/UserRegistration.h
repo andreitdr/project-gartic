@@ -1,8 +1,10 @@
 ﻿#pragma once
 import UserRegistrationContext;
+
+#include "Utils/JsonConvertor.h"
 #include <crow.h>
 
-inline crow::json::wvalue RegisterUser(crow::json::rvalue& request)
+inline WJSON RegisterUser(crow::json::rvalue& request)
 {
     UserStructModel user;
     user.m_surname = request["surname"].s();
@@ -17,9 +19,7 @@ inline crow::json::wvalue RegisterUser(crow::json::rvalue& request)
     UserRegistrationRequest userRegistrationRequest = UserRegistrationRequest(user, credentials);
     UserRegistrationResponse response = UserRegistrationContext::RegisterUser(userRegistrationRequest);
 
-    crow::json::wvalue responseJson = crow::json::wvalue();
-    responseJson["SuccessState"] = response.m_successState;
-    responseJson["ResponseMessages"] = response.m_messages;
+    WJSON responseJson = JsonConvertor::ConvertBaseResponse(response);
     responseJson["NewUserID"] = response.GetUser().value().m_user_id;
 
     return responseJson;

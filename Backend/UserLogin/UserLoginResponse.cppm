@@ -8,11 +8,11 @@ export import User;
 export import Credentials;
 
 
-export class UserLoginResponse : BaseResponse
+export class UserLoginResponse : public BaseResponse
 {
 public:
     UserLoginResponse(const std::string& message, bool state);
-    UserLoginResponse();
+    UserLoginResponse(bool state);
     
     std::optional<Credentials> GetCredentials();
     void SetCredentials(const Credentials& credentials);
@@ -27,8 +27,9 @@ UserLoginResponse::UserLoginResponse(const std::string& message, bool state)
     m_successState = state;
 }
 
-UserLoginResponse::UserLoginResponse() : BaseResponse()
+UserLoginResponse::UserLoginResponse(bool state) : BaseResponse()
 {
+    m_successState = state;
 }
 
 std::optional<Credentials> UserLoginResponse::GetCredentials()

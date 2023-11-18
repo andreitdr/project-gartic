@@ -149,6 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseResponse.cppm" />
+    <ClCompile Include="Contexts\User\UserLoginContext.cppm" />
     <ClCompile Include="Game\GameManager.cppm" />
     <ClCompile Include="Game\HistoryManager.cppm" />
     <ClCompile Include="Game\QueueManager.cppm" />
@@ -165,8 +166,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API\Constants.h" />
+    <ClInclude Include="API\User\UserLogin.h" />
     <ClInclude Include="API\User\UserRegistration.h" />
     <ClInclude Include="SqlDatabase\SqlDatabase.h" />
+    <ClInclude Include="Utils\JsonConvertor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

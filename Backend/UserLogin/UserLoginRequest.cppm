@@ -6,7 +6,7 @@ export class UserLoginRequest
 {
 public:
     UserLoginRequest(const Credentials& userCredentails);
-    Credentials GetObject() const;
+    Credentials GetCredentials() const;
 
 private:
     Credentials m_userCredentials;
@@ -18,7 +18,7 @@ UserLoginRequest::UserLoginRequest(const Credentials& userCredentails) : m_userC
     
 }
 
-Credentials UserLoginRequest::GetObject() const
+Credentials UserLoginRequest::GetCredentials() const
 {
     return m_userCredentials;
 }

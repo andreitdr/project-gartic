@@ -56,7 +56,7 @@ TypeAsStruct SqlDatabase::Get(int id)
 template <typename TypeAsStruct>
 bool SqlDatabase::Exists(const TypeAsStruct& model)
 {
-    auto result = storage.get_all<TypeAsStruct>(sqlite_orm::where(sqlite_orm::c(&TypeAsStruct::m_user_id) == model.m_user_id));
+    auto result = storage.get_all<TypeAsStruct>(sqlite_orm::where(sqlite_orm::c(&TypeAsStruct::m_username) == model.m_username));
     return result.size() > 0;
 }
 
