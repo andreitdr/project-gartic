@@ -1,7 +1,7 @@
 ﻿import User;
 #include <crow.h>
-#include "API/Constants.h"
 #include "API/User/UserRegistration.h"
+#include "API/Constants.h"
 #include "SqlDatabase/SqlDatabase.h"
 
 int main()
@@ -18,7 +18,7 @@ int main()
         
         if(!json)
             return K_CROW_ERROR_INVALID_JSON;
-
+        
         return crow::response(RegisterUser(json));
     });
 

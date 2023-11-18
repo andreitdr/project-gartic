@@ -1,6 +1,5 @@
 ﻿#pragma once
 import UserRegistrationContext;
-
 #include <crow.h>
 
 inline crow::json::wvalue RegisterUser(crow::json::rvalue& request)

@@ -1,7 +1,7 @@
-﻿export module UserRegistrationContext;
-import <string>;
+﻿#include "../../SqlDatabase/SqlDatabase.h"
 
-#include "../../SqlDatabase/SqlDatabase.h"
+export module UserRegistrationContext;
+import <string>;
 
 export import UserRegistrationRequest;
 export import UserRegisterResponse;
