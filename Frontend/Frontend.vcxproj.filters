@@ -52,6 +52,18 @@
     <ClCompile Include="CustomQtWidgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PaintWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayPaintWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreatePrivateRoom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Register.h">
@@ -63,6 +75,18 @@
     <QtMoc Include="UserProfile.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="PaintWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="DisplayPaintWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="GameWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="CreatePrivateRoom.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Register.ui">
@@ -72,6 +96,18 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="UserProfile.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="PaintWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="DisplayPaintWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="GameWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="CreatePrivateRoom.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
