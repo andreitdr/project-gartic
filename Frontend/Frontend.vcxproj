@@ -89,6 +89,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CreatePrivateRoom.cpp" />
     <ClCompile Include="CustomQtWidgets.cpp" />
     <ClCompile Include="DisplayPaintWidget.cpp" />
     <ClCompile Include="GameWindow.cpp" />
@@ -97,6 +98,7 @@
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="UserProfile.cpp" />
     <QtRcc Include="Frontend.qrc" />
+    <QtUic Include="CreatePrivateRoom.ui" />
     <QtUic Include="DisplayPaintWidget.ui" />
     <QtUic Include="Frontend.ui" />
     <QtMoc Include="Frontend.h" />
@@ -112,6 +114,7 @@
     <QtMoc Include="Register.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="CreatePrivateRoom.h" />
     <ClInclude Include="CustomQtWidgets.h" />
     <QtMoc Include="GameWindow.h" />
     <QtMoc Include="DisplayPaintWidget.h" />
