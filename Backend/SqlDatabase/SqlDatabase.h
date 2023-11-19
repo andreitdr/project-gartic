@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <string>
 #include <sqlite_orm/sqlite_orm.h>
+#include "../Constants.h"
 
 import User;
 import Credentials;
@@ -49,19 +50,23 @@ public:
 template <typename TypeAsStruct>
 int SqlDatabase::Insert(const TypeAsStruct& model)
 {
+    k_logger.LogMessage(std::format("Inserting {}",typeid(model).name()));
     int id = storage.insert(model);
+    k_logger.LogMessage("Success");
     return id;
 }
 
 template <typename TypeAsStruct>
 TypeAsStruct SqlDatabase::Get(int id)
 {
+    k_logger.LogMessage(std::format("Getting {} with id {}",typeid(TypeAsStruct).name(),id));
     return storage.get<TypeAsStruct>(id);
 }
 
 template <typename TypeAsStruct>
 TypeAsStruct SqlDatabase::Get( sqlite_orm::internal::where_t<TypeAsStruct> whereClause)
 {
+    k_logger.LogMessage(std::format("Getting {}",typeid(TypeAsStruct).name()));
     return storage.get<TypeAsStruct>(whereClause);
 }
 
@@ -86,12 +91,13 @@ bool SqlDatabase::Update(const TypeAsStruct& model)
 {
     try
     {
+        k_logger.LogMessage(std::format("Updating {}",typeid(model).name()));
         storage.update(model);
         return true;
     }
-    catch(std::exception ex)
+    catch(const std::exception& ex)
     {
-        // log the exception
+        k_logger.LogError(ex);
         return false;
     }
     

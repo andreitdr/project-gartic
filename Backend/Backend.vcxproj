@@ -165,11 +165,17 @@
     <ClCompile Include="UserRegistration\UserRegistrationRequest.cppm" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="API\Constants.h" />
     <ClInclude Include="API\User\UserLogin.h" />
     <ClInclude Include="API\User\UserRegistration.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="SqlDatabase\SqlDatabase.h" />
     <ClInclude Include="Utils\JsonConvertor.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logger\Logger.vcxproj">
+      <Project>{19dbb93d-4b2b-4247-bb09-1043f472cd73}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

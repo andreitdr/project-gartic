@@ -1,0 +1,6 @@
+2023-11-19 18:47:10 [Warning] Inserting struct UserStructModel
+2023-11-19 18:47:10 [Warning] Inserting struct Credentials
+2023-11-19 18:48:41 [Warning] Inserting struct UserStructModel
+2023-11-19 18:48:41 [Warning] Inserting struct Credentials
+2023-11-19 18:50:18 [Debug] Inserting struct UserStructModel
+2023-11-19 18:50:18 [Debug] Inserting struct Credentials

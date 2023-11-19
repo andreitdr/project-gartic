@@ -1,4 +1,4 @@
-export module logging;
+export module Logger;
 
 import <iostream>;
 import <string_view>;
@@ -46,6 +46,7 @@ public:
 	void LogError(const std::exception& ex);
 	
 	void LogError(std::string_view message, const std::string& where);
+	
 
 private:
 	std::ostream& m_os;
@@ -101,7 +102,7 @@ void Logger::LogMessage(std::string_view message, Logger::Level logLevel)
 }
 void Logger::LogMessage(std::string_view message)
 {
-	LogMessage(message,m_minimumLevel);
+	LogMessage(message,Logger::Level::Info);
 }
 
 void Logger::LogError(std::string_view message)

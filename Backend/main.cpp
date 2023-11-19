@@ -2,12 +2,13 @@
 #include <crow.h>
 #include "API/User/UserRegistration.h"
 #include "API/User/UserLogin.h"
-#include "API/Constants.h"
+#include "Constants.h"
 #include "SqlDatabase/SqlDatabase.h"
 
 int main()
 {
-
+    
+    
     SqlDatabase::Init();
     
     crow::SimpleApp app;
@@ -36,7 +37,7 @@ int main()
         return crow::response(UserLogin(json));
     });
     
-
+    app.loglevel(crow::LogLevel::Error);
     app.port(18080).multithreaded().run();
     return 0;
 }
