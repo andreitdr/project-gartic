@@ -10,7 +10,6 @@ int main()
     
     
     SqlDatabase::Init();
-    
     crow::SimpleApp app;
 
     CROW_ROUTE(app, "/user/register")
