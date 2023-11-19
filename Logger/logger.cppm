@@ -1,5 +1,6 @@
 export module Logger;
 
+
 import <iostream>;
 import <string_view>;
 import <format>;
@@ -7,14 +8,13 @@ import <chrono>;
 import <fstream>;
 #include <Windows.h>
 
-
 #define COLOR_WHITE 7
 #define COLOR_GREEN 10
 #define COLOR_YELLOW 14
 #define COLOR_RED 4
 
 
-export  class __declspec(dllexport)  Logger
+export  class __declspec(dllexport)  Logger 
 {
 public:
 	enum class Level : char
@@ -32,7 +32,6 @@ public:
 		Warning=COLOR_YELLOW,
 		Error=COLOR_RED
 	};
-public:
 	Logger(std::ostream& os, Level minimumLevel, std::string fileName);
 
 	void SetMinimumLogLevel(Level level);
@@ -47,7 +46,6 @@ public:
 	
 	void LogError(std::string_view message, const std::string& where);
 	
-
 private:
 	std::ostream& m_os;
 	Level m_minimumLevel;

@@ -158,6 +158,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SqlDatabase\SqlDatabase.cpp" />
     <ClCompile Include="UserData\Credentials.cppm" />
+    <ClCompile Include="UserData\GameData.cppm" />
     <ClCompile Include="UserData\User.cppm" />
     <ClCompile Include="UserLogin\UserLoginRequest.cppm" />
     <ClCompile Include="UserLogin\UserLoginResponse.cppm" />

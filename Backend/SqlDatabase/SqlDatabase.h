@@ -5,6 +5,7 @@
 
 import User;
 import Credentials;
+import UserGameData;
 
 inline auto CreateDatabase(const std::string& fileName)
 {
@@ -16,7 +17,11 @@ inline auto CreateDatabase(const std::string& fileName)
             sqlite_orm::make_column("GivenName", &UserStructModel::m_givenName)),
         sqlite_orm::make_table("Credentials",
             sqlite_orm::make_column("Username", &Credentials::m_username),
-            sqlite_orm::make_column("Password", &Credentials::m_hashedPassword))
+            sqlite_orm::make_column("Password", &Credentials::m_hashedPassword)),
+        sqlite_orm::make_table("UserGameData",
+            sqlite_orm::make_column("GamesPlayed",&UserGameData::m_gamesPlayed),
+            sqlite_orm::make_column("PlayerLevel",&UserGameData::m_playerLevel),
+            sqlite_orm::make_column("PlayerCurrentExp",&UserGameData::m_playerCurrentExp))
     );
 }
 
