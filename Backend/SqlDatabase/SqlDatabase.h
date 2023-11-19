@@ -36,6 +36,9 @@ public:
     template <typename  TypeAsStruct>
     TypeAsStruct Get(sqlite_orm::internal::where_t<TypeAsStruct> whereClause);
     
+    template <typename TypeAsStruct, typename Field>
+    static std::optional<TypeAsStruct> GetByProperty(const Field& value, const std::string& propertyName);
+
     template <typename TypeAsStruct>
     static bool Exists( auto whereClause);
 
@@ -66,6 +69,22 @@ template <typename TypeAsStruct>
 TypeAsStruct SqlDatabase::Get( sqlite_orm::internal::where_t<TypeAsStruct> whereClause)
 {
     return storage.get<TypeAsStruct>(whereClause);
+}
+
+template <typename TypeAsStruct, typename Field>
+std::optional<TypeAsStruct> SqlDatabase::GetByProperty(const Field& value, const std::string& propertyName)
+{
+    auto whereClause = sqlite_orm::where(sqlite_orm::c(propertyName) == value);
+    auto result = storage.get_all<TypeAsStruct>(whereClause);
+
+    if (!result.empty())
+    {
+        return result.front();
+    }
+    else
+    {
+        return std::nullopt;
+    }
 }
 
 template <typename TypeAsStruct>
