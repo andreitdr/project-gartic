@@ -37,14 +37,22 @@ public:
 
 	void SetMinimumLogLevel(Level level);
 
-	void Log(std::string_view message, Level logLevel);
+	void LogMessage(std::string_view message, Level logLevel);
 
+	void LogMessage(std::string_view message);
+
+	void LogError(std::string_view message);
+
+	void LogError(const std::exception& ex);
+	
+	void LogError(std::string_view message, const std::string& where);
 
 private:
 	std::ostream& m_os;
 	Level m_minimumLevel;
 	std::string m_fileName;
-	
+
+	void LogError(const std::exception& ex, const std::string& where);
 	static Color GetTextColorByLogLevel(Level level);
 };
 
@@ -79,7 +87,7 @@ void Logger::SetMinimumLogLevel(Level level)
 	m_minimumLevel = level;
 }
 
-void Logger::Log(std::string_view message, Logger::Level logLevel)
+void Logger::LogMessage(std::string_view message, Logger::Level logLevel)
 {
 	if (static_cast<int>(logLevel) < static_cast<int>(m_minimumLevel))
 		return;
@@ -87,10 +95,37 @@ void Logger::Log(std::string_view message, Logger::Level logLevel)
 	std::fstream f(m_fileName,std::ios::app);
 	const auto now = std::chrono::system_clock::now();
 	SetConsoleTextAttribute(hConsole, static_cast<WORD>(GetTextColorByLogLevel(logLevel)));
-	m_os << now << std::format("[{}] {}\n", LogLevelToString(logLevel), message);
-	f << now << std::format("[{}] {}\n",LogLevelToString(logLevel),message);
+	m_os << std::chrono::round<std::chrono::seconds>(now) << " "<< std::format("[{}] {}\n", LogLevelToString(logLevel), message);
+	f << std::chrono::round<std::chrono::seconds>(now) << " " << std::format("[{}] {}\n",LogLevelToString(logLevel),message);
 	f.close();
 }
+void Logger::LogMessage(std::string_view message)
+{
+	LogMessage(message,m_minimumLevel);
+}
+
+void Logger::LogError(std::string_view message)
+{
+	LogMessage(message, Logger::Level::Error);
+}
+
+void Logger::LogError(const std::exception& ex)
+{
+	LogMessage(ex.what(),Logger::Level::Error);
+}
+
+void Logger::LogError(std::string_view message,const std::string& where)
+{
+	const std::string s_message=std::string(message)+" ["+where+"]";
+	LogMessage(s_message, Logger::Level::Error);
+}
+
+void Logger::LogError(const std::exception& ex,const std::string& where)
+{
+	const std::string s_message=std::string(ex.what())+" ["+where+"]";
+	LogMessage(ex.what(),Logger::Level::Error);
+}
+
 
 Logger::Color Logger::GetTextColorByLogLevel(Level level)
 {
