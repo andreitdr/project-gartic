@@ -32,9 +32,15 @@ public:
 
     template <typename TypeAsStruct>
     static TypeAsStruct Get(int id);
+    
+    template <typename  TypeAsStruct>
+    TypeAsStruct Get(sqlite_orm::internal::where_t<TypeAsStruct> whereClause);
+    
+    template <typename TypeAsStruct>
+    static bool Exists( auto whereClause);
 
     template <typename TypeAsStruct>
-    static bool Exists(const TypeAsStruct& model);
+    static bool ExistsModel(const TypeAsStruct& model);
 
     template <typename TypeAsStruct>
     static bool Update(const TypeAsStruct& model);
@@ -54,8 +60,23 @@ TypeAsStruct SqlDatabase::Get(int id)
 }
 
 template <typename TypeAsStruct>
-bool SqlDatabase::Exists(const TypeAsStruct& model)
+TypeAsStruct SqlDatabase::Get( sqlite_orm::internal::where_t<TypeAsStruct> whereClause)
 {
+    return storage.get<TypeAsStruct>(whereClause);
+}
+
+template <typename TypeAsStruct>
+bool SqlDatabase::Exists(auto whereClause)
+{
+    auto result_list = storage.get_all<TypeAsStruct>(whereClause);
+    return result_list.size() > 0;
+}
+
+template <typename TypeAsStruct>
+bool SqlDatabase::ExistsModel(const TypeAsStruct& model)
+{
+    // TODO: this is not working
+    // The function is not generic
     auto result = storage.get_all<TypeAsStruct>(sqlite_orm::where(sqlite_orm::c(&TypeAsStruct::m_username) == model.m_username));
     return result.size() > 0;
 }

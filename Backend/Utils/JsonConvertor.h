@@ -2,6 +2,7 @@
 
 #define WJSON crow::json::wvalue
 #define CONV_FUNCTION static WJSON
+
 import BaseResponse;
 
 #include <crow.h>
@@ -43,9 +44,11 @@ inline WJSON JsonConvertor::ConvertUser(const UserStructModel& user, bool hasID 
 
 inline WJSON JsonConvertor::ConvertBaseResponse(const BaseResponse& response)
 {
+
     WJSON json;
-    json["SuccessState"] = response.m_successState;
-    json["ResponseMessages"] = response.m_messages;
+
+    json["ResponseState"] = response.m_successState;
+    json["ResponseMessage"] = response.m_messages;
 
     return json;
 }

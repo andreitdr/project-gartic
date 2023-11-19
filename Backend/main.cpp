@@ -20,7 +20,8 @@ int main()
         if(!json)
             return K_CROW_ERROR_INVALID_JSON;
         
-        return crow::response(RegisterUser(json));
+        auto response =  (RegisterUser(json));
+        return crow::response(response);
     });
     
     CROW_ROUTE(app, "/user/login")
@@ -29,8 +30,8 @@ int main()
     {
        auto json = crow::json::load(request.body);
 
-        if(!json) return K_CROW_ERROR_INVALID_JSON;
-
+        if(!json)
+            return K_CROW_ERROR_INVALID_JSON;
         
         return crow::response(UserLogin(json));
     });

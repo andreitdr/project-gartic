@@ -25,7 +25,10 @@ UserRegistrationResponse UserRegistrationContext::RegisterUser(const UserRegistr
     
     if(UserExists(user))
     {
-        return UserRegistrationResponse("The user already exists", false);
+        UserRegistrationResponse response = UserRegistrationResponse("The user already exists", false);
+        response.SetUser(user);
+        
+        return response;
     }
 
     UserRegistrationResponse response = UserRegistrationResponse("Success", true);
@@ -38,7 +41,7 @@ UserRegistrationResponse UserRegistrationContext::RegisterUser(const UserRegistr
 
 bool UserRegistrationContext::UserExists(const UserStructModel& user)
 {
-    return SqlDatabase::Exists(user);
+    return SqlDatabase::ExistsModel(user);
 }
 
 void UserRegistrationContext::ApplyChangesUser(UserStructModel& user)
