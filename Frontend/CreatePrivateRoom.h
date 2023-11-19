@@ -13,4 +13,7 @@ public:
 
 private:
 	Ui::CreatePrivateRoomClass ui;
+
+signals:
+	void joinGameWindow();
 };
