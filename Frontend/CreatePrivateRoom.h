@@ -2,6 +2,7 @@
 
 #include <QMainWindow>
 #include "ui_CreatePrivateRoom.h"
+#include <QClipboard>
 
 class CreatePrivateRoom : public QMainWindow
 {
@@ -16,4 +17,9 @@ private:
 
 signals:
 	void joinGameWindow();
+
+private slots:
+	virtual void on_pushButton_goBack_clicked();
+	virtual void on_pushButton_copyCode_clicked();
+	virtual void on_pushButton_generateCode_clicked();
 };

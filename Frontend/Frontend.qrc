@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="Frontend">
+    <file>assets/images/copy-icon-blue.png</file>
+    <file>assets/images/private-room-badge.png</file>
+    <file>assets/images/go-back-icon-black.png</file>
     <file>assets/images/register-badge.png</file>
     <file>assets/images/logout-icon.png</file>
     <file>assets/images/logout-icon-2.png</file>
