@@ -41,7 +41,7 @@
       <x>350</x>
       <y>60</y>
       <width>261</width>
-      <height>281</height>
+      <height>291</height>
      </rect>
     </property>
     <property name="font">
@@ -70,7 +70,7 @@ border-radius: 10px;</string>
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>190</y>
+       <y>213</y>
        <width>161</width>
        <height>31</height>
       </rect>
@@ -95,7 +95,7 @@ border-radius: 10px;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>50</y>
+       <y>70</y>
        <width>221</width>
        <height>59</height>
       </rect>
@@ -139,7 +139,7 @@ border-radius: 10px;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>120</y>
+       <y>140</y>
        <width>221</width>
        <height>58</height>
       </rect>
@@ -185,10 +185,10 @@ border-radius: 10px;</string>
     <widget class="QLabel" name="label_signInText">
      <property name="geometry">
       <rect>
-       <x>99</x>
+       <x>42</x>
        <y>16</y>
-       <width>81</width>
-       <height>21</height>
+       <width>180</width>
+       <height>45</height>
       </rect>
      </property>
      <property name="font">
@@ -201,14 +201,20 @@ border-radius: 10px;</string>
       </font>
      </property>
      <property name="text">
-      <string>Sign In</string>
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Frontend.qrc">:/Frontend/assets/images/sign-in-badge.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_goToRegister">
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>234</y>
+       <y>255</y>
        <width>161</width>
        <height>24</height>
       </rect>
