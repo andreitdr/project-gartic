@@ -40,6 +40,8 @@ public:
 
 	void LogMessage(std::string_view message);
 
+	void LogMessage(std::string_view message, const std::string& where);
+
 	void LogError(std::string_view message);
 
 	void LogError(const std::exception& ex);
@@ -101,6 +103,12 @@ void Logger::LogMessage(std::string_view message, Logger::Level logLevel)
 void Logger::LogMessage(std::string_view message)
 {
 	LogMessage(message,Logger::Level::Info);
+}
+
+void Logger::LogMessage(std::string_view message, const std::string& where)
+{
+	const std::string s_message="["+where+"] " + std::string(message);
+	LogMessage(s_message, Logger::Level::Info);
 }
 
 void Logger::LogError(std::string_view message)

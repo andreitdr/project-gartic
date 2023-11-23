@@ -7,10 +7,10 @@
 
 int main()
 {
-    
-    
     SqlDatabase::Init();
     crow::SimpleApp app;
+
+    k_logger.LogMessage("Starting server...", "main.cpp");
 
     CROW_ROUTE(app, "/user/register")
     .methods("GET"_method)
