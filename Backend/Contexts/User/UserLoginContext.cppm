@@ -20,13 +20,13 @@ UserLoginResponse UserLoginContext::Login(const UserLoginRequest& request)
 {
     Credentials credentials = request.GetCredentials();
     if(!UserExists(credentials))
-        return UserLoginResponse("Incorrect user credentials", false);
+        return UserLoginResponse("Inexistent user", false);
 
     if (!PasswordMatches(credentials))
-        return UserLoginResponse("Incorrect user credentials", false);
+        return UserLoginResponse("Incorrect password", false);
     
     
-    return UserLoginResponse(true); 
+    return UserLoginResponse("Success", true);
 }
 
 bool UserLoginContext::UserExists(const Credentials& credentials)
