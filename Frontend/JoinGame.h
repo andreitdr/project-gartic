@@ -24,6 +24,7 @@ signals:
 private slots:
 	virtual void on_pushButton_userProfile_clicked();
 	virtual void on_pushButton_createPrivateGame_clicked();
+	virtual void on_pushButton_logOut_clicked();
 public slots:
 	virtual void getUsername(const QString&);
 

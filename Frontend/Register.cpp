@@ -1,5 +1,5 @@
-#include "Register.h"
-
+﻿#include "Register.h"
+#include "Requests.h"
 
 Register::Register(QWidget *parent)
 	: QMainWindow(parent)
@@ -18,58 +18,90 @@ void Register::on_pushButton_goToLogin_clicked()
 
 void Register::on_pushButton_register_clicked()
 {
-	QString username = ui.lineEdit_username->text();
-	QString password = ui.lineEdit_password->text();
-	QString surname = ui.lineEdit_surname->text();
-	QString given_name = ui.lineEdit_given_name->text();
+    QString temp_username = ui.lineEdit_username->text();
+    QString temp_password = ui.lineEdit_password->text();
+    QString temp_surname = ui.lineEdit_surname->text();
+    QString temp_given_name = ui.lineEdit_given_name->text();
+    std::string username = temp_username.toUtf8().constData();
+    std::string password = temp_password.toUtf8().constData();
+    std::string surname = temp_surname.toUtf8().constData();
+    std::string given_name = temp_given_name.toUtf8().constData();
 
-    if (username == "\0" || password == "\0" || surname=="\0"||given_name=="\0")
+    if (username.empty() || password.empty() || surname.empty() || given_name.empty()) {
         showErrorCustomMessageBox(
             "Gartic - Register",
             "One or more fields is empty. Please try again!",
             "Try Again",
-            []() {
-            }
-    );
-    else
-        //user already exists - to be linked with backend
-        if (username == "1" || password == "1" || surname == "1" || given_name == "1")
+            []() {}
+        );
+        return; 
+    }
+
+    if (password.length() < 8) {
+        showErrorCustomMessageBox(
+            "Gartic - Register",
+            "Password should be at least 8 characters. Please try again!",
+            "Try Again",
+            []() {}
+        );
+        return;
+    }
+
+    auto response = Requests::RegisterUser(surname, given_name, username, password);
+    if (response.status_code == 200) {
+        auto response_json = crow::json::load(response.text);
+        if (!response_json) {
             showErrorCustomMessageBox(
                 "Gartic - Register",
-                "Username already registered. Please login!",
-                "Log In",
-                [this]() {
-                    this->close();
-                    emit loginWindow();
-                }
-    );
-        else
-            if (password.length()<8)
+                "Something went wrong. Please try again later!",
+                "Ok",
+                []() {}
+            );
+            return;
+        }
+        else {
+            bool success_state = response_json["ResponseState"].b();
+            std::string response_message = response_json["ResponseMessage"][0].s();
+            int new_user_id = response_json["NewUserID"].i();
+
+            if (response_message == "Success") {
+                showSuccessCustomMessageBox(
+                    "Gartic - Register",
+                    "Register successful. You can login now!",
+                    "Log In",
+                    [this]() {
+                        this->close();
+                        emit loginWindow();
+                    }
+                );
+            }
+            else if (response_message == "The user already exists") {
+                showErrorCustomMessageBox(
+					"Gartic - Register",
+					"Username already exists. Please try again!",
+					"Try Again",
+					[]() {}
+				);
+				return;
+			}
+            else {
                 showErrorCustomMessageBox(
                     "Gartic - Register",
-                    "Password should be at least 8 characters. Please try again!",
-                    "Try Again",
-                    []() {
-                    }
-    );
-            else
-                //register successful - to be linked with backend
-                if (username == "2" || password == "12345678" || surname == "2" || given_name == "2")
-                    showSuccessCustomMessageBox(
-                        "Gartic - Register",
-                        "Register successful. You can login now!",
-                        "Log In",
-                        [this]() {
-                            this->close();
-                            emit loginWindow();
-                        }
-    );
-                else
-                    showErrorCustomMessageBox(
-                        "Gartic - Login",
-                        "Something went wrong. Please try again later!",
-                        "Ok",
-                        []() {
-                        }
-    );
-}	
+                    "Something went wrong. Please try again later!",
+                    "Ok",
+                    []() {}
+                );
+                return;
+            }
+        }
+    }
+    else {
+        showErrorCustomMessageBox(
+            "Gartic - Register",
+            "Something went wrong. Please try again later!",
+            "Ok",
+            []() {}
+        );
+        return;
+    }
+}

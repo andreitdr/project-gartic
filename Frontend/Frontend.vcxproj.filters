@@ -64,6 +64,9 @@
     <ClCompile Include="CreatePrivateRoom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Requests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Register.h">
@@ -113,6 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CustomQtWidgets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Requests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

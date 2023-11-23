@@ -62,6 +62,16 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -94,6 +104,7 @@
     <ClCompile Include="JoinGame.cpp" />
     <ClCompile Include="PaintWidget.cpp" />
     <ClCompile Include="Register.cpp" />
+    <ClCompile Include="Requests.cpp" />
     <ClCompile Include="UserProfile.cpp" />
     <QtRcc Include="Frontend.qrc" />
     <QtUic Include="CreatePrivateRoom.ui" />
@@ -112,6 +123,7 @@
     <QtMoc Include="Register.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Requests.h" />
     <QtMoc Include="CreatePrivateRoom.h" />
     <ClInclude Include="CustomQtWidgets.h" />
     <QtMoc Include="GameWindow.h" />
@@ -128,5 +140,13 @@
   </ImportGroup>
   <PropertyGroup Label="QtDeploy" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <QtDeploy>true</QtDeploy>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <VcpkgConfiguration>Release</VcpkgConfiguration>
+    <VcpkgUseStatic>false</VcpkgUseStatic>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <VcpkgConfiguration>Release</VcpkgConfiguration>
+    <VcpkgUseStatic>false</VcpkgUseStatic>
   </PropertyGroup>
 </Project>

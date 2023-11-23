@@ -13,7 +13,7 @@ int main()
     k_logger.LogMessage("Starting server...", "main.cpp");
 
     CROW_ROUTE(app, "/user/register")
-    .methods("GET"_method)
+    .methods("POST"_method)
     ([](const crow::request& request){
         auto json = crow::json::load(request.body);
         
@@ -25,7 +25,7 @@ int main()
     });
     
     CROW_ROUTE(app, "/user/login")
-    .methods("GET"_method)
+    .methods("POST"_method)
     ([](const crow::request& request)
     {
        auto json = crow::json::load(request.body);

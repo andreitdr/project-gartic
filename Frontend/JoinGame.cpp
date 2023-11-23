@@ -39,3 +39,9 @@ void JoinGame::on_pushButton_createPrivateGame_clicked()
 	createPrivateRoomWindow->show();
 	this->hide();
 }
+
+void JoinGame::on_pushButton_logOut_clicked()
+{
+	emit loginWindow();
+	this->hide();
+}

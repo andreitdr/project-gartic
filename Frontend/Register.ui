@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>654</width>
-    <height>402</height>
+    <height>425</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>654</width>
-    <height>402</height>
+    <height>425</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>654</width>
-    <height>402</height>
+    <height>425</height>
    </size>
   </property>
   <property name="font">
@@ -41,7 +41,7 @@
       <x>350</x>
       <y>10</y>
       <width>261</width>
-      <height>381</height>
+      <height>405</height>
      </rect>
     </property>
     <property name="font">
@@ -70,7 +70,7 @@ border-radius: 10px;</string>
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>300</y>
+       <y>322</y>
        <width>161</width>
        <height>31</height>
       </rect>
@@ -96,7 +96,7 @@ border-radius: 10px;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>50</y>
+       <y>70</y>
        <width>221</width>
        <height>58</height>
       </rect>
@@ -133,6 +133,9 @@ border-radius: 10px;</string>
          <string notr="true">border: 2px solid gray;
 </string>
         </property>
+        <property name="maxLength">
+         <number>100</number>
+        </property>
        </widget>
       </item>
      </layout>
@@ -141,7 +144,7 @@ border-radius: 10px;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>230</y>
+       <y>250</y>
        <width>221</width>
        <height>58</height>
       </rect>
@@ -177,6 +180,9 @@ border-radius: 10px;</string>
         <property name="styleSheet">
          <string notr="true">border: 2px solid gray;</string>
         </property>
+        <property name="maxLength">
+         <number>100</number>
+        </property>
         <property name="echoMode">
          <enum>QLineEdit::Password</enum>
         </property>
@@ -187,10 +193,10 @@ border-radius: 10px;</string>
     <widget class="QLabel" name="label_register_title">
      <property name="geometry">
       <rect>
-       <x>92</x>
-       <y>16</y>
-       <width>81</width>
-       <height>21</height>
+       <x>43</x>
+       <y>12</y>
+       <width>181</width>
+       <height>45</height>
       </rect>
      </property>
      <property name="font">
@@ -203,14 +209,20 @@ border-radius: 10px;</string>
       </font>
      </property>
      <property name="text">
-      <string>Register</string>
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Frontend.qrc">:/Frontend/assets/images/register-badge.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QWidget" name="layoutWidget_2">
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>170</y>
+       <y>190</y>
        <width>221</width>
        <height>58</height>
       </rect>
@@ -246,6 +258,9 @@ border-radius: 10px;</string>
         <property name="styleSheet">
          <string notr="true">border: 2px solid gray;</string>
         </property>
+        <property name="maxLength">
+         <number>100</number>
+        </property>
        </widget>
       </item>
      </layout>
@@ -254,7 +269,7 @@ border-radius: 10px;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>110</y>
+       <y>130</y>
        <width>221</width>
        <height>58</height>
       </rect>
@@ -290,6 +305,9 @@ border-radius: 10px;</string>
         <property name="styleSheet">
          <string notr="true">border: 2px solid gray;</string>
         </property>
+        <property name="maxLength">
+         <number>100</number>
+        </property>
        </widget>
       </item>
      </layout>
@@ -298,7 +316,7 @@ border-radius: 10px;</string>
      <property name="geometry">
       <rect>
        <x>45</x>
-       <y>340</y>
+       <y>367</y>
        <width>171</width>
        <height>24</height>
       </rect>
@@ -324,7 +342,7 @@ border-radius: 10px;</string>
       <x>-10</x>
       <y>0</y>
       <width>681</width>
-      <height>411</height>
+      <height>431</height>
      </rect>
     </property>
     <property name="text">
@@ -344,7 +362,7 @@ border-radius: 10px;</string>
     <property name="geometry">
      <rect>
       <x>46</x>
-      <y>155</y>
+      <y>168</y>
       <width>251</width>
       <height>71</height>
      </rect>
