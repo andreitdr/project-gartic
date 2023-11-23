@@ -133,6 +133,9 @@ border-radius: 10px;</string>
          <string notr="true">border: 2px solid gray;
 </string>
         </property>
+        <property name="maxLength">
+         <number>100</number>
+        </property>
        </widget>
       </item>
      </layout>
@@ -176,6 +179,9 @@ border-radius: 10px;</string>
         </property>
         <property name="styleSheet">
          <string notr="true">border: 2px solid gray;</string>
+        </property>
+        <property name="maxLength">
+         <number>100</number>
         </property>
         <property name="echoMode">
          <enum>QLineEdit::Password</enum>
@@ -252,6 +258,9 @@ border-radius: 10px;</string>
         <property name="styleSheet">
          <string notr="true">border: 2px solid gray;</string>
         </property>
+        <property name="maxLength">
+         <number>100</number>
+        </property>
        </widget>
       </item>
      </layout>
@@ -295,6 +304,9 @@ border-radius: 10px;</string>
         </property>
         <property name="styleSheet">
          <string notr="true">border: 2px solid gray;</string>
+        </property>
+        <property name="maxLength">
+         <number>100</number>
         </property>
        </widget>
       </item>

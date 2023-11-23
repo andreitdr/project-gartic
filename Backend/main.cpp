@@ -13,7 +13,7 @@ int main()
     crow::SimpleApp app;
 
     CROW_ROUTE(app, "/user/register")
-    .methods("GET"_method)
+    .methods("POST"_method)
     ([](const crow::request& request){
         auto json = crow::json::load(request.body);
         
