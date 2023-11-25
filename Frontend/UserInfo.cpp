@@ -5,6 +5,9 @@ UserInfo::UserInfo() : username(""), givenName(""), surname("") {}
 UserInfo::UserInfo(const std::string& username, const std::string& givenName, const std::string& surname)
     : username(username), givenName(givenName), surname(surname) {}
 
+UserInfo::UserInfo(const UserInfo& other)
+    : username(other.username), givenName(other.givenName), surname(other.surname) {}
+
 std::string UserInfo::getUsername() const {
     return username;
 }

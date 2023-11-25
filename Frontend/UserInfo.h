@@ -5,6 +5,7 @@ class UserInfo
 public:
     UserInfo();
     UserInfo(const std::string& username, const std::string& givenName, const std::string& surname);
+    UserInfo(const UserInfo& other);
 
     std::string getUsername() const;
     std::string getGivenName() const;

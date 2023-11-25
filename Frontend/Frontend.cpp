@@ -9,7 +9,7 @@ Frontend::Frontend(QWidget *parent)
     connect(registerWindow, &Register::loginWindow, this, &Frontend::show);
     joinGameWindow = new JoinGame();
     connect(joinGameWindow, &JoinGame::loginWindow, this, &Frontend::show);
-    connect(this, SIGNAL(sendUsername(const QString&)), joinGameWindow, SLOT(getUsername(const QString&)));
+    connect(this, SIGNAL(sendUser(const UserInfo&)), joinGameWindow, SLOT(getUser(const UserInfo&)));
 }
 
 Frontend::~Frontend()
@@ -62,7 +62,8 @@ void Frontend::on_pushButton_login_clicked()
                 std::string username = response_json["UserData"]["username"].s();
                 std::string givenName = response_json["UserData"]["givenName"].s();
                 std::string surname = response_json["UserData"]["surname"].s();
-                //emit sendUsername(temp_username);
+                user = UserInfo(username, givenName, surname);
+                emit sendUser(user);
                 showSuccessCustomMessageBox(
                     "Gartic - Login",
                     "Successful login. You can play now!",

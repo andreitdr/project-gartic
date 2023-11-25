@@ -16,20 +16,21 @@ JoinGame::JoinGame(QWidget *parent)
 JoinGame::~JoinGame()
 {}
 
-void JoinGame::getUsername(const QString& username)
+void JoinGame::getUser(const UserInfo& user)
 {
-	m_username = username;
+	this->user = user;
 	QLineEdit* usernameLineEdit = findChild<QLineEdit*>("lineEdit_usernameDisplay");
 	if (usernameLineEdit) {
-		QString temp = "@" + username;
-
-		usernameLineEdit->setText(temp);
+		
+		std::string temp = "@" + user.getUsername();
+		QString qtemp = QString::fromUtf8(temp);
+		usernameLineEdit->setText(qtemp);
 	}
 }
 
 void JoinGame::on_pushButton_userProfile_clicked()
 {
-	emit sendUsername(m_username);
+	//emit sendUsername(m_username);
 	userProfileWindow->show();
 	this->hide();
 }

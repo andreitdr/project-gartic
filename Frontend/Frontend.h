@@ -6,6 +6,7 @@
 #include "JoinGame.h"
 #include <qstring.h>
 #include "CustomQtWidgets.h"
+#include "UserInfo.h"
 
 class Frontend : public QMainWindow
 {
@@ -19,11 +20,12 @@ private:
     Ui::FrontendClass ui;
     Register* registerWindow = nullptr;
     JoinGame* joinGameWindow = nullptr;
+    UserInfo user;
 
 private slots:
     virtual void on_pushButton_goToRegister_clicked();
     void on_pushButton_login_clicked();
 
 signals:
-    void sendUsername(const QString&);
+    void sendUser(const UserInfo&);
 };
