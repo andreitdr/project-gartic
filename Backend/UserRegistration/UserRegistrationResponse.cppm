@@ -12,11 +12,11 @@ public:
     UserRegistrationResponse(const std::string& message, bool state);
     UserRegistrationResponse();
     
-    void SetUser(const UserStructModel& user);
-    std::optional<UserStructModel> GetUser() const;
+    void SetUser(const User& user);
+    std::optional<User> GetUser() const;
     
 private:
-    std::optional<UserStructModel> m_user;
+    std::optional<User> m_user;
 };
 
 UserRegistrationResponse::UserRegistrationResponse(const std::string& message, bool state)
@@ -29,12 +29,12 @@ UserRegistrationResponse::UserRegistrationResponse() : BaseResponse()
 {
 }
 
-void UserRegistrationResponse::SetUser(const UserStructModel& user)
+void UserRegistrationResponse::SetUser(const User& user)
 {
     m_user=user;
 }
 
-std::optional<UserStructModel> UserRegistrationResponse::GetUser() const
+std::optional<User> UserRegistrationResponse::GetUser() const
 {
     return m_user;
 }

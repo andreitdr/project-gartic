@@ -4,9 +4,9 @@ import UserRegistrationContext;
 #include "Utils/JsonConvertor.h"
 #include <crow.h>
 
-inline WJSON RegisterUser(crow::json::rvalue& request)
+inline WJSON RegisterUser(const crow::json::rvalue& request)
 {
-    UserStructModel user;
+    User user;
     user.m_surname = request["surname"].s();
     user.m_givenName = request["givenName"].s();
     user.m_username = request["username"].s();

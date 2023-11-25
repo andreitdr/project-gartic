@@ -5,6 +5,8 @@
 #include "Constants.h"
 #include "SqlDatabase/SqlDatabase.h"
 
+
+using namespace sqlite_orm;
 int main()
 {
     SqlDatabase::Init();
@@ -15,7 +17,7 @@ int main()
     CROW_ROUTE(app, "/user/register")
     .methods("POST"_method)
     ([](const crow::request& request){
-        auto json = crow::json::load(request.body);
+        const auto json = crow::json::load(request.body);
         
         if(!json)
             return K_CROW_ERROR_INVALID_JSON;
@@ -25,15 +27,26 @@ int main()
     });
     
     CROW_ROUTE(app, "/user/login")
-    .methods("POST"_method)
+    .methods("GET"_method)
     ([](const crow::request& request)
     {
-       auto json = crow::json::load(request.body);
+       const auto json = crow::json::load(request.body);
 
         if(!json)
             return K_CROW_ERROR_INVALID_JSON;
+
+        std::string username = json["username"].s();
+
+        auto users = SqlDatabase::GetAll<User>(where(c(&User::m_username) == username));
+        if(users.empty())
+            return K_CROW_ERROR_USER_NOT_FOUND;
+
         
-        return crow::response(UserLogin(json));
+        auto wjson =UserLogin(json);
+
+        wjson["UserData"] = JsonConvertor::ConvertUser(users[0], true);
+        
+        return crow::response(wjson);
     });
     
     app.loglevel(crow::LogLevel::Error);

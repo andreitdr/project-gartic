@@ -14,7 +14,7 @@ class JsonConvertor
 {
 public:
     CONV_FUNCTION ConvertCredentials(const Credentials& c);
-    CONV_FUNCTION ConvertUser(const UserStructModel& user, bool hasID);
+    CONV_FUNCTION ConvertUser(const User& user, bool hasID);
 
     CONV_FUNCTION ConvertBaseResponse(const BaseResponse& response);
 
@@ -30,7 +30,7 @@ inline WJSON JsonConvertor::ConvertCredentials(const Credentials& c)
     return json;
 }
 
-inline WJSON JsonConvertor::ConvertUser(const UserStructModel& user, bool hasID = false)
+inline WJSON JsonConvertor::ConvertUser(const User& user, bool hasID = false)
 {
     WJSON json;
     json["username"] = user.m_username;

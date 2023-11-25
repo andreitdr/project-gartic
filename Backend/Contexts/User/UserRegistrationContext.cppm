@@ -13,8 +13,8 @@ public:
     static UserRegistrationResponse RegisterUser(const UserRegistrationRequest& request);
 
 private:
-    static bool UserExists(const UserStructModel& user);
-    static void ApplyChangesUser(UserStructModel& user);
+    static bool UserExists(const User& user);
+    static void ApplyChangesUser(User& user);
     static void ApplyChangesCredentials(const Credentials& userCredentials);
 };
 
@@ -39,12 +39,12 @@ UserRegistrationResponse UserRegistrationContext::RegisterUser(const UserRegistr
     return response;
 }
 
-bool UserRegistrationContext::UserExists(const UserStructModel& user)
+bool UserRegistrationContext::UserExists(const User& user)
 {
     return SqlDatabase::ExistsModel(user);
 }
 
-void UserRegistrationContext::ApplyChangesUser(UserStructModel& user)
+void UserRegistrationContext::ApplyChangesUser(User& user)
 {
     int id = SqlDatabase::Insert(user);
     user.m_user_id = id;
