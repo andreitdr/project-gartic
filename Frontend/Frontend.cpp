@@ -57,9 +57,12 @@ void Frontend::on_pushButton_login_clicked()
         {
             bool success_state = response_json["ResponseState"].b();
             std::string response_message = response_json["ResponseMessage"][0].s();
-            if (response_message == "Success")
+            if (success_state)
             {
-                emit sendUsername(temp_username);
+                std::string username = response_json["UserData"]["username"].s();
+                std::string givenName = response_json["UserData"]["givenName"].s();
+                std::string surname = response_json["UserData"]["surname"].s();
+                //emit sendUsername(temp_username);
                 showSuccessCustomMessageBox(
                     "Gartic - Login",
                     "Successful login. You can play now!",

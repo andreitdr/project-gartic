@@ -105,6 +105,7 @@
     <ClCompile Include="PaintWidget.cpp" />
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="Requests.cpp" />
+    <ClCompile Include="UserInfo.cpp" />
     <ClCompile Include="UserProfile.cpp" />
     <QtRcc Include="Frontend.qrc" />
     <QtUic Include="CreatePrivateRoom.ui" />
@@ -124,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Requests.h" />
+    <ClInclude Include="UserInfo.h" />
     <QtMoc Include="CreatePrivateRoom.h" />
     <ClInclude Include="CustomQtWidgets.h" />
     <QtMoc Include="GameWindow.h" />
