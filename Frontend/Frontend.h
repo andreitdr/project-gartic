@@ -20,7 +20,7 @@ private:
     Ui::FrontendClass ui;
     Register* registerWindow = nullptr;
     JoinGame* joinGameWindow = nullptr;
-    UserInfo user;
+    UserInfo m_user;
 
 private slots:
     virtual void on_pushButton_goToRegister_clicked();

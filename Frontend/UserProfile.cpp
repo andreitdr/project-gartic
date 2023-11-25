@@ -15,11 +15,15 @@ void UserProfile::on_pushButton_goBackUserProfile_clicked()
 	emit joinGameWindow();
 }
 
-void UserProfile::getUsername(const QString& username)
+void UserProfile::getUser(const UserInfo& user)
 {
-	m_username = username;
-	QString surname = "FirstName"; //to be optained from database by username
-	QString givenName = "SecondName"; //to be optained from database by username
+	m_user = user;
+	std::string m_username = m_user.getUsername();
+	std::string m_surname = m_user.getSurname();
+	std::string m_givenName = m_user.getGivenName();
+	QString username = QString::fromUtf8(m_username.c_str());
+	QString surname = QString::fromUtf8(m_surname.c_str());
+	QString givenName = QString::fromUtf8(m_givenName.c_str());
 
 	QLabel* avatarLetter = findChild<QLabel*>("label_user_profile_letter");
 	if (avatarLetter) {
@@ -35,7 +39,7 @@ void UserProfile::getUsername(const QString& username)
 
 	QLabel* usernameLabel = findChild<QLabel*>("label_username");
 	if (usernameLabel) {
-		QString temp = "@" + m_username;
+		QString temp = "@" + username;
 		usernameLabel->setText(temp);
 	}
 }

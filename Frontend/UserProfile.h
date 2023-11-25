@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include "ui_UserProfile.h"
+#include "UserInfo.h"
 
 class UserProfile : public QWidget
 {
@@ -13,12 +14,12 @@ public:
 
 private:
 	Ui::UserProfileClass ui;
-	QString m_username;
+	UserInfo m_user;
 
 signals:
 	void joinGameWindow();
 private slots:
 	virtual void on_pushButton_goBackUserProfile_clicked();
 public slots:
-	virtual void getUsername(const QString&);
+	virtual void getUser(const UserInfo&);
 };

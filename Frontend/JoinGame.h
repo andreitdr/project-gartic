@@ -18,10 +18,10 @@ private:
 	Ui::JoinGameClass ui;
 	UserProfile* userProfileWindow = nullptr;
 	CreatePrivateRoom* createPrivateRoomWindow = nullptr;
-	UserInfo user;
+	UserInfo m_user;
 signals:
 	void loginWindow();
-	void sendUsername(const QString&);
+	void sendUser(const UserInfo&);
 private slots:
 	virtual void on_pushButton_userProfile_clicked();
 	virtual void on_pushButton_createPrivateGame_clicked();
