@@ -32,7 +32,7 @@ public:
 		Warning=COLOR_YELLOW,
 		Error=COLOR_RED
 	};
-	Logger(std::ostream& os, Level minimumLevel, std::string fileName);
+	Logger(std::ostream& os, Level minimumLevel, const std::string& fileName);
 
 	void SetMinimumLogLevel(Level level);
 
@@ -75,7 +75,7 @@ std::string_view LogLevelToString(Logger::Level level)
 	}
 }
 
-Logger::Logger(std::ostream& os, Logger::Level minimumLevel, std::string fileName) :
+Logger::Logger(std::ostream& os, Logger::Level minimumLevel, const std::string& fileName) :
 	m_os{ os },
 	m_minimumLevel{ minimumLevel },
 	m_fileName{fileName}

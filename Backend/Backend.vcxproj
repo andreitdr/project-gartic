@@ -150,6 +150,12 @@
   <ItemGroup>
     <ClCompile Include="BaseResponse.cppm" />
     <ClCompile Include="Contexts\Game\StartGameContext.cppm" />
+    <ClCompile Include="Configuration\Config.cppm" />
+<<<<<<< HEAD
+    <ClCompile Include="Contexts\Game\StartGameContext.cppm" />
+=======
+    <ClCompile Include="Configuration\Config.cppm" />
+>>>>>>> andreiP_branch
     <ClCompile Include="Contexts\User\UserLoginContext.cppm" />
     <ClCompile Include="GameData\Game.cppm" />
     <ClCompile Include="GameStart\StartGameRequest.cppm" />
