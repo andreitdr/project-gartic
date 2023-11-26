@@ -6,6 +6,7 @@
 import User;
 import Credentials;
 import UserGameData;
+import Game;
 
 inline auto CreateDatabase(const std::string& fileName)
 {
@@ -21,7 +22,12 @@ inline auto CreateDatabase(const std::string& fileName)
         sqlite_orm::make_table("UserGameData",
             sqlite_orm::make_column("GamesPlayed",&UserGameData::m_gamesPlayed),
             sqlite_orm::make_column("PlayerLevel",&UserGameData::m_playerLevel),
-            sqlite_orm::make_column("PlayerCurrentExp",&UserGameData::m_playerCurrentExp))
+            sqlite_orm::make_column("PlayerCurrentExp",&UserGameData::m_playerCurrentExp)),
+        sqlite_orm::make_table("GamesHistory",
+            sqlite_orm::make_column("Id", &Game::m_gameId, sqlite_orm::primary_key().autoincrement()),
+            sqlite_orm::make_column("WinnerID", &Game::m_winnerId, sqlite_orm::foreign_key(&User::m_user_id)),
+            sqlite_orm::make_column("GameDuration", &Game::m_gameDuration),
+            sqlite_orm::make_column("GameWords", &Game::m_gameWords))
     );
 }
 

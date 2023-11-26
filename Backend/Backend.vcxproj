@@ -149,7 +149,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseResponse.cppm" />
+    <ClCompile Include="Contexts\Game\StartGameContext.cppm" />
     <ClCompile Include="Contexts\User\UserLoginContext.cppm" />
+    <ClCompile Include="GameData\Game.cppm" />
+    <ClCompile Include="GameStart\StartGameRequest.cppm" />
+    <ClCompile Include="GameStart\StartGameResponse.cppm" />
     <ClCompile Include="Game\GameManager.cppm" />
     <ClCompile Include="Game\HistoryManager.cppm" />
     <ClCompile Include="Game\QueueManager.cppm" />
@@ -166,6 +170,7 @@
     <ClCompile Include="UserRegistration\UserRegistrationRequest.cppm" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="API\Game\StartGame.h" />
     <ClInclude Include="API\User\UserLogin.h" />
     <ClInclude Include="API\User\UserRegistration.h" />
     <ClInclude Include="Constants.h" />
