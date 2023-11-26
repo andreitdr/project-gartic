@@ -1,14 +1,29 @@
 ﻿import User;
+import Config;
 #include <crow.h>
 #include "API/User/UserRegistration.h"
 #include "API/User/UserLogin.h"
 #include "Constants.h"
 #include "SqlDatabase/SqlDatabase.h"
-
+#define ENABLETEST 1
 
 using namespace sqlite_orm;
+
+void tests()
+{
+    ConfigFile config_file("./test.ini");
+    config_file.WriteConfig("key1","value");
+    config_file.WriteConfig("key1","value2");
+    config_file.WriteConfig("key2","value3");
+    std::cout<<config_file.ReadConfig("key1");
+}
+
 int main()
 {
+#if ENABLETEST
+    tests();
+#else
+    
     SqlDatabase::Init();
     crow::SimpleApp app;
 
@@ -51,5 +66,8 @@ int main()
     
     app.loglevel(crow::LogLevel::Error);
     app.port(18080).multithreaded().run();
+#endif
+    
     return 0;
+    
 }
