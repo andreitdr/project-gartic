@@ -44,7 +44,6 @@ inline WJSON JsonConvertor::ConvertUser(const User& user, bool hasID = false)
 
 inline WJSON JsonConvertor::ConvertBaseResponse(const BaseResponse& response)
 {
-
     WJSON json;
 
     json["ResponseState"] = response.m_successState;
