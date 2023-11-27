@@ -149,6 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseResponse.cppm" />
+    <ClCompile Include="Configuration\Config.cppm" />
     <ClCompile Include="Contexts\Game\StartGameContext.cppm" />
     <ClCompile Include="Contexts\User\UserLoginContext.cppm" />
     <ClCompile Include="GameData\Game.cppm" />
