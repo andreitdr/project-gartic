@@ -17,6 +17,7 @@ import StartGameResponse;
  *  SuccessState: bool,
  *  Words: [string]
  */
+
 inline crow::json::wvalue StartGame(const crow::json::rvalue& request)
 {
     // Create a running game in the database
