@@ -6,7 +6,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Frontend w;
+    PaintWidget w;
     w.show();
     return a.exec();
 }
