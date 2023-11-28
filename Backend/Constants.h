@@ -1,9 +1,9 @@
 #pragma once
+#include <iostream>
+import Logger;
 /**
  * \brief Error message for incorrect formated JSON string
  */
-import Logger;
-#include <iostream>;
 #define K_CROW_ERROR_INVALID_JSON crow::response(400, "The json was in an incorrect format")
 #define K_CROW_ERROR_USER_NOT_FOUND crow::response(400, "The user was not found")
 

@@ -17,9 +17,22 @@ public:
     CONV_FUNCTION ConvertUser(const User& user, bool hasID);
 
     CONV_FUNCTION ConvertBaseResponse(const BaseResponse& response);
-
     
+    template <typename T>
+    CONV_FUNCTION ConvertFromVector(const std::vector<T>& vector);
 };
+
+template <typename T>
+inline WJSON JsonConvertor::ConvertFromVector(const std::vector<T>& vector)
+{
+    WJSON json;
+    for(int i = 0; i < vector.size(); i++)
+    {
+        json[i] = vector[i];
+    }
+
+    return json;
+}
 
 inline WJSON JsonConvertor::ConvertCredentials(const Credentials& c)
 {
