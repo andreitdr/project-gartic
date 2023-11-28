@@ -4,18 +4,18 @@ import <vector>;
 export class StartGameRequest
 {
 public:
-    StartGameRequest(const std::vector<uint32_t>& userIds);
-    std::vector<uint32_t> GetUsers() const;
+    StartGameRequest(const std::vector<int>& userIds);
+    std::vector<int> GetUsers() const;
 
 private:
-    std::vector<uint32_t> m_userIds;
+    std::vector<int> m_userIds;
 };
 
-StartGameRequest::StartGameRequest(const std::vector<uint32_t>& userIds) : m_userIds{userIds}
+StartGameRequest::StartGameRequest(const std::vector<int>& userIds) : m_userIds{userIds}
 {
 }
 
-std::vector<uint32_t> StartGameRequest::GetUsers() const
+std::vector<int> StartGameRequest::GetUsers() const
 {
     return m_userIds;
 }
