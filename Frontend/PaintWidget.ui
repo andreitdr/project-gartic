@@ -30,7 +30,7 @@
     <rect>
      <x>83</x>
      <y>-13</y>
-     <width>431</width>
+     <width>421</width>
      <height>95</height>
     </rect>
    </property>
@@ -59,7 +59,7 @@ border-radius:15px;</string>
     <property name="title">
      <string/>
     </property>
-    <widget class="QPushButton" name="pushButton_16">
+    <widget class="QPushButton" name="pushButton_white">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -77,7 +77,7 @@ border-radius:7px;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_17">
+    <widget class="QPushButton" name="pushButton_black">
      <property name="geometry">
       <rect>
        <x>45</x>
@@ -95,7 +95,7 @@ border-radius:7px;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_18">
+    <widget class="QPushButton" name="pushButton_grey">
      <property name="geometry">
       <rect>
        <x>70</x>
@@ -113,7 +113,7 @@ border-radius:7px;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_19">
+    <widget class="QPushButton" name="pushButton_red">
      <property name="geometry">
       <rect>
        <x>95</x>
@@ -131,7 +131,7 @@ border-radius:7px;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_20">
+    <widget class="QPushButton" name="pushButton_orange">
      <property name="geometry">
       <rect>
        <x>120</x>
@@ -149,7 +149,7 @@ border-radius:7px;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_21">
+    <widget class="QPushButton" name="pushButton_yellow">
      <property name="geometry">
       <rect>
        <x>145</x>
@@ -167,7 +167,7 @@ border-radius:7px;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_22">
+    <widget class="QPushButton" name="pushButton_pink">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -185,7 +185,7 @@ border-radius:7px;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_23">
+    <widget class="QPushButton" name="pushButton_blue">
      <property name="geometry">
       <rect>
        <x>45</x>
@@ -203,7 +203,7 @@ border-radius:7px;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_24">
+    <widget class="QPushButton" name="pushButton_magenta">
      <property name="geometry">
       <rect>
        <x>70</x>
@@ -221,7 +221,7 @@ border-radius:7px;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_25">
+    <widget class="QPushButton" name="pushButton_turquoise">
      <property name="geometry">
       <rect>
        <x>95</x>
@@ -239,7 +239,7 @@ border-radius:7px;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_26">
+    <widget class="QPushButton" name="pushButton_green">
      <property name="geometry">
       <rect>
        <x>120</x>
@@ -257,7 +257,7 @@ border-radius:7px;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_27">
+    <widget class="QPushButton" name="pushButton_brown">
      <property name="geometry">
       <rect>
        <x>145</x>
@@ -275,7 +275,7 @@ border-radius:7px;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="label_colorsText">
      <property name="geometry">
       <rect>
        <x>70</x>
@@ -327,7 +327,7 @@ border-radius:15px;</string>
     <property name="title">
      <string/>
     </property>
-    <widget class="QPushButton" name="pushButton_40">
+    <widget class="QPushButton" name="pushButton_mediumLineSize">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -344,7 +344,7 @@ border: 1px solid black;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_41">
+    <widget class="QPushButton" name="pushButton_largeLineSize">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -361,7 +361,7 @@ border:1px solid black;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_42">
+    <widget class="QPushButton" name="pushButton_smallLineSize">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -378,7 +378,7 @@ border: 1px solid black;</string>
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="label_5">
+    <widget class="QLabel" name="label_sizeText">
      <property name="geometry">
       <rect>
        <x>35</x>
@@ -413,7 +413,7 @@ border: 1px solid black;</string>
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_size_2">
+   <widget class="QGroupBox" name="groupBox_options">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -430,19 +430,19 @@ border-radius:15px;</string>
     <property name="title">
      <string/>
     </property>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="pushButton_clearImage">
      <property name="geometry">
       <rect>
        <x>20</x>
        <y>12</y>
-       <width>115</width>
-       <height>25</height>
+       <width>105</width>
+       <height>23</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <family>Nunito Medium</family>
-       <pointsize>10</pointsize>
+       <pointsize>9</pointsize>
       </font>
      </property>
      <property name="styleSheet">
@@ -458,19 +458,19 @@ border-radius:5px;</string>
        <normaloff>:/Frontend/assets/images/bin-icon-white.png</normaloff>:/Frontend/assets/images/bin-icon-white.png</iconset>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="pushButton_saveImage">
      <property name="geometry">
       <rect>
        <x>20</x>
        <y>45</y>
-       <width>115</width>
-       <height>25</height>
+       <width>105</width>
+       <height>23</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <family>Nunito Medium</family>
-       <pointsize>10</pointsize>
+       <pointsize>9</pointsize>
       </font>
      </property>
      <property name="styleSheet">

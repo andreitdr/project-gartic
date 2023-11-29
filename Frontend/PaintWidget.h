@@ -10,6 +10,7 @@
 #include <QPaintEvent>
 #include <QResizeEvent>
 #include <QPainter>
+#include <QFileDialog>
 
 class PaintWidget : public QWidget
 {
@@ -43,4 +44,26 @@ private:
 
 public slots:
 	void clearImage();
+
+private slots:
+	//options
+	virtual void on_pushButton_clearImage_clicked();
+	virtual void on_pushButton_saveImage_clicked();
+	//pen size
+	virtual void on_pushButton_smallLineSize_clicked();
+	virtual void on_pushButton_mediumLineSize_clicked();
+	virtual void on_pushButton_largeLineSize_clicked();
+	//pen color
+	virtual void on_pushButton_white_clicked();
+	virtual void on_pushButton_black_clicked();
+	virtual void on_pushButton_grey_clicked();
+	virtual void on_pushButton_red_clicked();
+	virtual void on_pushButton_orange_clicked();
+	virtual void on_pushButton_yellow_clicked();
+	virtual void on_pushButton_pink_clicked();
+	virtual void on_pushButton_blue_clicked();
+	virtual void on_pushButton_magenta_clicked();
+	virtual void on_pushButton_turquoise_clicked();
+	virtual void on_pushButton_green_clicked();
+	virtual void on_pushButton_brown_clicked();
 };
