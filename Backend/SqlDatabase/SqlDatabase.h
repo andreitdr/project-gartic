@@ -23,11 +23,16 @@ inline auto CreateDatabase(const std::string& fileName)
             sqlite_orm::make_column("GamesPlayed",&UserGameData::m_gamesPlayed),
             sqlite_orm::make_column("PlayerLevel",&UserGameData::m_playerLevel),
             sqlite_orm::make_column("PlayerCurrentExp",&UserGameData::m_playerCurrentExp)),
-        sqlite_orm::make_table("GamesHistory",
-            sqlite_orm::make_column("Id", &Game::m_gameId, sqlite_orm::primary_key().autoincrement()),
-            sqlite_orm::make_column("WinnerID", &Game::m_winnerId, sqlite_orm::foreign_key(&User::m_user_id)),
-            sqlite_orm::make_column("GameDuration", &Game::m_gameDuration),
-            sqlite_orm::make_column("GameWords", &Game::m_gameWords))
+        sqlite_orm::make_table("FinishedGames",
+            sqlite_orm::make_column("Id", &FinishedGame::m_gameId, sqlite_orm::primary_key().autoincrement()),
+            sqlite_orm::make_column("WinnerID", &FinishedGame::m_winnerId),
+            sqlite_orm::make_column("GameDuration", &FinishedGame::m_gameDuration),
+            sqlite_orm::make_column("GameWords", &FinishedGame::m_gameWords),
+            sqlite_orm::foreign_key(&FinishedGame::m_winnerId).references(&User::m_user_id)),
+        sqlite_orm::make_table("RunningGames",
+            sqlite_orm::make_column("Id", &RunningGame::m_gameId, sqlite_orm::primary_key().autoincrement()),
+            sqlite_orm::make_column("GameWords", &RunningGame::m_gameWords),
+            sqlite_orm::make_column("UserIds", &RunningGame::m_userIds))
     );
 }
 

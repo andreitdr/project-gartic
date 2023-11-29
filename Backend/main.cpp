@@ -4,8 +4,9 @@ import Config;
 #include "API/User/UserRegistration.h"
 #include "API/User/UserLogin.h"
 #include "Constants.h"
+#include "API/Game/StartGame.h"
 #include "SqlDatabase/SqlDatabase.h"
-#define ENABLETEST 1
+#define ENABLETEST 0
 
 using namespace sqlite_orm;
 
@@ -28,6 +29,19 @@ int main()
     crow::SimpleApp app;
 
     k_logger.LogMessage("Starting server...", "main.cpp");
+
+    CROW_ROUTE(app, "/game/create_game")
+        .methods("POST"_method)
+    ([](const crow::request& request)
+    {
+        const auto json = crow::json::load(request.body);
+
+        if (!json)
+            return K_CROW_ERROR_INVALID_JSON;
+
+        auto response = StartGame(json);
+        return crow::response(response);   
+    });
 
     CROW_ROUTE(app, "/user/register")
     .methods("POST"_method)

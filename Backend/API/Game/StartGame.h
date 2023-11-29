@@ -1,8 +1,9 @@
 ﻿#include <crow.h>
 
 #include "../../SqlDatabase/SqlDatabase.h"
+#include "../../Utils/JsonConvertor.h"
+#include "Contexts/Game/StartGameContext.h"
 
-import StartGameContext;
 import StartGameRequest;
 import StartGameResponse;
 
@@ -28,11 +29,15 @@ inline crow::json::wvalue StartGame(const crow::json::rvalue& request)
         playerList.push_back(player.i());
     }
 
-    StartGameRequest request(playerList);
-    StartGameResponse response = StartGameContext::StartGame(request);
+    StartGameRequest _request(playerList);
+    StartGameResponse response = StartGameContext::StartGame(_request);
 
     crow::json::wvalue json;
-        
+    json = JsonConvertor::ConvertBaseResponse(response);
+    json["GameID"] = response.GetGameID();
+    json["Words"] = response.GetWords();
+    json["PlayerList"] = playerList;
+    
     return json;
     
 }

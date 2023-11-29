@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);../3rdParty</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <EnableModules>true</EnableModules>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
@@ -150,9 +150,9 @@
   <ItemGroup>
     <ClCompile Include="BaseResponse.cppm" />
     <ClCompile Include="Configuration\Config.cppm" />
-    <ClCompile Include="Contexts\Game\StartGameContext.cppm" />
+    <ClInclude Include="Contexts\Game\StartGameContext.h" />
     <ClCompile Include="Contexts\User\UserLoginContext.cppm" />
-    <ClCompile Include="GameData\Game.cppm" />
+    <ClCompile Include="GameData\GameModule.cppm" />
     <ClCompile Include="GameStart\StartGameRequest.cppm" />
     <ClCompile Include="GameStart\StartGameResponse.cppm" />
     <ClCompile Include="Game\GameManager.cppm" />

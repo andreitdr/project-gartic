@@ -1,11 +1,13 @@
 ﻿export module Game;
-#include <cstdint>
-#include <string>
-export struct Game
+import <cstdint>;
+import <string>;
+import <vector>;
+
+export struct FinishedGame
 {
-    uint32_t m_gameId;
-    uint32_t m_winnerId;
-    uint32_t m_gameDuration;
+    int m_gameId;
+    int m_winnerId;
+    int m_gameDuration;
     
     /*
      *  The words are stored in the following format:
@@ -19,4 +21,11 @@ export struct Game
      *  The words are in the same order as they appeared in the game.
      */
     std::string m_gameWords;
+};
+
+export struct RunningGame
+{
+    int m_gameId;
+    std::string m_gameWords;    // JSON string
+    std::string m_userIds;      // JSON string
 };
