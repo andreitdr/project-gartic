@@ -5,6 +5,7 @@ import Config;
 #include "API/User/UserLogin.h"
 #include "Constants.h"
 #include "API/Game/StartGame.h"
+#include "API/Game/CreateLobby.h"
 #include "SqlDatabase/SqlDatabase.h"
 #define ENABLETEST 0
 
@@ -16,7 +17,7 @@ void tests()
     config_file.WriteConfig("key1","value");
     config_file.WriteConfig("key1","value2");
     config_file.WriteConfig("key2","value3");
-    std::cout<<config_file.ReadConfig("key1");
+    std::cout<<config_file.ReadConfig("key3");
 }
 
 int main()
@@ -40,6 +41,19 @@ int main()
             return K_CROW_ERROR_INVALID_JSON;
 
         auto response = StartGame(json);
+        return crow::response(response);   
+    });
+
+    CROW_ROUTE(app, "/game/create_lobby")
+        .methods("GET"_method)
+    ([](const crow::request& request)
+    {
+        const auto json = crow::json::load(request.body);
+
+        if (!json)
+            return K_CROW_ERROR_INVALID_JSON;
+
+        auto response = CreateLobby(json);
         return crow::response(response);   
     });
 

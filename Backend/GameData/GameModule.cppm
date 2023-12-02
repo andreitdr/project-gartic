@@ -29,3 +29,10 @@ export struct RunningGame
     std::string m_gameWords;    // JSON string
     std::string m_userIds;      // JSON string
 };
+
+export struct Lobby
+{
+    int m_lobbyId;
+    int m_leaderId;
+    std::string m_userIds;     //JSON string 
+};

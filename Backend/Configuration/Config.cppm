@@ -17,8 +17,7 @@ private:
 
 ConfigFile::ConfigFile(const std::string& fileName):m_fileName{fileName}
 {
-    std::ofstream f(fileName);
-    f.close();
+    
 }
 
 auto ConfigFile::ReadConfig( const std::string& key) const

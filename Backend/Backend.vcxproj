@@ -150,6 +150,8 @@
   <ItemGroup>
     <ClCompile Include="BaseResponse.cppm" />
     <ClCompile Include="Configuration\Config.cppm" />
+    <ClInclude Include="API\Game\CreateLobby.h" />
+    <ClInclude Include="Contexts\Game\CreateLobbyContext.h" />
     <ClInclude Include="Contexts\Game\StartGameContext.h" />
     <ClCompile Include="Contexts\User\UserLoginContext.cppm" />
     <ClCompile Include="GameData\GameModule.cppm" />
@@ -160,6 +162,8 @@
     <ClCompile Include="Game\QueueManager.cppm" />
     <ClCompile Include="Game\UserManager.cppm" />
     <ClCompile Include="Contexts\User\UserRegistrationContext.cppm" />
+    <ClInclude Include="Lobby\CreateLobbyRequest.h" />
+    <ClInclude Include="Lobby\CreateLobbyResponse.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SqlDatabase\SqlDatabase.cpp" />
     <ClCompile Include="UserData\Credentials.cppm" />

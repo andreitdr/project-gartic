@@ -32,7 +32,11 @@ inline auto CreateDatabase(const std::string& fileName)
         sqlite_orm::make_table("RunningGames",
             sqlite_orm::make_column("Id", &RunningGame::m_gameId, sqlite_orm::primary_key().autoincrement()),
             sqlite_orm::make_column("GameWords", &RunningGame::m_gameWords),
-            sqlite_orm::make_column("UserIds", &RunningGame::m_userIds))
+            sqlite_orm::make_column("UserIds", &RunningGame::m_userIds)),
+        sqlite_orm::make_table("Lobbies",
+            sqlite_orm::make_column("Id", &Lobby::m_lobbyId, sqlite_orm::primary_key()),
+            sqlite_orm::make_column("Leaders",&Lobby::m_leaderId),
+            sqlite_orm::make_column("UserIds",&Lobby::m_userIds))    
     );
 }
 
