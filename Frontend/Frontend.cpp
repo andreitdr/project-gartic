@@ -62,7 +62,8 @@ void Frontend::on_pushButton_login_clicked()
                 std::string username = response_json["UserData"]["username"].s();
                 std::string givenName = response_json["UserData"]["givenName"].s();
                 std::string surname = response_json["UserData"]["surname"].s();
-                m_user = UserInfo(username, givenName, surname);
+                int userId = response_json["UserData"]["userID"].i();
+                m_user = UserInfo(username, givenName, surname,userId);
                 emit sendUser(m_user);
                 showSuccessCustomMessageBox(
                     "Gartic - Login",

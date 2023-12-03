@@ -9,7 +9,7 @@ JoinGame::JoinGame(QWidget *parent)
 	createPrivateRoomWindow = new CreatePrivateRoom();
 	connect(createPrivateRoomWindow, &CreatePrivateRoom::joinGameWindow, this, &JoinGame::show);
 	connect(this, SIGNAL(sendUser(const UserInfo&)), userProfileWindow, SLOT(getUser(const UserInfo&)));
-
+	connect(this, SIGNAL(sendUser(const UserInfo&)), createPrivateRoomWindow, SLOT(getUser(const UserInfo&)));
 	
 }
 

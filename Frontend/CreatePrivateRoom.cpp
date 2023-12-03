@@ -9,23 +9,32 @@ CreatePrivateRoom::CreatePrivateRoom(QWidget *parent)
 CreatePrivateRoom::~CreatePrivateRoom()
 {}
 
-void CreatePrivateRoom::on_pushButton_copyCode_clicked()
+int CreatePrivateRoom::generateRandomNumber()
 {
-	QLineEdit* viewCodeLineEdit = findChild<QLineEdit*>("lineEdit_viewCode");
-	QString code = viewCodeLineEdit->text();
-	QClipboard* clipboard = QApplication::clipboard();
-	clipboard->setText(code);
+	srand(time(0));
+	return rand() % 900000 + 100000;
+}
+
+void CreatePrivateRoom::on_pushButton_pushButton_joinRoom_clicked()
+{
+	//to be implemented
 }
 
 void CreatePrivateRoom::on_pushButton_generateCode_clicked()
 {
-	QString code = "234943";//to be obtained from backend
+	m_privateRoomCode = generateRandomNumber();
+	QString stringCode= QString::number(m_privateRoomCode);
 	QLineEdit* viewCodeLineEdit = findChild<QLineEdit*>("lineEdit_viewCode");
-	viewCodeLineEdit->setText(code);
+	viewCodeLineEdit->setText(stringCode);
 }
 
 void CreatePrivateRoom::on_pushButton_goBack_clicked()
 {
 	emit joinGameWindow();
 	this->hide();
+}
+
+void CreatePrivateRoom::getUser(const UserInfo& user)
+{
+	m_user = user;
 }

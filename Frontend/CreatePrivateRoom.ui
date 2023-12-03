@@ -147,13 +147,13 @@ color: rgb(255, 255, 255);</string>
 padding-left:5px;</string>
      </property>
      <property name="text">
-      <string/>
+      <string>Generate code</string>
      </property>
      <property name="readOnly">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_generateCode">
+    <widget class="QPushButton" name="pushButton_JoinRoom">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -178,7 +178,7 @@ padding-left:5px;</string>
       <string notr="true">background-color: rgb(255, 191, 0);</string>
      </property>
      <property name="text">
-      <string>Generate Code</string>
+      <string>Join Room</string>
      </property>
      <property name="iconSize">
       <size>
@@ -190,7 +190,7 @@ padding-left:5px;</string>
       <bool>false</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_copyCode">
+    <widget class="QPushButton" name="pushButton_generateCode">
      <property name="geometry">
       <rect>
        <x>251</x>
@@ -207,7 +207,7 @@ padding-left:5px;</string>
      </property>
      <property name="icon">
       <iconset resource="Frontend.qrc">
-       <normaloff>:/Frontend/assets/images/copy-icon-blue.png</normaloff>:/Frontend/assets/images/copy-icon-blue.png</iconset>
+       <normaloff>:/Frontend/assets/images/generate-room-icon-blue.png</normaloff>:/Frontend/assets/images/generate-room-icon-blue.png</iconset>
      </property>
      <property name="iconSize">
       <size>
