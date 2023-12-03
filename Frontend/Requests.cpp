@@ -31,3 +31,18 @@ cpr::Response Requests::LoginUser(const std::string& username, const std::string
 
 	return r;
 }
+
+cpr::Response Requests::CreateLobby(const int lobbyId, const int userId)
+{
+    crow::json::wvalue payload;
+    payload["Id"] = lobbyId;
+    payload["User"] = userId;
+
+    std::string json_payload = payload.dump();
+
+    cpr::Response r = cpr::Get(cpr::Url{ "http://localhost:18080/game/create_lobby" },
+        cpr::Body{ json_payload },
+        cpr::Header{ {"Content-Type", "application/json"} });
+
+    return r;
+}
