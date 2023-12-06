@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="Frontend">
+    <file>assets/images/join-game-badge.png</file>
     <file>assets/images/bin-icon-black.png</file>
     <file>assets/images/generate-room-icon-blue.png</file>
     <file>assets/images/bin-icon-white.png</file>

@@ -5,6 +5,7 @@
 #include "UserProfile.h"
 #include "CreatePrivateRoom.h"
 #include "UserInfo.h"
+#include "JoinRoom.h"
 
 class JoinGame : public QMainWindow
 {
@@ -18,6 +19,7 @@ private:
 	Ui::JoinGameClass ui;
 	UserProfile* userProfileWindow = nullptr;
 	CreatePrivateRoom* createPrivateRoomWindow = nullptr;
+	JoinRoom* joinRoomWindow = nullptr;
 	UserInfo m_user;
 signals:
 	void loginWindow();
@@ -26,6 +28,7 @@ private slots:
 	virtual void on_pushButton_userProfile_clicked();
 	virtual void on_pushButton_createPrivateGame_clicked();
 	virtual void on_pushButton_logOut_clicked();
+	virtual void on_pushButton_joinGame_clicked();
 public slots:
 	virtual void getUser(const UserInfo&);
 
