@@ -102,6 +102,7 @@
     <ClCompile Include="DisplayPaintWidget.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="JoinGame.cpp" />
+    <ClCompile Include="LobbyPlayerInfoWidget.cpp" />
     <ClCompile Include="PaintWidget.cpp" />
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="Requests.cpp" />
@@ -116,6 +117,7 @@
     <ClCompile Include="main.cpp" />
     <QtUic Include="GameWindow.ui" />
     <QtUic Include="JoinGame.ui" />
+    <QtUic Include="LobbyPlayerInfoWidget.ui" />
     <QtUic Include="PaintWidget.ui" />
     <QtUic Include="Register.ui" />
     <QtUic Include="UserProfile.ui" />
@@ -124,6 +126,7 @@
     <QtMoc Include="Register.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="LobbyPlayerInfoWidget.h" />
     <ClInclude Include="Requests.h" />
     <ClInclude Include="UserInfo.h" />
     <QtMoc Include="CreatePrivateRoom.h" />
