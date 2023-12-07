@@ -11,8 +11,8 @@ UserProfile::~UserProfile()
 
 void UserProfile::on_pushButton_goBackUserProfile_clicked()
 {
-	this->close();
 	emit joinGameWindow();
+	this->close();
 }
 
 void UserProfile::getUser(const UserInfo& user)

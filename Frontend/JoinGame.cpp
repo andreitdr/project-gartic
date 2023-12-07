@@ -12,6 +12,7 @@ JoinGame::JoinGame(QWidget *parent)
 	connect(joinRoomWindow, &JoinRoom::joinGameWindow, this, &JoinGame::show);
 	connect(this, SIGNAL(sendUser(const UserInfo&)), userProfileWindow, SLOT(getUser(const UserInfo&)));
 	connect(this, SIGNAL(sendUser(const UserInfo&)), createPrivateRoomWindow, SLOT(getUser(const UserInfo&)));
+	connect(this, SIGNAL(sendUser(const UserInfo&)), joinRoomWindow, SLOT(getUser(const UserInfo&)));
 }
 
 JoinGame::~JoinGame()
@@ -50,6 +51,6 @@ void JoinGame::on_pushButton_logOut_clicked()
 
 void JoinGame::on_pushButton_joinGame_clicked()
 {
-joinRoomWindow->show();
+	joinRoomWindow->show();
 	this->hide();
 }

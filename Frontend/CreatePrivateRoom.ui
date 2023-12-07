@@ -85,7 +85,7 @@ border-radius: 10px;</string>
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_goBack">
+    <widget class="QPushButton" name="pushButton_joinRoom">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -111,11 +111,7 @@ border-radius: 10px;</string>
 color: rgb(255, 255, 255);</string>
      </property>
      <property name="text">
-      <string> Go Back</string>
-     </property>
-     <property name="icon">
-      <iconset resource="Frontend.qrc">
-       <normaloff>:/Frontend/assets/images/go-back-ico-white.ico</normaloff>:/Frontend/assets/images/go-back-ico-white.ico</iconset>
+      <string>Join Room!</string>
      </property>
      <property name="iconSize">
       <size>
@@ -132,7 +128,7 @@ color: rgb(255, 255, 255);</string>
       <rect>
        <x>20</x>
        <y>93</y>
-       <width>220</width>
+       <width>271</width>
        <height>41</height>
       </rect>
      </property>
@@ -147,13 +143,13 @@ color: rgb(255, 255, 255);</string>
 padding-left:5px;</string>
      </property>
      <property name="text">
-      <string>Generate code</string>
+      <string/>
      </property>
      <property name="readOnly">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_JoinRoom">
+    <widget class="QPushButton" name="pushButton_generateCode">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -178,7 +174,7 @@ padding-left:5px;</string>
       <string notr="true">background-color: rgb(255, 191, 0);</string>
      </property>
      <property name="text">
-      <string>Join Room</string>
+      <string>Generate Code</string>
      </property>
      <property name="iconSize">
       <size>
@@ -188,32 +184,6 @@ padding-left:5px;</string>
      </property>
      <property name="checkable">
       <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_generateCode">
-     <property name="geometry">
-      <rect>
-       <x>251</x>
-       <y>93</y>
-       <width>41</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="autoFillBackground">
-      <bool>false</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="Frontend.qrc">
-       <normaloff>:/Frontend/assets/images/generate-room-icon-blue.png</normaloff>:/Frontend/assets/images/generate-room-icon-blue.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>41</width>
-       <height>41</height>
-      </size>
      </property>
     </widget>
    </widget>
@@ -267,9 +237,39 @@ padding-left:5px;</string>
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_goBack">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>321</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:transparent;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Frontend.qrc">
+      <normaloff>:/Frontend/assets/images/go-back-icon-yellow.png</normaloff>:/Frontend/assets/images/go-back-icon-yellow.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>51</width>
+      <height>51</height>
+     </size>
+    </property>
+   </widget>
    <zorder>label_background</zorder>
    <zorder>groupBox_join_game_window</zorder>
    <zorder>label_logo</zorder>
+   <zorder>pushButton_goBack</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

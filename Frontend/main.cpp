@@ -1,5 +1,6 @@
 #include "Frontend.h"
 #include "JoinGame.h"
+#include "Lobby.h"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])

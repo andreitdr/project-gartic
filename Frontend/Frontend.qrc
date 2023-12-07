@@ -1,5 +1,34 @@
 <RCC>
   <qresource prefix="Frontend">
+    <file>assets/images/accept.ico</file>
+    <file>assets/images/appicon.ico</file>
+    <file>assets/images/background.png</file>
+    <file>assets/images/bin-icon-black.png</file>
+    <file>assets/images/bin-icon-white.png</file>
+    <file>assets/images/cancel.ico</file>
+    <file>assets/images/copy-icon-blue.png</file>
+    <file>assets/images/diskette-icon-black.png</file>
+    <file>assets/images/diskette-icon-white.png</file>
+    <file>assets/images/game-history-badge.png</file>
+    <file>assets/images/gartic-logo.png</file>
+    <file>assets/images/generate-room-icon-blue.png</file>
+    <file>assets/images/go-back-icon-black.png</file>
+    <file>assets/images/go-back-icon-yellow.png</file>
+    <file>assets/images/go-back-ico-white.ico</file>
+    <file>assets/images/go-next-icon-black.ico</file>
+    <file>assets/images/join-game-badge.png</file>
+    <file>assets/images/letter-avatar-bg.png</file>
+    <file>assets/images/lobby-badge.png</file>
+    <file>assets/images/logout-icon.png</file>
+    <file>assets/images/logout-icon-2.png</file>
+    <file>assets/images/player-icon.png</file>
+    <file>assets/images/players-badge.png</file>
+    <file>assets/images/play-now-badge.png</file>
+    <file>assets/images/private-room-badge.png</file>
+    <file>assets/images/profile-badge.png</file>
+    <file>assets/images/register-badge.png</file>
+    <file>assets/images/settings-icon.ico</file>
+    <file>assets/images/sign-in-badge.png</file>
     <file>assets/images/join-game-badge.png</file>
     <file>assets/images/bin-icon-black.png</file>
     <file>assets/images/generate-room-icon-blue.png</file>

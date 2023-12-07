@@ -105,7 +105,7 @@ border-radius: 10px;</string>
 padding-left:5px;</string>
      </property>
      <property name="text">
-      <string>Enter code</string>
+      <string/>
      </property>
      <property name="readOnly">
       <bool>false</bool>
@@ -296,9 +296,36 @@ border-radius:0px;</string>
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_goBack">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>332</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:transparent;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="Frontend.qrc">
+      <normaloff>:/Frontend/assets/images/go-back-icon-yellow.png</normaloff>:/Frontend/assets/images/go-back-icon-yellow.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>51</width>
+      <height>51</height>
+     </size>
+    </property>
+   </widget>
    <zorder>label_background</zorder>
    <zorder>groupBox_join_game_window</zorder>
    <zorder>label_logo</zorder>
+   <zorder>pushButton_goBack</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

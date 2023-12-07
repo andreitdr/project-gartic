@@ -52,8 +52,16 @@ void Lobby::removePlayerFromLobbyListView(const QString& username)
 
 void Lobby::on_pushButton_exitLobby_clicked()
 {
+    removePlayerFromLobbyListView("test1");
+    removePlayerFromLobbyListView("test5");
 }
 
 void Lobby::on_pushButton_startGame_clicked()
 {
+    addPlayerToLobbyListView("test1", "test1", "test1", true);
+    addPlayerToLobbyListView("test2", "test2", "test2", false);
+    addPlayerToLobbyListView("test3", "test3", "test3", false);
+    addPlayerToLobbyListView("test4", "test4", "test4", false);
+    addPlayerToLobbyListView("test5", "test5", "test5", false);
+    addPlayerToLobbyListView("test6", "test6", "test6", false);
 }
