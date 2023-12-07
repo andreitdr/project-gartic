@@ -73,6 +73,9 @@
     <ClCompile Include="LobbyPlayerInfoWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Lobby.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Register.h">
@@ -99,6 +102,9 @@
     <QtMoc Include="LobbyPlayerInfoWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="Lobby.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Register.ui">
@@ -123,6 +129,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="LobbyPlayerInfoWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Lobby.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

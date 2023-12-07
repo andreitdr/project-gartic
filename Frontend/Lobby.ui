@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LobbyClass</class>
+ <widget class="QMainWindow" name="LobbyClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>654</width>
+    <height>450</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>654</width>
+    <height>450</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>654</width>
+    <height>450</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Nunito Medium</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Gartic - Lobby</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Frontend.qrc">
+    <normaloff>:/Frontend/assets/images/appicon.ico</normaloff>:/Frontend/assets/images/appicon.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QGroupBox" name="groupBox_lobby">
+    <property name="geometry">
+     <rect>
+      <x>16</x>
+      <y>92</y>
+      <width>621</width>
+      <height>341</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nunito Medium</family>
+      <pointsize>16</pointsize>
+      <bold>false</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 10px;</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <widget class="QLabel" name="label_divider">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>20</y>
+       <width>2</width>
+       <height>301</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(134, 141, 150);
+border-radius:1px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_playersBadge">
+     <property name="geometry">
+      <rect>
+       <x>58</x>
+       <y>20</y>
+       <width>191</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Frontend.qrc">:/Frontend/assets/images/players-badge.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_lobbyBadge">
+     <property name="geometry">
+      <rect>
+       <x>371</x>
+       <y>20</y>
+       <width>191</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Frontend.qrc">:/Frontend/assets/images/lobby-badge.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="listWidget_players">
+     <property name="geometry">
+      <rect>
+       <x>15</x>
+       <y>80</y>
+       <width>281</width>
+       <height>241</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QScrollBar:vertical {
+    border: none;
+    background: transparent;
+    width: 5px; 
+}
+
+QScrollBar::handle:vertical {
+    background: #a9a9a9; 
+    border-radius: 2px;
+    min-height: 20px;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QListWidget {
+    background-color: #f0f0f0;
+}
+</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>329</x>
+       <y>89</y>
+       <width>281</width>
+       <height>231</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QPushButton" name="pushButton_startGame">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>115</y>
+        <width>251</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nunito Medium</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 191, 0);
+color: rgb(0,0,0);</string>
+      </property>
+      <property name="text">
+       <string>Start Game!</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_exitLobby">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>175</y>
+        <width>251</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nunito Medium</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(3, 83, 151);
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string> Exit Lobby</string>
+      </property>
+      <property name="icon">
+       <iconset resource="Frontend.qrc">
+        <normaloff>:/Frontend/assets/images/go-back-ico-white.ico</normaloff>:/Frontend/assets/images/go-back-ico-white.ico</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>18</width>
+        <height>18</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_playersActive">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>8</y>
+        <width>251</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nunito Medium</family>
+        <pointsize>16</pointsize>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Players active in lobby:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_playersActiveNumber">
+      <property name="geometry">
+       <rect>
+        <x>123</x>
+        <y>53</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nunito Medium</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>3</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_verticalDividerLeft">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>67</y>
+        <width>50</width>
+        <height>2</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(134, 141, 150);
+border-radius:1px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_verticalDividerRight">
+      <property name="geometry">
+       <rect>
+        <x>156</x>
+        <y>67</y>
+        <width>50</width>
+        <height>2</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(134, 141, 150);
+border-radius:1px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_background">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>0</y>
+      <width>681</width>
+      <height>451</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="Frontend.qrc">:/Frontend/assets/images/background.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_logo">
+    <property name="geometry">
+     <rect>
+      <x>227</x>
+      <y>20</y>
+      <width>201</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="Frontend.qrc">:/Frontend/assets/images/gartic-logo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>label_background</zorder>
+   <zorder>groupBox_lobby</zorder>
+   <zorder>label_logo</zorder>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="Frontend.qrc"/>
+ </resources>
+ <connections/>
+</ui>

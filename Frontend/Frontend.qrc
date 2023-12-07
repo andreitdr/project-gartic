@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="Frontend">
+    <file>assets/images/player-icon.png</file>
+    <file>assets/images/lobby-badge.png</file>
+    <file>assets/images/players-badge.png</file>
     <file>assets/images/bin-icon-black.png</file>
     <file>assets/images/generate-room-icon-blue.png</file>
     <file>assets/images/bin-icon-white.png</file>
