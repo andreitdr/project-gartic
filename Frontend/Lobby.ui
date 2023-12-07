@@ -155,10 +155,32 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 QListWidget {
     background-color: #f0f0f0;
 }
+
+QListWidget::item:hover {
+    background-color: transparent;
+}
+
+QListWidget::item:selected {
+    background-color: transparent;
+}
+
+QListWidget::item:selected:!active {
+    background-color: transparent;
+}
+
+QListWidget::item:selected:active {
+    background-color: transparent;
+}
 </string>
      </property>
      <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAsNeeded</enum>
+      <enum>Qt::ScrollBarAlwaysOn</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="resizeMode">
+      <enum>QListView::Fixed</enum>
      </property>
     </widget>
     <widget class="QGroupBox" name="groupBox">

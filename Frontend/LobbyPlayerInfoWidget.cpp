@@ -13,7 +13,7 @@ LobbyPlayerInfoWidget::LobbyPlayerInfoWidget(const QString& username, const QStr
     ui.label_username->setText(tempUsername);
     QString tempName = givenName + " " + surname;
     ui.label_surnameGivenName->setText(tempName);
-    QString avatarLetter = givenName[0];
+    QString avatarLetter = givenName[0].toUpper();
     ui.label_avatarLetter->setText(avatarLetter);
     if (isAdmin)
         ui.label_isAdmin->show();
