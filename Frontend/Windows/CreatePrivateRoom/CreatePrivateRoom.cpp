@@ -24,8 +24,7 @@ void CreatePrivateRoom::on_pushButton_generateCode_clicked()
 {
 	m_privateRoomCode = generateRandomNumber();
 	QString stringCode= QString::number(m_privateRoomCode);
-	QLineEdit* viewCodeLineEdit = findChild<QLineEdit*>("lineEdit_viewCode");
-	viewCodeLineEdit->setText(stringCode);
+	ui.lineEdit_viewCode->setText(stringCode);
 }
 
 void CreatePrivateRoom::on_pushButton_goBack_clicked()

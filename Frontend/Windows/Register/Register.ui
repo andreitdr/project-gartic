@@ -85,8 +85,14 @@ border-radius: 10px;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 191, 0);
-</string>
+      <string notr="true">QPushButton{
+background-color: rgb(255, 191, 0);
+color:rgb(0,0,0);
+}
+
+QPushButton:hover, QPushButton:pressed {
+   background-color: rgb(225, 165, 0);
+}</string>
      </property>
      <property name="text">
       <string>Register</string>
@@ -328,6 +334,11 @@ border-radius: 10px;</string>
        <underline>true</underline>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton:hover, QPushButton:pressed {
+	color: rgb(110, 110, 110);
+}</string>
+     </property>
      <property name="text">
       <string> Already a user? Log In here.</string>
      </property>
@@ -385,7 +396,7 @@ border-radius: 10px;</string>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="../../Frontend.qrc"/>
-  <include location="Frontend.qrc"/>
+  <include location="../../Frontend.qrc"/>
  </resources>
  <connections/>
 </ui>

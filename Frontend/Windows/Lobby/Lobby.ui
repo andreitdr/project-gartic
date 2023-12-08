@@ -198,21 +198,27 @@ QListWidget::item:selected:active {
      <widget class="QPushButton" name="pushButton_startGame">
       <property name="geometry">
        <rect>
-        <x>12</x>
+        <x>2</x>
         <y>115</y>
-        <width>251</width>
+        <width>271</width>
         <height>45</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Nunito Medium</family>
-        <pointsize>14</pointsize>
+        <pointsize>15</pointsize>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 191, 0);
-color: rgb(0,0,0);</string>
+       <string notr="true">QPushButton{
+background-color: rgb(255, 191, 0);
+color:rgb(0,0,0);
+}
+
+QPushButton:hover, QPushButton:pressed {
+   background-color: rgb(225, 165, 0);
+}</string>
       </property>
       <property name="text">
        <string>Start Game!</string>
@@ -221,21 +227,27 @@ color: rgb(0,0,0);</string>
      <widget class="QPushButton" name="pushButton_exitLobby">
       <property name="geometry">
        <rect>
-        <x>12</x>
+        <x>2</x>
         <y>175</y>
-        <width>251</width>
+        <width>271</width>
         <height>45</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Nunito Medium</family>
-        <pointsize>14</pointsize>
+        <pointsize>15</pointsize>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(3, 83, 151);
-color: rgb(255, 255, 255);</string>
+       <string notr="true">QPushButton {
+background-color: rgb(3, 83, 151);
+color: rgb(255,255,255);
+}
+
+QPushButton:hover, QPushButton:pressed {
+   background-color: rgb(2, 63, 112);
+}</string>
       </property>
       <property name="text">
        <string> Exit Lobby</string>
@@ -387,7 +399,7 @@ border-radius:1px;</string>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="../../Frontend.qrc"/>
-  <include location="Frontend.qrc"/>
+  <include location="../../Frontend.qrc"/>
  </resources>
  <connections/>
 </ui>

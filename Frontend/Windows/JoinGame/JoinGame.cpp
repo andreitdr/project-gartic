@@ -21,13 +21,9 @@ JoinGame::~JoinGame()
 void JoinGame::getUser(const UserInfo& user)
 {
 	m_user = user;
-	QLineEdit* usernameLineEdit = findChild<QLineEdit*>("lineEdit_usernameDisplay");
-	if (usernameLineEdit) {
-		
-		std::string m_username = "@" + m_user.getUsername();
-		QString username = QString::fromUtf8(m_username);
-		usernameLineEdit->setText(username);
-	}
+	std::string m_username = "@" + m_user.getUsername();
+	QString username = QString::fromUtf8(m_username);
+	ui.lineEdit_usernameDisplay->setText(username);
 }
 
 void JoinGame::on_pushButton_userProfile_clicked()

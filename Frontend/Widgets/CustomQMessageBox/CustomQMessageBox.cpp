@@ -19,6 +19,7 @@ void showSuccessCustomMessageBox(
         "QMessageBox { background-color: #ffffff; }"
         "QMessageBox QLabel#qt_msgbox_label { padding-top: 5px; }"
         "QMessageBox QPushButton { color: #000000; background-color: #ffbf00; border-radius: 5px; padding: 7px; }"
+        "QMessageBox QPushButton:hover, QPushButton:pressed { background-color: rgb(225, 165, 0);}"
         "QDialogButtonBox { qproperty-centerButtons: true; }"
     );
 
@@ -49,6 +50,7 @@ void showErrorCustomMessageBox(
         "QMessageBox { background-color: #ffffff; }"
         "QMessageBox QLabel#qt_msgbox_label { padding-top: 5px; }"
         "QMessageBox QPushButton { color: #000000; background-color: #ffbf00; border-radius: 5px; padding: 7px; }"
+        "QMessageBox QPushButton:hover, QPushButton:pressed { background-color: rgb(225, 165, 0);}"
         "QDialogButtonBox { qproperty-centerButtons: true; }"
     );
 

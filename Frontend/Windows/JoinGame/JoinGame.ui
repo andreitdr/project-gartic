@@ -107,7 +107,14 @@ border-radius: 10px;</string>
       <enum>Qt::RightToLeft</enum>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 191, 0);</string>
+      <string notr="true">QPushButton{
+background-color: rgb(255, 191, 0);
+color:rgb(0,0,0);
+}
+
+QPushButton:hover, QPushButton:pressed {
+   background-color: rgb(225, 165, 0);
+}</string>
      </property>
      <property name="text">
       <string>Join Game </string>
@@ -138,8 +145,15 @@ border-radius: 10px;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(3, 83, 151);
-color: rgb(255,255,255);</string>
+      <string notr="true">
+QPushButton {
+background-color: rgb(3, 83, 151);
+color: rgb(255,255,255);
+}
+
+QPushButton:hover, QPushButton:pressed {
+   background-color: rgb(2, 63, 112);
+}</string>
      </property>
      <property name="text">
       <string>Create Private Room</string>
@@ -315,7 +329,7 @@ padding-left:5px;</string>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="../../Frontend.qrc"/>
-  <include location="Frontend.qrc"/>
+  <include location="../../Frontend.qrc"/>
  </resources>
  <connections/>
 </ui>

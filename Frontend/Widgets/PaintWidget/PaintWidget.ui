@@ -446,9 +446,15 @@ border-radius:15px;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(3, 83, 151);
-color: rgb(255, 255, 255);
-border-radius:5px;</string>
+      <string notr="true">QPushButton {
+background-color: rgb(3, 83, 151);
+color: rgb(255,255,255);
+border-radius:5px;
+}
+
+QPushButton:hover, QPushButton:pressed {
+   background-color: rgb(2, 63, 112);
+}</string>
      </property>
      <property name="text">
       <string> Clear image</string>
@@ -474,9 +480,15 @@ border-radius:5px;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 191, 0);
-color: rgb(0, 0, 0);
-border-radius:5px;</string>
+      <string notr="true">QPushButton{
+background-color: rgb(255, 191, 0);
+color:rgb(0,0,0);
+border-radius:5px;
+}
+
+QPushButton:hover, QPushButton:pressed {
+   background-color: rgb(225, 165, 0);
+}</string>
      </property>
      <property name="text">
       <string> Save image</string>

@@ -25,21 +25,12 @@ void UserProfile::getUser(const UserInfo& user)
 	QString surname = QString::fromUtf8(m_surname.c_str());
 	QString givenName = QString::fromUtf8(m_givenName.c_str());
 
-	QLabel* avatarLetter = findChild<QLabel*>("label_user_profile_letter");
-	if (avatarLetter) {
-		avatarLetter->setText(givenName[0]);
-		avatarLetter->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
-	}
+	ui.label_user_profile_letter->setText(givenName[0]);
+	ui.label_user_profile_letter->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
 
-	QLabel* nameLabel = findChild<QLabel*>("label_name");
-	if (nameLabel) {
-		QString temp = givenName + " " + surname;
-		nameLabel->setText(temp);
-	}
+	QString temp_name = givenName + " " + surname;
+	ui.label_name->setText(temp_name);
 
-	QLabel* usernameLabel = findChild<QLabel*>("label_username");
-	if (usernameLabel) {
-		QString temp = "@" + username;
-		usernameLabel->setText(temp);
-	}
+	QString temp_username = "@" + username;
+	ui.label_username->setText(temp_username);
 }

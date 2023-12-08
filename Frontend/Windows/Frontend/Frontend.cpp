@@ -23,10 +23,8 @@ void Frontend::on_pushButton_goToRegister_clicked()
 
 void Frontend::on_pushButton_login_clicked()
 {
-    QString temp_username = ui.lineEdit_username->text();
-    QString temp_password = ui.lineEdit_password->text();
-    std::string username = temp_username.toUtf8().constData();
-    std::string password = temp_password.toUtf8().constData();
+    std::string username = ui.lineEdit_username->text().toUtf8().constData();
+    std::string password = ui.lineEdit_password->text().toUtf8().constData();
 
     if (username.empty() || password.empty())
     {

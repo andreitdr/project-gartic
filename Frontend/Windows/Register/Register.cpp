@@ -18,14 +18,10 @@ void Register::on_pushButton_goToLogin_clicked()
 
 void Register::on_pushButton_register_clicked()
 {
-    QString temp_username = ui.lineEdit_username->text();
-    QString temp_password = ui.lineEdit_password->text();
-    QString temp_surname = ui.lineEdit_surname->text();
-    QString temp_given_name = ui.lineEdit_given_name->text();
-    std::string username = temp_username.toUtf8().constData();
-    std::string password = temp_password.toUtf8().constData();
-    std::string surname = temp_surname.toUtf8().constData();
-    std::string given_name = temp_given_name.toUtf8().constData();
+    std::string username = ui.lineEdit_username->text().toUtf8().constData();
+    std::string password = ui.lineEdit_password->text().toUtf8().constData();
+    std::string surname = ui.lineEdit_surname->text().toUtf8().constData();
+    std::string given_name = ui.lineEdit_given_name->text().toUtf8().constData();
 
     if (username.empty() || password.empty() || surname.empty() || given_name.empty()) {
         showErrorCustomMessageBox(
