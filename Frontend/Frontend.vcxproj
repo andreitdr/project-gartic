@@ -97,51 +97,51 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CreatePrivateRoom.cpp" />
-    <ClCompile Include="CustomQtWidgets.cpp" />
-    <ClCompile Include="DisplayPaintWidget.cpp" />
-    <ClCompile Include="GameWindow.cpp" />
-    <ClCompile Include="JoinGame.cpp" />
-    <ClCompile Include="JoinRoom.cpp" />
-    <ClCompile Include="Lobby.cpp" />
-    <ClCompile Include="LobbyPlayerInfoWidget.cpp" />
-    <ClCompile Include="PaintWidget.cpp" />
-    <ClCompile Include="Register.cpp" />
-    <ClCompile Include="Requests.cpp" />
-    <ClCompile Include="UserInfo.cpp" />
-    <ClCompile Include="UserProfile.cpp" />
+    <ClCompile Include="Utils\UserInfo\UserInfo.cpp" />
+    <ClCompile Include="Widgets\CustomQMessageBox\CustomQMessageBox.cpp" />
+    <ClCompile Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.cpp" />
+    <ClCompile Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.cpp" />
+    <ClCompile Include="Widgets\PaintWidget\PaintWidget.cpp" />
+    <ClCompile Include="Windows\CreatePrivateRoom\CreatePrivateRoom.cpp" />
+    <ClCompile Include="Windows\Frontend\Frontend.cpp" />
+    <ClCompile Include="Windows\GameWindow\GameWindow.cpp" />
+    <ClCompile Include="Windows\JoinGame\JoinGame.cpp" />
+    <ClCompile Include="Windows\JoinRoom\JoinRoom.cpp" />
+    <ClCompile Include="Windows\Lobby\Lobby.cpp" />
+    <ClCompile Include="Windows\Register\Register.cpp" />
+    <ClCompile Include="Windows\UserProfile\UserProfile.cpp" />
     <QtRcc Include="Frontend.qrc" />
-    <QtUic Include="CreatePrivateRoom.ui" />
-    <QtUic Include="DisplayPaintWidget.ui" />
-    <QtUic Include="Frontend.ui" />
-    <QtMoc Include="Frontend.h" />
-    <ClCompile Include="Frontend.cpp" />
+    <ClCompile Include="API\Requests\Requests.cpp" />
     <ClCompile Include="main.cpp" />
-    <QtUic Include="GameWindow.ui" />
-    <QtUic Include="JoinGame.ui" />
-    <QtUic Include="JoinRoom.ui" />
-    <QtUic Include="Lobby.ui" />
-    <QtUic Include="LobbyPlayerInfoWidget.ui" />
-    <QtUic Include="PaintWidget.ui" />
-    <QtUic Include="Register.ui" />
-    <QtUic Include="UserProfile.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="Register.h" />
+    <ClInclude Include="API\Requests\Requests.h" />
+    <ClInclude Include="Utils\UserInfo\UserInfo.h" />
+    <QtMoc Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.h" />
+    <QtMoc Include="Widgets\PaintWidget\PaintWidget.h" />
+    <ClInclude Include="Widgets\CustomQMessageBox\CustomQMessageBox.h" />
+    <QtMoc Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.h" />
+    <QtMoc Include="Windows\CreatePrivateRoom\CreatePrivateRoom.h" />
+    <QtMoc Include="Windows\Frontend\Frontend.h" />
+    <QtMoc Include="Windows\GameWindow\GameWindow.h" />
+    <QtMoc Include="Windows\JoinGame\JoinGame.h" />
+    <QtMoc Include="Windows\JoinRoom\JoinRoom.h" />
+    <QtMoc Include="Windows\Lobby\Lobby.h" />
+    <QtMoc Include="Windows\Register\Register.h" />
+    <QtMoc Include="Windows\UserProfile\UserProfile.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="JoinRoom.h" />
-    <QtMoc Include="Lobby.h" />
-    <QtMoc Include="LobbyPlayerInfoWidget.h" />
-    <ClInclude Include="Requests.h" />
-    <ClInclude Include="UserInfo.h" />
-    <QtMoc Include="CreatePrivateRoom.h" />
-    <ClInclude Include="CustomQtWidgets.h" />
-    <QtMoc Include="GameWindow.h" />
-    <QtMoc Include="DisplayPaintWidget.h" />
-    <QtMoc Include="PaintWidget.h" />
-    <QtMoc Include="UserProfile.h" />
-    <QtMoc Include="JoinGame.h" />
+    <QtUic Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.ui" />
+    <QtUic Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.ui" />
+    <QtUic Include="Widgets\PaintWidget\PaintWidget.ui" />
+    <QtUic Include="Windows\CreatePrivateRoom\CreatePrivateRoom.ui" />
+    <QtUic Include="Windows\Frontend\Frontend.ui" />
+    <QtUic Include="Windows\GameWindow\GameWindow.ui" />
+    <QtUic Include="Windows\JoinGame\JoinGame.ui" />
+    <QtUic Include="Windows\JoinRoom\JoinRoom.ui" />
+    <QtUic Include="Windows\Lobby\Lobby.ui" />
+    <QtUic Include="Windows\Register\Register.ui" />
+    <QtUic Include="Windows\UserProfile\UserProfile.ui" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

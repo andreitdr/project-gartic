@@ -64,7 +64,7 @@ border: 0px solid gray;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="Frontend.qrc">:/Frontend/assets/images/letter-avatar-bg.png</pixmap>
+     <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/letter-avatar-bg.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -183,6 +183,7 @@ boder:0px;</string>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
+  <include location="../../Frontend.qrc"/>
   <include location="Frontend.qrc"/>
  </resources>
  <connections/>

@@ -31,7 +31,7 @@
    <string>Gartic - Join Game</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="Frontend.qrc">
+   <iconset resource="../../Frontend.qrc">
     <normaloff>:/Frontend/assets/images/appicon.ico</normaloff>:/Frontend/assets/images/appicon.ico</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -79,7 +79,7 @@ border-radius: 10px;</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Frontend.qrc">:/Frontend/assets/images/play-now-badge.png</pixmap>
+      <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/play-now-badge.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -200,7 +200,7 @@ padding-left:5px;</string>
       <string/>
      </property>
      <property name="icon">
-      <iconset resource="Frontend.qrc">
+      <iconset resource="../../Frontend.qrc">
        <normaloff>:/Frontend/assets/images/settings-icon.ico</normaloff>:/Frontend/assets/images/settings-icon.ico</iconset>
      </property>
      <property name="iconSize">
@@ -236,7 +236,7 @@ padding-left:5px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="Frontend.qrc">:/Frontend/assets/images/background.png</pixmap>
+     <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/background.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -258,7 +258,7 @@ padding-left:5px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="Frontend.qrc">:/Frontend/assets/images/gartic-logo.png</pixmap>
+     <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/gartic-logo.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -293,7 +293,7 @@ padding-left:5px;</string>
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="Frontend.qrc">
+     <iconset resource="../../Frontend.qrc">
       <normaloff>:/Frontend/assets/images/logout-icon-2.png</normaloff>:/Frontend/assets/images/logout-icon-2.png</iconset>
     </property>
     <property name="iconSize">
@@ -314,6 +314,7 @@ padding-left:5px;</string>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
+  <include location="../../Frontend.qrc"/>
   <include location="Frontend.qrc"/>
  </resources>
  <connections/>

@@ -26,133 +26,133 @@
     <QtRcc Include="Frontend.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <QtUic Include="Frontend.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtMoc Include="Frontend.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="Frontend.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Register.cpp">
+    <ClCompile Include="API\Requests\Requests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="JoinGame.cpp">
+    <ClCompile Include="Utils\UserInfo\UserInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UserProfile.cpp">
+    <ClCompile Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CustomQtWidgets.cpp">
+    <ClCompile Include="Widgets\PaintWidget\PaintWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PaintWidget.cpp">
+    <ClCompile Include="Widgets\CustomQMessageBox\CustomQMessageBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DisplayPaintWidget.cpp">
+    <ClCompile Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameWindow.cpp">
+    <ClCompile Include="Windows\Lobby\Lobby.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CreatePrivateRoom.cpp">
+    <ClCompile Include="Windows\Register\Register.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Requests.cpp">
+    <ClCompile Include="Windows\UserProfile\UserProfile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UserInfo.cpp">
+    <ClCompile Include="Windows\JoinGame\JoinGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="JoinRoom.cpp">
+    <ClCompile Include="Windows\JoinRoom\JoinRoom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lobby.cpp">
+    <ClCompile Include="Windows\GameWindow\GameWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LobbyPlayerInfoWidget.cpp">
+    <ClCompile Include="Windows\CreatePrivateRoom\CreatePrivateRoom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Windows\Frontend\Frontend.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="Register.h">
+    <ClInclude Include="API\Requests\Requests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\UserInfo\UserInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Widgets\CustomQMessageBox\CustomQMessageBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="JoinGame.h">
+    <QtMoc Include="Widgets\PaintWidget\PaintWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="UserProfile.h">
+    <QtMoc Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="PaintWidget.h">
+    <QtMoc Include="Windows\Frontend\Frontend.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="DisplayPaintWidget.h">
+    <QtMoc Include="Windows\Register\Register.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="GameWindow.h">
+    <QtMoc Include="Windows\JoinGame\JoinGame.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="CreatePrivateRoom.h">
+    <QtMoc Include="Windows\JoinRoom\JoinRoom.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="JoinRoom.h">
+    <QtMoc Include="Windows\Lobby\Lobby.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="Lobby.h">
+    <QtMoc Include="Windows\UserProfile\UserProfile.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="LobbyPlayerInfoWidget.h">
+    <QtMoc Include="Windows\CreatePrivateRoom\CreatePrivateRoom.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Windows\GameWindow\GameWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="Register.ui">
+    <QtUic Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="JoinGame.ui">
+    <QtUic Include="Widgets\PaintWidget\PaintWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="UserProfile.ui">
+    <QtUic Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="PaintWidget.ui">
+    <QtUic Include="Windows\JoinRoom\JoinRoom.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="DisplayPaintWidget.ui">
+    <QtUic Include="Windows\CreatePrivateRoom\CreatePrivateRoom.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="GameWindow.ui">
+    <QtUic Include="Windows\JoinGame\JoinGame.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="CreatePrivateRoom.ui">
+    <QtUic Include="Windows\Lobby\Lobby.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="JoinRoom.ui">
+    <QtUic Include="Windows\UserProfile\UserProfile.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="Lobby.ui">
+    <QtUic Include="Windows\GameWindow\GameWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="LobbyPlayerInfoWidget.ui">
+    <QtUic Include="Windows\Register\Register.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="CustomQtWidgets.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Requests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UserInfo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <QtUic Include="Windows\Frontend\Frontend.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

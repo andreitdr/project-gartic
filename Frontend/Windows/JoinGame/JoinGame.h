@@ -2,10 +2,10 @@
 
 #include <QMainWindow>
 #include "ui_JoinGame.h"
-#include "UserProfile.h"
-#include "CreatePrivateRoom.h"
-#include "UserInfo.h"
-#include "JoinRoom.h"
+#include "../../Windows/UserProfile/UserProfile.h"
+#include "../../Windows/CreatePrivateRoom/CreatePrivateRoom.h"
+#include "../../Windows/JoinRoom/JoinRoom.h"
+#include "../../Utils/UserInfo/UserInfo.h"
 
 class JoinGame : public QMainWindow
 {

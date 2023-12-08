@@ -2,7 +2,7 @@
 
 #include <QMainWindow>
 #include "ui_Register.h"
-#include "CustomQtWidgets.h"
+#include "../../Widgets/CustomQMessageBox/CustomQMessageBox.h"
 
 class Register : public QMainWindow
 {

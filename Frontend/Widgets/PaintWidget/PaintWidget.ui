@@ -454,7 +454,7 @@ border-radius:5px;</string>
       <string> Clear image</string>
      </property>
      <property name="icon">
-      <iconset resource="Frontend.qrc">
+      <iconset resource="../../Frontend.qrc">
        <normaloff>:/Frontend/assets/images/bin-icon-white.png</normaloff>:/Frontend/assets/images/bin-icon-white.png</iconset>
      </property>
     </widget>
@@ -482,7 +482,7 @@ border-radius:5px;</string>
       <string> Save image</string>
      </property>
      <property name="icon">
-      <iconset resource="Frontend.qrc">
+      <iconset resource="../../Frontend.qrc">
        <normaloff>:/Frontend/assets/images/diskette-icon-black.png</normaloff>:/Frontend/assets/images/diskette-icon-black.png</iconset>
      </property>
     </widget>
@@ -491,7 +491,7 @@ border-radius:5px;</string>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="Frontend.qrc"/>
+  <include location="../../Frontend.qrc"/>
  </resources>
  <connections/>
 </ui>

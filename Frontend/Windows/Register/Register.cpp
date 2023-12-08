@@ -1,5 +1,5 @@
 ﻿#include "Register.h"
-#include "Requests.h"
+#include "../../API/Requests/Requests.h"
 
 Register::Register(QWidget *parent)
 	: QMainWindow(parent)

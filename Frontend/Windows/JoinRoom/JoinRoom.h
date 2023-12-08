@@ -2,7 +2,7 @@
 
 #include <QMainWindow>
 #include "ui_JoinRoom.h"
-#include "UserInfo.h"
+#include "../../Utils/UserInfo/UserInfo.h"
 
 class JoinRoom : public QMainWindow
 {

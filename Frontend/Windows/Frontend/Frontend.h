@@ -2,11 +2,11 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_Frontend.h"
-#include "Register.h"
-#include "JoinGame.h"
+#include "../../Windows/Register/Register.h"
+#include "../../Windows/JoinGame/JoinGame.h"
+#include "../../Widgets/CustomQMessageBox/CustomQMessageBox.h"
+#include "../../Utils/UserInfo/UserInfo.h"
 #include <qstring.h>
-#include "CustomQtWidgets.h"
-#include "UserInfo.h"
 
 class Frontend : public QMainWindow
 {

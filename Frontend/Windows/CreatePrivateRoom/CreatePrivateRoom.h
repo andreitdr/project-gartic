@@ -2,7 +2,7 @@
 
 #include <QMainWindow>
 #include "ui_CreatePrivateRoom.h"
-#include "UserInfo.h"
+#include "../../Utils/UserInfo/UserInfo.h"
 #include <cstdlib>
 #include <ctime>
 

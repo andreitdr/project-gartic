@@ -2,7 +2,7 @@
 
 #include <QWidget>
 #include "ui_UserProfile.h"
-#include "UserInfo.h"
+#include "../../Utils/UserInfo/UserInfo.h"
 
 class UserProfile : public QWidget
 {

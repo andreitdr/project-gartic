@@ -31,7 +31,7 @@
    <string>Gartic - Lobby</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="Frontend.qrc">
+   <iconset resource="../../Frontend.qrc">
     <normaloff>:/Frontend/assets/images/appicon.ico</normaloff>:/Frontend/assets/images/appicon.ico</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -96,7 +96,7 @@ border-radius:1px;</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Frontend.qrc">:/Frontend/assets/images/players-badge.png</pixmap>
+      <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/players-badge.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -115,7 +115,7 @@ border-radius:1px;</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Frontend.qrc">:/Frontend/assets/images/lobby-badge.png</pixmap>
+      <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/lobby-badge.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -241,7 +241,7 @@ color: rgb(255, 255, 255);</string>
        <string> Exit Lobby</string>
       </property>
       <property name="icon">
-       <iconset resource="Frontend.qrc">
+       <iconset resource="../../Frontend.qrc">
         <normaloff>:/Frontend/assets/images/go-back-ico-white.ico</normaloff>:/Frontend/assets/images/go-back-ico-white.ico</iconset>
       </property>
       <property name="iconSize">
@@ -351,7 +351,7 @@ border-radius:1px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="Frontend.qrc">:/Frontend/assets/images/background.png</pixmap>
+     <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/background.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -373,7 +373,7 @@ border-radius:1px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="Frontend.qrc">:/Frontend/assets/images/gartic-logo.png</pixmap>
+     <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/gartic-logo.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -386,6 +386,7 @@ border-radius:1px;</string>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
+  <include location="../../Frontend.qrc"/>
   <include location="Frontend.qrc"/>
  </resources>
  <connections/>

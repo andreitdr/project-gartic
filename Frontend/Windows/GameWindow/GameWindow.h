@@ -2,8 +2,8 @@
 
 #include <QMainWindow>
 #include "ui_GameWindow.h"
-#include "DisplayPaintWidget.h"
-#include "PaintWidget.h"
+#include "../../Widgets/DisplayPaintWidget/DisplayPaintWidget.h"
+#include "../../Widgets/PaintWidget/PaintWidget.h"
 
 class GameWindow : public QMainWindow
 {

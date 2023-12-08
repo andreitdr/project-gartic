@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FrontendClass</class>
- <widget class="QMainWindow" name="FrontendClass">
+ <class>RegisterClass</class>
+ <widget class="QMainWindow" name="RegisterClass">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>654</width>
-    <height>402</height>
+    <height>425</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>654</width>
-    <height>402</height>
+    <height>425</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>654</width>
-    <height>402</height>
+    <height>425</height>
    </size>
   </property>
   <property name="font">
@@ -28,10 +28,10 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Gartic - Login</string>
+   <string>Gartic - Register</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="Frontend.qrc">
+   <iconset resource="../../Frontend.qrc">
     <normaloff>:/Frontend/assets/images/appicon.ico</normaloff>:/Frontend/assets/images/appicon.ico</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -39,9 +39,9 @@
     <property name="geometry">
      <rect>
       <x>350</x>
-      <y>60</y>
+      <y>10</y>
       <width>261</width>
-      <height>291</height>
+      <height>405</height>
      </rect>
     </property>
     <property name="font">
@@ -66,11 +66,11 @@ border-radius: 10px;</string>
     <property name="checkable">
      <bool>false</bool>
     </property>
-    <widget class="QPushButton" name="pushButton_login">
+    <widget class="QPushButton" name="pushButton_register">
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>213</y>
+       <y>322</y>
        <width>161</width>
        <height>31</height>
       </rect>
@@ -85,10 +85,11 @@ border-radius: 10px;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 191, 0);</string>
+      <string notr="true">background-color: rgb(255, 191, 0);
+</string>
      </property>
      <property name="text">
-      <string>Log In</string>
+      <string>Register</string>
      </property>
     </widget>
     <widget class="QWidget" name="layoutWidget">
@@ -97,12 +98,12 @@ border-radius: 10px;</string>
        <x>20</x>
        <y>70</y>
        <width>221</width>
-       <height>59</height>
+       <height>58</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_username">
+     <layout class="QVBoxLayout" name="verticalLayout_surname">
       <item>
-       <widget class="QLabel" name="label_username">
+       <widget class="QLabel" name="label_surname">
         <property name="font">
          <font>
           <family>Nunito Medium</family>
@@ -113,12 +114,12 @@ border-radius: 10px;</string>
          </font>
         </property>
         <property name="text">
-         <string>Username</string>
+         <string>Surname</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_username">
+       <widget class="QLineEdit" name="lineEdit_surname">
         <property name="font">
          <font>
           <family>Nunito Medium</family>
@@ -129,7 +130,11 @@ border-radius: 10px;</string>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">border: 2px solid gray;</string>
+         <string notr="true">border: 2px solid gray;
+</string>
+        </property>
+        <property name="maxLength">
+         <number>100</number>
         </property>
        </widget>
       </item>
@@ -139,7 +144,7 @@ border-radius: 10px;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>140</y>
+       <y>250</y>
        <width>221</width>
        <height>58</height>
       </rect>
@@ -175,6 +180,9 @@ border-radius: 10px;</string>
         <property name="styleSheet">
          <string notr="true">border: 2px solid gray;</string>
         </property>
+        <property name="maxLength">
+         <number>100</number>
+        </property>
         <property name="echoMode">
          <enum>QLineEdit::Password</enum>
         </property>
@@ -182,12 +190,12 @@ border-radius: 10px;</string>
       </item>
      </layout>
     </widget>
-    <widget class="QLabel" name="label_signInText">
+    <widget class="QLabel" name="label_register_title">
      <property name="geometry">
       <rect>
-       <x>42</x>
-       <y>16</y>
-       <width>180</width>
+       <x>43</x>
+       <y>12</y>
+       <width>181</width>
        <height>45</height>
       </rect>
      </property>
@@ -204,18 +212,112 @@ border-radius: 10px;</string>
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Frontend.qrc">:/Frontend/assets/images/sign-in-badge.png</pixmap>
+      <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/register-badge.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_goToRegister">
+    <widget class="QWidget" name="layoutWidget_2">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>255</y>
-       <width>161</width>
+       <x>20</x>
+       <y>190</y>
+       <width>221</width>
+       <height>58</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_username">
+      <item>
+       <widget class="QLabel" name="label_username">
+        <property name="font">
+         <font>
+          <family>Nunito Medium</family>
+          <pointsize>12</pointsize>
+          <bold>false</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="text">
+         <string>Username</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_username">
+        <property name="font">
+         <font>
+          <family>Nunito Medium</family>
+          <pointsize>12</pointsize>
+          <bold>false</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid gray;</string>
+        </property>
+        <property name="maxLength">
+         <number>100</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>130</y>
+       <width>221</width>
+       <height>58</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_given_name">
+      <item>
+       <widget class="QLabel" name="label_username_given_name">
+        <property name="font">
+         <font>
+          <family>Nunito Medium</family>
+          <pointsize>12</pointsize>
+          <bold>false</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="text">
+         <string>Given name</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_given_name">
+        <property name="font">
+         <font>
+          <family>Nunito Medium</family>
+          <pointsize>12</pointsize>
+          <bold>false</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid gray;</string>
+        </property>
+        <property name="maxLength">
+         <number>100</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QPushButton" name="pushButton_goToLogin">
+     <property name="geometry">
+      <rect>
+       <x>45</x>
+       <y>367</y>
+       <width>171</width>
        <height>24</height>
       </rect>
      </property>
@@ -227,7 +329,7 @@ border-radius: 10px;</string>
       </font>
      </property>
      <property name="text">
-      <string> Not a user? Register here.</string>
+      <string> Already a user? Log In here.</string>
      </property>
     </widget>
    </widget>
@@ -240,14 +342,14 @@ border-radius: 10px;</string>
       <x>-10</x>
       <y>0</y>
       <width>681</width>
-      <height>411</height>
+      <height>431</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="Frontend.qrc">:/Frontend/assets/images/background.png</pixmap>
+     <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/background.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -260,7 +362,7 @@ border-radius: 10px;</string>
     <property name="geometry">
      <rect>
       <x>46</x>
-      <y>155</y>
+      <y>168</y>
       <width>251</width>
       <height>71</height>
      </rect>
@@ -269,7 +371,7 @@ border-radius: 10px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="Frontend.qrc">:/Frontend/assets/images/gartic-logo.png</pixmap>
+     <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/gartic-logo.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -282,6 +384,7 @@ border-radius: 10px;</string>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
+  <include location="../../Frontend.qrc"/>
   <include location="Frontend.qrc"/>
  </resources>
  <connections/>

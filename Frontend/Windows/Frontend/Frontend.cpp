@@ -1,5 +1,5 @@
 ﻿#include "Frontend.h"
-#include "Requests.h"
+#include "../../API/Requests/Requests.h"
 
 Frontend::Frontend(QWidget *parent)
     : QMainWindow(parent)

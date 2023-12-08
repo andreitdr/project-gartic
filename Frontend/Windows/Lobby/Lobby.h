@@ -2,7 +2,7 @@
 
 #include <QMainWindow>
 #include "ui_Lobby.h"
-#include "LobbyPlayerInfoWidget.h"
+#include "../../Widgets/LobbyPlayerInfoWidget/LobbyPlayerInfoWidget.h"
 
 class Lobby : public QMainWindow
 {

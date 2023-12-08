@@ -1,4 +1,4 @@
-#include "CustomQtWidgets.h"
+#include "CustomQMessageBox.h"
 
 void showSuccessCustomMessageBox(
     const QString& title,
