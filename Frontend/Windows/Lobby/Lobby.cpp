@@ -22,10 +22,9 @@ void Lobby::addPlayerToLobbyListView(const QString& username, const QString& sur
 	item->setSizeHint(fixedSize);
 
 	ui.listWidget_players->setItemWidget(item, playerWidget);
+    hideOrShowStartGameButton();
 	updateActivePlayersNumber(ui.listWidget_players->count());
 }
-
-
 
 void Lobby::removePlayerFromLobbyListView(const QString& username)
 {
@@ -46,7 +45,22 @@ void Lobby::removePlayerFromLobbyListView(const QString& username)
         QListWidgetItem* itemToRemove = ui.listWidget_players->takeItem(indexToRemove);
         delete itemToRemove;
     }
+    hideOrShowStartGameButton();
 	updateActivePlayersNumber(ui.listWidget_players->count());
+}
+
+void Lobby::hideOrShowStartGameButton()
+{
+    if (m_lobbyAdmin.getUsername() != m_user.getUsername()) 
+    {
+        ui.pushButton_startGame->setEnabled(false);
+        ui.pushButton_startGame->setStyleSheet("QPushButton { background-color: rgb(255, 201, 108); color:grey; }");
+    }
+    else
+    {
+        ui.pushButton_startGame->setEnabled(true);
+        ui.pushButton_startGame->setStyleSheet("QPushButton { background-color: rgb(255, 191, 0); color:rgb(0,0,0); }  QPushButton:hover, QPushButton:pressed {background-color: rgb(225, 165, 0);}");
+    }
 }
 
 
@@ -54,10 +68,13 @@ void Lobby::on_pushButton_exitLobby_clicked()
 {
     removePlayerFromLobbyListView("test1");
     removePlayerFromLobbyListView("test5");
+
 }
 
 void Lobby::on_pushButton_startGame_clicked()
 {
+    m_lobbyAdmin.setUsername("alehh69");
+    m_user.setUsername("alehh6");
     addPlayerToLobbyListView("test1", "test1", "test1", true);
     addPlayerToLobbyListView("test2", "test2", "test2", false);
     addPlayerToLobbyListView("test3", "test3", "test3", false);

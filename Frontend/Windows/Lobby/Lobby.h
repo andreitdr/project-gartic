@@ -3,6 +3,8 @@
 #include <QMainWindow>
 #include "ui_Lobby.h"
 #include "../../Widgets/LobbyPlayerInfoWidget/LobbyPlayerInfoWidget.h"
+#include "../../Utils/UserInfo/UserInfo.h"
+#include <vector>
 
 class Lobby : public QMainWindow
 {
@@ -14,9 +16,13 @@ public:
 
 private:
 	Ui::LobbyClass ui;
+	UserInfo m_user;
+	UserInfo m_lobbyAdmin;
+	std::vector<UserInfo> m_lobbyUsers;
 	void updateActivePlayersNumber(int playerNumber);
 	void addPlayerToLobbyListView(const QString& username, const QString& surname, const QString& givenName, bool isAdmin);
 	void removePlayerFromLobbyListView(const QString& username);
+	void hideOrShowStartGameButton();
 
 private slots:
 	virtual void on_pushButton_startGame_clicked();
