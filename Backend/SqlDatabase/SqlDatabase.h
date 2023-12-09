@@ -3,6 +3,17 @@
 #include <sqlite_orm/sqlite_orm.h>
 #include "../Constants.h"
 
+//====================
+
+
+/**
+ * \brief WHERE macro for sqlite_orm. Checks if a field is equal to a value.
+ * \param field The field to check
+ * \param val The value to check against
+ */
+#define WHERE(field,val) sqlite_orm::where(sqlite_orm::c(&field) == val)
+
+
 import User;
 import Credentials;
 import UserGameData;
@@ -34,14 +45,15 @@ inline auto CreateDatabase(const std::string& fileName)
             sqlite_orm::make_column("GameWords", &RunningGame::m_gameWords),
             sqlite_orm::make_column("UserIds", &RunningGame::m_userIds)),
         sqlite_orm::make_table("Lobbies",
-            sqlite_orm::make_column("Id", &Lobby::m_lobbyId, sqlite_orm::primary_key()),
-            sqlite_orm::make_column("Leaders",&Lobby::m_leaderId),
-            sqlite_orm::make_column("UserIds",&Lobby::m_userIds))    
+            sqlite_orm::make_column("Id", &Lobby::m_lobbyId),
+            sqlite_orm::make_column("Leader",&Lobby::m_leaderId),
+            sqlite_orm::make_column("UserIds",&Lobby::m_userIds))
+            
     );
 }
 
 using Storage = decltype(CreateDatabase(""));
-static inline Storage storage{ CreateDatabase("test.db") };
+inline Storage storage{ CreateDatabase("test.db") };
 
 class SqlDatabase
 {
