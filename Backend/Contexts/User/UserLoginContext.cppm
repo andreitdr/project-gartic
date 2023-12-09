@@ -1,7 +1,5 @@
-﻿#pragma once
+﻿export module UserLoginContext;
 #include "../../SqlDatabase/SqlDatabase.h"
-
-export module UserLoginContext;
 
 export import UserLoginRequest;
 export import UserLoginResponse;

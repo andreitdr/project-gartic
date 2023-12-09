@@ -1,7 +1,8 @@
+#pragma once
 #include "../../SqlDatabase/SqlDatabase.h"
 #include "../../Utils/JsonConvertor.h"
-#include "../../Lobby/CreateLobbyRequest.h"
-#include "../../Lobby/CreateLobbyResponse.h"
+#include "../../Infrastructure/Lobby/CreateLobbyRequest.h"
+#include "../../Infrastructure/Lobby/CreateLobbyResponse.h"
 
 
 class CreateLobbyContext

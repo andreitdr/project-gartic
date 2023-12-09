@@ -1,12 +1,15 @@
-﻿import User;
-import Config;
+﻿import Config;
 #include <crow.h>
-#include "API/User/UserRegistration.h"
-#include "API/User/UserLogin.h"
-#include "Constants.h"
-#include "API/Game/StartGame.h"
-#include "API/Game/CreateLobby.h"
 #include "SqlDatabase/SqlDatabase.h"
+
+#include "API/Game/CreateLobby.h"
+#include "API/Game/StartGame.h"
+
+#include "API\User\GetUserInfo.h"
+#include "API/User/UserLogin.h"
+#include "API/User/UserRegistration.h"
+
+
 #define ENABLETEST 0
 
 using namespace sqlite_orm;
@@ -30,6 +33,17 @@ int main()
     crow::SimpleApp app;
 
     k_logger.LogMessage("Starting server...", "main.cpp");
+
+    CROW_ROUTE(app, "/user/get_user")
+    .methods("POST"_method)
+    ([](const crow::request& request)
+    {
+        const auto json = crow::json::load(request.body);
+        if(!json) return K_CROW_ERROR_INVALID_JSON;
+
+        auto response = GetUserInfo(json);
+        return crow::response(response);
+    });
 
     CROW_ROUTE(app, "/game/create_game")
         .methods("POST"_method)

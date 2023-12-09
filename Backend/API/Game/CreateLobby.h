@@ -1,10 +1,10 @@
+#pragma once
 #include <crow.h>
 
-#include "../../SqlDatabase/SqlDatabase.h"
-#include "../../Utils/JsonConvertor.h"
 #include "Contexts/Game/CreateLobbyContext.h"
-#include "../../Lobby/CreateLobbyRequest.h"
-#include "../../Lobby/CreateLobbyResponse.h"
+#include "../../Utils/JsonConvertor.h"
+#include "../../Infrastructure/Lobby/CreateLobbyRequest.h"
+#include "../../Infrastructure/Lobby/CreateLobbyResponse.h"
 
 inline crow::json::wvalue CreateLobby(const crow::json::rvalue& request)
 {

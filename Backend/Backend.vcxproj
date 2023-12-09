@@ -117,6 +117,7 @@
       <EnableModules>true</EnableModules>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
       <AdditionalOptions>/D "_SILENCE_ALL_CXX20_DEPRECATION_WARNINGS" /D "_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS" %(AdditionalOptions)</AdditionalOptions>
+      <ErrorReporting>Send</ErrorReporting>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,34 +152,34 @@
     <ClCompile Include="BaseResponse.cppm" />
     <ClCompile Include="Configuration\Config.cppm" />
     <ClInclude Include="API\Game\CreateLobby.h" />
+    <ClInclude Include="API\User\GetUserInfo.h" />
     <ClInclude Include="Contexts\Game\CreateLobbyContext.h" />
     <ClInclude Include="Contexts\Game\StartGameContext.h" />
+    <ClCompile Include="Contexts\User\UserInfoContext.cppm" />
     <ClCompile Include="Contexts\User\UserLoginContext.cppm" />
     <ClCompile Include="GameData\GameModule.cppm" />
-    <ClCompile Include="GameStart\StartGameRequest.cppm" />
-    <ClCompile Include="GameStart\StartGameResponse.cppm" />
-    <ClCompile Include="Game\GameManager.cppm" />
-    <ClCompile Include="Game\HistoryManager.cppm" />
-    <ClCompile Include="Game\QueueManager.cppm" />
-    <ClCompile Include="Game\UserManager.cppm" />
     <ClCompile Include="Contexts\User\UserRegistrationContext.cppm" />
-    <ClInclude Include="Lobby\CreateLobbyRequest.h" />
-    <ClInclude Include="Lobby\CreateLobbyResponse.h" />
+    <ClCompile Include="Infrastructure\GameStart\StartGameRequest.cppm" />
+    <ClCompile Include="Infrastructure\GameStart\StartGameResponse.cppm" />
+    <ClCompile Include="Infrastructure\UserInfo\UserInfoRequest.cppm" />
+    <ClCompile Include="Infrastructure\UserInfo\UserInfoResponse.cppm" />
+    <ClCompile Include="Infrastructure\UserLogin\UserLoginRequest.cppm" />
+    <ClCompile Include="Infrastructure\UserLogin\UserLoginResponse.cppm" />
+    <ClCompile Include="Infrastructure\UserRegistration\UserRegistrationRequest.cppm" />
+    <ClCompile Include="Infrastructure\UserRegistration\UserRegistrationResponse.cppm" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SqlDatabase\SqlDatabase.cpp" />
     <ClCompile Include="UserData\Credentials.cppm" />
     <ClCompile Include="UserData\GameData.cppm" />
     <ClCompile Include="UserData\User.cppm" />
-    <ClCompile Include="UserLogin\UserLoginRequest.cppm" />
-    <ClCompile Include="UserLogin\UserLoginResponse.cppm" />
-    <ClCompile Include="UserRegistration\UserRegistrationResponse.cppm" />
-    <ClCompile Include="UserRegistration\UserRegistrationRequest.cppm" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API\Game\StartGame.h" />
     <ClInclude Include="API\User\UserLogin.h" />
     <ClInclude Include="API\User\UserRegistration.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="Infrastructure\Lobby\CreateLobbyRequest.h" />
+    <ClInclude Include="Infrastructure\Lobby\CreateLobbyResponse.h" />
     <ClInclude Include="SqlDatabase\SqlDatabase.h" />
     <ClInclude Include="Utils\JsonConvertor.h" />
   </ItemGroup>
