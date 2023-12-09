@@ -15,21 +15,41 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CustomHasher.cpp">
-      <Filter>Functions</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Game\GameManager.cppm" />
     <ClCompile Include="Game\HistoryManager.cppm" />
     <ClCompile Include="Game\QueueManager.cppm" />
     <ClCompile Include="Game\UserManager.cppm" />
-    <ClCompile Include="Gateways\User\UserLoginGateway.cppm" />
-    <ClCompile Include="Gateways\User\UserRegistrationGateway.cppm" />
-    <ClCompile Include="SqlDatabase\sqlmodule.cppm" />
+    <ClCompile Include="BaseResponse.cppm" />
+    <ClCompile Include="Configuration\Config.cppm" />
+    <ClCompile Include="Contexts\User\UserLoginContext.cppm" />
+    <ClCompile Include="GameData\GameModule.cppm" />
+    <ClCompile Include="GameStart\StartGameRequest.cppm" />
+    <ClCompile Include="GameStart\StartGameResponse.cppm" />
+    <ClCompile Include="Contexts\User\UserRegistrationContext.cppm" />
+    <ClCompile Include="SqlDatabase\SqlDatabase.cpp" />
+    <ClCompile Include="UserData\Credentials.cppm" />
+    <ClCompile Include="UserData\GameData.cppm" />
+    <ClCompile Include="UserData\User.cppm" />
+    <ClCompile Include="UserLogin\UserLoginRequest.cppm" />
+    <ClCompile Include="UserLogin\UserLoginResponse.cppm" />
+    <ClCompile Include="UserRegistration\UserRegistrationResponse.cppm" />
+    <ClCompile Include="UserRegistration\UserRegistrationRequest.cppm" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CustomHasher.h">
-      <Filter>Functions</Filter>
-    </ClInclude>
+    <ClInclude Include="API\Game\CreateLobby.h" />
+    <ClInclude Include="Contexts\Game\CreateLobbyContext.h" />
+    <ClInclude Include="Contexts\Game\StartGameContext.h" />
+    <ClInclude Include="Lobby\CreateLobbyRequest.h" />
+    <ClInclude Include="Lobby\CreateLobbyResponse.h" />
+    <ClInclude Include="API\Game\StartGame.h" />
+    <ClInclude Include="API\User\UserLogin.h" />
+    <ClInclude Include="API\User\UserRegistration.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="SqlDatabase\SqlDatabase.h" />
+    <ClInclude Include="Utils\JsonConvertor.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="unique_words.txt" />
   </ItemGroup>
 </Project>
