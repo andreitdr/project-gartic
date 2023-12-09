@@ -20,7 +20,32 @@ public:
     
     template <typename T>
     CONV_FUNCTION ConvertFromVector(const std::vector<T>& vector);
+
+    template<typename T>
+    static std::vector<T> ConvertToVector(const std::string& jsonStr);
+
+    template<typename T>
+    static std::vector<T> ConvertToVector(const crow::json::rvalue& json);
 };
+
+template <typename T>
+std::vector<T> JsonConvertor::ConvertToVector(const std::string& jsonStr)
+{
+    const crow::json::rvalue json = crow::json::load(jsonStr);
+    return ConvertToVector<T>(json);
+}
+
+template <typename T>
+std::vector<T> JsonConvertor::ConvertToVector(const crow::json::rvalue& json)
+{
+    std::vector<T> vector;
+    for(int i = 0; i < json.size(); i++)
+    {
+        vector.push_back(static_cast<T>(json[i]));
+    }
+
+    return vector;
+}
 
 template <typename T>
 inline WJSON JsonConvertor::ConvertFromVector(const std::vector<T>& vector)
