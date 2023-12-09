@@ -31,7 +31,7 @@ inline CreateLobbyResponse CreateLobbyContext::CreateLobby(const CreateLobbyRequ
 
     int lobbyId = GenerateLobbyId();
 
-    const std::vector<int> userIds = { userId };
+    const std::vector<int> userIds;
     const std::string str = JsonConvertor::ConvertFromVector(std::move(userIds)).dump();
 
     Lobby lobby = Lobby(lobbyId, userId, std::move(str));

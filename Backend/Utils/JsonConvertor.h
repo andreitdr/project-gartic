@@ -31,6 +31,7 @@ public:
 template <typename T>
 std::vector<T> JsonConvertor::ConvertToVector(const std::string& jsonStr)
 {
+    if(jsonStr == "null") return std::vector<T>();
     const crow::json::rvalue json = crow::json::load(jsonStr);
     return ConvertToVector<T>(json);
 }
