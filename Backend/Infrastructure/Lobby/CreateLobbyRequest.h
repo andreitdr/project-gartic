@@ -3,23 +3,15 @@
 class CreateLobbyRequest
 {
 public:
-    CreateLobbyRequest(int lobbyId,int userId);
-    int GetLobbyId() const;
+    CreateLobbyRequest(int userId);
     int GetUserId() const;
 private:
-    int m_lobbyId;
     int m_userId;
 };
 
-inline CreateLobbyRequest::CreateLobbyRequest(int lobbyId, int userId):
-m_lobbyId{lobbyId},
+inline CreateLobbyRequest::CreateLobbyRequest(int userId):
 m_userId{userId}
 {
-}
-
-inline int CreateLobbyRequest::GetLobbyId() const
-{
-    return m_lobbyId;
 }
 
 inline int CreateLobbyRequest::GetUserId() const

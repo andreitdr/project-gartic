@@ -1,76 +1,67 @@
 #pragma once
 #include "../../SqlDatabase/SqlDatabase.h"
-#include "../../Utils/JsonConvertor.h"
 #include "../../Infrastructure/Lobby/CreateLobbyRequest.h"
 #include "../../Infrastructure/Lobby/CreateLobbyResponse.h"
 
+#include <random>
+
+/**
+ * \brief The minimum lobby ID that can be generated
+ */
+#define ID_MIN 100000
+
+/**
+ * \brief The maximum lobby ID that can be generated
+ */
+#define ID_MAX 9999999
 
 class CreateLobbyContext
 {
 public:
     static CreateLobbyResponse CreateLobby(const CreateLobbyRequest& request);
-
-    static std::vector<int> ConvertToVector(std::string str);
 private:
     static bool LobbyExists(int lobbyId);
+    static void InsertLobby(const Lobby& lobby);
+    static int GenerateLobbyId();
 };
 
-CreateLobbyResponse CreateLobbyContext::CreateLobby(const CreateLobbyRequest& request)
+inline CreateLobbyResponse CreateLobbyContext::CreateLobby(const CreateLobbyRequest& request)
 {
-    int lobbyId = request.GetLobbyId();
-    if (!LobbyExists(lobbyId))
-    {
-        try
-        {
-            auto lobby = Lobby();
-            lobby.m_lobbyId = lobbyId;
-            lobby.m_leaderId = request.GetUserId();
-            std::vector<int> users;
-            users.push_back(request.GetUserId());
-            lobby.m_userIds = JsonConvertor::ConvertFromVector<int>(users).dump();
-            int lobbyId = SqlDatabase::Insert(lobby);
-            auto response = CreateLobbyResponse(lobbyId, lobby.m_leaderId, lobby.m_userIds);
-            return response;
-        }
-        catch (const std::exception& e)
-        {
-            return CreateLobbyResponse(e.what());
-        }
-    }
-    try
-    {
-        auto leader = storage.select(sqlite_orm::columns(&Lobby::m_leaderId),
-                                     sqlite_orm::where(sqlite_orm::c(&Lobby::m_lobbyId) == lobbyId));
-        auto past_users = storage.select(sqlite_orm::columns(&Lobby::m_userIds),
-                                         sqlite_orm::where(sqlite_orm::c(&Lobby::m_lobbyId) == lobbyId));
-        auto lobby = Lobby();
-        lobby = storage.get<Lobby>(sqlite_orm::where(sqlite_orm::c(&Lobby::m_lobbyId) == lobbyId));
-        std::vector<int> users = ConvertToVector(lobby.m_userIds);
-        users.push_back(request.GetUserId());
-        lobby.m_userIds=JsonConvertor::ConvertFromVector<int>(users).dump();
-        bool update = SqlDatabase::Update(lobby);
-        auto response = CreateLobbyResponse(lobby.m_lobbyId, lobby.m_leaderId, lobby.m_userIds);
-        return response;
-    }
-    catch (const std::exception& e)
-    {
-        return CreateLobbyResponse(e.what());
-    }
+    int userId = request.GetUserId();
+
+    int lobbyId = GenerateLobbyId();
+
+    const std::vector<int> userIds = { userId };
+    const std::string str = JsonConvertor::ConvertFromVector(std::move(userIds)).dump();
+
+    Lobby lobby = Lobby(lobbyId, userId, std::move(str));
+
+    InsertLobby(lobby);
+
+    return CreateLobbyResponse(lobby);
 }
 
-bool CreateLobbyContext::LobbyExists(int lobbyId)
+inline bool CreateLobbyContext::LobbyExists(int lobbyId)
 {
-    return storage.count<Lobby>(sqlite_orm::where(sqlite_orm::c(&Lobby::m_lobbyId) == lobbyId)) != 0;
+    return SqlDatabase::Exists<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
 }
 
-inline std::vector<int> CreateLobbyContext::ConvertToVector(std::string str)
+inline void CreateLobbyContext::InsertLobby(const Lobby& lobby)
 {
-    auto j = crow::json::load(str);
-
-    std::vector<int> v;
-    for (const auto& item : j)
-    {
-        v.push_back(item.i());
-    }
-    return v;
+    SqlDatabase::Insert<Lobby>(lobby);
 }
+
+inline int CreateLobbyContext::GenerateLobbyId()
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(ID_MIN, ID_MAX);
+
+    int generatedID = dis(gen);
+
+    while (LobbyExists(generatedID))
+        generatedID = dis(gen);
+    
+    return dis(gen);
+}
+

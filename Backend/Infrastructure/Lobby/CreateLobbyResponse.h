@@ -7,44 +7,27 @@ import BaseResponse;
 class CreateLobbyResponse: public BaseResponse
 {
 public:
-    CreateLobbyResponse(int lobbyId,int leaderId, std::string userIds);
+    CreateLobbyResponse(const Lobby& lobby);
     CreateLobbyResponse(const std::string& message);
 
-    int GetLobbyId();
-    int GetLeaderId();
-    std::string GetUserIds();
+    Lobby GetLobby() const;
+
 
 private:
-    int m_lobbyId;
-    int m_leaderId;
-    std::string m_userIds;
+    Lobby m_lobby;
 };
 
-CreateLobbyResponse::CreateLobbyResponse(int lobbyId, int leaderId, std::string userIds):
-m_lobbyId{lobbyId},
-m_leaderId{leaderId},
-m_userIds{userIds}
+inline CreateLobbyResponse::CreateLobbyResponse(const Lobby& lobby) : m_lobby{ lobby }
 {
-    m_successState=true;
 }
 
-CreateLobbyResponse::CreateLobbyResponse(const std::string& message)
+inline CreateLobbyResponse::CreateLobbyResponse(const std::string& message)
 {
-    m_successState=false;
+    m_successState = false;
     AppendMessage(message);
 }
 
-int CreateLobbyResponse::GetLobbyId()
+inline Lobby CreateLobbyResponse::GetLobby() const
 {
-    return m_lobbyId;
-}
-
-int CreateLobbyResponse::GetLeaderId()
-{
-    return m_leaderId;
-}
-
-std::string CreateLobbyResponse::GetUserIds()
-{
-    return m_userIds;
+    return m_lobby;
 }
