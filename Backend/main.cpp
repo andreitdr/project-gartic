@@ -5,7 +5,7 @@
 #include "API/Game/CreateLobby.h"
 #include "API/Game/StartGame.h"
 
-#include "API\User\GetUserInfo.h"
+#include "API/User/GetUserInfo.h"
 #include "API/User/UserLogin.h"
 #include "API/User/UserRegistration.h"
 
@@ -32,10 +32,10 @@ int main()
     SqlDatabase::Init();
     crow::SimpleApp app;
 
-    k_logger.LogMessage("Starting server...", "main.cpp");
+    k_logger.LogMessage("Starting server...", "MAIN");
 
     CROW_ROUTE(app, "/user/get_user")
-    .methods("POST"_method)
+    .methods("GET"_method)
     ([](const crow::request& request)
     {
         const auto json = crow::json::load(request.body);
@@ -59,7 +59,7 @@ int main()
     });
 
     CROW_ROUTE(app, "/game/create_lobby")
-        .methods("GET"_method)
+        .methods("POST"_method)
     ([](const crow::request& request)
     {
         const auto json = crow::json::load(request.body);
@@ -84,7 +84,7 @@ int main()
     });
     
     CROW_ROUTE(app, "/user/login")
-    .methods("POST"_method)
+    .methods("GET"_method)
     ([](const crow::request& request)
     {
        const auto json = crow::json::load(request.body);
@@ -107,6 +107,7 @@ int main()
     });
     
     app.loglevel(crow::LogLevel::Error);
+    k_logger.LogMessage("Server is running at http://localhost:18080", "MAIN");
     app.port(18080).multithreaded().run();
 #endif
     
