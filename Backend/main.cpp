@@ -6,6 +6,7 @@ import BaseResponse;
 
 #include "API/Game/CreateLobby.h"
 #include "API/Game/StartGame.h"
+#include "API/Game/JoinLobby.h"
 
 #include "API/User/GetUserInfo.h"
 #include "API/User/UserLogin.h"
@@ -35,6 +36,23 @@ int main()
     crow::SimpleApp app;
 
     k_logger.LogMessage("Starting server...", "MAIN");
+
+    CROW_ROUTE(app, "/game/join_lobby").methods("POST"_method)([](const crow::request& request)
+    {
+       const auto json = crow::json::load(request.body);
+        if (!json)
+        {
+            BaseResponse response;
+            response.m_successState = false;
+            response.AppendMessage("The json was in an incorrect format");
+
+            auto responseJson = JsonConvertor::ConvertBaseResponse(response);
+            return crow::response(responseJson);
+        }
+
+        auto response = JoinLobby(json);
+        return crow::response(response);
+    });
 
     CROW_ROUTE(app, "/user/get_user").methods("GET"_method)([](const crow::request& request)
     {

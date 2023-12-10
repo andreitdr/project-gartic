@@ -32,6 +32,7 @@ export struct RunningGame
 
 export struct Lobby
 {
+    int m_index;
     int m_lobbyId;
     int m_leaderId;
     std::string m_userIds;     //JSON string 
