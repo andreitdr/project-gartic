@@ -152,8 +152,11 @@
     <ClCompile Include="BaseResponse.cppm" />
     <ClCompile Include="Configuration\Config.cppm" />
     <ClInclude Include="API\Game\CreateLobby.h" />
+    <ClInclude Include="API\Game\JoinLobby.h" />
     <ClInclude Include="API\User\GetUserInfo.h" />
+    <ClInclude Include="Contexts\BaseContext.h" />
     <ClInclude Include="Contexts\Game\CreateLobbyContext.h" />
+    <ClInclude Include="Contexts\Game\JoinLobbyContext.h" />
     <ClInclude Include="Contexts\Game\StartGameContext.h" />
     <ClCompile Include="Contexts\User\UserInfoContext.cppm" />
     <ClCompile Include="Contexts\User\UserLoginContext.cppm" />
@@ -161,6 +164,8 @@
     <ClCompile Include="Contexts\User\UserRegistrationContext.cppm" />
     <ClCompile Include="Infrastructure\GameStart\StartGameRequest.cppm" />
     <ClCompile Include="Infrastructure\GameStart\StartGameResponse.cppm" />
+    <ClCompile Include="Infrastructure\Lobby\JoinLobbyRequest.cppm" />
+    <ClCompile Include="Infrastructure\Lobby\JoinLobbyResponse.cppm" />
     <ClCompile Include="Infrastructure\UserInfo\UserInfoRequest.cppm" />
     <ClCompile Include="Infrastructure\UserInfo\UserInfoResponse.cppm" />
     <ClCompile Include="Infrastructure\UserLogin\UserLoginRequest.cppm" />

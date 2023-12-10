@@ -45,7 +45,8 @@ inline auto CreateDatabase(const std::string& fileName)
             sqlite_orm::make_column("GameWords", &RunningGame::m_gameWords),
             sqlite_orm::make_column("UserIds", &RunningGame::m_userIds)),
         sqlite_orm::make_table("Lobbies",
-            sqlite_orm::make_column("Id", &Lobby::m_lobbyId),
+            sqlite_orm::make_column("Index",&Lobby::m_index, sqlite_orm::primary_key()),
+            sqlite_orm::make_column("LobbyId", &Lobby::m_lobbyId, sqlite_orm::unique()),
             sqlite_orm::make_column("Leader",&Lobby::m_leaderId),
             sqlite_orm::make_column("UserIds",&Lobby::m_userIds))
             
@@ -65,6 +66,9 @@ public:
 
     template <typename TypeAsStruct>
     static TypeAsStruct Get(int id);
+
+    template <typename TypeAsStruct>
+    static TypeAsStruct Get(auto whereCondition);
 
     template<typename TypeAsStruct>
     static std::vector<TypeAsStruct> GetAll(auto whereClause);
@@ -102,10 +106,18 @@ TypeAsStruct SqlDatabase::Get(int id)
     return storage.get<TypeAsStruct>(id);
 }
 
+
+
 template <typename TypeAsStruct>
 std::vector<TypeAsStruct> SqlDatabase::GetAll(auto whereClause)
 {
     return storage.get_all<TypeAsStruct>(whereClause);
+}
+
+template <typename TypeAsStruct>
+TypeAsStruct SqlDatabase::Get(auto whereCondition)
+{
+    return GetAll<TypeAsStruct>(whereCondition)[0];
 }
 
 
@@ -125,12 +137,25 @@ std::optional<TypeAsStruct> SqlDatabase::GetByProperty(const Field& value, const
     }
 }
 
+
 template <typename TypeAsStruct>
 bool SqlDatabase::Exists(auto whereClause)
 {
-    auto result_list = storage.get_all<TypeAsStruct>(whereClause);
-    return result_list.size() > 0;
+    try
+    {
+        auto result = storage.get_all<TypeAsStruct>(whereClause);
+
+        return result.size() > 0;
+        
+    }catch (std::system_error& err)
+    {
+        k_logger.LogError(err);
+        throw err;
+    }
+    
+   
 }
+
 
 template <typename TypeAsStruct>
 bool SqlDatabase::ExistsModel(const TypeAsStruct& model)
