@@ -80,13 +80,22 @@ void Frontend::on_pushButton_login_clicked()
                         }
                     );
                 }
+                else
+                {
+                    showErrorCustomMessageBox(
+                        "Gartic - Login",
+                        "Something went wrong. Please try again later!",
+                        "Ok",
+                        []() {}
+                    );
+                }
             });
     }
     else 
     {
         showErrorCustomMessageBox(
             "Gartic - Login",
-            "Server error or network issue.",
+            "Something went wrong. Please try again later!",
             "Ok",
             []() {}
         );

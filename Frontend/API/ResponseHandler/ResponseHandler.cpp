@@ -22,3 +22,21 @@ void ResponseHandler::processLoginResponse(const crow::json::rvalue& response, s
         callback(false, message, UserInfo());
     }
 }
+
+void ResponseHandler::processRegisterResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, int)> callback)
+{
+    if (!response) {
+        callback(false, "Invalid response format", -1);
+        return;
+    }
+
+    bool success = response["ResponseState"].b();
+    std::string message = response["ResponseMessage"][0].s();
+    int new_user_id = -1;
+
+    if (success) {
+        new_user_id = response["NewUserID"].i();
+    }
+
+    callback(success, message, new_user_id);
+}
