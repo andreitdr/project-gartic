@@ -15,18 +15,18 @@ public:
 
 private:
     JoinLobbyResponse ValidateData(const JoinLobbyRequest& request);
-	void ApplyChanges(const JoinLobbyRequest& request) override;
+	JoinLobbyResponse ApplyChanges(const JoinLobbyRequest& request) override;
 };
 
 inline JoinLobbyResponse JoinLobbyContext::HandleRequest(const JoinLobbyRequest& request)
 {
-    	auto response = ValidateData(request);
-    	if (response.m_successState == false)
-    		return response;
-    
-    	ApplyChanges(request);
-    
-    	return response;
+	auto response = ValidateData(request);
+	if(!response)
+		return response;
+
+	response = response + ApplyChanges(request);
+
+	return response;
 }
 
 inline JoinLobbyResponse JoinLobbyContext::ValidateData(const JoinLobbyRequest& request)
@@ -53,18 +53,26 @@ inline JoinLobbyResponse JoinLobbyContext::ValidateData(const JoinLobbyRequest& 
 	
 }
 
-inline void JoinLobbyContext::ApplyChanges(const JoinLobbyRequest& request)
+inline JoinLobbyResponse JoinLobbyContext::ApplyChanges(const JoinLobbyRequest& request)
 {
-	int lobbyId = request.GetLobbyId();
-	int playerId = request.GetUserId();
+	try
+	{
+		int lobbyId = request.GetLobbyId();
+		int playerId = request.GetUserId();
 
 	
-	Lobby currentLobby = SqlDatabase::Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
+		Lobby currentLobby = SqlDatabase::Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
 
-	std::vector<int> playersList = JsonConvertor::ConvertToVector<int>(currentLobby.m_userIds);
-	playersList.emplace_back(playerId);
-	currentLobby.m_userIds = JsonConvertor::ConvertFromVector(playersList).dump();
+		std::vector<int> playersList = JsonConvertor::ConvertToVector<int>(currentLobby.m_userIds);
+		playersList.emplace_back(playerId);
+		currentLobby.m_userIds = JsonConvertor::ConvertFromVector(playersList).dump();
 
-	SqlDatabase::Update(currentLobby);
+		SqlDatabase::Update(currentLobby);
+
+		return JoinLobbyResponse();
+	} catch (const std::system_error& error)
+	{
+		return JoinLobbyResponse(error.what());
+	}
 }
 
