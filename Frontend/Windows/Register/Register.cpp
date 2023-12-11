@@ -1,5 +1,6 @@
 ﻿#include "Register.h"
 #include "../../API/Requests/Requests.h"
+#include "../../API/ResponseHandler/ResponseHandler.h"
 
 Register::Register(QWidget *parent)
 	: QMainWindow(parent)
@@ -16,8 +17,7 @@ void Register::on_pushButton_goToLogin_clicked()
 	this->close();
 }
 
-void Register::on_pushButton_register_clicked()
-{
+void Register::on_pushButton_register_clicked() {
     std::string username = ui.lineEdit_username->text().toUtf8().constData();
     std::string password = ui.lineEdit_password->text().toUtf8().constData();
     std::string surname = ui.lineEdit_surname->text().toUtf8().constData();
@@ -30,7 +30,7 @@ void Register::on_pushButton_register_clicked()
             "Try Again",
             []() {}
         );
-        return; 
+        return;
     }
 
     if (password.length() < 8) {
@@ -46,21 +46,10 @@ void Register::on_pushButton_register_clicked()
     auto response = Requests::RegisterUser(surname, given_name, username, password);
     if (response.status_code == 200) {
         auto response_json = crow::json::load(response.text);
-        if (!response_json) {
-            showErrorCustomMessageBox(
-                "Gartic - Register",
-                "Something went wrong. Please try again later!",
-                "Ok",
-                []() {}
-            );
-            return;
-        }
-        else {
-            bool success_state = response_json["ResponseState"].b();
-            std::string response_message = response_json["ResponseMessage"][0].s();
-            int new_user_id = response_json["NewUserID"].i();
 
-            if (response_message == "Success") {
+        ResponseHandler handler;
+        handler.processRegisterResponse(response_json, [this](bool success, const std::string& message, int new_user_id) {
+            if (success) {
                 showSuccessCustomMessageBox(
                     "Gartic - Register",
                     "Register successful. You can login now!",
@@ -71,15 +60,15 @@ void Register::on_pushButton_register_clicked()
                     }
                 );
             }
-            else if (response_message == "The user already exists") {
+            else if (message == "The user already exists") {
                 showErrorCustomMessageBox(
-					"Gartic - Register",
-					"Username already exists. Please try again!",
-					"Try Again",
-					[]() {}
-				);
-				return;
-			}
+                    "Gartic - Register",
+                    "Username already exists. Please try again!",
+                    "Try Again",
+                    []() {}
+                );
+                return;
+            }
             else {
                 showErrorCustomMessageBox(
                     "Gartic - Register",
@@ -89,7 +78,7 @@ void Register::on_pushButton_register_clicked()
                 );
                 return;
             }
-        }
+            });
     }
     else {
         showErrorCustomMessageBox(
@@ -98,6 +87,5 @@ void Register::on_pushButton_register_clicked()
             "Ok",
             []() {}
         );
-        return;
     }
 }

@@ -1,5 +1,4 @@
 ﻿#include "Frontend.h"
-#include "../../API/Requests/Requests.h"
 
 Frontend::Frontend(QWidget *parent)
     : QMainWindow(parent)
@@ -21,12 +20,12 @@ void Frontend::on_pushButton_goToRegister_clicked()
     this->close();
 }
 
-void Frontend::on_pushButton_login_clicked()
+void Frontend::on_pushButton_login_clicked() 
 {
     std::string username = ui.lineEdit_username->text().toUtf8().constData();
     std::string password = ui.lineEdit_password->text().toUtf8().constData();
 
-    if (username.empty() || password.empty())
+    if (username.empty() || password.empty()) 
     {
         showErrorCustomMessageBox(
             "Gartic - Login",
@@ -41,71 +40,58 @@ void Frontend::on_pushButton_login_clicked()
     if (response.status_code == 200)
     {
         auto response_json = crow::json::load(response.text);
-        if (!response_json)
-        {
-            showErrorCustomMessageBox(
-                "Gartic - Login",
-                "Something went wrong. Please try again later!",
-                "Ok",
-                []() {}
-            );
-            return;
-        }
-        else
-        {
-            bool success_state = response_json["ResponseState"].b();
-            std::string response_message = response_json["ResponseMessage"][0].s();
-            if (success_state)
+
+        ResponseHandler handler;
+        handler.processLoginResponse(response_json, [this](bool success, const std::string& message, const UserInfo& userInfo)
             {
-                std::string username = response_json["UserData"]["username"].s();
-                std::string givenName = response_json["UserData"]["givenName"].s();
-                std::string surname = response_json["UserData"]["surname"].s();
-                int userId = response_json["UserData"]["userID"].i();
-                m_user = UserInfo(username, givenName, surname,userId);
-                emit sendUser(m_user);
-                showSuccessCustomMessageBox(
-                    "Gartic - Login",
-                    "Successful login. You can play now!",
-                    "Play Now",
-                    [this, username]() {
-                        joinGameWindow->show();
-                        this->close();
-                    }
-                );
-            }
-            else if (response_message == "Inexistent user")
-            {
-                showErrorCustomMessageBox(
-                    "Gartic - Login",
-                    "User doesn't exist. Please register!",
-                    "Register now",
-                    [this]() {
-                        registerWindow->show();
-                        this->close();
-                    }
-                );
-            }
-            else if (response_message == "Incorrect password")
-            {
-                showErrorCustomMessageBox(
-                    "Gartic - Login",
-                    "Password is incorrect. Please try again!",
-                    "Try Again",
-                    []() {
-                    }
-                );
-            }
-            else
-                showErrorCustomMessageBox(
-                    "Gartic - Login",
-                    "Something went wrong. Please try again later!",
-                    "Ok",
-                    []() {
-                    }
-            );
-        }
+                if (success)
+                {
+                    m_user = userInfo;
+                    emit sendUser(m_user);
+                    showSuccessCustomMessageBox(
+                        "Gartic - Login",
+                        "Successful login. You can play now!",
+                        "Play Now",
+                        [this]() {
+                            joinGameWindow->show();
+                            this->close();
+                        }
+                    );
+                }
+                else if (message == "Inexistent user")
+                {
+                    showErrorCustomMessageBox(
+                        "Gartic - Login",
+                        "User doesn't exist. Please register!",
+                        "Register now",
+                        [this]() {
+                            registerWindow->show();
+                            this->close();
+                        }
+                    );
+                }
+                else if (message == "Incorrect password")
+                {
+                    showErrorCustomMessageBox(
+                        "Gartic - Login",
+                        "Password is incorrect. Please try again!",
+                        "Try Again",
+                        []() {
+                        }
+                    );
+                }
+                else
+                {
+                    showErrorCustomMessageBox(
+                        "Gartic - Login",
+                        "Something went wrong. Please try again later!",
+                        "Ok",
+                        []() {}
+                    );
+                }
+            });
     }
-    else
+    else 
     {
         showErrorCustomMessageBox(
             "Gartic - Login",
@@ -113,6 +99,5 @@ void Frontend::on_pushButton_login_clicked()
             "Ok",
             []() {}
         );
-        return;
     }
 }

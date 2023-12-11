@@ -6,6 +6,8 @@
 #include "../../Windows/JoinGame/JoinGame.h"
 #include "../../Widgets/CustomQMessageBox/CustomQMessageBox.h"
 #include "../../Utils/UserInfo/UserInfo.h"
+#include "../../API/Requests/Requests.h"
+#include "../../API/ResponseHandler/ResponseHandler.h"
 #include <qstring.h>
 
 class Frontend : public QMainWindow
