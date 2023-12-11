@@ -6,6 +6,7 @@
 #include "../../Utils/UserInfo/UserInfo.h"
 #include "../../Utils/LobbyData/LobbyData.h"
 #include <vector>
+#include <QClipboard>
 
 class Lobby : public QMainWindow
 {
@@ -23,8 +24,10 @@ private:
 	void addPlayerToLobbyListView(const QString& username, const QString& surname, const QString& givenName, bool isAdmin);
 	void removePlayerFromLobbyListView(const QString& username);
 	void hideOrShowStartGameButton();
+	void updateLobbyId(int lobbyId);
 
 private slots:
 	virtual void on_pushButton_startGame_clicked();
 	virtual void on_pushButton_exitLobby_clicked();
+	virtual void on_pushButton_copyLobbyId_clicked();
 };

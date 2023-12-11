@@ -86,10 +86,10 @@ border-radius:1px;</string>
     <widget class="QLabel" name="label_playersBadge">
      <property name="geometry">
       <rect>
-       <x>58</x>
-       <y>20</y>
-       <width>191</width>
-       <height>45</height>
+       <x>39</x>
+       <y>14</y>
+       <width>231</width>
+       <height>55</height>
       </rect>
      </property>
      <property name="text">
@@ -105,10 +105,10 @@ border-radius:1px;</string>
     <widget class="QLabel" name="label_lobbyBadge">
      <property name="geometry">
       <rect>
-       <x>371</x>
-       <y>20</y>
-       <width>191</width>
-       <height>45</height>
+       <x>352</x>
+       <y>14</y>
+       <width>231</width>
+       <height>55</height>
       </rect>
      </property>
      <property name="text">
@@ -207,7 +207,7 @@ QListWidget::item:selected:active {
       <property name="font">
        <font>
         <family>Nunito Medium</family>
-        <pointsize>15</pointsize>
+        <pointsize>18</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -236,7 +236,7 @@ QPushButton:hover, QPushButton:pressed {
       <property name="font">
        <font>
         <family>Nunito Medium</family>
-        <pointsize>15</pointsize>
+        <pointsize>18</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -266,16 +266,16 @@ QPushButton:hover, QPushButton:pressed {
      <widget class="QLabel" name="label_playersActive">
       <property name="geometry">
        <rect>
-        <x>12</x>
-        <y>8</y>
-        <width>251</width>
+        <x>75</x>
+        <y>11</y>
+        <width>161</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Nunito Medium</family>
-        <pointsize>16</pointsize>
+        <pointsize>18</pointsize>
         <bold>false</bold>
        </font>
       </property>
@@ -283,7 +283,7 @@ QPushButton:hover, QPushButton:pressed {
        <string notr="true">color: rgb(0, 0, 0);</string>
       </property>
       <property name="text">
-       <string>Players active in lobby:</string>
+       <string>players active.</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -292,17 +292,21 @@ QPushButton:hover, QPushButton:pressed {
      <widget class="QLabel" name="label_playersActiveNumber">
       <property name="geometry">
        <rect>
-        <x>123</x>
-        <y>53</y>
-        <width>31</width>
-        <height>31</height>
+        <x>36</x>
+        <y>10</y>
+        <width>35</width>
+        <height>35</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Nunito Medium</family>
-        <pointsize>20</pointsize>
+        <pointsize>22</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 191, 0);
+color: rgb(0, 0, 0);</string>
       </property>
       <property name="text">
        <string>3</string>
@@ -311,38 +315,74 @@ QPushButton:hover, QPushButton:pressed {
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="label_verticalDividerLeft">
+     <widget class="QLineEdit" name="lineEdit_viewLobbyId">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>67</y>
-        <width>50</width>
-        <height>2</height>
+        <x>74</x>
+        <y>57</y>
+        <width>121</width>
+        <height>35</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Nunito Medium</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(134, 141, 150);
-border-radius:1px;</string>
+       <string notr="true">border: 3px solid gray;</string>
       </property>
       <property name="text">
-       <string/>
+       <string>1234567</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_verticalDividerRight">
+     <widget class="QPushButton" name="pushButton_copyLobbyId">
       <property name="geometry">
        <rect>
-        <x>156</x>
-        <y>67</y>
-        <width>50</width>
-        <height>2</height>
+        <x>202</x>
+        <y>57</y>
+        <width>35</width>
+        <height>35</height>
        </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(134, 141, 150);
-border-radius:1px;</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="../../Frontend.qrc">
+        <normaloff>:/Frontend/assets/images/copy-icon-blue.png</normaloff>:/Frontend/assets/images/copy-icon-blue.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>35</width>
+        <height>35</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_codeIcon">
+      <property name="geometry">
+       <rect>
+        <x>36</x>
+        <y>57</y>
+        <width>35</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/lobby-code-icon.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -398,7 +438,6 @@ border-radius:1px;</string>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../../Frontend.qrc"/>
   <include location="../../Frontend.qrc"/>
  </resources>
  <connections/>

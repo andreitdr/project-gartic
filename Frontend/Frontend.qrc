@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="Frontend">
+    <file>assets/images/lobby-code-icon.png</file>
     <file>assets/images/accept.ico</file>
     <file>assets/images/appicon.ico</file>
     <file>assets/images/background.png</file>

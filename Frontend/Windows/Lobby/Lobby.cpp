@@ -51,7 +51,7 @@ void Lobby::removePlayerFromLobbyListView(const QString& username)
 
 void Lobby::hideOrShowStartGameButton()
 {
-    if(m_lobbyData.GetLobbyAdmin().getUsername()!=m_user.getUsername())
+    if((m_lobbyData.GetLobbyAdmin().getUsername()!=m_user.getUsername())||(ui.listWidget_players->count()==1))
     {
         ui.pushButton_startGame->setEnabled(false);
         ui.pushButton_startGame->setStyleSheet("QPushButton { background-color: rgb(255, 201, 108); color:grey; }");
@@ -63,6 +63,11 @@ void Lobby::hideOrShowStartGameButton()
     }
 }
 
+void Lobby::updateLobbyId(int lobbyId)
+{
+    ui.lineEdit_viewLobbyId->setText(QString::number(lobbyId));
+}
+
 
 void Lobby::on_pushButton_exitLobby_clicked()
 {
@@ -71,8 +76,15 @@ void Lobby::on_pushButton_exitLobby_clicked()
 
 }
 
+void Lobby::on_pushButton_copyLobbyId_clicked()
+{
+	QClipboard *clipboard = QApplication::clipboard();
+	clipboard->setText(ui.lineEdit_viewLobbyId->text());
+}
+
 void Lobby::on_pushButton_startGame_clicked()
 {
+    updateLobbyId(8832131);
     addPlayerToLobbyListView("test1", "test1", "test1", true);
     addPlayerToLobbyListView("test2", "test2", "test2", false);
     addPlayerToLobbyListView("test3", "test3", "test3", false);
