@@ -8,5 +8,6 @@ class ResponseHandler
 public:
 	void processLoginResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const UserInfo&)> callback);
 	void processRegisterResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, int)> callback);
+	void processGetUserInfoResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const UserInfo&)> callback);
 };
 
