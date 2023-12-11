@@ -114,6 +114,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="API\ApiEndpoints\ApiEndpoints.h" />
     <ClInclude Include="API\Requests\Requests.h" />
     <ClInclude Include="Utils\LobbyData\LobbyData.h" />
     <ClInclude Include="Utils\UserInfo\UserInfo.h" />

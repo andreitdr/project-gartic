@@ -7,14 +7,7 @@ cpr::Response Requests::RegisterUser(const std::string& surname, const std::stri
     payload["givenName"] = givenName;
     payload["username"] = username;
     payload["password"] = password;
-
-    std::string json_payload = payload.dump();
-
-    cpr::Response r = cpr::Post(cpr::Url{ "http://localhost:18080/user/register" },
-        cpr::Body{ json_payload },
-        cpr::Header{ {"Content-Type", "application/json"} });
-
-    return r;
+    return SendRequest(ApiEndpoints::REGISTER_USER, payload, "POST");
 }
 
 cpr::Response Requests::LoginUser(const std::string& username, const std::string& password)
@@ -22,27 +15,27 @@ cpr::Response Requests::LoginUser(const std::string& username, const std::string
     crow::json::wvalue payload;
 	payload["username"] = username;
 	payload["password"] = password;
-
-	std::string json_payload = payload.dump();
-
-	cpr::Response r = cpr::Post(cpr::Url{ "http://localhost:18080/user/login" },
-        		cpr::Body{ json_payload },
-        		cpr::Header{ {"Content-Type", "application/json"} });
-
-	return r;
+    return SendRequest(ApiEndpoints::LOGIN_USER, payload, "GET");
 }
 
-cpr::Response Requests::CreateLobby(const int lobbyId, const int userId)
+cpr::Response Requests::getUserInfo(const int userId)
 {
     crow::json::wvalue payload;
-    payload["Id"] = lobbyId;
-    payload["User"] = userId;
-
-    std::string json_payload = payload.dump();
-
-    cpr::Response r = cpr::Get(cpr::Url{ "http://localhost:18080/game/create_lobby" },
-        cpr::Body{ json_payload },
-        cpr::Header{ {"Content-Type", "application/json"} });
-
-    return r;
+    payload["userID"] = userId;
+    return SendRequest(ApiEndpoints::GET_USER_INFO, payload, "GET");
 }
+
+cpr::Response Requests::SendRequest(const std::string& url, const crow::json::wvalue& payload, const std::string& method)
+{
+    std::string json_payload = payload.dump();
+    cpr::Header header = { {"Content-Type", "application/json"} };
+
+    if (method == "GET") {
+        return cpr::Get(cpr::Url{ url }, cpr::Body{ json_payload }, header);
+    }
+    else if (method == "POST") {
+        return cpr::Post(cpr::Url{ url }, cpr::Body{ json_payload }, header);
+    }
+    return cpr::Response();
+}
+
