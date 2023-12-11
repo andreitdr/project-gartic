@@ -76,6 +76,9 @@
     <ClCompile Include="Utils\LobbyData\LobbyData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="API\ResponseHandler\ResponseHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API\Requests\Requests.h">
@@ -91,6 +94,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="API\ApiEndpoints\ApiEndpoints.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="API\ResponseHandler\ResponseHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

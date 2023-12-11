@@ -95,6 +95,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="API\ResponseHandler\ResponseHandler.cpp" />
     <ClCompile Include="Utils\LobbyData\LobbyData.cpp" />
     <ClCompile Include="Utils\UserInfo\UserInfo.cpp" />
     <ClCompile Include="Widgets\CustomQMessageBox\CustomQMessageBox.cpp" />
@@ -116,6 +117,7 @@
   <ItemGroup>
     <ClInclude Include="API\ApiEndpoints\ApiEndpoints.h" />
     <ClInclude Include="API\Requests\Requests.h" />
+    <ClInclude Include="API\ResponseHandler\ResponseHandler.h" />
     <ClInclude Include="Utils\LobbyData\LobbyData.h" />
     <ClInclude Include="Utils\UserInfo\UserInfo.h" />
     <QtMoc Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.h" />
