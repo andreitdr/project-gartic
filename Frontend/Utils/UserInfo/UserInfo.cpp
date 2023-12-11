@@ -1,4 +1,4 @@
-#include "UserInfo.h"
+﻿#include "UserInfo.h"
 
 UserInfo::UserInfo() : m_username(""), m_givenName(""), m_surname(""),m_userId(0) {}
 
@@ -40,4 +40,27 @@ void UserInfo::setSurname(const std::string& surname) {
 void UserInfo::setUserId(int userId)
 {
     this->m_userId = userId;
+}
+
+UserInfo UserInfo::GetUserInfoFromServer(int userId)
+{
+    cpr::Response response = Requests::getUserInfo(userId);
+    if(response.status_code==200)
+	{
+		UserInfo userInfo;
+		ResponseHandler handler;
+		handler.processGetUserInfoResponse(crow::json::load(response.text), [&userInfo](bool success, const std::string& message, const UserInfo& fetchedUserInfo) {
+			if (success) {
+				userInfo = fetchedUserInfo;
+			}
+			else {
+				throw std::runtime_error(message);
+			}
+			});
+		return userInfo;
+	}
+	else
+	{
+		throw std::runtime_error("Error getting user info");
+	}
 }
