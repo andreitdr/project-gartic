@@ -49,7 +49,7 @@ void ResponseHandler::processGetUserInfoResponse(const crow::json::rvalue& respo
 	}
 
 	bool success = response["ResponseState"].b();
-	std::string message = response["ResponseMessage"][0].s();
+    std::string message = "Success";
 
 	if (success) {
 		std::string username = response["user"]["username"].s();

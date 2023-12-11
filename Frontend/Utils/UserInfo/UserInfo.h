@@ -1,7 +1,5 @@
 #pragma once
 #include <string>
-#include "../../API/Requests/Requests.h"
-#include "../../API/ResponseHandler/ResponseHandler.h"
 
 class UserInfo
 {

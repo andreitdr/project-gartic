@@ -1,4 +1,6 @@
 ﻿#include "UserInfo.h"
+#include "../../API/Requests/Requests.h"
+#include "../../API/ResponseHandler/ResponseHandler.h"
 
 UserInfo::UserInfo() : m_username(""), m_givenName(""), m_surname(""),m_userId(0) {}
 
