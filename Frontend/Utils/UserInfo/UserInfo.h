@@ -1,5 +1,8 @@
 #pragma once
 #include <string>
+#include "../../API/Requests/Requests.h"
+#include "../../API/ResponseHandler/ResponseHandler.h"
+
 class UserInfo
 {
 public:
@@ -16,6 +19,8 @@ public:
     void setGivenName(const std::string& givenName);
     void setSurname(const std::string& surname);
     void setUserId(int userId);
+
+    static UserInfo GetUserInfoFromServer(int userId);
 
 private:
     std::string m_username;
