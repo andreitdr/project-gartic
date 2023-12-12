@@ -13,7 +13,7 @@ public:
     LeaveLobbyResponse HandleRequest(const LeaveLobbyRequest& request) override;
 private:
     LeaveLobbyResponse ValidateData(const LeaveLobbyRequest& request);
-    void ApplyChanges(const LeaveLobbyRequest& request) override;
+    LeaveLobbyResponse ApplyChanges(const LeaveLobbyRequest& request) override;
 };
 
 inline LeaveLobbyResponse LeaveLobbyContext::HandleRequest(const LeaveLobbyRequest& request)
@@ -50,12 +50,11 @@ inline LeaveLobbyResponse LeaveLobbyContext::ValidateData(const LeaveLobbyReques
     }
 }
 
-inline void LeaveLobbyContext::ApplyChanges(const LeaveLobbyRequest& request)
+inline LeaveLobbyResponse LeaveLobbyContext::ApplyChanges(const LeaveLobbyRequest& request)
 {
     int lobbyId = request.GetLobbyId();
     int playerId = request.GetUserId();
-
-	
+    
     Lobby currentLobby = SqlDatabase::Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
 
     std::vector<int> playersList = JsonConvertor::ConvertToVector<int>(currentLobby.m_userIds);
@@ -70,4 +69,6 @@ inline void LeaveLobbyContext::ApplyChanges(const LeaveLobbyRequest& request)
     currentLobby.m_userIds = JsonConvertor::ConvertFromVector(newList).dump();
 
     SqlDatabase::Update(currentLobby);
+    
+    return LeaveLobbyResponse();
 }

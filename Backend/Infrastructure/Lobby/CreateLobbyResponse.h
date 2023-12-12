@@ -1,8 +1,8 @@
 #pragma once
-import BaseResponse;
-
-#include <vector>
 #include <string>
+
+import BaseResponse;
+import Game;
 
 class CreateLobbyResponse: public BaseResponse
 {

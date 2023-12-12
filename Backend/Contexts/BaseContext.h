@@ -8,5 +8,5 @@ public:
 	virtual ResponseType HandleRequest(const RequestType& request) = 0;
 
 protected:
-	virtual void ApplyChanges(const RequestType& request) = 0;
+	virtual ResponseType ApplyChanges(const RequestType& request) = 0;
 };
