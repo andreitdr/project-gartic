@@ -1,5 +1,7 @@
 ﻿import Config;
 import BaseResponse;
+#include <string>
+#include <tuple>
 
 #include <crow.h>
 #include "SqlDatabase/SqlDatabase.h"
@@ -12,6 +14,7 @@ import BaseResponse;
 #include "API/User/GetUserInfo.h"
 #include "API/User/UserLogin.h"
 #include "API/User/UserRegistration.h"
+
 
 
 #define ENABLETEST 0
@@ -37,6 +40,18 @@ int main()
     crow::SimpleApp app;
 
     k_logger.LogMessage("Starting server...", "MAIN");
+
+    /*
+     *  Test route. Will be removed later.
+     */
+    CROW_ROUTE(app, "/<int>").methods("GET"_method)([](const int v)
+    {
+        const auto result = SqlDatabase::Select<std::tuple<std::string, std::string>>(sqlite_orm::columns(&User::m_surname, &User::m_givenName),
+                                                                                      WHERE(User::m_user_id, v));
+        auto user1 = result[0];
+
+        return (std::format("surname: {}, givenName: {}", std::get<0>(user1), std::get<1>(user1)));
+    });
 
     CROW_ROUTE(app, "/game/join_lobby").methods("POST"_method)([](const crow::request& request)
     {

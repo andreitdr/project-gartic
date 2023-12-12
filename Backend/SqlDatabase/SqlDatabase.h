@@ -70,6 +70,9 @@ public:
     template <typename TypeAsStruct>
     static TypeAsStruct Get(auto whereCondition);
 
+    template <typename TupleElements>
+    static std::vector<TupleElements> Select(auto columnsTuple, auto whereCondition);
+
     template<typename TypeAsStruct>
     static std::vector<TypeAsStruct> GetAll(auto whereClause);
     
@@ -81,9 +84,6 @@ public:
 
     template <typename TypeAsStruct>
     static bool ExistsModel(const TypeAsStruct& model);
-
-    /*template <typename TypeAsStruct, typename Field>
-    static bool ExistsModel(const TypeAsStruct& model, const Field& field);*/
 
     template <typename TypeAsStruct>
     static bool Update(const TypeAsStruct& model);
@@ -107,10 +107,10 @@ TypeAsStruct SqlDatabase::Get(int id)
 }
 
 
-
 template <typename TypeAsStruct>
 std::vector<TypeAsStruct> SqlDatabase::GetAll(auto whereClause)
 {
+    
     return storage.get_all<TypeAsStruct>(whereClause);
 }
 
@@ -118,6 +118,14 @@ template <typename TypeAsStruct>
 TypeAsStruct SqlDatabase::Get(auto whereCondition)
 {
     return GetAll<TypeAsStruct>(whereCondition)[0];
+}
+
+template <typename TupleElements>
+std::vector<TupleElements> SqlDatabase::Select(auto columnsTuple, auto whereCondition)
+{
+    auto selectStatement = storage.prepare(sqlite_orm::select(columnsTuple, whereCondition));
+    k_logger.LogMessage(selectStatement.sql(), "SQL");
+    return storage.execute(selectStatement);
 }
 
 

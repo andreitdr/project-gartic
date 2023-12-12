@@ -54,8 +54,7 @@ inline LeaveLobbyResponse LeaveLobbyContext::ApplyChanges(const LeaveLobbyReques
 {
     int lobbyId = request.GetLobbyId();
     int playerId = request.GetUserId();
-
-	
+    
     Lobby currentLobby = SqlDatabase::Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
 
     std::vector<int> playersList = JsonConvertor::ConvertToVector<int>(currentLobby.m_userIds);
@@ -70,6 +69,6 @@ inline LeaveLobbyResponse LeaveLobbyContext::ApplyChanges(const LeaveLobbyReques
     currentLobby.m_userIds = JsonConvertor::ConvertFromVector(newList).dump();
 
     SqlDatabase::Update(currentLobby);
-
+    
     return LeaveLobbyResponse();
 }
