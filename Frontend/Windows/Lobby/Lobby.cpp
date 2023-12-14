@@ -9,6 +9,31 @@ Lobby::Lobby(QWidget *parent)
 Lobby::~Lobby()
 {}
 
+void Lobby::closeEvent(QCloseEvent * event)
+{
+    bool shouldClose = false;
+
+   showConfirmActionCustomMessageBox(
+        "Lobby - Leave lobby",
+        "Are you sure you want to leave the lobby?",
+        "Yes",
+        "No",
+        [&shouldClose]() {
+            shouldClose = true;
+        }
+    );
+
+    if (shouldClose)
+    {
+        emit goToJoinGameWindow();
+        this->hide();
+    }
+    else 
+    {
+        event->ignore();
+    }
+}
+
 void Lobby::updateActivePlayersNumber(int playerNumber)
 {
 	ui.label_playersActiveNumber->setText(QString::number(playerNumber));
@@ -71,9 +96,23 @@ void Lobby::updateLobbyId(int lobbyId)
 
 void Lobby::on_pushButton_exitLobby_clicked()
 {
-    removePlayerFromLobbyListView("test1");
-    removePlayerFromLobbyListView("test5");
+    bool shouldClose = false;
 
+    showConfirmActionCustomMessageBox(
+        "Lobby - Leave lobby",
+        "Are you sure you want to leave the lobby?",
+        "Yes",
+        "No",
+        [&shouldClose]() {
+            shouldClose = true;
+        }
+    );
+
+    if (shouldClose)
+    {
+        emit goToJoinGameWindow();
+        this->hide();
+    }
 }
 
 void Lobby::on_pushButton_copyLobbyId_clicked()

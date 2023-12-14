@@ -11,11 +11,11 @@ UserProfile::~UserProfile()
 
 void UserProfile::on_pushButton_goBackUserProfile_clicked()
 {
-	emit joinGameWindow();
+	emit goToJoinGameWindow();
 	this->close();
 }
 
-void UserProfile::getUser(const UserInfo& user)
+/*void UserProfile::getUser(const UserInfo& user)
 {
 	m_user = user;
 	std::string m_username = m_user.getUsername();
@@ -33,4 +33,4 @@ void UserProfile::getUser(const UserInfo& user)
 
 	QString temp_username = "@" + username;
 	ui.label_username->setText(temp_username);
-}
+}*/

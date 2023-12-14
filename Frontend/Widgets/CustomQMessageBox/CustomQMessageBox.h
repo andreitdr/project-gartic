@@ -18,3 +18,11 @@ void showErrorCustomMessageBox(
     const QString& buttonText,
     std::function<void()> customAction
 );
+
+void showConfirmActionCustomMessageBox(
+    const QString& title,
+    const QString& message,
+    const QString& yesButtonText,
+    const QString& noButtonText,
+    std::function<void()> yesAction
+);

@@ -4,11 +4,6 @@ Login::Login(QWidget *parent)
 	: QMainWindow(parent)
 {
     ui.setupUi(this);
-    registerWindow = new Register();
-    connect(registerWindow, &Register::loginWindow, this, &Login::show);
-    joinGameWindow = new JoinGame();
-    connect(joinGameWindow, &JoinGame::loginWindow, this, &Login::show);
-    connect(this, SIGNAL(sendUser(const UserInfo&)), joinGameWindow, SLOT(getUser(const UserInfo&)));
 }
 
 Login::~Login()
@@ -16,8 +11,8 @@ Login::~Login()
 
 void Login::on_pushButton_goToRegister_clicked()
 {
-    registerWindow->show();
-    this->close();
+    emit goToRegister();
+    this->hide();
 }
 
 void Login::on_pushButton_login_clicked()
@@ -47,14 +42,14 @@ void Login::on_pushButton_login_clicked()
                 if (success)
                 {
                     m_user = userInfo;
-                    emit sendUser(m_user);
+                    //send user info to UserInfo instance
                     showSuccessCustomMessageBox(
                         "Gartic - Login",
                         "Successful login. You can play now!",
                         "Play Now",
                         [this]() {
-                            joinGameWindow->show();
-                            this->close();
+                            emit goToJoinGame();
+                            this->hide();
                         }
                     );
                 }
@@ -65,8 +60,8 @@ void Login::on_pushButton_login_clicked()
                         "User doesn't exist. Please register!",
                         "Register now",
                         [this]() {
-                            registerWindow->show();
-                            this->close();
+                            emit goToRegister();
+                            this->hide();
                         }
                     );
                 }

@@ -17,9 +17,7 @@ private:
 	UserInfo m_user;
 
 signals:
-	void joinGameWindow();
+	void goToJoinGameWindow();
 private slots:
-	virtual void on_pushButton_goBackUserProfile_clicked();
-public slots:
-	virtual void getUser(const UserInfo&);
+	void on_pushButton_goBackUserProfile_clicked();
 };

@@ -17,13 +17,11 @@ private:
 	UserInfo m_user;
 
 signals:
-	void joinGameWindow();
+	void goToJoinGameWindow();
+	void goToLobbyWindow();
 
 private slots:
 	virtual void on_pushButton_goBack_clicked();
 	virtual void on_pushButton_JoinPrivateRoom_clicked();
 	virtual void on_pushButton_JoinRandomGame_clicked();
-
-public slots:
-	virtual void getUser(const UserInfo&);
 };

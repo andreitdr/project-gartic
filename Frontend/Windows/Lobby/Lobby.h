@@ -3,10 +3,11 @@
 #include <QMainWindow>
 #include "ui_Lobby.h"
 #include "../../Widgets/LobbyPlayerInfoWidget/LobbyPlayerInfoWidget.h"
+#include "../../Widgets/CustomQMessageBox/CustomQMessageBox.h"
 #include "../../Utils/UserInfo/UserInfo.h"
 #include "../../Utils/LobbyData/LobbyData.h"
-#include <vector>
 #include <QClipboard>
+#include <QCloseEvent>
 
 class Lobby : public QMainWindow
 {
@@ -15,6 +16,9 @@ class Lobby : public QMainWindow
 public:
 	Lobby(QWidget *parent = nullptr);
 	~Lobby();
+
+protected:
+	void closeEvent(QCloseEvent* event) override;
 
 private:
 	Ui::LobbyClass ui;
@@ -30,4 +34,7 @@ private slots:
 	virtual void on_pushButton_startGame_clicked();
 	virtual void on_pushButton_exitLobby_clicked();
 	virtual void on_pushButton_copyLobbyId_clicked();
+
+signals:
+	void goToJoinGameWindow();
 };

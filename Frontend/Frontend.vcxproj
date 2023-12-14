@@ -98,6 +98,7 @@
     <ClCompile Include="API\ResponseHandler\ResponseHandler.cpp" />
     <ClCompile Include="Utils\LobbyData\LobbyData.cpp" />
     <ClCompile Include="Utils\UserInfo\UserInfo.cpp" />
+    <ClCompile Include="Utils\WindowManager\WindowManager.cpp" />
     <ClCompile Include="Widgets\CustomQMessageBox\CustomQMessageBox.cpp" />
     <ClCompile Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.cpp" />
     <ClCompile Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.cpp" />
@@ -123,6 +124,7 @@
     <QtMoc Include="Windows\Login\Login.h" />
     <QtMoc Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.h" />
     <QtMoc Include="Widgets\PaintWidget\PaintWidget.h" />
+    <QtMoc Include="Utils\WindowManager\WindowManager.h" />
     <ClInclude Include="Widgets\CustomQMessageBox\CustomQMessageBox.h" />
     <QtMoc Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.h" />
     <QtMoc Include="Windows\CreatePrivateRoom\CreatePrivateRoom.h" />

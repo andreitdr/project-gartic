@@ -16,8 +16,8 @@ private:
 	Ui::RegisterClass ui;
 
 private slots:
-	virtual void on_pushButton_register_clicked();
-	virtual void on_pushButton_goToLogin_clicked();
+	void on_pushButton_register_clicked();
+	void on_pushButton_goToLogin_clicked();
 signals:
-	void loginWindow();
+	void goToLogin();
 };

@@ -17,19 +17,16 @@ public:
 
 private:
 	Ui::JoinGameClass ui;
-	UserProfile* userProfileWindow = nullptr;
-	CreatePrivateRoom* createPrivateRoomWindow = nullptr;
-	JoinRoom* joinRoomWindow = nullptr;
 	UserInfo m_user;
 signals:
-	void loginWindow();
-	void sendUser(const UserInfo&);
+	void goToLoginWindow();
+	void goToUserProfileWindow();
+	void goToCreatePrivateRoomWindow();
+	void goToJoinRoomWindow();
 private slots:
 	virtual void on_pushButton_userProfile_clicked();
 	virtual void on_pushButton_createPrivateGame_clicked();
 	virtual void on_pushButton_logOut_clicked();
 	virtual void on_pushButton_joinGame_clicked();
-public slots:
-	virtual void getUser(const UserInfo&);
 
 };

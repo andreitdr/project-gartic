@@ -79,6 +79,9 @@
     <ClCompile Include="Windows\Login\Login.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Utils\WindowManager\WindowManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API\Requests\Requests.h">
@@ -132,6 +135,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Windows\Login\Login.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Utils\WindowManager\WindowManager.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

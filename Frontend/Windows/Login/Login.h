@@ -20,14 +20,13 @@ public:
 
 private:
 	Ui::LoginClass ui;
-	Register* registerWindow = nullptr;
-	JoinGame* joinGameWindow = nullptr;
 	UserInfo m_user;
 
 private slots:
-	virtual void on_pushButton_goToRegister_clicked();
+	void on_pushButton_goToRegister_clicked();
 	void on_pushButton_login_clicked();
 
 signals:
-	void sendUser(const UserInfo&);
+	void goToRegister();
+	void goToJoinGame();
 };
