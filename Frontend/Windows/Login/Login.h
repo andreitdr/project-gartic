@@ -20,7 +20,6 @@ public:
 
 private:
 	Ui::LoginClass ui;
-	UserInfo m_user;
 
 private slots:
 	void on_pushButton_goToRegister_clicked();

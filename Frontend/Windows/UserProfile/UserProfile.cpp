@@ -9,21 +9,18 @@ UserProfile::UserProfile(QWidget *parent)
 UserProfile::~UserProfile()
 {}
 
-void UserProfile::on_pushButton_goBackUserProfile_clicked()
+void UserProfile::showEvent(QShowEvent * event)
 {
-	emit goToJoinGameWindow();
-	this->close();
+	QWidget::showEvent(event);
+	updateUserInfoDisplay();
 }
 
-/*void UserProfile::getUser(const UserInfo& user)
+void UserProfile::updateUserInfoDisplay()
 {
-	m_user = user;
-	std::string m_username = m_user.getUsername();
-	std::string m_surname = m_user.getSurname();
-	std::string m_givenName = m_user.getGivenName();
-	QString username = QString::fromUtf8(m_username.c_str());
-	QString surname = QString::fromUtf8(m_surname.c_str());
-	QString givenName = QString::fromUtf8(m_givenName.c_str());
+	UserInfo& user = UserInfo::getInstance();
+	QString username = QString::fromUtf8(user.getUsername().c_str());
+	QString surname = QString::fromUtf8(user.getSurname().c_str());
+	QString givenName = QString::fromUtf8(user.getGivenName().c_str());
 
 	ui.label_user_profile_letter->setText(givenName[0]);
 	ui.label_user_profile_letter->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
@@ -33,4 +30,10 @@ void UserProfile::on_pushButton_goBackUserProfile_clicked()
 
 	QString temp_username = "@" + username;
 	ui.label_username->setText(temp_username);
-}*/
+}
+
+void UserProfile::on_pushButton_goBackUserProfile_clicked()
+{
+	emit goToJoinGameWindow();
+	this->close();
+}

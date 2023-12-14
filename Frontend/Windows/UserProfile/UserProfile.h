@@ -12,9 +12,12 @@ public:
 	UserProfile(QWidget *parent = nullptr);
 	~UserProfile();
 
+protected:
+	void showEvent(QShowEvent* event) override;
+
 private:
 	Ui::UserProfileClass ui;
-	UserInfo m_user;
+	void updateUserInfoDisplay();
 
 signals:
 	void goToJoinGameWindow();

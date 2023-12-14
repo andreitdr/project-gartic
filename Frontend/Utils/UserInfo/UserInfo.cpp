@@ -2,7 +2,7 @@
 #include "../../API/Requests/Requests.h"
 #include "../../API/ResponseHandler/ResponseHandler.h"
 
-UserInfo::UserInfo() : m_username(""), m_givenName(""), m_surname(""),m_userId(0) {}
+UserInfo::UserInfo() : m_username{ "" }, m_givenName{ "" }, m_surname{ "" }, m_userId{ 0 } {}
 
 UserInfo::UserInfo(const std::string& username, const std::string& givenName, const std::string& surname, const int userId)
     : m_username{username}, m_givenName{givenName}, m_surname{surname}, m_userId{ userId } {}

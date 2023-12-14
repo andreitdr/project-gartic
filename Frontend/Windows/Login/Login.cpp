@@ -41,8 +41,11 @@ void Login::on_pushButton_login_clicked()
             {
                 if (success)
                 {
-                    m_user = userInfo;
-                    //send user info to UserInfo instance
+                    UserInfo& user = UserInfo::getInstance();
+                    user.setUserId(userInfo.getUserId());
+                    user.setUsername(userInfo.getUsername());
+                    user.setGivenName(userInfo.getGivenName());
+                    user.setSurname(userInfo.getSurname());
                     showSuccessCustomMessageBox(
                         "Gartic - Login",
                         "Successful login. You can play now!",

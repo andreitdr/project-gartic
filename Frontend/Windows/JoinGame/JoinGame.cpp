@@ -8,10 +8,24 @@ JoinGame::JoinGame(QWidget *parent)
 
 JoinGame::~JoinGame()
 {}
+
 void JoinGame::on_pushButton_userProfile_clicked()
 {
 	emit goToUserProfileWindow();
 	this->hide();
+}
+
+void JoinGame::updateUserInfoDisplay()
+{
+	UserInfo& user = UserInfo::getInstance();
+	QString username = QString::fromUtf8(user.getUsername().c_str());
+	ui.lineEdit_usernameDisplay->setText("@" + username);
+}
+
+void JoinGame::showEvent(QShowEvent* event)
+{
+	QWidget::showEvent(event);
+	updateUserInfoDisplay();
 }
 
 void JoinGame::on_pushButton_createPrivateGame_clicked()

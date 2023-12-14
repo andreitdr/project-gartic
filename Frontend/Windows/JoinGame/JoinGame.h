@@ -17,12 +17,17 @@ public:
 
 private:
 	Ui::JoinGameClass ui;
-	UserInfo m_user;
+	void updateUserInfoDisplay();
+
+protected:
+	void showEvent(QShowEvent* event) override;
+
 signals:
 	void goToLoginWindow();
 	void goToUserProfileWindow();
 	void goToCreatePrivateRoomWindow();
 	void goToJoinRoomWindow();
+
 private slots:
 	virtual void on_pushButton_userProfile_clicked();
 	virtual void on_pushButton_createPrivateGame_clicked();
