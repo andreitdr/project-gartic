@@ -1,31 +1,31 @@
-﻿#include "Frontend.h"
+#include "Login.h"
 
-Frontend::Frontend(QWidget *parent)
-    : QMainWindow(parent)
+Login::Login(QWidget *parent)
+	: QMainWindow(parent)
 {
     ui.setupUi(this);
     registerWindow = new Register();
-    connect(registerWindow, &Register::loginWindow, this, &Frontend::show);
+    connect(registerWindow, &Register::loginWindow, this, &Login::show);
     joinGameWindow = new JoinGame();
-    connect(joinGameWindow, &JoinGame::loginWindow, this, &Frontend::show);
+    connect(joinGameWindow, &JoinGame::loginWindow, this, &Login::show);
     connect(this, SIGNAL(sendUser(const UserInfo&)), joinGameWindow, SLOT(getUser(const UserInfo&)));
 }
 
-Frontend::~Frontend()
+Login::~Login()
 {}
 
-void Frontend::on_pushButton_goToRegister_clicked()
+void Login::on_pushButton_goToRegister_clicked()
 {
     registerWindow->show();
     this->close();
 }
 
-void Frontend::on_pushButton_login_clicked() 
+void Login::on_pushButton_login_clicked()
 {
     std::string username = ui.lineEdit_username->text().toUtf8().constData();
     std::string password = ui.lineEdit_password->text().toUtf8().constData();
 
-    if (username.empty() || password.empty()) 
+    if (username.empty() || password.empty())
     {
         showErrorCustomMessageBox(
             "Gartic - Login",
@@ -91,7 +91,7 @@ void Frontend::on_pushButton_login_clicked()
                 }
             });
     }
-    else 
+    else
     {
         showErrorCustomMessageBox(
             "Gartic - Login",

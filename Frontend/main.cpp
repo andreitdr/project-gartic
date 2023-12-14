@@ -1,4 +1,4 @@
-#include "Windows/Frontend/Frontend.h"
+#include "Windows/Login/Login.h"
 #include "Windows/Lobby/Lobby.h"
 #include "Widgets/PaintWidget/PaintWidget.h"
 #include <QtWidgets/QApplication>
@@ -7,7 +7,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Frontend w;
+    Login w;
     w.show();
     return a.exec();
 }

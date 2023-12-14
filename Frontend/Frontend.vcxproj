@@ -103,11 +103,11 @@
     <ClCompile Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.cpp" />
     <ClCompile Include="Widgets\PaintWidget\PaintWidget.cpp" />
     <ClCompile Include="Windows\CreatePrivateRoom\CreatePrivateRoom.cpp" />
-    <ClCompile Include="Windows\Frontend\Frontend.cpp" />
     <ClCompile Include="Windows\GameWindow\GameWindow.cpp" />
     <ClCompile Include="Windows\JoinGame\JoinGame.cpp" />
     <ClCompile Include="Windows\JoinRoom\JoinRoom.cpp" />
     <ClCompile Include="Windows\Lobby\Lobby.cpp" />
+    <ClCompile Include="Windows\Login\Login.cpp" />
     <ClCompile Include="Windows\Register\Register.cpp" />
     <ClCompile Include="Windows\UserProfile\UserProfile.cpp" />
     <QtRcc Include="Frontend.qrc" />
@@ -120,12 +120,12 @@
     <ClInclude Include="API\ResponseHandler\ResponseHandler.h" />
     <ClInclude Include="Utils\LobbyData\LobbyData.h" />
     <ClInclude Include="Utils\UserInfo\UserInfo.h" />
+    <QtMoc Include="Windows\Login\Login.h" />
     <QtMoc Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.h" />
     <QtMoc Include="Widgets\PaintWidget\PaintWidget.h" />
     <ClInclude Include="Widgets\CustomQMessageBox\CustomQMessageBox.h" />
     <QtMoc Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.h" />
     <QtMoc Include="Windows\CreatePrivateRoom\CreatePrivateRoom.h" />
-    <QtMoc Include="Windows\Frontend\Frontend.h" />
     <QtMoc Include="Windows\GameWindow\GameWindow.h" />
     <QtMoc Include="Windows\JoinGame\JoinGame.h" />
     <QtMoc Include="Windows\JoinRoom\JoinRoom.h" />
@@ -138,11 +138,11 @@
     <QtUic Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.ui" />
     <QtUic Include="Widgets\PaintWidget\PaintWidget.ui" />
     <QtUic Include="Windows\CreatePrivateRoom\CreatePrivateRoom.ui" />
-    <QtUic Include="Windows\Frontend\Frontend.ui" />
     <QtUic Include="Windows\GameWindow\GameWindow.ui" />
     <QtUic Include="Windows\JoinGame\JoinGame.ui" />
     <QtUic Include="Windows\JoinRoom\JoinRoom.ui" />
     <QtUic Include="Windows\Lobby\Lobby.ui" />
+    <QtUic Include="Windows\Login\Login.ui" />
     <QtUic Include="Windows\Register\Register.ui" />
     <QtUic Include="Windows\UserProfile\UserProfile.ui" />
   </ItemGroup>

@@ -70,13 +70,13 @@
     <ClCompile Include="Windows\CreatePrivateRoom\CreatePrivateRoom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Windows\Frontend\Frontend.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Utils\LobbyData\LobbyData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="API\ResponseHandler\ResponseHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Windows\Login\Login.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -110,9 +110,6 @@
     <QtMoc Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="Windows\Frontend\Frontend.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="Windows\Register\Register.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -132,6 +129,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Windows\GameWindow\GameWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Windows\Login\Login.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -166,7 +166,7 @@
     <QtUic Include="Windows\Register\Register.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="Windows\Frontend\Frontend.ui">
+    <QtUic Include="Windows\Login\Login.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
