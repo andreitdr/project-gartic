@@ -34,44 +34,24 @@ void Lobby::closeEvent(QCloseEvent * event)
     }
 }
 
-void Lobby::updateActivePlayersNumber(int playerNumber)
+void Lobby::updateActivePlayersNumber()
 {
+	int playerNumber = m_lobbyData.GetUsers().size();
 	ui.label_playersActiveNumber->setText(QString::number(playerNumber));
 }
 
-void Lobby::addPlayerToLobbyListView(const QString& username, const QString& surname, const QString& givenName, bool isAdmin) {
-	QListWidgetItem* item = new QListWidgetItem(ui.listWidget_players);
-	LobbyPlayerInfoWidget* playerWidget = new LobbyPlayerInfoWidget(username, surname, givenName, isAdmin);
+void Lobby::addPlayerToLobbyListView(const UserInfo& userInfo)
+{
+    QListWidgetItem* item = new QListWidgetItem(ui.listWidget_players);
+    QString username = QString::fromUtf8(userInfo.getUsername().c_str());
+    QString surname = QString::fromUtf8(userInfo.getSurname().c_str());
+    QString givenName = QString::fromUtf8(userInfo.getGivenName().c_str());
+    LobbyPlayerInfoWidget* playerWidget = new LobbyPlayerInfoWidget(username, surname, givenName);
 
-	const QSize fixedSize = QSize(281,80); 
+    const QSize fixedSize = QSize(281, 80);
 	item->setSizeHint(fixedSize);
 
 	ui.listWidget_players->setItemWidget(item, playerWidget);
-    hideOrShowStartGameButton();
-	updateActivePlayersNumber(ui.listWidget_players->count());
-}
-
-void Lobby::removePlayerFromLobbyListView(const QString& username)
-{
-    int indexToRemove = -1;
-
-    for (int i = 0; i < ui.listWidget_players->count(); ++i) {
-        QListWidgetItem* item = ui.listWidget_players->item(i);
-        LobbyPlayerInfoWidget* playerWidget = qobject_cast<LobbyPlayerInfoWidget*>(ui.listWidget_players->itemWidget(item));
-
-		QString tempUsername="@"+username;
-        if (playerWidget->getUsername() == tempUsername) {
-                indexToRemove = i;
-                break;
-            }
-    }
-
-    if (indexToRemove != -1) {
-        QListWidgetItem* itemToRemove = ui.listWidget_players->takeItem(indexToRemove);
-        delete itemToRemove;
-    }
-    hideOrShowStartGameButton();
-	updateActivePlayersNumber(ui.listWidget_players->count());
 }
 
 void Lobby::hideOrShowStartGameButton()
@@ -88,9 +68,40 @@ void Lobby::hideOrShowStartGameButton()
     }
 }
 
-void Lobby::updateLobbyId(int lobbyId)
+void Lobby::updateLobbyStatus()
 {
+    updateLobbyId();
+    updateActivePlayersNumber();
+    updateLobbyPlayerListView();
+    updateLobbyAdmin();
+    hideOrShowStartGameButton();
+}
+
+void Lobby::updateLobbyId()
+{
+    int lobbyId = m_lobbyData.GetLobbyID();
     ui.lineEdit_viewLobbyId->setText(QString::number(lobbyId));
+}
+
+void Lobby::updateLobbyAdmin()
+{
+    QString adminUsername = "@" + QString::fromUtf8(m_lobbyData.GetLobbyAdmin().getUsername().c_str());
+    for (int i = 0; i < ui.listWidget_players->count(); ++i)
+    {
+        QListWidgetItem* item = ui.listWidget_players->item(i);
+        LobbyPlayerInfoWidget* playerWidget = qobject_cast<LobbyPlayerInfoWidget*>(ui.listWidget_players->itemWidget(item));
+        if(playerWidget->getUsername()==adminUsername)
+			playerWidget->updateAdminStatus(true);
+		else
+			playerWidget->updateAdminStatus(false);
+    }
+}
+
+void Lobby::updateLobbyPlayerListView()
+{
+	ui.listWidget_players->clear();
+	for (auto& player : m_lobbyData.GetUsers())
+		addPlayerToLobbyListView(player);
 }
 
 
@@ -122,12 +133,5 @@ void Lobby::on_pushButton_copyLobbyId_clicked()
 }
 
 void Lobby::on_pushButton_startGame_clicked()
-{
-    updateLobbyId(8832131);
-    addPlayerToLobbyListView("test1", "test1", "test1", true);
-    addPlayerToLobbyListView("test2", "test2", "test2", false);
-    addPlayerToLobbyListView("test3", "test3", "test3", false);
-    addPlayerToLobbyListView("test4", "test4", "test4", false);
-    addPlayerToLobbyListView("test5", "test5", "test5", false);
-    addPlayerToLobbyListView("test6", "test6", "test6", false);
+{   
 }

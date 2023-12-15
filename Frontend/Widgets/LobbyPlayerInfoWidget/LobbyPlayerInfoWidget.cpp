@@ -5,7 +5,7 @@ LobbyPlayerInfoWidget::LobbyPlayerInfoWidget(QWidget* parent) : QWidget(parent)
     ui.setupUi(this);
 }
 
-LobbyPlayerInfoWidget::LobbyPlayerInfoWidget(const QString& username, const QString& surname, const QString& givenName, bool isAdmin, QWidget* parent)
+LobbyPlayerInfoWidget::LobbyPlayerInfoWidget(const QString& username, const QString& surname, const QString& givenName, QWidget* parent)
     : QWidget(parent) 
 {
     ui.setupUi(this);
@@ -15,10 +15,6 @@ LobbyPlayerInfoWidget::LobbyPlayerInfoWidget(const QString& username, const QStr
     ui.label_surnameGivenName->setText(tempName);
     QString avatarLetter = givenName[0].toUpper();
     ui.label_avatarLetter->setText(avatarLetter);
-    if (isAdmin)
-        ui.label_isAdmin->show();
-    else
-        ui.label_isAdmin->hide();
 }
 
 LobbyPlayerInfoWidget::~LobbyPlayerInfoWidget()
@@ -27,4 +23,17 @@ LobbyPlayerInfoWidget::~LobbyPlayerInfoWidget()
 QString LobbyPlayerInfoWidget::getUsername() const
 {
     return ui.label_username->text();
+}
+
+bool LobbyPlayerInfoWidget::getAdminStatus() const
+{
+    return ui.label_isAdmin->isVisible();
+}
+
+void LobbyPlayerInfoWidget::updateAdminStatus(bool isAdmin)
+{
+    if(isAdmin)
+	    ui.label_isAdmin->show();
+	else
+		ui.label_isAdmin->hide();
 }

@@ -24,11 +24,13 @@ private:
 	Ui::LobbyClass ui;
 	UserInfo m_user;
 	LobbyData m_lobbyData;
-	void updateActivePlayersNumber(int playerNumber);
-	void addPlayerToLobbyListView(const QString& username, const QString& surname, const QString& givenName, bool isAdmin);
-	void removePlayerFromLobbyListView(const QString& username);
+	void addPlayerToLobbyListView(const UserInfo& userInfo);
+	void updateLobbyId();
+	void updateActivePlayersNumber();
+	void updateLobbyAdmin();
+	void updateLobbyPlayerListView();
 	void hideOrShowStartGameButton();
-	void updateLobbyId(int lobbyId);
+	void updateLobbyStatus();
 
 private slots:
 	virtual void on_pushButton_startGame_clicked();

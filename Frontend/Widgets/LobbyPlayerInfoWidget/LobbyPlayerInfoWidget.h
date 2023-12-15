@@ -9,9 +9,11 @@ class LobbyPlayerInfoWidget : public QWidget
 
 public:
     LobbyPlayerInfoWidget(QWidget* parent = nullptr);
-    LobbyPlayerInfoWidget(const QString& username, const QString& surname, const QString& givenName, bool isAdmin, QWidget* parent = nullptr); // Adăugat parent aici
+    LobbyPlayerInfoWidget(const QString& username, const QString& surname, const QString& givenName, QWidget* parent = nullptr); 
     ~LobbyPlayerInfoWidget();
     QString getUsername() const;
+    bool getAdminStatus() const;
+    void updateAdminStatus(bool isAdmin);
 
 private:
     Ui::LobbyPlayerInfoWidgetClass ui;

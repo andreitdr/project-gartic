@@ -320,7 +320,7 @@ color: rgb(0, 0, 0);</string>
        <rect>
         <x>74</x>
         <y>57</y>
-        <width>121</width>
+        <width>128</width>
         <height>35</height>
        </rect>
       </property>
@@ -346,7 +346,7 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="pushButton_copyLobbyId">
       <property name="geometry">
        <rect>
-        <x>202</x>
+        <x>209</x>
         <y>57</y>
         <width>35</width>
         <height>35</height>
