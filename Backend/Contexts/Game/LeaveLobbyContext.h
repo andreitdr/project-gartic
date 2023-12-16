@@ -7,7 +7,7 @@
 import LeaveLobbyRequest;
 import LeaveLobbyResponse;
 
-class LeaveLobbyContext final:public BaseContext<LeaveLobbyRequest,LeaveLobbyResponse>
+class LeaveLobbyContext final : public BaseContext<LeaveLobbyRequest,LeaveLobbyResponse>
 {
 public:
     LeaveLobbyResponse HandleRequest(const LeaveLobbyRequest& request) override;
@@ -59,13 +59,25 @@ inline LeaveLobbyResponse LeaveLobbyContext::ApplyChanges(const LeaveLobbyReques
 
     std::vector<int> playersList = JsonConvertor::ConvertToVector<int>(currentLobby.m_userIds);
     std::vector<int> newList;
+
     for(int user:playersList)
     {
         if(user!=playerId)
             newList.emplace_back(user);
     }
+
+    if(newList.empty())
+    {
+        SqlDatabase::Delete<Lobby>(currentLobby.m_index);
+        LeaveLobbyResponse response = LeaveLobbyResponse();
+        response.AppendMessage("Lobby Deleted");
+
+        return response;
+    }
+    
     if(playerId==currentLobby.m_leaderId)
         currentLobby.m_leaderId=newList[0];
+
     currentLobby.m_userIds = JsonConvertor::ConvertFromVector(newList).dump();
 
     SqlDatabase::Update(currentLobby);
