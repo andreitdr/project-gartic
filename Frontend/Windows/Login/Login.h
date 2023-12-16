@@ -2,8 +2,6 @@
 
 #include <QMainWindow>
 #include "ui_Login.h"
-#include "../../Windows/Register/Register.h"
-#include "../../Windows/JoinGame/JoinGame.h"
 #include "../../Widgets/CustomQMessageBox/CustomQMessageBox.h"
 #include "../../Utils/UserInfo/UserInfo.h"
 #include "../../API/Requests/Requests.h"

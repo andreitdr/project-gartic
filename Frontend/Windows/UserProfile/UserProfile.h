@@ -1,10 +1,10 @@
 #pragma once
 
-#include <QWidget>
+#include <QMainWindow>
 #include "ui_UserProfile.h"
 #include "../../Utils/UserInfo/UserInfo.h"
 
-class UserProfile : public QWidget
+class UserProfile : public QMainWindow
 {
 	Q_OBJECT
 

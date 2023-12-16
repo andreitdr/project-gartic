@@ -30,7 +30,7 @@ void JoinGame::showEvent(QShowEvent* event)
 
 void JoinGame::on_pushButton_createPrivateGame_clicked()
 {
-	emit goToCreatePrivateRoomWindow();
+	emit goToLobbyWindow();
 	this->hide();
 }
 

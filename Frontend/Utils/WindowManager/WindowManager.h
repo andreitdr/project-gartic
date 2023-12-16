@@ -5,7 +5,6 @@
 #include "../../Windows/JoinGame/JoinGame.h"
 #include "../../Windows/UserProfile/UserProfile.h"
 #include "../../Windows/JoinRoom/JoinRoom.h"
-#include "../../Windows/CreatePrivateRoom/CreatePrivateRoom.h"
 #include "../../Windows/Lobby/Lobby.h"
 #include "../../Windows/GameWindow/GameWindow.h"
 
@@ -22,7 +21,6 @@ public slots:
     void showJoinGameWindow();
     void showUserProfileWindow();
     void showJoinRoomWindow();
-    void showCreatePrivateRoomWindow();
     void showLobbyWindow();
     void showGameWindow();
 
@@ -32,7 +30,6 @@ private:
     JoinGame* m_joinGameWindow;
     UserProfile* m_userProfileWindow;
     JoinRoom* m_joinRoomWindow;
-    CreatePrivateRoom* m_createPrivateRoomWindow;
     Lobby* m_lobbyWindow;
     GameWindow* m_gameWindow;
     void setupConnections();

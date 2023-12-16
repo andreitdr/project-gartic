@@ -2,9 +2,6 @@
 
 #include <QMainWindow>
 #include "ui_JoinGame.h"
-#include "../../Windows/UserProfile/UserProfile.h"
-#include "../../Windows/CreatePrivateRoom/CreatePrivateRoom.h"
-#include "../../Windows/JoinRoom/JoinRoom.h"
 #include "../../Utils/UserInfo/UserInfo.h"
 
 class JoinGame : public QMainWindow
@@ -25,7 +22,7 @@ protected:
 signals:
 	void goToLoginWindow();
 	void goToUserProfileWindow();
-	void goToCreatePrivateRoomWindow();
+	void goToLobbyWindow();
 	void goToJoinRoomWindow();
 
 private slots:

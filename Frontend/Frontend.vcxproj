@@ -103,7 +103,6 @@
     <ClCompile Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.cpp" />
     <ClCompile Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.cpp" />
     <ClCompile Include="Widgets\PaintWidget\PaintWidget.cpp" />
-    <ClCompile Include="Windows\CreatePrivateRoom\CreatePrivateRoom.cpp" />
     <ClCompile Include="Windows\GameWindow\GameWindow.cpp" />
     <ClCompile Include="Windows\JoinGame\JoinGame.cpp" />
     <ClCompile Include="Windows\JoinRoom\JoinRoom.cpp" />
@@ -121,25 +120,23 @@
     <ClInclude Include="API\ResponseHandler\ResponseHandler.h" />
     <ClInclude Include="Utils\LobbyData\LobbyData.h" />
     <ClInclude Include="Utils\UserInfo\UserInfo.h" />
+    <QtMoc Include="Windows\UserProfile\UserProfile.h" />
     <QtMoc Include="Windows\Login\Login.h" />
     <QtMoc Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.h" />
     <QtMoc Include="Widgets\PaintWidget\PaintWidget.h" />
     <QtMoc Include="Utils\WindowManager\WindowManager.h" />
     <ClInclude Include="Widgets\CustomQMessageBox\CustomQMessageBox.h" />
     <QtMoc Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.h" />
-    <QtMoc Include="Windows\CreatePrivateRoom\CreatePrivateRoom.h" />
     <QtMoc Include="Windows\GameWindow\GameWindow.h" />
     <QtMoc Include="Windows\JoinGame\JoinGame.h" />
     <QtMoc Include="Windows\JoinRoom\JoinRoom.h" />
     <QtMoc Include="Windows\Lobby\Lobby.h" />
     <QtMoc Include="Windows\Register\Register.h" />
-    <QtMoc Include="Windows\UserProfile\UserProfile.h" />
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.ui" />
     <QtUic Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.ui" />
     <QtUic Include="Widgets\PaintWidget\PaintWidget.ui" />
-    <QtUic Include="Windows\CreatePrivateRoom\CreatePrivateRoom.ui" />
     <QtUic Include="Windows\GameWindow\GameWindow.ui" />
     <QtUic Include="Windows\JoinGame\JoinGame.ui" />
     <QtUic Include="Windows\JoinRoom\JoinRoom.ui" />

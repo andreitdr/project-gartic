@@ -55,9 +55,6 @@
     <ClCompile Include="Windows\Register\Register.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Windows\UserProfile\UserProfile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Windows\JoinGame\JoinGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -65,9 +62,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Windows\GameWindow\GameWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Windows\CreatePrivateRoom\CreatePrivateRoom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utils\LobbyData\LobbyData.cpp">
@@ -80,6 +74,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utils\WindowManager\WindowManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Windows\UserProfile\UserProfile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,12 +122,6 @@
     <QtMoc Include="Windows\Lobby\Lobby.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="Windows\UserProfile\UserProfile.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="Windows\CreatePrivateRoom\CreatePrivateRoom.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="Windows\GameWindow\GameWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -138,6 +129,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Utils\WindowManager\WindowManager.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Windows\UserProfile\UserProfile.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -154,16 +148,10 @@
     <QtUic Include="Windows\JoinRoom\JoinRoom.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="Windows\CreatePrivateRoom\CreatePrivateRoom.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="Windows\JoinGame\JoinGame.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Windows\Lobby\Lobby.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="Windows\UserProfile\UserProfile.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Windows\GameWindow\GameWindow.ui">
@@ -173,6 +161,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Windows\Login\Login.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Windows\UserProfile\UserProfile.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

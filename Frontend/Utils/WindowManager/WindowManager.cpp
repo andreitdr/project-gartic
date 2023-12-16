@@ -6,7 +6,6 @@ WindowManager::WindowManager(QObject* parent) : QObject{ parent },
 	m_joinGameWindow{ new JoinGame() },
 	m_userProfileWindow{ new UserProfile() },
 	m_joinRoomWindow{ new JoinRoom() },
-	m_createPrivateRoomWindow{ new CreatePrivateRoom() },
 	m_lobbyWindow{ new Lobby() },
 	m_gameWindow{ new GameWindow() } 
 {
@@ -20,7 +19,6 @@ WindowManager::~WindowManager()
 	delete m_joinGameWindow;
 	delete m_userProfileWindow;
 	delete m_joinRoomWindow;
-	delete m_createPrivateRoomWindow;
 	delete m_lobbyWindow;
 	delete m_gameWindow;
 }
@@ -37,7 +35,7 @@ void WindowManager::setupConnections()
 	//JoinGame connections
 	connect(m_joinGameWindow, &JoinGame::goToLoginWindow, this, &WindowManager::showLoginWindow);
 	connect(m_joinGameWindow, &JoinGame::goToUserProfileWindow, this, &WindowManager::showUserProfileWindow);
-	connect(m_joinGameWindow, &JoinGame::goToCreatePrivateRoomWindow, this, &WindowManager::showCreatePrivateRoomWindow);
+	connect(m_joinGameWindow, &JoinGame::goToLobbyWindow, this, &WindowManager::showLobbyWindow);
 	connect(m_joinGameWindow, &JoinGame::goToJoinRoomWindow, this, &WindowManager::showJoinRoomWindow);
 
 	//UserProfile connections
@@ -46,10 +44,6 @@ void WindowManager::setupConnections()
 	//JoinRoom connections
 	connect(m_joinRoomWindow, &JoinRoom::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
 	connect(m_joinRoomWindow, &JoinRoom::goToLobbyWindow, this, &WindowManager::showLobbyWindow);
-
-	//CreatePrivateRoom connections
-	connect(m_createPrivateRoomWindow, &CreatePrivateRoom::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
-	connect(m_createPrivateRoomWindow, &CreatePrivateRoom::goToLobbyWindow, this, &WindowManager::showLobbyWindow);
 
 	//Lobby connections
 	connect(m_lobbyWindow, &Lobby::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
@@ -78,11 +72,6 @@ void WindowManager::showUserProfileWindow()
 void WindowManager::showJoinRoomWindow()
 {
 	m_joinRoomWindow->show();
-}
-
-void WindowManager::showCreatePrivateRoomWindow()
-{
-	m_createPrivateRoomWindow->show();
 }
 
 void WindowManager::showLobbyWindow()

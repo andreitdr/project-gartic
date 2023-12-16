@@ -1,7 +1,7 @@
 #include "UserProfile.h"
 
 UserProfile::UserProfile(QWidget *parent)
-	: QWidget(parent)
+	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 }
@@ -9,7 +9,7 @@ UserProfile::UserProfile(QWidget *parent)
 UserProfile::~UserProfile()
 {}
 
-void UserProfile::showEvent(QShowEvent * event)
+void UserProfile::showEvent(QShowEvent* event)
 {
 	QWidget::showEvent(event);
 	updateUserInfoDisplay();
