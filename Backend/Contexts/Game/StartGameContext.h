@@ -1,22 +1,31 @@
 ﻿#pragma once
 #include "../../Utils/JsonConvertor.h"
 #include "../../SqlDatabase/SqlDatabase.h"
+#include "../BaseContext.h"
 
 #include <fstream>
 
 import StartGameRequest;
 import StartGameResponse;
 
-class StartGameContext
+class StartGameContext final : public BaseContext<StartGameRequest, StartGameResponse>
 {
+
 public:
-    static StartGameResponse StartGame(const StartGameRequest& request);
+    StartGameResponse HandleRequest(const StartGameRequest& request) override;
 
 private:
-    static std::vector<std::string> GenerateWords(size_t count);
+    StartGameResponse ApplyChanges(const StartGameRequest& request) override;
+    std::vector<std::string> GenerateWords(size_t count);
 };
 
-StartGameResponse StartGameContext::StartGame(const StartGameRequest& request)
+StartGameResponse StartGameContext::HandleRequest(const StartGameRequest& request)
+{
+    // TODO: Validate data
+    return ApplyChanges(request);
+}
+
+inline StartGameResponse StartGameContext::ApplyChanges(const StartGameRequest& request)
 {
     try
     {
@@ -30,7 +39,6 @@ StartGameResponse StartGameContext::StartGame(const StartGameRequest& request)
         running_game.m_userIds = JsonConvertor::ConvertFromVector<int>(users).dump();
         
         int gameID = SqlDatabase::Insert(running_game);
-
         
         StartGameResponse response = StartGameResponse(gameID, wordsGenerated);
         return response;
@@ -39,7 +47,6 @@ StartGameResponse StartGameContext::StartGame(const StartGameRequest& request)
     {
         return StartGameResponse(e.what());
     }
-    
 }
 
 std::vector<std::string> StartGameContext::GenerateWords(size_t count)

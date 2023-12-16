@@ -89,7 +89,7 @@ public:
     static bool Update(const TypeAsStruct& model);
 
     template <typename TypeAsStruct>
-    static bool Delete(const TypeAsStruct& model);
+    static bool Delete(int id);
     
 };
 
