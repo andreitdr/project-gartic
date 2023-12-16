@@ -15,8 +15,6 @@ import BaseResponse;
 #include "API/User/UserLogin.h"
 #include "API/User/UserRegistration.h"
 
-
-
 #define ENABLETEST 0
 
 using namespace sqlite_orm;
