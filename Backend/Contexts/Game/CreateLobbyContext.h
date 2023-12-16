@@ -1,21 +1,13 @@
 #pragma once
+#include <random>
+
+
 #include "../../SqlDatabase/SqlDatabase.h"
 #include "../../Infrastructure/Lobby/CreateLobbyRequest.h"
 #include "../../Infrastructure/Lobby/CreateLobbyResponse.h"
-
-#include <random>
-
 #include "../BaseContext.h"
 
-/**
- * \brief The minimum lobby ID that can be generated
- */
-#define ID_MIN 100000
 
-/**
- * \brief The maximum lobby ID that can be generated
- */
-#define ID_MAX 9999999
 
 class CreateLobbyContext final : public BaseContext<CreateLobbyRequest, CreateLobbyResponse>
 {
@@ -24,6 +16,16 @@ public:
     CreateLobbyResponse HandleRequest(const CreateLobbyRequest& request) override;
 
 private:
+    enum LobbyConstraints
+    {
+        // Lobby Min value for ID
+        lobby_id_min = 100000,
+
+        // Lobby Max value for ID
+        lobby_id_max = 9999999
+    };
+
+    
     CreateLobbyResponse ApplyChanges(const CreateLobbyRequest& request) override;
     
     bool LobbyExists(int lobbyId);
@@ -34,7 +36,7 @@ inline uint32_t CreateLobbyContext::GenerateLobbyId()
 {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(ID_MIN, ID_MAX);
+    std::uniform_int_distribution<> dis(lobby_id_min, lobby_id_max);
 
     int generatedID = dis(gen);
 
@@ -55,7 +57,7 @@ inline CreateLobbyResponse CreateLobbyContext::ApplyChanges(const CreateLobbyReq
 
     int lobbyId = GenerateLobbyId();
 
-    const std::vector<int> userIds;
+    const std::vector<int> userIds = {userId};
     const std::string str = JsonConvertor::ConvertFromVector(std::move(userIds)).dump();
 
     Lobby lobby = Lobby(-1, lobbyId, userId, std::move(str));
