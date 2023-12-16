@@ -10,9 +10,11 @@ inline crow::json::wvalue CreateLobby(const crow::json::rvalue& request)
 {
     const int userID = request["userId"].i();
 
-    const CreateLobbyRequest createLobbyRequest(userID);
+    const CreateLobbyRequest createLobbyRequest = CreateLobbyRequest(userID);
+    
+    CreateLobbyContext context = CreateLobbyContext();
 
-    const CreateLobbyResponse _response = CreateLobbyContext::CreateLobby(createLobbyRequest);
+    const CreateLobbyResponse _response = context.HandleRequest(createLobbyRequest);
     WJSON response = JsonConvertor::ConvertBaseResponse(_response);
 
     const Lobby lobby = _response.GetLobby();
