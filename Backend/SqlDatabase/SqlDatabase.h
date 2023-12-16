@@ -87,6 +87,9 @@ public:
 
     template <typename TypeAsStruct>
     static bool Update(const TypeAsStruct& model);
+
+    template <typename TypeAsStruct>
+    static bool Delete(const TypeAsStruct& model);
     
 };
 
@@ -200,6 +203,23 @@ bool SqlDatabase::Update(const TypeAsStruct& model)
     {
         k_logger.LogMessage(std::format("Updating {}",typeid(model).name()));
         storage.update(model);
+        return true;
+    }
+    catch(const std::exception& ex)
+    {
+        k_logger.LogError(ex);
+        return false;
+    }
+    
+}
+
+template <typename TypeAsStruct>
+bool SqlDatabase::Delete(int id)
+{
+    try
+    {
+        k_logger.LogMessage(std::format("Deleting {}",typeid(TypeAsStruct).name()));
+        storage.remove<TypeAsStruct>(id);
         return true;
     }
     catch(const std::exception& ex)
