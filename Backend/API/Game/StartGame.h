@@ -1,6 +1,6 @@
-﻿#include <crow.h>
+﻿#pragma once
+#include <crow.h>
 
-#include "../../SqlDatabase/SqlDatabase.h"
 #include "../../Utils/JsonConvertor.h"
 #include "Contexts/Game/StartGameContext.h"
 
@@ -21,16 +21,16 @@ import StartGameResponse;
 
 inline crow::json::wvalue StartGame(const crow::json::rvalue& request)
 {
-    // Create a running game in the database
-
     std::vector<int> playerList;
     for(auto& player : request["PlayerList"])
     {
         playerList.push_back(player.i());
     }
 
-    StartGameRequest _request(playerList);
-    StartGameResponse response = StartGameContext::StartGame(_request);
+    StartGameRequest _request = StartGameRequest(playerList);
+    StartGameContext context = StartGameContext();
+    
+    StartGameResponse response = context.HandleRequest(_request);
 
     crow::json::wvalue json;
     json = JsonConvertor::ConvertBaseResponse(response);
