@@ -25,5 +25,9 @@ UserInfoResponse UserInfoContext::GetUserInfo(const UserInfoRequest& request)
 
 User UserInfoContext::GetUserFromDatabase(const int userID)
 {
-    return SqlDatabase::Get<User>(userID);
+    std::optional<User> user = SqlDatabase::Get<User>(userID);
+    if(!user.has_value())
+        throw std::runtime_error("User does not exist");
+
+    return user.value();
 }

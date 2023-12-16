@@ -3,6 +3,8 @@
 #include <sqlite_orm/sqlite_orm.h>
 #include "../Constants.h"
 
+#include <optional>
+
 //====================
 
 
@@ -83,6 +85,9 @@ public:
     static bool Exists( auto whereClause);
 
     template <typename TypeAsStruct>
+    static bool Exists(int id);
+
+    template <typename TypeAsStruct>
     static bool ExistsModel(const TypeAsStruct& model);
 
     template <typename TypeAsStruct>
@@ -106,9 +111,16 @@ template <typename TypeAsStruct>
 TypeAsStruct SqlDatabase::Get(int id)
 {
     k_logger.LogMessage(std::format("Getting {} with id {}",typeid(TypeAsStruct).name(),id));
-    return storage.get<TypeAsStruct>(id);
+    try
+    {
+        return storage.get<TypeAsStruct>(id);
+    }catch(const std::exception& err)
+    {
+        k_logger.LogError(err);
+        throw err;
+    }
+    
 }
-
 
 template <typename TypeAsStruct>
 std::vector<TypeAsStruct> SqlDatabase::GetAll(auto whereClause)
@@ -161,10 +173,25 @@ bool SqlDatabase::Exists(auto whereClause)
     }catch (std::system_error& err)
     {
         k_logger.LogError(err);
-        throw err;
+        return false;
     }
     
    
+}
+
+template <typename TypeAsStruct>
+bool SqlDatabase::Exists(int id)
+{
+    try
+    {
+        auto result  = storage.get<TypeAsStruct>(id);
+        return true;
+        
+    }catch (std::system_error& err)
+    {
+        k_logger.LogError(err);
+        return false;
+    }
 }
 
 

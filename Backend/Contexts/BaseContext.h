@@ -1,7 +1,6 @@
 ﻿#pragma once
 
-template <class RequestType, class ResponseType>
-requires std::derived_from<ResponseType, BaseResponse>
+template <typename RequestType, typename ResponseType>
 class BaseContext
 {
 public:

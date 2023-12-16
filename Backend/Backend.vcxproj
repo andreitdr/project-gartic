@@ -154,12 +154,15 @@
     <ClInclude Include="API\Game\CreateLobby.h" />
     <ClInclude Include="API\Game\JoinLobby.h" />
     <ClInclude Include="API\Game\LeaveLobby.h" />
+    <ClInclude Include="API\Game\LobbyStatus.h" />
     <ClInclude Include="API\User\GetUserInfo.h" />
     <ClInclude Include="Contexts\BaseContext.h" />
     <ClInclude Include="Contexts\Game\CreateLobbyContext.h" />
     <ClInclude Include="Contexts\Game\JoinLobbyContext.h" />
     <ClInclude Include="Contexts\Game\LeaveLobbyContext.h" />
+    <ClInclude Include="Contexts\Game\Lobby\GetLobbyStatusContext.h" />
     <ClInclude Include="Contexts\Game\StartGameContext.h" />
+    <ClCompile Include="Contexts\Game\Lobby\GetLobbyStatusContext.cpp" />
     <ClCompile Include="Contexts\User\UserInfoContext.cppm" />
     <ClCompile Include="Contexts\User\UserLoginContext.cppm" />
     <ClCompile Include="GameData\GameModule.cppm" />
@@ -170,6 +173,8 @@
     <ClCompile Include="Infrastructure\Lobby\JoinLobbyResponse.cppm" />
     <ClCompile Include="Infrastructure\Lobby\LeaveLobbyRequest.cppm" />
     <ClCompile Include="Infrastructure\Lobby\LeaveLobbyResponse.cppm" />
+    <ClCompile Include="Infrastructure\Lobby\Status\GetLobbyStatusRequest.cpp" />
+    <ClCompile Include="Infrastructure\Lobby\Status\GetLobbyStatusResponse.cpp" />
     <ClCompile Include="Infrastructure\UserInfo\UserInfoRequest.cppm" />
     <ClCompile Include="Infrastructure\UserInfo\UserInfoResponse.cppm" />
     <ClCompile Include="Infrastructure\UserLogin\UserLoginRequest.cppm" />
@@ -189,6 +194,8 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Infrastructure\Lobby\CreateLobbyRequest.h" />
     <ClInclude Include="Infrastructure\Lobby\CreateLobbyResponse.h" />
+    <ClInclude Include="Infrastructure\Lobby\Status\GetLobbyStatusRequest.h" />
+    <ClInclude Include="Infrastructure\Lobby\Status\GetLobbyStatusResponse.h" />
     <ClInclude Include="SqlDatabase\SqlDatabase.h" />
     <ClInclude Include="Utils\JsonConvertor.h" />
   </ItemGroup>

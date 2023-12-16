@@ -8,7 +8,6 @@ export class JoinLobbyResponse final : public BaseResponse
 public:
 	JoinLobbyResponse();
 	JoinLobbyResponse(const std::string& message);
-	JoinLobbyResponse& operator+(const JoinLobbyResponse& other);
 };
 
 JoinLobbyResponse::JoinLobbyResponse()
@@ -22,9 +21,4 @@ JoinLobbyResponse::JoinLobbyResponse(const std::string& message)
 	AppendMessage(message);
 }
 
-JoinLobbyResponse& JoinLobbyResponse::operator+(const JoinLobbyResponse& other)
-{
-	BaseResponse::operator+(other);
-	return *this;
-}
 
