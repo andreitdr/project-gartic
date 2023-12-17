@@ -190,6 +190,7 @@
     <ClInclude Include="Infrastructure\Lobby\CreateLobbyRequest.h" />
     <ClInclude Include="Infrastructure\Lobby\CreateLobbyResponse.h" />
     <ClInclude Include="Infrastructure\Lobby\UpdateLobbyRequest.h" />
+    <ClInclude Include="Infrastructure\Lobby\UpdateLobbyResponse.h" />
     <ClInclude Include="SqlDatabase\SqlDatabase.h" />
     <ClInclude Include="Utils\JsonConvertor.h" />
   </ItemGroup>

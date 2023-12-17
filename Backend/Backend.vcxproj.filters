@@ -58,6 +58,7 @@
     <ClInclude Include="Contexts\BaseContext.h" />
     <ClInclude Include="Contexts\Game\LeaveLobbyContext.h" />
     <ClInclude Include="Infrastructure\Lobby\UpdateLobbyRequest.h" />
+    <ClInclude Include="Infrastructure\Lobby\UpdateLobbyResponse.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="unique_words.txt" />
