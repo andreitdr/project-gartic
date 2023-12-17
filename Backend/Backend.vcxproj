@@ -187,6 +187,7 @@
     <ClInclude Include="API\User\UserLogin.h" />
     <ClInclude Include="API\User\UserRegistration.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="Contexts\Game\UpdateLobbyContext.h" />
     <ClInclude Include="Infrastructure\Lobby\CreateLobbyRequest.h" />
     <ClInclude Include="Infrastructure\Lobby\CreateLobbyResponse.h" />
     <ClInclude Include="Infrastructure\Lobby\UpdateLobbyRequest.h" />
