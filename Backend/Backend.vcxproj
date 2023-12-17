@@ -154,6 +154,7 @@
     <ClInclude Include="API\Game\CreateLobby.h" />
     <ClInclude Include="API\Game\JoinLobby.h" />
     <ClInclude Include="API\Game\LeaveLobby.h" />
+    <ClInclude Include="API\Game\UpdateLobby.h" />
     <ClInclude Include="API\User\GetUserInfo.h" />
     <ClInclude Include="Contexts\BaseContext.h" />
     <ClInclude Include="Contexts\Game\CreateLobbyContext.h" />

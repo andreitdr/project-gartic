@@ -60,6 +60,7 @@
     <ClInclude Include="Infrastructure\Lobby\UpdateLobbyRequest.h" />
     <ClInclude Include="Infrastructure\Lobby\UpdateLobbyResponse.h" />
     <ClInclude Include="Contexts\Game\UpdateLobbyContext.h" />
+    <ClInclude Include="API\Game\UpdateLobby.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="unique_words.txt" />
