@@ -36,6 +36,8 @@
     <ClCompile Include="Infrastructure\UserRegistration\UserRegistrationResponse.cppm" />
     <ClCompile Include="Infrastructure\Lobby\JoinLobbyRequest.cppm" />
     <ClCompile Include="Infrastructure\Lobby\JoinLobbyResponse.cppm" />
+    <ClCompile Include="Infrastructure\Lobby\LeaveLobbyRequest.cppm" />
+    <ClCompile Include="Infrastructure\Lobby\LeaveLobbyResponse.cppm" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API\Game\CreateLobby.h" />
@@ -52,6 +54,10 @@
     <ClInclude Include="API\User\GetUserInfo.h" />
     <ClInclude Include="Contexts\Game\JoinLobbyContext.h" />
     <ClInclude Include="API\Game\JoinLobby.h" />
+    <ClInclude Include="API\Game\LeaveLobby.h" />
+    <ClInclude Include="Contexts\BaseContext.h" />
+    <ClInclude Include="Contexts\Game\LeaveLobbyContext.h" />
+    <ClInclude Include="Infrastructure\Lobby\UpdateLobbyRequest.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="unique_words.txt" />
