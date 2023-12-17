@@ -15,3 +15,14 @@ private:
     UpdateLobbyResponse ValidateData(const UpdateLobbyRequest& request);
     UpdateLobbyResponse ApplyChanges(const UpdateLobbyRequest& request);
 };
+
+inline UpdateLobbyResponse UpdateLobbyContext::HandleRequest(const UpdateLobbyRequest& request)
+{
+    auto response = ValidateData(request);
+    if (!response.GetSuccessState())
+        return response;
+
+    ApplyChanges(request);
+
+    return response;
+}
