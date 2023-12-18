@@ -1,5 +1,6 @@
 #pragma once
 #include <QObject>
+#include <memory>
 #include "../../Windows/Login/Login.h"
 #include "../../Windows/Register/Register.h"
 #include "../../Windows/JoinGame/JoinGame.h"
@@ -13,7 +14,7 @@ class WindowManager : public QObject {
 
 public:
     WindowManager(QObject* parent = nullptr);
-    ~WindowManager();
+    ~WindowManager() = default;
 
 public slots:
     void showLoginWindow();
@@ -25,12 +26,12 @@ public slots:
     void showGameWindow();
 
 private:
-    Login* m_loginWindow;
-    Register* m_registerWindow;
-    JoinGame* m_joinGameWindow;
-    UserProfile* m_userProfileWindow;
-    JoinRoom* m_joinRoomWindow;
-    Lobby* m_lobbyWindow;
-    GameWindow* m_gameWindow;
+    std::unique_ptr<Login> m_loginWindow;
+    std::unique_ptr<Register> m_registerWindow;
+    std::unique_ptr<JoinGame> m_joinGameWindow;
+    std::unique_ptr<UserProfile> m_userProfileWindow;
+    std::unique_ptr<JoinRoom> m_joinRoomWindow;
+    std::unique_ptr<Lobby> m_lobbyWindow;
+    std::unique_ptr<GameWindow> m_gameWindow;
     void setupConnections();
 };

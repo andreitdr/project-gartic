@@ -1,52 +1,41 @@
 #include "WindowManager.h"
 
 WindowManager::WindowManager(QObject* parent) : QObject{ parent },
-	m_loginWindow{ new Login() },
-	m_registerWindow{ new Register() },
-	m_joinGameWindow{ new JoinGame() },
-	m_userProfileWindow{ new UserProfile() },
-	m_joinRoomWindow{ new JoinRoom() },
-	m_lobbyWindow{ new Lobby() },
-	m_gameWindow{ new GameWindow() } 
+	m_loginWindow{ std::make_unique<Login>() },
+	m_registerWindow{ std::make_unique<Register>() },
+	m_joinGameWindow{ std::make_unique <JoinGame>() },
+	m_userProfileWindow{ std::make_unique <UserProfile>() },
+	m_joinRoomWindow{ std::make_unique <JoinRoom>() },
+	m_lobbyWindow{ std::make_unique <Lobby>() },
+	m_gameWindow{ std::make_unique <GameWindow>() }
 {
 	setupConnections();
-}
-
-WindowManager::~WindowManager() 
-{
-	delete m_loginWindow;
-	delete m_registerWindow;
-	delete m_joinGameWindow;
-	delete m_userProfileWindow;
-	delete m_joinRoomWindow;
-	delete m_lobbyWindow;
-	delete m_gameWindow;
 }
 
 void WindowManager::setupConnections()
 {
 	//Login connections
-	connect(m_loginWindow, &Login::goToRegister, this, &WindowManager::showRegisterWindow);
-	connect(m_loginWindow,&Login::goToJoinGame, this, &WindowManager::showJoinGameWindow);
+	connect(m_loginWindow.get(), &Login::goToRegister, this, &WindowManager::showRegisterWindow);
+	connect(m_loginWindow.get(), &Login::goToJoinGame, this, &WindowManager::showJoinGameWindow);
 
 	//Register connections
-	connect(m_registerWindow, &Register::goToLogin, this, &WindowManager::showLoginWindow);
+	connect(m_registerWindow.get(), &Register::goToLogin, this, &WindowManager::showLoginWindow);
 
 	//JoinGame connections
-	connect(m_joinGameWindow, &JoinGame::goToLoginWindow, this, &WindowManager::showLoginWindow);
-	connect(m_joinGameWindow, &JoinGame::goToUserProfileWindow, this, &WindowManager::showUserProfileWindow);
-	connect(m_joinGameWindow, &JoinGame::goToLobbyWindow, this, &WindowManager::showLobbyWindow);
-	connect(m_joinGameWindow, &JoinGame::goToJoinRoomWindow, this, &WindowManager::showJoinRoomWindow);
+	connect(m_joinGameWindow.get(), &JoinGame::goToLoginWindow, this, &WindowManager::showLoginWindow);
+	connect(m_joinGameWindow.get(), &JoinGame::goToUserProfileWindow, this, &WindowManager::showUserProfileWindow);
+	connect(m_joinGameWindow.get(), &JoinGame::goToLobbyWindow, this, &WindowManager::showLobbyWindow);
+	connect(m_joinGameWindow.get(), &JoinGame::goToJoinRoomWindow, this, &WindowManager::showJoinRoomWindow);
 
 	//UserProfile connections
-	connect(m_userProfileWindow, &UserProfile::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
+	connect(m_userProfileWindow.get(), &UserProfile::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
 
 	//JoinRoom connections
-	connect(m_joinRoomWindow, &JoinRoom::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
-	connect(m_joinRoomWindow, &JoinRoom::goToLobbyWindow, this, &WindowManager::showLobbyWindow);
+	connect(m_joinRoomWindow.get(), &JoinRoom::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
+	connect(m_joinRoomWindow.get(), &JoinRoom::goToLobbyWindow, this, &WindowManager::showLobbyWindow);
 
 	//Lobby connections
-	connect(m_lobbyWindow, &Lobby::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
+	connect(m_lobbyWindow.get(), &Lobby::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
 }
 
 void WindowManager::showLoginWindow()
