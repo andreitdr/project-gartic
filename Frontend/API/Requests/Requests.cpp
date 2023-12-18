@@ -25,6 +25,29 @@ cpr::Response Requests::getUserInfo(const int userId)
     return SendRequest(ApiEndpoints::GET_USER_INFO, payload, "GET");
 }
 
+cpr::Response Requests::createLobby(const int userId)
+{
+    crow::json::wvalue payload;
+    payload["userId"] = userId;
+    return SendRequest(ApiEndpoints::CREATE_LOBBY, payload, "POST");
+}
+
+cpr::Response Requests::joinLobby(const int userId, const int lobbyId)
+{
+    crow::json::wvalue payload;
+    payload["lobbyId"] = lobbyId;
+    payload["userId"] = userId;
+    return SendRequest(ApiEndpoints::JOIN_LOBBY, payload, "POST");
+}
+
+cpr::Response Requests::leaveLobby(const int userId, const int lobbyId)
+{
+    crow::json::wvalue payload;
+    payload["lobbyId"] = lobbyId;
+    payload["userId"] = userId;
+    return SendRequest(ApiEndpoints::LEAVE_LOBBY, payload, "POST");
+}
+
 cpr::Response Requests::SendRequest(const std::string& url, const crow::json::wvalue& payload, const std::string& method)
 {
     std::string json_payload = payload.dump();
