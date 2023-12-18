@@ -1,4 +1,4 @@
-#include "ResponseHandler.h"
+﻿#include "ResponseHandler.h"
 
 void ResponseHandler::processLoginResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const UserInfo&)> callback)
 {
@@ -62,4 +62,72 @@ void ResponseHandler::processGetUserInfoResponse(const crow::json::rvalue& respo
 	else {
 		callback(false, message, UserInfo());
 	}
+}
+
+void ResponseHandler::processCreateLobbyResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const LobbyData&)> callback)
+{
+    if (!response) {
+        callback(false, "Invalid response format", LobbyData());
+        return;
+    }
+
+    bool success = response["ResponseState"].b();
+    std::string message;
+        if (response["ResponseMessage"].size() > 0)
+            message = response["ResponseMessage"][0].s();
+        else
+    message = "";
+
+    if (success) {
+        LobbyData lobbyData;
+        lobbyData.SetLobbyID(response["Id"].i());
+        int userId = response["LeaderId"].i();
+        UserInfo admin = UserInfo::GetUserInfoFromServer(userId);
+        lobbyData.SetLobbyAdmin(admin);
+
+        auto& playerListJson = response["PlayerList"];
+        for (const auto& playerIdJson : playerListJson) {
+            UserInfo player = UserInfo::GetUserInfoFromServer(playerIdJson.i());
+            lobbyData.AddUser(player);
+        }
+
+        callback(true, message, lobbyData);
+    }
+    else {
+        callback(false, message, LobbyData());
+    }
+}
+
+void ResponseHandler::processJoinLobbyResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&)> callback)
+{
+    if (!response) {
+        callback(false, "Invalid response format");
+        return;
+    }
+
+    bool success = response["ResponseState"].b();
+    std::string message;
+    if (response["ResponseMessage"].size() > 0)
+        message = response["ResponseMessage"][0].s();
+    else
+        message = "";
+
+    callback(success, message);
+}
+
+void ResponseHandler::processLeaveLobbyResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&)> callback)
+{
+    if (!response) {
+        callback(false, "Invalid response format");
+        return;
+    }
+
+    bool success = response["ResponseState"].b();
+    std::string message;
+    if (response["ResponseMessage"].size() > 0)
+        message = response["ResponseMessage"][0].s();
+    else
+        message = "";
+
+    callback(success, message);
 }
