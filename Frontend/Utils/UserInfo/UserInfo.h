@@ -4,11 +4,6 @@
 class UserInfo
 {
 public:
-    static UserInfo& getInstance() 
-    {
-        static UserInfo instance;
-        return instance;
-    }
     UserInfo();
     UserInfo(const std::string& username, const std::string& givenName, const std::string& surname, const int userId);
     UserInfo(const UserInfo& other);

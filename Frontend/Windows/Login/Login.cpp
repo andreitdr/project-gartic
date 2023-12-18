@@ -41,7 +41,7 @@ void Login::on_pushButton_login_clicked()
             {
                 if (success)
                 {
-                    UserInfo& user = UserInfo::getInstance();
+                    CurrentUser& user = CurrentUser::getInstance();
                     user.setUserId(userInfo.getUserId());
                     user.setUsername(userInfo.getUsername());
                     user.setGivenName(userInfo.getGivenName());

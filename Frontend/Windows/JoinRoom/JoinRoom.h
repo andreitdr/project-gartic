@@ -2,7 +2,7 @@
 
 #include <QMainWindow>
 #include "ui_JoinRoom.h"
-#include "../../Utils/UserInfo/UserInfo.h"
+#include "../../Utils/CurrentUser/CurrentUser.h"
 
 class JoinRoom : public QMainWindow
 {
@@ -14,7 +14,6 @@ public:
 
 private:
 	Ui::JoinRoomClass ui;
-	UserInfo m_user;
 
 signals:
 	void goToJoinGameWindow();

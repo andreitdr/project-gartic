@@ -17,7 +17,7 @@ void UserProfile::showEvent(QShowEvent* event)
 
 void UserProfile::updateUserInfoDisplay()
 {
-	UserInfo& user = UserInfo::getInstance();
+	CurrentUser& user = CurrentUser::getInstance();
 	QString username = QString::fromUtf8(user.getUsername().c_str());
 	QString surname = QString::fromUtf8(user.getSurname().c_str());
 	QString givenName = QString::fromUtf8(user.getGivenName().c_str());

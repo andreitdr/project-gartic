@@ -17,7 +17,7 @@ void JoinGame::on_pushButton_userProfile_clicked()
 
 void JoinGame::updateUserInfoDisplay()
 {
-	UserInfo& user = UserInfo::getInstance();
+	CurrentUser& user = CurrentUser::getInstance();
 	QString username = QString::fromUtf8(user.getUsername().c_str());
 	ui.lineEdit_usernameDisplay->setText("@" + username);
 }

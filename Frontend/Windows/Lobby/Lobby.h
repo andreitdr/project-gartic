@@ -4,7 +4,7 @@
 #include "ui_Lobby.h"
 #include "../../Widgets/LobbyPlayerInfoWidget/LobbyPlayerInfoWidget.h"
 #include "../../Widgets/CustomQMessageBox/CustomQMessageBox.h"
-#include "../../Utils/UserInfo/UserInfo.h"
+#include "../../Utils/CurrentUser/CurrentUser.h"
 #include "../../Utils/LobbyData/LobbyData.h"
 #include <QClipboard>
 #include <QCloseEvent>
@@ -22,7 +22,6 @@ protected:
 
 private:
 	Ui::LobbyClass ui;
-	UserInfo m_user;
 	LobbyData m_lobbyData;
 	void addPlayerToLobbyListView(const UserInfo& userInfo);
 	void updateLobbyId();

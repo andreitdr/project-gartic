@@ -2,7 +2,7 @@
 
 #include <QMainWindow>
 #include "ui_UserProfile.h"
-#include "../../Utils/UserInfo/UserInfo.h"
+#include "../../Utils/CurrentUser/CurrentUser.h"
 
 class UserProfile : public QMainWindow
 {

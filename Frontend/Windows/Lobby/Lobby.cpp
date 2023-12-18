@@ -56,7 +56,7 @@ void Lobby::addPlayerToLobbyListView(const UserInfo& userInfo)
 
 void Lobby::hideOrShowStartGameButton()
 {
-    if((m_lobbyData.GetLobbyAdmin().getUsername()!=m_user.getUsername())||(ui.listWidget_players->count()==1))
+    if((m_lobbyData.GetLobbyAdmin().getUsername()!=CurrentUser::getInstance().getUsername()) || (ui.listWidget_players->count() == 1))
     {
         ui.pushButton_startGame->setEnabled(false);
         ui.pushButton_startGame->setStyleSheet("QPushButton { background-color: rgb(255, 201, 108); color:grey; }");

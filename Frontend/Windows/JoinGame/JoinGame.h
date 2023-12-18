@@ -2,7 +2,7 @@
 
 #include <QMainWindow>
 #include "ui_JoinGame.h"
-#include "../../Utils/UserInfo/UserInfo.h"
+#include "../../Utils/CurrentUser/CurrentUser.h"
 
 class JoinGame : public QMainWindow
 {
