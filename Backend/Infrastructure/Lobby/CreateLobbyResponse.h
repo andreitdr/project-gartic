@@ -19,6 +19,7 @@ private:
 
 inline CreateLobbyResponse::CreateLobbyResponse(const Lobby& lobby) : m_lobby{ lobby }
 {
+    m_successState = true;
 }
 
 inline CreateLobbyResponse::CreateLobbyResponse(const std::string& message)
