@@ -48,6 +48,13 @@ cpr::Response Requests::leaveLobby(const int userId, const int lobbyId)
     return SendRequest(ApiEndpoints::LEAVE_LOBBY, payload, "POST");
 }
 
+cpr::Response Requests::lobbyStatus(const int lobbyId)
+{
+    crow::json::wvalue payload;
+    payload["lobbyId"] = lobbyId;
+    return SendRequest(ApiEndpoints::LOBBY_STATUS, payload, "GET");
+}
+
 cpr::Response Requests::SendRequest(const std::string& url, const crow::json::wvalue& payload, const std::string& method)
 {
     std::string json_payload = payload.dump();

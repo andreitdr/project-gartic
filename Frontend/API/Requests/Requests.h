@@ -12,6 +12,7 @@ public:
     static cpr::Response createLobby(const int userId);
     static cpr::Response joinLobby(const int userId, const int lobbyId);
     static cpr::Response leaveLobby(const int userId, const int lobbyId);
+    static cpr::Response lobbyStatus(const int lobbyId);
 private:
     static cpr::Response SendRequest(const std::string& url, const crow::json::wvalue& payload, const std::string& method);
 };
