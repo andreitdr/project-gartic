@@ -2,7 +2,6 @@
 
 #include <QMainWindow>
 #include "ui_JoinRoom.h"
-#include "../../Utils/CurrentUser/CurrentUser.h"
 
 class JoinRoom : public QMainWindow
 {

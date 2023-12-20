@@ -1,4 +1,5 @@
 ﻿#include "ResponseHandler.h"
+#include "../../Utils/CurrentUser/CurrentUser.h"
 
 void ResponseHandler::processLoginResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const UserInfo&)> callback)
 {
@@ -82,7 +83,12 @@ void ResponseHandler::processCreateLobbyResponse(const crow::json::rvalue& respo
         LobbyData lobbyData;
         lobbyData.SetLobbyID(response["Lobby"]["Id"].i());
         int userId = response["Lobby"]["LeaderId"].i();
-        UserInfo admin = UserInfo::GetUserInfoFromServer(userId);
+        UserInfo admin;
+        CurrentUser& user = CurrentUser::getInstance();
+        admin.setUsername(user.getUsername());
+        admin.setGivenName(user.getGivenName());
+        admin.setSurname(user.getSurname());
+        admin.setUserId(userId);
         lobbyData.SetLobbyAdmin(admin);
 
         auto& playerListJson = response["Lobby"]["PlayerList"];
