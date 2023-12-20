@@ -1,6 +1,5 @@
 ﻿#include "Register.h"
-#include "../../API/Requests/Requests.h"
-#include "../../API/ResponseHandler/ResponseHandler.h"
+#include "../../API/Contexts/Contexts.h"
 
 Register::Register(QWidget *parent)
 	: QMainWindow(parent)
@@ -17,7 +16,8 @@ void Register::on_pushButton_goToLogin_clicked()
     this->hide();
 }
 
-void Register::on_pushButton_register_clicked() {
+void Register::on_pushButton_register_clicked() 
+{
     std::string username = ui.lineEdit_username->text().toUtf8().constData();
     std::string password = ui.lineEdit_password->text().toUtf8().constData();
     std::string surname = ui.lineEdit_surname->text().toUtf8().constData();
@@ -43,12 +43,9 @@ void Register::on_pushButton_register_clicked() {
         return;
     }
 
-    auto response = Requests::RegisterUser(surname, given_name, username, password);
-    if (response.status_code == 200) {
-        auto response_json = crow::json::load(response.text);
-
-        ResponseHandler handler;
-        handler.processRegisterResponse(response_json, [this](bool success, const std::string& message, int new_user_id) {
+    Contexts contexts;
+    contexts.registerUser(surname, given_name, username, password, [this](bool success, const std::string& message)
+        {
             if (success) {
                 showSuccessCustomMessageBox(
                     "Gartic - Register",
@@ -78,14 +75,5 @@ void Register::on_pushButton_register_clicked() {
                 );
                 return;
             }
-            });
-    }
-    else {
-        showErrorCustomMessageBox(
-            "Gartic - Register",
-            "Something went wrong. Please try again later!",
-            "Ok",
-            []() {}
-        );
-    }
+        });
 }

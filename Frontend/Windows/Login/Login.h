@@ -3,9 +3,6 @@
 #include <QMainWindow>
 #include "ui_Login.h"
 #include "../../Widgets/CustomQMessageBox/CustomQMessageBox.h"
-#include "../../Utils/CurrentUser/CurrentUser.h"
-#include "../../API/Requests/Requests.h"
-#include "../../API/ResponseHandler/ResponseHandler.h"
 #include <qstring.h>
 
 class Login : public QMainWindow

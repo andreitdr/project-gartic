@@ -1,4 +1,6 @@
 #include "JoinGame.h"
+#include "../../Utils/CurrentUser/CurrentUser.h"
+#include "../../API/Contexts/Contexts.h"
 
 JoinGame::JoinGame(QWidget *parent)
 	: QMainWindow(parent)

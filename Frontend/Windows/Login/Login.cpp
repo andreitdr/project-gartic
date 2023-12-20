@@ -1,4 +1,5 @@
 #include "Login.h"
+#include "../../API/Contexts/Contexts.h"
 
 Login::Login(QWidget *parent)
 	: QMainWindow(parent)
@@ -31,71 +32,51 @@ void Login::on_pushButton_login_clicked()
         return;
     }
 
-    auto response = Requests::LoginUser(username, password);
-    if (response.status_code == 200)
-    {
-        auto response_json = crow::json::load(response.text);
-
-        ResponseHandler handler;
-        handler.processLoginResponse(response_json, [this](bool success, const std::string& message, const UserInfo& userInfo)
+    Contexts contexts;
+    contexts.loginUser(username, password, [this](bool success, const std::string& message)
+        {
+            if (success)
             {
-                if (success)
-                {
-                    CurrentUser& user = CurrentUser::getInstance();
-                    user.setUserId(userInfo.getUserId());
-                    user.setUsername(userInfo.getUsername());
-                    user.setGivenName(userInfo.getGivenName());
-                    user.setSurname(userInfo.getSurname());
-                    showSuccessCustomMessageBox(
-                        "Gartic - Login",
-                        "Successful login. You can play now!",
-                        "Play Now",
-                        [this]() {
-                            emit goToJoinGame();
-                            this->hide();
-                        }
-                    );
-                }
-                else if (message == "Inexistent user")
-                {
-                    showErrorCustomMessageBox(
-                        "Gartic - Login",
-                        "User doesn't exist. Please register!",
-                        "Register now",
-                        [this]() {
-                            emit goToRegister();
-                            this->hide();
-                        }
-                    );
-                }
-                else if (message == "Incorrect password")
-                {
-                    showErrorCustomMessageBox(
-                        "Gartic - Login",
-                        "Password is incorrect. Please try again!",
-                        "Try Again",
-                        []() {
-                        }
-                    );
-                }
-                else
-                {
-                    showErrorCustomMessageBox(
-                        "Gartic - Login",
-                        "Something went wrong. Please try again later!",
-                        "Ok",
-                        []() {}
-                    );
-                }
-            });
-    }
-    else
-    {
-        showErrorCustomMessageBox(
-            "Gartic - Login",
-            "Something went wrong. Please try again later!",
-            "Ok",
-            []() {}
-        );
-    }
+                showSuccessCustomMessageBox(
+                    "Gartic - Login",
+                    "Successful login. You can play now!",
+                    "Play Now",
+                    [this]() {
+                        emit goToJoinGame();
+                        this->hide();
+                    }
+                );
+            }
+            else if (message == "Inexistent user")
+            {
+                showErrorCustomMessageBox(
+                    "Gartic - Login",
+                    "User doesn't exist. Please register!",
+                    "Register now",
+                    [this]() {
+                        emit goToRegister();
+                        this->hide();
+                    }
+                );
+            }
+            else if (message == "Incorrect password")
+            {
+                showErrorCustomMessageBox(
+                    "Gartic - Login",
+                    "Password is incorrect. Please try again!",
+                    "Try Again",
+                    []() {
+                    }
+                );
+            }
+            else
+            {
+                showErrorCustomMessageBox(
+                    "Gartic - Login",
+                    "Something went wrong. Please try again later!",
+                    "Ok",
+                    []() {}
+                );
+            }
+        });
 }

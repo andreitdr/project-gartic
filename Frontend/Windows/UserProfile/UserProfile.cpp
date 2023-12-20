@@ -1,4 +1,6 @@
 #include "UserProfile.h"
+#include "../../Utils/CurrentUser/CurrentUser.h"
+#include "../../API/Contexts/Contexts.h"
 
 UserProfile::UserProfile(QWidget *parent)
 	: QMainWindow(parent)
