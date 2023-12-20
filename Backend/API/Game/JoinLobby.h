@@ -16,7 +16,7 @@ inline crow::json::wvalue JoinLobby(const crow::json::rvalue& request)
     const int userId = request["userId"].i();
 
     const JoinLobbyRequest joinLobbyRequest(lobbyId, userId);
-    JoinLobbyContext joinLobbyContext{};
+    JoinLobbyContext joinLobbyContext = JoinLobbyContext();
     const JoinLobbyResponse joinLobbyResponse = joinLobbyContext.HandleRequest(joinLobbyRequest);
 
     WJSON json = JsonConvertor::ConvertBaseResponse(joinLobbyResponse);

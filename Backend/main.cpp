@@ -1,5 +1,5 @@
-﻿import Config;
-import BaseResponse;
+﻿import BaseResponse;
+
 #include <string>
 #include <tuple>
 
@@ -11,6 +11,7 @@ import BaseResponse;
 #include "API/Game/JoinLobby.h"
 #include "API/Game/LeaveLobby.h"
 #include "API/Game/UpdateLobby.h"
+#include "API/Game/LobbyStatus.h"
 
 #include "API/User/GetUserInfo.h"
 #include "API/User/UserLogin.h"
@@ -22,11 +23,11 @@ using namespace sqlite_orm;
 
 void tests()
 {
-    ConfigFile config_file("./test.ini");
-    config_file.WriteConfig("key1", "value");
-    config_file.WriteConfig("key1", "value2");
-    config_file.WriteConfig("key2", "value3");
-    std::cout << config_file.ReadConfig("key3");
+    // ConfigFile config_file("./test.ini");
+    // config_file.WriteConfig("key1", "value");
+    // config_file.WriteConfig("key1", "value2");
+    // config_file.WriteConfig("key2", "value3");
+    // std::cout << config_file.ReadConfig("key3");
 }
 
 int main()
@@ -39,6 +40,23 @@ int main()
     crow::SimpleApp app;
 
     k_logger.LogMessage("Starting server...", "MAIN");
+
+    CROW_ROUTE(app, "/game/lobby_status").methods("GET"_method)([](const crow::request& request)
+    {
+       const auto json = crow::json::load(request.body);
+        if (!json)
+        {
+            BaseResponse response;
+            response.m_successState = false;
+            response.AppendMessage("The json was in an incorrect format");
+
+            auto responseJson = JsonConvertor::ConvertBaseResponse(response);
+            return crow::response(responseJson);
+        }
+
+        auto response = GetLobbyStatus(json);
+        return crow::response(response); 
+    });
 
     /*
      *  Test route. Will be removed later.

@@ -24,7 +24,7 @@ inline JoinLobbyResponse JoinLobbyContext::HandleRequest(const JoinLobbyRequest&
 	if(!response)
 		return response;
 
-	response = response + ApplyChanges(request);
+	response = ApplyChanges(request);
 
 	return response;
 }

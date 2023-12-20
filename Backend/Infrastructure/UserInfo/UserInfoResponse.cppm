@@ -14,6 +14,7 @@ private:
 
 UserInfoResponse::UserInfoResponse(const User& user) : m_user{user}
 {
+    m_successState = true;
 }
 
 User UserInfoResponse::GetUser() const
