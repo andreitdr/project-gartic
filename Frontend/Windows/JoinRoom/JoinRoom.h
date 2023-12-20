@@ -1,7 +1,7 @@
 #pragma once
-
 #include <QMainWindow>
 #include "ui_JoinRoom.h"
+#include "../../API/Contexts/Contexts.h"
 
 class JoinRoom : public QMainWindow
 {
@@ -13,6 +13,7 @@ public:
 
 private:
 	Ui::JoinRoomClass ui;
+	Contexts contexts;
 
 signals:
 	void goToJoinGameWindow();

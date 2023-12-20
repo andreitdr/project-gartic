@@ -4,6 +4,7 @@ Lobby::Lobby(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+    contexts = Contexts();
 }
 
 Lobby::~Lobby()
@@ -24,14 +25,9 @@ void Lobby::closeEvent(QCloseEvent * event)
     );
 
     if (shouldClose)
-    {
-        emit goToJoinGameWindow();
-        this->hide();
-    }
+        leaveLobby();
     else 
-    {
         event->ignore();
-    }
 }
 
 void Lobby::updateActivePlayersNumber()
@@ -77,6 +73,26 @@ void Lobby::updateLobbyStatus()
     hideOrShowStartGameButton();
 }
 
+void Lobby::leaveLobby()
+{
+    int lobbyId = m_lobbyData.GetLobbyID();
+    int userId = CurrentUser::getInstance().getUserId();
+    contexts.leaveLobby(userId, lobbyId, [this](bool success, const std::string& message) {
+        if (success) {
+			emit goToJoinGameWindow();
+			this->hide();
+		}
+        else {
+            showErrorCustomMessageBox(
+                "Gartic - Leave Lobby",
+                "Something went wrong. Please try again later!",
+                "Ok",
+                []() {}
+            );
+		}
+	});
+}
+
 void Lobby::updateLobbyId()
 {
     int lobbyId = m_lobbyData.GetLobbyID();
@@ -120,10 +136,7 @@ void Lobby::on_pushButton_exitLobby_clicked()
     );
 
     if (shouldClose)
-    {
-        emit goToJoinGameWindow();
-        this->hide();
-    }
+        leaveLobby();
 }
 
 void Lobby::on_pushButton_copyLobbyId_clicked()

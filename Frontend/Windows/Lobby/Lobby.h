@@ -6,6 +6,7 @@
 #include "../../Widgets/CustomQMessageBox/CustomQMessageBox.h"
 #include "../../Utils/CurrentUser/CurrentUser.h"
 #include "../../Utils/LobbyData/LobbyData.h"
+#include "../../API/Contexts/Contexts.h"
 #include <QClipboard>
 #include <QCloseEvent>
 
@@ -23,6 +24,7 @@ protected:
 private:
 	Ui::LobbyClass ui;
 	LobbyData m_lobbyData;
+	Contexts contexts;
 	void addPlayerToLobbyListView(const UserInfo& userInfo);
 	void updateLobbyId();
 	void updateActivePlayersNumber();
@@ -30,6 +32,7 @@ private:
 	void updateLobbyPlayerListView();
 	void hideOrShowStartGameButton();
 	void updateLobbyStatus();
+	void leaveLobby();
 
 private slots:
 	virtual void on_pushButton_startGame_clicked();
