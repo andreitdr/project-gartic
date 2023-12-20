@@ -5,6 +5,8 @@ Lobby::Lobby(QWidget *parent)
 {
 	ui.setupUi(this);
     contexts = Contexts();
+    m_timer = new QTimer(this);
+    connect(m_timer, &QTimer::timeout, this, &Lobby::updateLobbyData);
 }
 
 Lobby::~Lobby()
@@ -28,6 +30,20 @@ void Lobby::closeEvent(QCloseEvent * event)
         leaveLobby();
     else 
         event->ignore();
+}
+
+void Lobby::showEvent(QShowEvent* event)
+{
+    QMainWindow::showEvent(event);
+    if (m_timer && !m_timer->isActive())
+        m_timer->start(2000);
+}
+
+void Lobby::hideEvent(QHideEvent* event)
+{
+    QMainWindow::hideEvent(event);
+    if (m_timer && m_timer->isActive())
+        m_timer->stop();
 }
 
 void Lobby::updateActivePlayersNumber()
@@ -93,6 +109,18 @@ void Lobby::leaveLobby()
 	});
 }
 
+void Lobby::updateLobbyData()
+{
+    int lobbyId = m_lobbyData.GetLobbyID();
+    contexts.lobbyStatus(lobbyId, [this](bool success, const std::string& message, const LobbyData& lobbyData) {
+        if (success) {
+            if(!(lobbyData==m_lobbyData))
+			m_lobbyData = lobbyData;
+			updateLobbyStatus();
+		}
+	});
+}
+
 void Lobby::updateLobbyId()
 {
     int lobbyId = m_lobbyData.GetLobbyID();
@@ -143,6 +171,11 @@ void Lobby::on_pushButton_copyLobbyId_clicked()
 {
 	QClipboard *clipboard = QApplication::clipboard();
 	clipboard->setText(ui.lineEdit_viewLobbyId->text());
+}
+
+void Lobby::getLobbyId(int lobbyId)
+{
+    m_lobbyData.SetLobbyID(lobbyId);
 }
 
 void Lobby::getLobbyData(const LobbyData& lobbyData)

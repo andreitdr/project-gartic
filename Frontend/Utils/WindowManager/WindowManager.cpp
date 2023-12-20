@@ -34,6 +34,7 @@ void WindowManager::setupConnections()
 	//JoinRoom connections
 	connect(m_joinRoomWindow.get(), &JoinRoom::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
 	connect(m_joinRoomWindow.get(), &JoinRoom::goToLobbyWindow, this, &WindowManager::showLobbyWindow);
+	connect(m_joinRoomWindow.get(), &JoinRoom::sendLobbyId, m_lobbyWindow.get(), &Lobby::getLobbyId);
 
 	//Lobby connections
 	connect(m_lobbyWindow.get(), &Lobby::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);

@@ -16,12 +16,13 @@ void JoinRoom::on_pushButton_JoinPrivateRoom_clicked()
 {
 	int lobbyId = ui.lineEdit_enterCode->text().toInt();
 	int userId = CurrentUser::getInstance().getUserId();
-	contexts.joinLobby(userId, lobbyId, [this](bool success, const std::string& message)
+	contexts.joinLobby(userId, lobbyId, [this,lobbyId](bool success, const std::string& message)
 		{
 			QString qmessage = QString::fromUtf8(message.c_str());
 			if (success)
 			{
 				emit goToLobbyWindow();
+				emit sendLobbyId(lobbyId);
 				this->hide();
 			}
 			else

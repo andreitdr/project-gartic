@@ -18,6 +18,7 @@ private:
 signals:
 	void goToJoinGameWindow();
 	void goToLobbyWindow();
+	void sendLobbyId(int lobbyId);
 
 private slots:
 	virtual void on_pushButton_goBack_clicked();

@@ -17,6 +17,14 @@ public:
 	void AddUser(UserInfo user);
 	void RemoveUser(UserInfo user);
 	std::vector<UserInfo> GetUsers() const;
+
+	LobbyData(const LobbyData& other);
+	LobbyData& operator=(const LobbyData& other);
+
+	LobbyData(LobbyData&& other) noexcept;
+	LobbyData& operator=(LobbyData&& other) noexcept;
+
+	bool operator==(const LobbyData& other) const;
 private:
 	int m_lobbyID;
 	UserInfo m_lobbyAdmin;
