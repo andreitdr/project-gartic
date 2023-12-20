@@ -132,6 +132,12 @@ void Lobby::on_pushButton_copyLobbyId_clicked()
 	clipboard->setText(ui.lineEdit_viewLobbyId->text());
 }
 
+void Lobby::getLobbyData(const LobbyData& lobbyData)
+{
+    m_lobbyData = lobbyData;
+	updateLobbyStatus();
+}
+
 void Lobby::on_pushButton_startGame_clicked()
 {   
 }

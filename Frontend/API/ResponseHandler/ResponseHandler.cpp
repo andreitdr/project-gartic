@@ -80,12 +80,12 @@ void ResponseHandler::processCreateLobbyResponse(const crow::json::rvalue& respo
 
     if (success) {
         LobbyData lobbyData;
-        lobbyData.SetLobbyID(response["Id"].i());
-        int userId = response["LeaderId"].i();
+        lobbyData.SetLobbyID(response["Lobby"]["Id"].i());
+        int userId = response["Lobby"]["LeaderId"].i();
         UserInfo admin = UserInfo::GetUserInfoFromServer(userId);
         lobbyData.SetLobbyAdmin(admin);
 
-        auto& playerListJson = response["PlayerList"];
+        auto& playerListJson = response["Lobby"]["PlayerList"];
         for (const auto& playerIdJson : playerListJson) {
             UserInfo player = UserInfo::GetUserInfoFromServer(playerIdJson.i());
             lobbyData.AddUser(player);
@@ -148,12 +148,12 @@ void ResponseHandler::processLobbyStatusResponse(const crow::json::rvalue& respo
 
     if (success) {
 		LobbyData lobbyData;
-		lobbyData.SetLobbyID(response["Id"].i());
-		int userId = response["LeaderId"].i();
+		lobbyData.SetLobbyID(response["Lobby"]["Id"].i());
+		int userId = response["Lobby"]["LeaderId"].i();
 		UserInfo admin = UserInfo::GetUserInfoFromServer(userId);
 		lobbyData.SetLobbyAdmin(admin);
 
-		auto& playerListJson = response["PlayerList"];
+		auto& playerListJson = response["Lobby"]["PlayerList"];
         for (const auto& playerIdJson : playerListJson) {
 			UserInfo player = UserInfo::GetUserInfoFromServer(playerIdJson.i());
 			lobbyData.AddUser(player);

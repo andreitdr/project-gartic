@@ -1,6 +1,6 @@
 #include "JoinGame.h"
 #include "../../Utils/CurrentUser/CurrentUser.h"
-#include "../../API/Contexts/Contexts.h"
+#include "../../Widgets/CustomQMessageBox/CustomQMessageBox.h"
 
 JoinGame::JoinGame(QWidget *parent)
 	: QMainWindow(parent)
@@ -32,8 +32,26 @@ void JoinGame::showEvent(QShowEvent* event)
 
 void JoinGame::on_pushButton_createPrivateGame_clicked()
 {
-	emit goToLobbyWindow();
-	this->hide();
+	Contexts contexts;
+	contexts.createLobby(CurrentUser::getInstance().getUserId(), [this](bool success, const std::string& message, const LobbyData& lobbyData)
+		{
+			if (success)
+			{
+				emit sendLobbyData(lobbyData);
+				emit goToLobbyWindow();
+				this->hide();
+			}
+			else
+			{
+				showErrorCustomMessageBox(
+					"Gartic - Login",
+					"Something went wrong. Please try again later!",
+					"Ok",
+					[]() {}
+				);
+			}
+
+		});
 }
 
 void JoinGame::on_pushButton_logOut_clicked()

@@ -2,6 +2,7 @@
 
 #include <QMainWindow>
 #include "ui_JoinGame.h"
+#include "../../API/Contexts/Contexts.h"
 
 class JoinGame : public QMainWindow
 {
@@ -23,6 +24,7 @@ signals:
 	void goToUserProfileWindow();
 	void goToLobbyWindow();
 	void goToJoinRoomWindow();
+	void sendLobbyData(const LobbyData& lobbyData);
 
 private slots:
 	virtual void on_pushButton_userProfile_clicked();

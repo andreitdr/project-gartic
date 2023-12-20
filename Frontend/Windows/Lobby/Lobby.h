@@ -36,6 +36,9 @@ private slots:
 	virtual void on_pushButton_exitLobby_clicked();
 	virtual void on_pushButton_copyLobbyId_clicked();
 
+public slots:
+	void getLobbyData(const LobbyData& lobbyData);
+
 signals:
 	void goToJoinGameWindow();
 };

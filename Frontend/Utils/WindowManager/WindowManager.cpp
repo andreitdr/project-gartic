@@ -26,6 +26,7 @@ void WindowManager::setupConnections()
 	connect(m_joinGameWindow.get(), &JoinGame::goToUserProfileWindow, this, &WindowManager::showUserProfileWindow);
 	connect(m_joinGameWindow.get(), &JoinGame::goToLobbyWindow, this, &WindowManager::showLobbyWindow);
 	connect(m_joinGameWindow.get(), &JoinGame::goToJoinRoomWindow, this, &WindowManager::showJoinRoomWindow);
+	connect(m_joinGameWindow.get(), &JoinGame::sendLobbyData, m_lobbyWindow.get(), &Lobby::getLobbyData);
 
 	//UserProfile connections
 	connect(m_userProfileWindow.get(), &UserProfile::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
