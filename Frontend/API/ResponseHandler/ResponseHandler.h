@@ -1,8 +1,8 @@
 #pragma once
 #include <crow/json.h>
 #include <functional>
-#include "../../Utils/UserInfo/UserInfo.h"
 #include "../../Utils/LobbyData/LobbyData.h"
+#include "../../Utils/UserInfoCache/UserInfoCache.h"
 
 class ResponseHandler
 {

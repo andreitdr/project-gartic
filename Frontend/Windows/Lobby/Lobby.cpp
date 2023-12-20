@@ -176,6 +176,7 @@ void Lobby::on_pushButton_copyLobbyId_clicked()
 void Lobby::getLobbyId(int lobbyId)
 {
     m_lobbyData.SetLobbyID(lobbyId);
+    updateLobbyStatus();
 }
 
 void Lobby::getLobbyData(const LobbyData& lobbyData)

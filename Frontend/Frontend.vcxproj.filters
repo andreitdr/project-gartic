@@ -85,6 +85,9 @@
     <ClCompile Include="API\Contexts\Contexts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Utils\UserInfoCache\UserInfoCache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API\Requests\Requests.h">
@@ -109,6 +112,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="API\Contexts\Contexts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\UserInfoCache\UserInfoCache.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿#include "ResponseHandler.h"
 #include "../../Utils/CurrentUser/CurrentUser.h"
 
+
 void ResponseHandler::processLoginResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const UserInfo&)> callback)
 {
     if (!response) {
@@ -93,7 +94,7 @@ void ResponseHandler::processCreateLobbyResponse(const crow::json::rvalue& respo
 
         auto& playerListJson = response["Lobby"]["PlayerList"];
         for (const auto& playerIdJson : playerListJson) {
-            UserInfo player = UserInfo::GetUserInfoFromServer(playerIdJson.i());
+            UserInfo player = UserInfoCache::getInstance().getUserInfo(playerIdJson.i());
             lobbyData.AddUser(player);
         }
 
@@ -156,12 +157,12 @@ void ResponseHandler::processLobbyStatusResponse(const crow::json::rvalue& respo
 		LobbyData lobbyData;
 		lobbyData.SetLobbyID(response["Lobby"]["Id"].i());
 		int userId = response["Lobby"]["LeaderId"].i();
-		UserInfo admin = UserInfo::GetUserInfoFromServer(userId);
+		UserInfo admin = UserInfoCache::getInstance().getUserInfo(userId);
 		lobbyData.SetLobbyAdmin(admin);
 
 		auto& playerListJson = response["Lobby"]["PlayerList"];
         for (const auto& playerIdJson : playerListJson) {
-			UserInfo player = UserInfo::GetUserInfoFromServer(playerIdJson.i());
+			UserInfo player = UserInfoCache::getInstance().getUserInfo(playerIdJson.i());
 			lobbyData.AddUser(player);
 		}
 
