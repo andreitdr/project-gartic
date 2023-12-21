@@ -1,8 +1,8 @@
 #include "Login.h"
-#include "../../API/Contexts/Contexts.h"
 
-Login::Login(QWidget *parent)
-	: QMainWindow(parent)
+Login::Login(Contexts* contexts, QWidget *parent)
+	: QMainWindow(parent),
+    contexts(contexts)
 {
     ui.setupUi(this);
 }
@@ -32,8 +32,7 @@ void Login::on_pushButton_login_clicked()
         return;
     }
 
-    Contexts contexts;
-    contexts.loginUser(username, password, [this](bool success, const std::string& message)
+    contexts->loginUser(username, password, [this](bool success, const std::string& message)
         {
             if (success)
             {

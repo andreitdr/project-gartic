@@ -1,10 +1,10 @@
 ﻿#include "Lobby.h"
 
-Lobby::Lobby(QWidget *parent)
-	: QMainWindow(parent)
+Lobby::Lobby(Contexts* contexts, QWidget *parent)
+	: QMainWindow(parent),
+    contexts(contexts)
 {
 	ui.setupUi(this);
-    contexts = Contexts();
     m_timer = new QTimer(this);
     connect(m_timer, &QTimer::timeout, this, &Lobby::updateLobbyData);
 }
@@ -36,7 +36,7 @@ void Lobby::showEvent(QShowEvent* event)
 {
     QMainWindow::showEvent(event);
     if (m_timer && !m_timer->isActive())
-        m_timer->start(2000);
+        m_timer->start(1000);
 }
 
 void Lobby::hideEvent(QHideEvent* event)
@@ -93,7 +93,7 @@ void Lobby::leaveLobby()
 {
     int lobbyId = m_lobbyData.GetLobbyID();
     int userId = CurrentUser::getInstance().getUserId();
-    contexts.leaveLobby(userId, lobbyId, [this](bool success, const std::string& message) {
+    contexts->leaveLobby(userId, lobbyId, [this](bool success, const std::string& message) {
         if (success) {
 			emit goToJoinGameWindow();
 			this->hide();
@@ -112,7 +112,7 @@ void Lobby::leaveLobby()
 void Lobby::updateLobbyData()
 {
     int lobbyId = m_lobbyData.GetLobbyID();
-    contexts.lobbyStatus(lobbyId, [this](bool success, const std::string& message, const LobbyData& lobbyData) {
+    contexts->lobbyStatus(lobbyId, [this](bool success, const std::string& message, const LobbyData& lobbyData) {
         if (success) {
             if(!(lobbyData==m_lobbyData))
 			m_lobbyData = lobbyData;

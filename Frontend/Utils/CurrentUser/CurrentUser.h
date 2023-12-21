@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <string>
+#include <mutex>
 
 class CurrentUser {
 public:
@@ -22,7 +23,7 @@ public:
 
 private:
     CurrentUser();
-
+    std::mutex m_currentUserMutex;
     std::string m_username;
     std::string m_givenName;
     std::string m_surname;

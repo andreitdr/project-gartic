@@ -10,6 +10,39 @@ UserInfo::UserInfo(const std::string& username, const std::string& givenName, co
 UserInfo::UserInfo(const UserInfo& other)
     : m_username{ other.m_username }, m_givenName{ other.m_givenName }, m_surname{ other.m_surname }, m_userId{ other.m_userId } {}
 
+UserInfo::UserInfo(UserInfo&& other) noexcept 
+    : m_username{ std::move(other.m_username) },
+    m_givenName{ std::move(other.m_givenName) },
+    m_surname{ std::move(other.m_surname) },
+    m_userId{ other.m_userId }
+{
+  
+}
+
+UserInfo& UserInfo::operator=(const UserInfo& other) 
+{
+    if (this != &other) 
+    {  
+        m_username = other.m_username; 
+        m_givenName = other.m_givenName;
+        m_surname = other.m_surname;
+        m_userId = other.m_userId;
+    }
+    return *this;
+}
+
+UserInfo& UserInfo::operator=(UserInfo&& other) noexcept 
+{
+    if (this != &other) {
+        m_username = std::move(other.m_username);
+        m_givenName = std::move(other.m_givenName);
+        m_surname = std::move(other.m_surname);
+        m_userId = other.m_userId;
+    }
+    return *this;
+}
+
+
 std::string UserInfo::getUsername() const {
     return m_username;
 }
@@ -42,27 +75,4 @@ void UserInfo::setSurname(const std::string& surname) {
 void UserInfo::setUserId(int userId)
 {
     this->m_userId = userId;
-}
-
-UserInfo UserInfo::GetUserInfoFromServer(int userId)
-{
-    cpr::Response response = Requests::getUserInfo(userId);
-    if(response.status_code==200)
-	{
-		UserInfo userInfo;
-		ResponseHandler handler;
-		handler.processGetUserInfoResponse(crow::json::load(response.text), [&userInfo](bool success, const std::string& message, const UserInfo& fetchedUserInfo) {
-			if (success) {
-				userInfo = fetchedUserInfo;
-			}
-			else {
-				throw std::runtime_error(message);
-			}
-			});
-		return userInfo;
-	}
-	else
-	{
-		throw std::runtime_error("Error getting user info");
-	}
 }

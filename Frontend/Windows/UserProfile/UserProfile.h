@@ -2,13 +2,14 @@
 
 #include <QMainWindow>
 #include "ui_UserProfile.h"
+#include "../../API/Contexts/Contexts.h"
 
 class UserProfile : public QMainWindow
 {
 	Q_OBJECT
 
 public:
-	UserProfile(QWidget *parent = nullptr);
+	explicit UserProfile(Contexts* contexts, QWidget *parent = nullptr);
 	~UserProfile();
 
 protected:
@@ -16,6 +17,7 @@ protected:
 
 private:
 	Ui::UserProfileClass ui;
+	Contexts* contexts;
 	void updateUserInfoDisplay();
 
 signals:

@@ -18,7 +18,7 @@ class Lobby : public QMainWindow
 	Q_OBJECT
 
 public:
-	Lobby(QWidget *parent = nullptr);
+	explicit Lobby(Contexts* contexts, QWidget *parent = nullptr);
 	~Lobby();
 
 protected:
@@ -30,7 +30,7 @@ protected:
 private:
 	Ui::LobbyClass ui;
 	LobbyData m_lobbyData;
-	Contexts contexts;
+	Contexts* contexts;
 	QTimer* m_timer;
 	void addPlayerToLobbyListView(const UserInfo& userInfo);
 	void updateLobbyId();

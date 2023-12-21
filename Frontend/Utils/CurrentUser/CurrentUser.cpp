@@ -8,6 +8,7 @@ CurrentUser& CurrentUser::getInstance() {
 }
 
 void CurrentUser::setUsername(const std::string& username) {
+    std::lock_guard<std::mutex> lock(m_currentUserMutex);
     m_username = username;
 }
 std::string CurrentUser::getUsername() const {
@@ -15,6 +16,7 @@ std::string CurrentUser::getUsername() const {
 }
 
 void CurrentUser::setGivenName(const std::string& givenName) {
+    std::lock_guard<std::mutex> lock(m_currentUserMutex);
     m_givenName = givenName;
 }
 std::string CurrentUser::getGivenName() const {
@@ -22,6 +24,7 @@ std::string CurrentUser::getGivenName() const {
 }
 
 void CurrentUser::setSurname(const std::string& surname) {
+    std::lock_guard<std::mutex> lock(m_currentUserMutex);
     m_surname = surname;
 }
 std::string CurrentUser::getSurname() const {
@@ -29,6 +32,7 @@ std::string CurrentUser::getSurname() const {
 }
 
 void CurrentUser::setUserId(int userId) {
+    std::lock_guard<std::mutex> lock(m_currentUserMutex);
     m_userId = userId;
 }
 int CurrentUser::getUserId() const {

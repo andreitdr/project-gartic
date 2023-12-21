@@ -9,11 +9,12 @@ class JoinGame : public QMainWindow
 	Q_OBJECT
 
 public:
-	JoinGame(QWidget *parent = nullptr);
+	explicit JoinGame(Contexts* contexts, QWidget *parent = nullptr);
 	~JoinGame();
 
 private:
 	Ui::JoinGameClass ui;
+	Contexts* contexts;
 	void updateUserInfoDisplay();
 
 protected:

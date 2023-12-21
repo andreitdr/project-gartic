@@ -1,7 +1,8 @@
 #include "GameWindow.h"
 
-GameWindow::GameWindow(QWidget *parent)
-	: QMainWindow(parent)
+GameWindow::GameWindow(Contexts* contexts, QWidget *parent)
+	: QMainWindow(parent),
+	contexts(contexts)
 {
 	ui.setupUi(this);
 }

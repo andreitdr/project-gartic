@@ -1,4 +1,7 @@
-#include "Contexts.h"
+﻿#include "Contexts.h"
+#include <thread>
+#include <QApplication>
+
 
 void Contexts::registerUser(const std::string& surname, const std::string& givenName, const std::string& username, const std::string& password, std::function<void(bool, const std::string&)> callback)
 {
@@ -34,6 +37,22 @@ void Contexts::loginUser(const std::string& username, const std::string& passwor
 		user.setGivenName(userInfo.getGivenName());
 		user.setSurname(userInfo.getSurname());
 		callback(success, message);
+	});
+}
+
+void Contexts::getUserInfo(int userId, std::function<void(bool, const std::string&, const UserInfo&)> callback)
+{
+	auto response = requests.getUserInfo(userId);
+	if (response.status_code != 200)
+	{
+		callback(false, "Server error", UserInfo());
+		return;
+	};
+
+	auto response_json = crow::json::load(response.text);
+	handler.processGetUserInfoResponse(response_json, [callback](bool success, const std::string& message, const UserInfo& userInfo)
+		{
+		callback(success, message, userInfo);
 	});
 }
 
@@ -85,18 +104,22 @@ void Contexts::leaveLobby(int userId, int lobbyId, std::function<void(bool, cons
 	});
 }
 
-void Contexts::lobbyStatus(int lobbyId, std::function<void(bool, const std::string&, const LobbyData&)> callback)
+void Contexts::lobbyStatus(int lobbyId, std::function<void(bool, const std::string&, const LobbyData&)> callback) 
 {
-	auto response = requests.lobbyStatus(lobbyId);
-	if (response.status_code != 200)
-	{
-		callback(false, "Server error", LobbyData());
-		return;
-	};
+	std::thread([this, lobbyId, callback]() {
+		auto response = requests.lobbyStatus(lobbyId);
+		if (response.status_code != 200) {
+			QMetaObject::invokeMethod(qApp, [callback]() {
+				callback(false, "Server error", LobbyData());
+				});
+			return;
+		}
 
-	auto response_json = crow::json::load(response.text);
-	handler.processLobbyStatusResponse(response_json, [callback](bool success, const std::string& message, const LobbyData& lobbyData)
-		{
-		callback(success, message, lobbyData);
-	});
+		auto response_json = crow::json::load(response.text);
+		handler.processLobbyStatusResponse(response_json, [callback](bool success, const std::string& message, const LobbyData& lobbyData) {
+			QMetaObject::invokeMethod(qApp, [callback, success, message, lobbyData]() {
+				callback(success, message, lobbyData);
+				});
+			});
+		}).detach();
 }

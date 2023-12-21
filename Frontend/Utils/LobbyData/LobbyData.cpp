@@ -19,7 +19,7 @@ int LobbyData::GetLobbyID() const
 	return m_lobbyID;
 }
 
-void LobbyData::SetLobbyAdmin(UserInfo user)
+void LobbyData::SetLobbyAdmin(const UserInfo& user)
 {
 	m_lobbyAdmin=user;
 }
@@ -29,12 +29,12 @@ UserInfo LobbyData::GetLobbyAdmin() const
 	return m_lobbyAdmin;
 }
 
-void LobbyData::AddUser(UserInfo user)
+void LobbyData::AddUser(const UserInfo& user)
 {
 	m_lobbyUsers.push_back(user);
 }
 
-void LobbyData::RemoveUser(UserInfo user)
+void LobbyData::RemoveUser(const UserInfo& user)
 {
 	for (int i=0; i<m_lobbyUsers.size(); i++)
 	{

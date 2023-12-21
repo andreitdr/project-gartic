@@ -11,11 +11,11 @@ public:
 	void SetLobbyID(int lobbyID);
 	int GetLobbyID() const;
 
-	void SetLobbyAdmin(UserInfo user);
+	void SetLobbyAdmin(const UserInfo& user);
 	UserInfo GetLobbyAdmin() const;
 
-	void AddUser(UserInfo user);
-	void RemoveUser(UserInfo user);
+	void AddUser(const UserInfo& user);
+	void RemoveUser(const UserInfo& user);
 	std::vector<UserInfo> GetUsers() const;
 
 	LobbyData(const LobbyData& other);

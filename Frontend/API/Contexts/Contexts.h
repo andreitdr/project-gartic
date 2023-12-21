@@ -9,6 +9,7 @@ class Contexts
 public:
 	void registerUser(const std::string& surname, const std::string& givenName, const std::string& username, const std::string& password, std::function<void(bool, const std::string&)> callback);
 	void loginUser(const std::string& username, const std::string& password, std::function<void(bool, const std::string&)> callback);
+	void getUserInfo(int userId, std::function<void(bool, const std::string&, const UserInfo&)> callback);
 	void createLobby(int userId, std::function<void(bool, const std::string&, const LobbyData&)> callback);
 	void joinLobby(int userId, int lobbyId, std::function<void(bool, const std::string&)> callback);
 	void leaveLobby(int userId, int lobbyId, std::function<void(bool, const std::string&)> callback);

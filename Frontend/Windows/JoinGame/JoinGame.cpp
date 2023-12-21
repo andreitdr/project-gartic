@@ -2,8 +2,10 @@
 #include "../../Utils/CurrentUser/CurrentUser.h"
 #include "../../Widgets/CustomQMessageBox/CustomQMessageBox.h"
 
-JoinGame::JoinGame(QWidget *parent)
-	: QMainWindow(parent)
+
+JoinGame::JoinGame(Contexts* contexts, QWidget *parent)
+	: QMainWindow(parent),
+	contexts(contexts)
 {
 	ui.setupUi(this);
 }
@@ -32,8 +34,7 @@ void JoinGame::showEvent(QShowEvent* event)
 
 void JoinGame::on_pushButton_createPrivateGame_clicked()
 {
-	Contexts contexts;
-	contexts.createLobby(CurrentUser::getInstance().getUserId(), [this](bool success, const std::string& message, const LobbyData& lobbyData)
+	contexts->createLobby(CurrentUser::getInstance().getUserId(), [this](bool success, const std::string& message, const LobbyData& lobbyData)
 		{
 			if (success)
 			{

@@ -1,8 +1,8 @@
 ﻿#include "Register.h"
-#include "../../API/Contexts/Contexts.h"
 
-Register::Register(QWidget *parent)
-	: QMainWindow(parent)
+Register::Register(Contexts* contexts,QWidget *parent)
+	: QMainWindow(parent),
+    contexts(contexts)
 {
 	ui.setupUi(this);
 }
@@ -43,8 +43,7 @@ void Register::on_pushButton_register_clicked()
         return;
     }
 
-    Contexts contexts;
-    contexts.registerUser(surname, given_name, username, password, [this](bool success, const std::string& message)
+    contexts->registerUser(surname, given_name, username, password, [this](bool success, const std::string& message)
         {
             if (success) {
                 showSuccessCustomMessageBox(

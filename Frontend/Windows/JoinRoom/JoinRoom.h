@@ -8,12 +8,12 @@ class JoinRoom : public QMainWindow
 	Q_OBJECT
 
 public:
-	JoinRoom(QWidget *parent = nullptr);
+	explicit JoinRoom(Contexts* contexts, QWidget *parent = nullptr);
 	~JoinRoom();
 
 private:
 	Ui::JoinRoomClass ui;
-	Contexts contexts;
+	Contexts* contexts;
 
 signals:
 	void goToJoinGameWindow();

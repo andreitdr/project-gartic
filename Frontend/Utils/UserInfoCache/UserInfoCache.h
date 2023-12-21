@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "../UserInfo/UserInfo.h"
 #include <unordered_map>
+#include <mutex>
 
 class UserInfoCache {
 public:
@@ -10,7 +11,9 @@ public:
 
 private:
     UserInfoCache();
-    std::unordered_map<int, UserInfo> cache;
+    UserInfo getUserInfoFromServer(int userId);
+    std::unordered_map<int, UserInfo> m_cache;
+    std::mutex m_UserInfoCacheMutex;
 
     UserInfoCache(const UserInfoCache&) = delete;
     void operator=(const UserInfoCache&) = delete;

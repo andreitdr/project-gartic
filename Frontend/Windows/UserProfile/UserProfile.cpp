@@ -1,9 +1,10 @@
 #include "UserProfile.h"
 #include "../../Utils/CurrentUser/CurrentUser.h"
-#include "../../API/Contexts/Contexts.h"
 
-UserProfile::UserProfile(QWidget *parent)
-	: QMainWindow(parent)
+
+UserProfile::UserProfile(Contexts* contexts, QWidget *parent)
+	: QMainWindow(parent), 
+	contexts(contexts)
 {
 	ui.setupUi(this);
 }

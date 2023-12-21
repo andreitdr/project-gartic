@@ -8,6 +8,7 @@
 #include "../../Windows/JoinRoom/JoinRoom.h"
 #include "../../Windows/Lobby/Lobby.h"
 #include "../../Windows/GameWindow/GameWindow.h"
+#include "../../API/Contexts/Contexts.h"
 
 class WindowManager : public QObject {
     Q_OBJECT
@@ -26,6 +27,7 @@ public slots:
     void showGameWindow();
 
 private:
+    Contexts m_contexts;
     std::unique_ptr<Login> m_loginWindow;
     std::unique_ptr<Register> m_registerWindow;
     std::unique_ptr<JoinGame> m_joinGameWindow;

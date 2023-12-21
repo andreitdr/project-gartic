@@ -1,13 +1,14 @@
 #include "WindowManager.h"
 
 WindowManager::WindowManager(QObject* parent) : QObject{ parent },
-	m_loginWindow{ std::make_unique<Login>() },
-	m_registerWindow{ std::make_unique<Register>() },
-	m_joinGameWindow{ std::make_unique <JoinGame>() },
-	m_userProfileWindow{ std::make_unique <UserProfile>() },
-	m_joinRoomWindow{ std::make_unique <JoinRoom>() },
-	m_lobbyWindow{ std::make_unique <Lobby>() },
-	m_gameWindow{ std::make_unique <GameWindow>() }
+	m_contexts(),
+	m_loginWindow{ std::make_unique<Login>(&m_contexts)},
+	m_registerWindow{ std::make_unique<Register>(&m_contexts) },
+	m_joinGameWindow{ std::make_unique <JoinGame>(&m_contexts) },
+	m_userProfileWindow{ std::make_unique <UserProfile>(&m_contexts) },
+	m_joinRoomWindow{ std::make_unique <JoinRoom>(&m_contexts) },
+	m_lobbyWindow{ std::make_unique <Lobby>(&m_contexts) },
+	m_gameWindow{ std::make_unique <GameWindow>(&m_contexts) }
 {
 	setupConnections();
 }
