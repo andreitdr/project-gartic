@@ -6,6 +6,7 @@
 #include <qpixmap.h>
 
 void showSuccessCustomMessageBox(
+    QWidget* parent,
     const QString& title,
     const QString& message,
     const QString& buttonText,
@@ -13,6 +14,7 @@ void showSuccessCustomMessageBox(
 );
 
 void showErrorCustomMessageBox(
+    QWidget* parent,
     const QString& title,
     const QString& message,
     const QString& buttonText,
@@ -20,6 +22,7 @@ void showErrorCustomMessageBox(
 );
 
 void showConfirmActionCustomMessageBox(
+    QWidget* parent,
     const QString& title,
     const QString& message,
     const QString& yesButtonText,

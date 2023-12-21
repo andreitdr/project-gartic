@@ -25,6 +25,7 @@ void Login::on_pushButton_login_clicked()
     if (username.empty() || password.empty())
     {
         showErrorCustomMessageBox(
+            this,
             "Gartic - Login",
             "One or more fields is empty. Please try again!",
             "Try Again",
@@ -38,6 +39,7 @@ void Login::on_pushButton_login_clicked()
             if (success)
             {
                 showSuccessCustomMessageBox(
+                    this,
                     "Gartic - Login",
                     "Successful login. You can play now!",
                     "Play Now",
@@ -51,6 +53,7 @@ void Login::on_pushButton_login_clicked()
             else if (message == "Inexistent user")
             {
                 showErrorCustomMessageBox(
+                    this,
                     "Gartic - Login",
                     "User doesn't exist. Please register!",
                     "Register now",
@@ -64,6 +67,7 @@ void Login::on_pushButton_login_clicked()
             else if (message == "Incorrect password")
             {
                 showErrorCustomMessageBox(
+                    this,
                     "Gartic - Login",
                     "Password is incorrect. Please try again!",
                     "Try Again",
@@ -74,6 +78,7 @@ void Login::on_pushButton_login_clicked()
             else
             {
                 showErrorCustomMessageBox(
+                    this,
                     "Gartic - Login",
                     "Something went wrong. Please try again later!",
                     "Ok",

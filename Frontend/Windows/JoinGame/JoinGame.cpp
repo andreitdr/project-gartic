@@ -47,6 +47,7 @@ void JoinGame::on_pushButton_createPrivateGame_clicked()
 			else
 			{
 				showErrorCustomMessageBox(
+					this,
 					"Gartic - Join Game",
 					"Something went wrong. Please try again later!",
 					"Ok",

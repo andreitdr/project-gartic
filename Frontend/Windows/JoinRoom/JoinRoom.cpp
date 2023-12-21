@@ -29,6 +29,7 @@ void JoinRoom::on_pushButton_JoinPrivateRoom_clicked()
 			else
 				if(message!="")
 					showErrorCustomMessageBox(
+						this,
 						"Gartic - Join Room",
 						qmessage,
 						"Ok",
@@ -37,6 +38,7 @@ void JoinRoom::on_pushButton_JoinPrivateRoom_clicked()
 				else
 			{
 				showErrorCustomMessageBox(
+					this,
 					"Gartic - Join Room",
 					"Something went wrong. Please try again later!",
 					"Ok",

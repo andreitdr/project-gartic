@@ -26,6 +26,7 @@ void Register::on_pushButton_register_clicked()
 
     if (username.empty() || password.empty() || surname.empty() || given_name.empty()) {
         showErrorCustomMessageBox(
+            this,
             "Gartic - Register",
             "One or more fields is empty. Please try again!",
             "Try Again",
@@ -36,6 +37,7 @@ void Register::on_pushButton_register_clicked()
 
     if (password.length() < 8) {
         showErrorCustomMessageBox(
+            this,
             "Gartic - Register",
             "Password should be at least 8 characters. Please try again!",
             "Try Again",
@@ -48,6 +50,7 @@ void Register::on_pushButton_register_clicked()
         {
             if (success) {
                 showSuccessCustomMessageBox(
+                    this,
                     "Gartic - Register",
                     "Register successful. You can login now!",
                     "Log In",
@@ -60,6 +63,7 @@ void Register::on_pushButton_register_clicked()
             }
             else if (message == "The user already exists") {
                 showErrorCustomMessageBox(
+                    this,
                     "Gartic - Register",
                     "Username already exists. Please try again!",
                     "Try Again",
@@ -69,6 +73,7 @@ void Register::on_pushButton_register_clicked()
             }
             else {
                 showErrorCustomMessageBox(
+                    this,
                     "Gartic - Register",
                     "Something went wrong. Please try again later!",
                     "Ok",

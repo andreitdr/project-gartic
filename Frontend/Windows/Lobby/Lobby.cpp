@@ -17,6 +17,7 @@ void Lobby::closeEvent(QCloseEvent * event)
     bool shouldClose = false;
 
    showConfirmActionCustomMessageBox(
+       this,
         "Lobby - Leave lobby",
         "Are you sure you want to leave the lobby?",
         "Yes",
@@ -101,6 +102,7 @@ void Lobby::leaveLobby()
 		}
         else {
             showErrorCustomMessageBox(
+                this,
                 "Gartic - Leave Lobby",
                 "Something went wrong. Please try again later!",
                 "Ok",
@@ -155,6 +157,7 @@ void Lobby::on_pushButton_exitLobby_clicked()
     bool shouldClose = false;
 
     showConfirmActionCustomMessageBox(
+        this,
         "Lobby - Leave lobby",
         "Are you sure you want to leave the lobby?",
         "Yes",

@@ -1,12 +1,13 @@
 #include "CustomQMessageBox.h"
 
 void showSuccessCustomMessageBox(
+    QWidget* parent,
     const QString& title,
     const QString& message,
     const QString& buttonText,
     std::function<void()> customAction
 ) {
-    QMessageBox customMessageBox;
+    QMessageBox customMessageBox(parent);
     customMessageBox.setWindowTitle(title);
     customMessageBox.setText(message);
     customMessageBox.setWindowIcon(QIcon(":/Frontend/assets/images/appicon.ico"));
@@ -32,12 +33,13 @@ void showSuccessCustomMessageBox(
 
 
 void showErrorCustomMessageBox(
+    QWidget* parent,
     const QString& title,
     const QString& message,
     const QString& buttonText,
     std::function<void()> customAction
 ) {
-    QMessageBox customMessageBox;
+    QMessageBox customMessageBox(parent);
     customMessageBox.setWindowTitle(title);
     customMessageBox.setText(message);
     customMessageBox.setWindowIcon(QIcon(":/Frontend/assets/images/appicon.ico"));
@@ -61,9 +63,15 @@ void showErrorCustomMessageBox(
     }
 }
 
-void showConfirmActionCustomMessageBox(const QString& title, const QString& message, const QString& yesButtonText, const QString& noButtonText, std::function<void()> yesAction)
+void showConfirmActionCustomMessageBox(
+    QWidget* parent,
+    const QString& title, 
+    const QString& message, 
+    const QString& yesButtonText, 
+    const QString& noButtonText, 
+    std::function<void()> yesAction)
 {
-    QMessageBox customMessageBox;
+    QMessageBox customMessageBox(parent);
     customMessageBox.setWindowTitle(title);
     customMessageBox.setText(message);
     customMessageBox.setWindowIcon(QIcon(":/Frontend/assets/images/appicon.ico"));
