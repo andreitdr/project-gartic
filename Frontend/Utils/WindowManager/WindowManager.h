@@ -25,6 +25,7 @@ public slots:
     void showJoinRoomWindow();
     void showLobbyWindow();
     void showGameWindow();
+    void onWindowHidden(const QPoint& position);
 
 private:
     Contexts m_contexts;
@@ -36,4 +37,7 @@ private:
     std::unique_ptr<Lobby> m_lobbyWindow;
     std::unique_ptr<GameWindow> m_gameWindow;
     void setupConnections();
+
+    QPoint lastWindowPosition;
+    void setWindowPosition(QWidget* window);
 };

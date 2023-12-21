@@ -95,6 +95,7 @@ void Lobby::leaveLobby()
     int userId = CurrentUser::getInstance().getUserId();
     contexts->leaveLobby(userId, lobbyId, [this](bool success, const std::string& message) {
         if (success) {
+            emit windowPositionChanged(this->pos());
 			emit goToJoinGameWindow();
 			this->hide();
 		}

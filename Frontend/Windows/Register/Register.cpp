@@ -12,6 +12,7 @@ Register::~Register()
 
 void Register::on_pushButton_goToLogin_clicked()
 {
+    emit windowPositionChanged(this->pos());
 	emit goToLogin();
     this->hide();
 }
@@ -51,6 +52,7 @@ void Register::on_pushButton_register_clicked()
                     "Register successful. You can login now!",
                     "Log In",
                     [this]() {
+                        emit windowPositionChanged(this->pos());
                         emit goToLogin();
                         this->hide();
                     }

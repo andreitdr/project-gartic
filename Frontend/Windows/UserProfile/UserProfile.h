@@ -22,6 +22,7 @@ private:
 
 signals:
 	void goToJoinGameWindow();
+	void windowPositionChanged(const QPoint& newPosition);
 private slots:
 	void on_pushButton_goBackUserProfile_clicked();
 };

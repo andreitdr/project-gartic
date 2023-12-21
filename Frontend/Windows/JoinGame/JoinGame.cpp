@@ -15,6 +15,7 @@ JoinGame::~JoinGame()
 
 void JoinGame::on_pushButton_userProfile_clicked()
 {
+	emit windowPositionChanged(this->pos());
 	emit goToUserProfileWindow();
 	this->hide();
 }
@@ -39,6 +40,7 @@ void JoinGame::on_pushButton_createPrivateGame_clicked()
 			if (success)
 			{
 				emit sendLobbyData(lobbyData);
+				emit windowPositionChanged(this->pos());
 				emit goToLobbyWindow();
 				this->hide();
 			}
@@ -57,12 +59,14 @@ void JoinGame::on_pushButton_createPrivateGame_clicked()
 
 void JoinGame::on_pushButton_logOut_clicked()
 {
+	emit windowPositionChanged(this->pos());
 	emit goToLoginWindow();
 	this->hide();
 }
 
 void JoinGame::on_pushButton_joinGame_clicked()
 {
+	emit windowPositionChanged(this->pos());
 	goToJoinRoomWindow();
 	this->hide();
 }

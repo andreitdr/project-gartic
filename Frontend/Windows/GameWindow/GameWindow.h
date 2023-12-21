@@ -19,4 +19,7 @@ private:
 	Contexts* contexts;
 	DisplayPaintWidget* displayWidget = nullptr;
 	PaintWidget* paintWidget = nullptr;
+
+signals:
+	void windowPositionChanged(const QPoint& newPosition);
 };

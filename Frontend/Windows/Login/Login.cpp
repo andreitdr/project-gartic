@@ -12,6 +12,7 @@ Login::~Login()
 
 void Login::on_pushButton_goToRegister_clicked()
 {
+    emit windowPositionChanged(this->pos());
     emit goToRegister();
     this->hide();
 }
@@ -41,6 +42,7 @@ void Login::on_pushButton_login_clicked()
                     "Successful login. You can play now!",
                     "Play Now",
                     [this]() {
+                        emit windowPositionChanged(this->pos());
                         emit goToJoinGame();
                         this->hide();
                     }
@@ -53,6 +55,7 @@ void Login::on_pushButton_login_clicked()
                     "User doesn't exist. Please register!",
                     "Register now",
                     [this]() {
+                        emit windowPositionChanged(this->pos());
                         emit goToRegister();
                         this->hide();
                     }

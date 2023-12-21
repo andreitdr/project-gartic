@@ -26,6 +26,7 @@ signals:
 	void goToLobbyWindow();
 	void goToJoinRoomWindow();
 	void sendLobbyData(const LobbyData& lobbyData);
+	void windowPositionChanged(const QPoint& newPosition);
 
 private slots:
 	virtual void on_pushButton_userProfile_clicked();

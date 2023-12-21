@@ -19,6 +19,7 @@ signals:
 	void goToJoinGameWindow();
 	void goToLobbyWindow();
 	void sendLobbyId(int lobbyId);
+	void windowPositionChanged(const QPoint& newPosition);
 
 private slots:
 	virtual void on_pushButton_goBack_clicked();

@@ -7,10 +7,8 @@
 #include "../../Utils/CurrentUser/CurrentUser.h"
 #include "../../Utils/LobbyData/LobbyData.h"
 #include "../../API/Contexts/Contexts.h"
-#include <QClipboard>
 #include <QCloseEvent>
-#include <QShowEvent>
-#include <QHideEvent>
+#include <QClipboard>
 #include <QTimer>
 
 class Lobby : public QMainWindow
@@ -53,4 +51,5 @@ public slots:
 
 signals:
 	void goToJoinGameWindow();
+	void windowPositionChanged(const QPoint& newPosition);
 };

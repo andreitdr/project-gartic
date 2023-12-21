@@ -25,4 +25,5 @@ private slots:
 signals:
 	void goToRegister();
 	void goToJoinGame();
+	void windowPositionChanged(const QPoint& newPosition);
 };

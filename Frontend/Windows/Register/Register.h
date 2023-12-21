@@ -21,4 +21,5 @@ private slots:
 	void on_pushButton_goToLogin_clicked();
 signals:
 	void goToLogin();
+	void windowPositionChanged(const QPoint& newPosition);
 };

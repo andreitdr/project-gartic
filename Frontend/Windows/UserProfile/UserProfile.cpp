@@ -37,6 +37,7 @@ void UserProfile::updateUserInfoDisplay()
 
 void UserProfile::on_pushButton_goBackUserProfile_clicked()
 {
+	emit windowPositionChanged(this->pos());
 	emit goToJoinGameWindow();
 	this->close();
 }

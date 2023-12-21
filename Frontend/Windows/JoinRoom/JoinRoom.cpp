@@ -21,8 +21,9 @@ void JoinRoom::on_pushButton_JoinPrivateRoom_clicked()
 			QString qmessage = QString::fromUtf8(message.c_str());
 			if (success)
 			{
-				emit goToLobbyWindow();
 				emit sendLobbyId(lobbyId);
+				emit windowPositionChanged(this->pos());
+				emit goToLobbyWindow();
 				this->hide();
 			}
 			else
@@ -47,12 +48,14 @@ void JoinRoom::on_pushButton_JoinPrivateRoom_clicked()
 
 void JoinRoom::on_pushButton_JoinRandomGame_clicked()
 {
+	emit windowPositionChanged(this->pos());
 	emit goToLobbyWindow();
 	this->hide();
 }
 
 void JoinRoom::on_pushButton_goBack_clicked()
 {
+	emit windowPositionChanged(this->pos());
 	emit goToJoinGameWindow();
 	this->hide();
 }
