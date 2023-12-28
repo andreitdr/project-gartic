@@ -9,10 +9,11 @@
 inline crow::json::wvalue UpdateLobby(const crow::json::rvalue& request)
 {
 	const int lobbyId = request["lobbyId"].i();
-	const int newLeaderId = request["userId"].i();
+	const int lobbyType = request["lobbyType"].i();
+	const bool lobbyisPrivate = request["IsPrivate"].b();
 
-	const UpdateLobbyRequest updateLobbyRequest(lobbyId, newLeaderId);
-	UpdateLobbyContext updateLobbyContext{};
+	const UpdateLobbyRequest updateLobbyRequest(lobbyId, lobbyType, lobbyisPrivate);
+	UpdateLobbyContext updateLobbyContext {};
 	const UpdateLobbyResponse updateLobbyResponse = updateLobbyContext.HandleRequest(updateLobbyRequest);
 
 	WJSON json = JsonConvertor::ConvertBaseResponse(updateLobbyResponse);

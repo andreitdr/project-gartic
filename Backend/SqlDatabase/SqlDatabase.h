@@ -50,7 +50,9 @@ inline auto CreateDatabase(const std::string& fileName)
             sqlite_orm::make_column("Index",&Lobby::m_index, sqlite_orm::primary_key()),
             sqlite_orm::make_column("LobbyId", &Lobby::m_lobbyId, sqlite_orm::unique()),
             sqlite_orm::make_column("Leader",&Lobby::m_leaderId),
-            sqlite_orm::make_column("UserIds",&Lobby::m_userIds))
+            sqlite_orm::make_column("UserIds",&Lobby::m_userIds),
+            sqlite_orm::make_column("LobbyType", &Lobby::m_lobbyType),
+            sqlite_orm::make_column("IsPrivateLobby", &Lobby::m_isPrivate))
             
     );
 }

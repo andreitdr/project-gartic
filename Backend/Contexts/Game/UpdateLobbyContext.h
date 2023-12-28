@@ -19,19 +19,18 @@ private:
 inline UpdateLobbyResponse UpdateLobbyContext::HandleRequest(const UpdateLobbyRequest& request)
 {
     auto response = ValidateData(request);
-    if (!response.GetSuccessState())
+    if (!response)
         return response;
 
-    ApplyChanges(request);
-
+    response = ApplyChanges(request);
+    
     return response;
 }
 
 inline UpdateLobbyResponse UpdateLobbyContext::ValidateData(const UpdateLobbyRequest& request)
 {
     int lobbyId = request.GetLobbyId();
-    int newLeaderId = request.GetNewLeaderId();
-
+        
     try
     {
         if (!SqlDatabase::Exists<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId)))
@@ -53,13 +52,15 @@ inline UpdateLobbyResponse UpdateLobbyContext::ValidateData(const UpdateLobbyReq
 inline UpdateLobbyResponse UpdateLobbyContext::ApplyChanges(const UpdateLobbyRequest& request)
 {
     int lobbyId = request.GetLobbyId();
-    int newLeaderId = request.GetNewLeaderId();
+    int lobbyType = request.GetLobbyType();
+    int lobbyIsPrivate = request.GetIsPrivate();
 
     try
     {
         Lobby currentLobby = SqlDatabase::Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
 
-        currentLobby.m_leaderId = newLeaderId;
+        currentLobby.m_isPrivate = lobbyIsPrivate;
+        currentLobby.m_lobbyType = lobbyType;
 
         SqlDatabase::Update(currentLobby);
 

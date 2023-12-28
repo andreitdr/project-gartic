@@ -9,8 +9,10 @@
 inline crow::json::wvalue CreateLobby(const crow::json::rvalue& request)
 {
     const int userID = request["userId"].i();
+    const int lobbyType = request["lobbyType"].i();
+    const bool isPrivateLobby = request["isPrivateLobby"].b();
 
-    const CreateLobbyRequest createLobbyRequest = CreateLobbyRequest(userID);
+    const CreateLobbyRequest createLobbyRequest = CreateLobbyRequest(userID, lobbyType, isPrivateLobby);
     
     CreateLobbyContext context = CreateLobbyContext();
 
@@ -20,6 +22,8 @@ inline crow::json::wvalue CreateLobby(const crow::json::rvalue& request)
     const Lobby lobby = _response.GetLobby();
     response["Lobby"]["Id"] = lobby.m_lobbyId;
     response["Lobby"]["LeaderId"] = lobby.m_leaderId;
+    response["Lobby"]["LobbyType"] = lobby.m_lobbyType;
+    response["Lobby"]["IsPrivate"] = lobby.m_isPrivate;
     response["Lobby"]["PlayerList"] = JsonConvertor::ConvertToVector<int>(lobby.m_userIds);
 
     return response;

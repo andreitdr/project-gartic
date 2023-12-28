@@ -22,7 +22,7 @@ inline LeaveLobbyResponse LeaveLobbyContext::HandleRequest(const LeaveLobbyReque
     if(!response.m_successState)
         return response;
 
-    ApplyChanges(request);
+    response = ApplyChanges(request);
 
     return response;
 }

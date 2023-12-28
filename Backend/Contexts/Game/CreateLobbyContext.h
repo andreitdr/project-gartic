@@ -60,7 +60,12 @@ inline CreateLobbyResponse CreateLobbyContext::ApplyChanges(const CreateLobbyReq
     const std::vector<int> userIds = {userId};
     const std::string str = JsonConvertor::ConvertFromVector(std::move(userIds)).dump();
 
-    Lobby lobby = Lobby(-1, lobbyId, userId, std::move(str));
+    Lobby lobby = Lobby(-1,
+        lobbyId,
+        userId,
+        request.GetLobbyType(),
+        request.GetIsPrivate(),
+        std::move(str));
     
     int lobbyIndex = SqlDatabase::Insert<Lobby>(lobby);
 

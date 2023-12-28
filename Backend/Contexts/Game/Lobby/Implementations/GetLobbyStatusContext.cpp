@@ -1,8 +1,9 @@
-#include "../../../SqlDatabase/SqlDatabase.h"
-#include "../../../Infrastructure/Lobby/Status/GetLobbyStatusRequest.h"
-#include "../../../Infrastructure/Lobby/Status/GetLobbyStatusResponse.h"
+#include "../GetLobbyStatusContext.h"
 
-#include "GetLobbyStatusContext.h"
+#include "../../../../SqlDatabase/SqlDatabase.h"
+#include "../../../../Infrastructure/Lobby/Status/GetLobbyStatusRequest.h"
+#include "../../../../Infrastructure/Lobby/Status/GetLobbyStatusResponse.h"
+
 
 bool GetLobbyStatusContext::ValidateLobbyExists(int lobbyId)
 {
