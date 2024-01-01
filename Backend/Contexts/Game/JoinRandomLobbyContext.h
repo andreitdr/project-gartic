@@ -5,6 +5,7 @@
 #include "../BaseContext.h"
 #include "../../Infrastructure/Lobby/JoinRandomLobbyRequest.h"
 #include "../../Infrastructure/Lobby/JoinRandomLobbyResponse.h"
+#include <random>
 
 class JoinRandomLobbyContext final : public BaseContext<JoinRandomLobbyRequest, JoinRandomLobbyResponse>
 {
@@ -14,3 +15,8 @@ public:
 private:
     JoinRandomLobbyResponse ApplyChanges(const JoinRandomLobbyRequest& request) override;
 };
+
+inline JoinRandomLobbyResponse JoinRandomLobbyContext::HandleRequest(const JoinRandomLobbyRequest& request)
+{
+    return ApplyChanges(request);
+}
