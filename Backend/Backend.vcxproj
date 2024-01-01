@@ -153,6 +153,7 @@
     <ClCompile Include="Configuration\Config.cppm" />
     <ClInclude Include="API\Game\CreateLobby.h" />
     <ClInclude Include="API\Game\JoinLobby.h" />
+    <ClInclude Include="API\Game\JoinRandomLobby.h" />
     <ClInclude Include="API\Game\LeaveLobby.h" />
     <ClInclude Include="API\Game\UpdateLobby.h" />
     <ClInclude Include="API\Game\LobbyStatus.h" />

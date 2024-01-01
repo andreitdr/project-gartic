@@ -71,6 +71,7 @@
     <ClInclude Include="Infrastructure\Lobby\JoinRandomLobbyRequest.h" />
     <ClInclude Include="Infrastructure\Lobby\JoinRandomLobbyResponse.h" />
     <ClInclude Include="Contexts\Game\JoinRandomLobbyContext.h" />
+    <ClInclude Include="API\Game\JoinRandomLobby.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="unique_words.txt" />
