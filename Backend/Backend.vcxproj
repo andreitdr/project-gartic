@@ -197,6 +197,7 @@
     <ClInclude Include="Infrastructure\Lobby\CreateLobbyRequest.h" />
     <ClInclude Include="Infrastructure\Lobby\CreateLobbyResponse.h" />
     <ClInclude Include="Infrastructure\Lobby\JoinRandomLobbyRequest.h" />
+    <ClInclude Include="Infrastructure\Lobby\JoinRandomLobbyResponse.h" />
     <ClInclude Include="Infrastructure\Lobby\UpdateLobbyRequest.h" />
     <ClInclude Include="Infrastructure\Lobby\UpdateLobbyResponse.h" />
     <ClInclude Include="Infrastructure\Lobby\Status\GetLobbyStatusRequest.h" />
