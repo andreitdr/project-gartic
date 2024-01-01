@@ -160,6 +160,7 @@
     <ClInclude Include="Contexts\BaseContext.h" />
     <ClInclude Include="Contexts\Game\CreateLobbyContext.h" />
     <ClInclude Include="Contexts\Game\JoinLobbyContext.h" />
+    <ClInclude Include="Contexts\Game\JoinRandomLobbyContext.h" />
     <ClInclude Include="Contexts\Game\LeaveLobbyContext.h" />
     <ClInclude Include="Contexts\Game\Lobby\GetLobbyStatusContext.h" />
     <ClInclude Include="Contexts\Game\StartGameContext.h" />
