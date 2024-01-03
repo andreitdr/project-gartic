@@ -400,3 +400,4 @@ FodyWeavers.xsd
 
 /Backend/log.txt
 /Backend/test.db
+global.json
