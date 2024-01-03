@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../Infrastructure/Lobby/UpdateLobbyRequest.h"
-#include "../../Infrastructure/Lobby/UpdateLobbyResponse.h"
+#include "../../Infrastructure/Lobby/Update/UpdateLobbyRequest.h"
+#include "../../Infrastructure/Lobby/Update/UpdateLobbyResponse.h"
 #include "../../SqlDatabase/SqlDatabase.h"
 #include "../../Utils/JsonConvertor.h"
 #include "../BaseContext.h"
@@ -9,32 +9,31 @@
 class UpdateLobbyContext final : public BaseContext<UpdateLobbyRequest, UpdateLobbyResponse>
 {
 public:
-    UpdateLobbyResponse HandleRequest(const UpdateLobbyRequest& request);
+    UpdateLobbyResponse HandleRequest(const UpdateLobbyRequest& request) override;
 
 private:
     UpdateLobbyResponse ValidateData(const UpdateLobbyRequest& request);
-    UpdateLobbyResponse ApplyChanges(const UpdateLobbyRequest& request);
+    UpdateLobbyResponse ApplyChanges(const UpdateLobbyRequest& request) override;
 };
 
 inline UpdateLobbyResponse UpdateLobbyContext::HandleRequest(const UpdateLobbyRequest& request)
 {
     auto response = ValidateData(request);
-    if (!response)
-        return response;
+    if (!response) return response;
 
     response = ApplyChanges(request);
-    
+
     return response;
 }
 
 inline UpdateLobbyResponse UpdateLobbyContext::ValidateData(const UpdateLobbyRequest& request)
 {
     int lobbyId = request.GetLobbyId();
-        
+
     try
     {
-        if (!SqlDatabase::Exists<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId)))
-            throw std::system_error(sqlite_orm::orm_error_code::not_found);
+        if (!SqlDatabase::Exists<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId))) throw std::system_error(
+            sqlite_orm::orm_error_code::not_found);
 
         return UpdateLobbyResponse();
     }
@@ -51,13 +50,13 @@ inline UpdateLobbyResponse UpdateLobbyContext::ValidateData(const UpdateLobbyReq
 
 inline UpdateLobbyResponse UpdateLobbyContext::ApplyChanges(const UpdateLobbyRequest& request)
 {
-    int lobbyId = request.GetLobbyId();
-    int lobbyType = request.GetLobbyType();
+    int lobbyId        = request.GetLobbyId();
+    int lobbyType      = request.GetLobbyType();
     int lobbyIsPrivate = request.GetIsPrivate();
 
     try
     {
-        Lobby currentLobby = SqlDatabase::Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
+        auto currentLobby = SqlDatabase::Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
 
         currentLobby.m_isPrivate = lobbyIsPrivate;
         currentLobby.m_lobbyType = lobbyType;

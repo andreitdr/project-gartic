@@ -1,6 +1,6 @@
 #pragma once
-#include "../../BaseContext.h"
 
+#include "../../../Contexts/BaseContext.h"
 #include "../../../Infrastructure/Lobby/Status/GetLobbyStatusRequest.h"
 #include "../../../Infrastructure/Lobby/Status/GetLobbyStatusResponse.h"
 

@@ -1,10 +1,9 @@
-﻿import BaseResponse;
-
-#include <string>
+﻿#include <string>
 #include <tuple>
 
 #include <crow.h>
 #include "SqlDatabase/SqlDatabase.h"
+#include "Infrastructure/BaseResponse.h"
 
 #include "API/Game/CreateLobby.h"
 #include "API/Game/StartGame.h"
@@ -43,7 +42,7 @@ int main()
 
     CROW_ROUTE(app, "/game/lobby_status").methods("GET"_method)([](const crow::request& request)
     {
-       const auto json = crow::json::load(request.body);
+        const auto json = crow::json::load(request.body);
         if (!json)
         {
             BaseResponse response;
@@ -55,7 +54,7 @@ int main()
         }
 
         auto response = GetLobbyStatus(json);
-        return crow::response(response); 
+        return crow::response(response);
     });
 
     /*
@@ -63,8 +62,8 @@ int main()
      */
     CROW_ROUTE(app, "/<int>").methods("GET"_method)([](const int v)
     {
-        const auto result = SqlDatabase::Select<std::tuple<std::string, std::string>>(sqlite_orm::columns(&User::m_surname, &User::m_givenName),
-                                                                                      WHERE(User::m_user_id, v));
+        const auto result = SqlDatabase::Select<std::tuple<std::string, std::string>>(
+            sqlite_orm::columns(&User::m_surname, &User::m_givenName), WHERE(User::m_user_id, v));
         auto user1 = result[0];
 
         return (std::format("surname: {}, givenName: {}", std::get<0>(user1), std::get<1>(user1)));
@@ -88,7 +87,7 @@ int main()
 
     CROW_ROUTE(app, "/game/join_lobby").methods("POST"_method)([](const crow::request& request)
     {
-       const auto json = crow::json::load(request.body);
+        const auto json = crow::json::load(request.body);
         if (!json)
         {
             BaseResponse response;
@@ -105,7 +104,7 @@ int main()
 
     CROW_ROUTE(app, "/game/leave_lobby").methods("POST"_method)([](const crow::request& request)
     {
-       const auto json = crow::json::load(request.body);
+        const auto json = crow::json::load(request.body);
         if (!json)
         {
             BaseResponse response;
@@ -121,21 +120,21 @@ int main()
     });
 
     CROW_ROUTE(app, "/game/update_lobby").methods("POST"_method)([](const crow::request& request)
+    {
+        const auto json = crow::json::load(request.body);
+        if (!json)
         {
-            const auto json = crow::json::load(request.body);
-            if (!json)
-            {
-                BaseResponse response;
-                response.m_successState = false;
-                response.AppendMessage("The json was in an incorrect format");
+            BaseResponse response;
+            response.m_successState = false;
+            response.AppendMessage("The json was in an incorrect format");
 
-                auto responseJson = JsonConvertor::ConvertBaseResponse(response);
-                return crow::response(responseJson);
-            }
+            auto responseJson = JsonConvertor::ConvertBaseResponse(response);
+            return crow::response(responseJson);
+        }
 
-            auto response = UpdateLobby(json);
-            return crow::response(response);
-        });
+        auto response = UpdateLobby(json);
+        return crow::response(response);
+    });
 
     CROW_ROUTE(app, "/user/get_user").methods("GET"_method)([](const crow::request& request)
     {

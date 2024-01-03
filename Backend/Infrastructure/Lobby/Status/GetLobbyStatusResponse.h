@@ -1,8 +1,8 @@
 #pragma once
-
-import BaseResponse;
-import Game;
 #include <string>
+
+#include "../../../Infrastructure/BaseResponse.h"
+#include "../../../DataTypes/Game/Lobby.h"
 
 
 class GetLobbyStatusResponse final : public BaseResponse

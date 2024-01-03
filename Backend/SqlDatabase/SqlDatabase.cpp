@@ -4,4 +4,3 @@ void SqlDatabase::Init()
 {
     storage.sync_schema();
 }
-
