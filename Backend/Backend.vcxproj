@@ -179,6 +179,7 @@
   <ItemGroup>
     <ClInclude Include="API\Game\CreateLobby.h" />
     <ClInclude Include="API\Game\JoinLobby.h" />
+    <ClInclude Include="API\Game\JoinRandomLobby.h" />
     <ClInclude Include="API\Game\LeaveLobby.h" />
     <ClInclude Include="API\Game\LobbyStatus.h" />
     <ClInclude Include="API\Game\StartGame.h" />
@@ -190,6 +191,7 @@
     <ClInclude Include="Contexts\BaseContext.h" />
     <ClInclude Include="Contexts\Game\CreateLobbyContext.h" />
     <ClInclude Include="Contexts\Game\JoinLobbyContext.h" />
+    <ClInclude Include="Contexts\Game\JoinRandomLobbyContext.h" />
     <ClInclude Include="Contexts\Game\LeaveLobbyContext.h" />
     <ClInclude Include="Contexts\Game\Lobby\GetLobbyStatusContext.h" />
     <ClInclude Include="Contexts\Game\StartGameContext.h" />
@@ -208,6 +210,8 @@
     <ClInclude Include="Infrastructure\GameStart\StartGameResponse.h" />
     <ClInclude Include="Infrastructure\Lobby\Create\CreateLobbyRequest.h" />
     <ClInclude Include="Infrastructure\Lobby\Create\CreateLobbyResponse.h" />
+    <ClInclude Include="Infrastructure\Lobby\JoinRandomLobbyRequest.h" />
+    <ClInclude Include="Infrastructure\Lobby\JoinRandomLobbyResponse.h" />
     <ClInclude Include="Infrastructure\Lobby\Join\JoinLobbyRequest.h" />
     <ClInclude Include="Infrastructure\Lobby\Join\JoinLobbyResponse.h" />
     <ClInclude Include="Infrastructure\Lobby\Leave\LeaveLobbyRequest.h" />

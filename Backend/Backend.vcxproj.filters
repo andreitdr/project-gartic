@@ -38,6 +38,9 @@
     <ClCompile Include="Infrastructure\Lobby\JoinLobbyResponse.cppm" />
     <ClCompile Include="Infrastructure\Lobby\LeaveLobbyRequest.cppm" />
     <ClCompile Include="Infrastructure\Lobby\LeaveLobbyResponse.cppm" />
+    <ClCompile Include="Contexts\Game\Lobby\GetLobbyStatusContext.cpp" />
+    <ClCompile Include="Infrastructure\Lobby\Status\GetLobbyStatusRequest.cpp" />
+    <ClCompile Include="Infrastructure\Lobby\Status\GetLobbyStatusResponse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API\Game\CreateLobby.h" />
@@ -61,6 +64,14 @@
     <ClInclude Include="Infrastructure\Lobby\UpdateLobbyResponse.h" />
     <ClInclude Include="Contexts\Game\UpdateLobbyContext.h" />
     <ClInclude Include="API\Game\UpdateLobby.h" />
+    <ClInclude Include="API\Game\LobbyStatus.h" />
+    <ClInclude Include="Contexts\Game\Lobby\GetLobbyStatusContext.h" />
+    <ClInclude Include="Infrastructure\Lobby\Status\GetLobbyStatusRequest.h" />
+    <ClInclude Include="Infrastructure\Lobby\Status\GetLobbyStatusResponse.h" />
+    <ClInclude Include="Infrastructure\Lobby\JoinRandomLobbyRequest.h" />
+    <ClInclude Include="Infrastructure\Lobby\JoinRandomLobbyResponse.h" />
+    <ClInclude Include="Contexts\Game\JoinRandomLobbyContext.h" />
+    <ClInclude Include="API\Game\JoinRandomLobby.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="unique_words.txt" />

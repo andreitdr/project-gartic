@@ -11,6 +11,7 @@
 #include "API/Game/LeaveLobby.h"
 #include "API/Game/UpdateLobby.h"
 #include "API/Game/LobbyStatus.h"
+#include "API/Game/JoinRandomLobby.h"
 
 #include "API/User/GetUserInfo.h"
 #include "API/User/UserLogin.h"
@@ -135,6 +136,23 @@ int main()
         auto response = UpdateLobby(json);
         return crow::response(response);
     });
+
+    CROW_ROUTE(app, "/game/join_random_lobby").methods("POST"_method)([](const crow::request& request)
+        {
+            const auto json = crow::json::load(request.body);
+            if (!json)
+            {
+                BaseResponse response;
+                response.m_successState = false;
+                response.AppendMessage("The json was in an incorrect format");
+
+                auto responseJson = JsonConvertor::ConvertBaseResponse(response);
+                return crow::response(responseJson);
+            }
+
+            auto response = JoinRandomLobby(json);
+            return crow::response(response);
+        });
 
     CROW_ROUTE(app, "/user/get_user").methods("GET"_method)([](const crow::request& request)
     {
