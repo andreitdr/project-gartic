@@ -2,9 +2,11 @@
 
 #include "../../SqlDatabase/SqlDatabase.h"
 #include "../../Utils/JsonConvertor.h"
+
+#include "../../Infrastructure/Lobby/Join/JoinRandomLobbyRequest.h"
+#include "../../Infrastructure/Lobby/Join/JoinRandomLobbyResponse.h"
+
 #include "../BaseContext.h"
-#include "../../Infrastructure/Lobby/JoinRandomLobbyRequest.h"
-#include "../../Infrastructure/Lobby/JoinRandomLobbyResponse.h"
 #include <random>
 
 class JoinRandomLobbyContext final : public BaseContext<JoinRandomLobbyRequest, JoinRandomLobbyResponse>

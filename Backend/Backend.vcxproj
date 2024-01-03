@@ -154,7 +154,6 @@
     <ClCompile Include="Contexts\User\Info\UserInfoContext.cpp" />
     <ClCompile Include="Contexts\User\Login\UserLoginContext.cpp" />
     <ClCompile Include="Contexts\User\Registration\UserRegistrationContext.cpp" />
-    <ClCompile Include="SqlDatabase\SqlDatabase.cpp" />
     <ClCompile Include="Infrastructure\BaseResponse.cpp" />
     <ClCompile Include="Infrastructure\GameStart\StartGameRequest.cpp" />
     <ClCompile Include="Infrastructure\GameStart\StartGameResponse.cpp" />
@@ -162,6 +161,8 @@
     <ClCompile Include="Infrastructure\Lobby\Create\CreateLobbyResponse.cpp" />
     <ClCompile Include="Infrastructure\Lobby\Join\JoinLobbyRequest.cpp" />
     <ClCompile Include="Infrastructure\Lobby\Join\JoinLobbyResponse.cpp" />
+    <ClCompile Include="Infrastructure\Lobby\Join\JoinRandomLobbyRequest.cpp" />
+    <ClCompile Include="Infrastructure\Lobby\Join\JoinRandomLobbyResponse.cpp" />
     <ClCompile Include="Infrastructure\Lobby\Leave\LeaveLobbyRequest.cpp" />
     <ClCompile Include="Infrastructure\Lobby\Leave\LeaveLobbyResponse.cpp" />
     <ClCompile Include="Infrastructure\Lobby\Status\GetLobbyStatusRequest.cpp" />
@@ -174,6 +175,7 @@
     <ClCompile Include="Infrastructure\UserLogin\UserLoginResponse.cpp" />
     <ClCompile Include="Infrastructure\UserRegistration\UserRegistrationRequest.cpp" />
     <ClCompile Include="Infrastructure\UserRegistration\UserRegistrationResponse.cpp" />
+    <ClCompile Include="SqlDatabase\SqlDatabase.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -210,10 +212,10 @@
     <ClInclude Include="Infrastructure\GameStart\StartGameResponse.h" />
     <ClInclude Include="Infrastructure\Lobby\Create\CreateLobbyRequest.h" />
     <ClInclude Include="Infrastructure\Lobby\Create\CreateLobbyResponse.h" />
-    <ClInclude Include="Infrastructure\Lobby\JoinRandomLobbyRequest.h" />
-    <ClInclude Include="Infrastructure\Lobby\JoinRandomLobbyResponse.h" />
     <ClInclude Include="Infrastructure\Lobby\Join\JoinLobbyRequest.h" />
     <ClInclude Include="Infrastructure\Lobby\Join\JoinLobbyResponse.h" />
+    <ClInclude Include="Infrastructure\Lobby\Join\JoinRandomLobbyRequest.h" />
+    <ClInclude Include="Infrastructure\Lobby\Join\JoinRandomLobbyResponse.h" />
     <ClInclude Include="Infrastructure\Lobby\Leave\LeaveLobbyRequest.h" />
     <ClInclude Include="Infrastructure\Lobby\Leave\LeaveLobbyResponse.h" />
     <ClInclude Include="Infrastructure\Lobby\Status\GetLobbyStatusRequest.h" />
