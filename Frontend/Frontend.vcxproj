@@ -109,7 +109,6 @@
     <ClCompile Include="Windows\GameWindow\GameWindow.cpp" />
     <ClCompile Include="Windows\JoinGame\JoinGame.cpp" />
     <ClCompile Include="Windows\JoinRoom\JoinRoom.cpp" />
-    <ClCompile Include="Windows\LobbySettings\LobbySettings.cpp" />
     <ClCompile Include="Windows\Lobby\Lobby.cpp" />
     <ClCompile Include="Windows\Login\Login.cpp" />
     <ClCompile Include="Windows\Register\Register.cpp" />
@@ -127,7 +126,6 @@
     <ClInclude Include="Utils\LobbyData\LobbyData.h" />
     <ClInclude Include="Utils\UserInfoCache\UserInfoCache.h" />
     <ClInclude Include="Utils\UserInfo\UserInfo.h" />
-    <QtMoc Include="Windows\LobbySettings\LobbySettings.h" />
     <QtMoc Include="Windows\UserProfile\UserProfile.h" />
     <QtMoc Include="Windows\Login\Login.h" />
     <QtMoc Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.h" />
@@ -148,7 +146,6 @@
     <QtUic Include="Windows\GameWindow\GameWindow.ui" />
     <QtUic Include="Windows\JoinGame\JoinGame.ui" />
     <QtUic Include="Windows\JoinRoom\JoinRoom.ui" />
-    <QtUic Include="Windows\LobbySettings\LobbySettings.ui" />
     <QtUic Include="Windows\Lobby\Lobby.ui" />
     <QtUic Include="Windows\Login\Login.ui" />
     <QtUic Include="Windows\Register\Register.ui" />

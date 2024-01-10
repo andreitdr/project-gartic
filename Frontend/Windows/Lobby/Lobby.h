@@ -45,14 +45,13 @@ private slots:
 	void on_pushButton_exitLobby_clicked();
 	void on_pushButton_copyLobbyId_clicked();
 	void on_pushButton_lobbySettings_clicked();
+	void on_pushButton_saveSettings_clicked();
 
 public slots:
 	void getLobbyData(const LobbyData& lobbyData);
 	void getLobbyId(int lobbyId);
-	void getUpdatedSettings(bool isPrivate, int gameMode);
 
 signals:
 	void goToJoinGameWindow();
-	void goToLobbySettingsWindow();
 	void windowPositionChanged(const QPoint& newPosition);
 };

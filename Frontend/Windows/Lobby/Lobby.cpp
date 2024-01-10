@@ -179,17 +179,50 @@ void Lobby::on_pushButton_copyLobbyId_clicked()
 
 void Lobby::on_pushButton_lobbySettings_clicked()
 {
-	emit goToLobbySettingsWindow();
+    if (CurrentUser::getInstance().getUsername() != m_lobbyData.GetLobbyAdmin().getUsername())
+    {
+        showErrorCustomMessageBox(
+			this,
+			"Gartic - Lobby Settings",
+			"You are not the admin of this lobby!",
+			"Ok",
+			[]() {}
+		);
+		return;
+    }
+    if(m_lobbyData.GetIsPrivate())
+		ui.radioButton_Private->setChecked(true);
+	else
+		ui.radioButton_Public->setChecked(true);
+    if (m_lobbyData.GetLobbyType() == 1)
+		ui.radioButton_GuessingMode->setChecked(true);
+	else
+		ui.radioButton_DrawingContest->setChecked(true);
+
+	ui.groupBox_lobbyStatus->hide();
+    ui.groupBox_lobbySettings->show();
+}
+
+void Lobby::on_pushButton_saveSettings_clicked()
+{
+    if(ui.radioButton_Private->isChecked())
+        m_lobbyData.SetIsPrivate(true);
+    else
+        if(ui.radioButton_Public->isChecked())
+		m_lobbyData.SetIsPrivate(false);
+
+    if (ui.radioButton_GuessingMode->isChecked())
+        m_lobbyData.SetLobbyType(1);
+    else
+        if(ui.radioButton_DrawingContest->isChecked())
+    m_lobbyData.SetLobbyType(2);
+    ui.groupBox_lobbyStatus->show();
 }
 
 void Lobby::getLobbyId(int lobbyId)
 {
     m_lobbyData.SetLobbyID(lobbyId);
     updateLobbyStatus();
-}
-
-void Lobby::getUpdatedSettings(bool isPrivate, int gameMode)
-{
 }
 
 void Lobby::getLobbyData(const LobbyData& lobbyData)
