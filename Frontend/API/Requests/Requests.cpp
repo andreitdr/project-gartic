@@ -25,10 +25,12 @@ cpr::Response Requests::getUserInfo(const int userId)
     return SendRequest(ApiEndpoints::GET_USER_INFO, payload, "GET");
 }
 
-cpr::Response Requests::createLobby(const int userId)
+cpr::Response Requests::createLobby(const int userId, const bool isPrivate, const int lobbyType)
 {
     crow::json::wvalue payload;
     payload["userId"] = userId;
+    payload["lobbyType"] = lobbyType;
+    payload["isPrivateLobby"] = isPrivate;
     return SendRequest(ApiEndpoints::CREATE_LOBBY, payload, "POST");
 }
 

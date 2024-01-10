@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>654</width>
-    <height>450</height>
+    <height>446</height>
    </rect>
   </property>
   <property name="font">
@@ -375,7 +375,7 @@ color: rgb(0, 0, 0);</string>
          <widget class="QLineEdit" name="lineEdit_viewLobbyId">
           <property name="geometry">
            <rect>
-            <x>74</x>
+            <x>36</x>
             <y>57</y>
             <width>128</width>
             <height>35</height>
@@ -403,7 +403,7 @@ color: rgb(0, 0, 0);</string>
          <widget class="QPushButton" name="pushButton_copyLobbyId">
           <property name="geometry">
            <rect>
-            <x>209</x>
+            <x>170</x>
             <y>57</y>
             <width>35</width>
             <height>35</height>
@@ -426,10 +426,10 @@ color: rgb(0, 0, 0);</string>
            <bool>true</bool>
           </property>
          </widget>
-         <widget class="QLabel" name="label_codeIcon">
+         <widget class="QPushButton" name="pushButton_lobbySettings">
           <property name="geometry">
            <rect>
-            <x>36</x>
+            <x>211</x>
             <y>57</y>
             <width>35</width>
             <height>35</height>
@@ -438,10 +438,17 @@ color: rgb(0, 0, 0);</string>
           <property name="text">
            <string/>
           </property>
-          <property name="pixmap">
-           <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/lobby-code-icon.png</pixmap>
+          <property name="icon">
+           <iconset resource="../../Frontend.qrc">
+            <normaloff>:/Frontend/assets/images/settings-icon-yellow.png</normaloff>:/Frontend/assets/images/settings-icon-yellow.png</iconset>
           </property>
-          <property name="scaledContents">
+          <property name="iconSize">
+           <size>
+            <width>35</width>
+            <height>35</height>
+           </size>
+          </property>
+          <property name="autoDefault">
            <bool>true</bool>
           </property>
          </widget>

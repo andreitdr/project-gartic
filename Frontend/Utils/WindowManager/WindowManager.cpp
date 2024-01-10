@@ -8,7 +8,8 @@ WindowManager::WindowManager(QObject* parent) : QObject{ parent },
 	m_userProfileWindow{ std::make_unique <UserProfile>(&m_contexts) },
 	m_joinRoomWindow{ std::make_unique <JoinRoom>(&m_contexts) },
 	m_lobbyWindow{ std::make_unique <Lobby>(&m_contexts) },
-	m_gameWindow{ std::make_unique <GameWindow>(&m_contexts) }
+	m_gameWindow{ std::make_unique <GameWindow>(&m_contexts) },
+	m_lobbySettingsWindow{ std::make_unique <LobbySettings>(&m_contexts)}
 {
 	setupConnections();
 }
@@ -45,6 +46,10 @@ void WindowManager::setupConnections()
 	//Lobby connections
 	connect(m_lobbyWindow.get(), &Lobby::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
 	connect(m_lobbyWindow.get(), &Lobby::windowPositionChanged, this, &WindowManager::onWindowHidden);
+	connect(m_lobbyWindow.get(), &Lobby::goToLobbySettingsWindow, this, &WindowManager::showLobbySettingsWindow);
+
+	//LobbySettings connections
+	connect(m_lobbySettingsWindow.get(), &LobbySettings::updateSettings, m_lobbyWindow.get(), &Lobby::getUpdatedSettings);
 }
 
 void WindowManager::setWindowPosition(QWidget* window)
@@ -94,6 +99,12 @@ void WindowManager::showGameWindow()
 {
 	setWindowPosition(m_gameWindow.get());
 	m_gameWindow->show();
+}
+
+void WindowManager::showLobbySettingsWindow()
+{
+	setWindowPosition(m_lobbySettingsWindow.get());
+	m_lobbySettingsWindow->show();
 }
 
 void WindowManager::onWindowHidden(const QPoint& position)

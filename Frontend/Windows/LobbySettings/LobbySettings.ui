@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LobbySettingsClass</class>
+ <widget class="QMainWindow" name="LobbySettingsClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>320</width>
+    <height>430</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Nunito Medium</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Gartic - Lobby Settings</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../Frontend.qrc">
+    <normaloff>:/Frontend/assets/images/appicon.ico</normaloff>:/Frontend/assets/images/appicon.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget {
+    background-image: url(:/Frontend/assets/images/background.png);
+    background-position: center;
+}</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="1" column="0">
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_logo">
+          <property name="minimumSize">
+           <size>
+            <width>201</width>
+            <height>51</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>201</width>
+            <height>51</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background:none;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/gartic-logo.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_lobbySettings">
+        <property name="minimumSize">
+         <size>
+          <width>300</width>
+          <height>325</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>300</width>
+          <height>341</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Nunito Medium</family>
+          <pointsize>16</pointsize>
+          <bold>false</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:none;
+background-color: rgb(255, 255, 255);
+border-radius: 10px;</string>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+        <widget class="QLabel" name="label_lobbySettingsBadge">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>20</y>
+           <width>231</width>
+           <height>55</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/settings-badge.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_saveSettings">
+         <property name="geometry">
+          <rect>
+           <x>16</x>
+           <y>266</y>
+           <width>270</width>
+           <height>45</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Nunito Medium</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+background-color: rgb(255, 191, 0);
+color:rgb(0,0,0);
+}
+
+QPushButton:hover, QPushButton:pressed {
+   background-color: rgb(225, 165, 0);
+}</string>
+         </property>
+         <property name="text">
+          <string>Save Settings</string>
+         </property>
+         <property name="autoDefault">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="radioButton_VisibilityPublic">
+         <property name="geometry">
+          <rect>
+           <x>85</x>
+           <y>105</y>
+           <width>89</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Nunito Medium</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Public </string>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="radioButton_VisibilityPrivate">
+         <property name="geometry">
+          <rect>
+           <x>85</x>
+           <y>135</y>
+           <width>101</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Nunito Medium</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Private</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_lockIcon">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>107</y>
+           <width>45</width>
+           <height>45</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../../Frontend.qrc">
+           <normaloff>:/Frontend/assets/images/lock-icon-yellow.png</normaloff>:/Frontend/assets/images/lock-icon-yellow.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>45</width>
+           <height>45</height>
+          </size>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="radioButton_GameMode1">
+         <property name="geometry">
+          <rect>
+           <x>85</x>
+           <y>185</y>
+           <width>181</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Nunito Medium</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Game Mode 1</string>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="radioButton_GameMode2">
+         <property name="geometry">
+          <rect>
+           <x>85</x>
+           <y>215</y>
+           <width>181</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Nunito Medium</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Game Mode 2</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_GameModeIcon">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>186</y>
+           <width>45</width>
+           <height>45</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../../Frontend.qrc">
+           <normaloff>:/Frontend/assets/images/game-mode-icon-blue.png</normaloff>:/Frontend/assets/images/game-mode-icon-blue.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>45</width>
+           <height>45</height>
+          </size>
+         </property>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>pushButton_saveSettings</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../Frontend.qrc"/>
+ </resources>
+ <connections/>
+</ui>

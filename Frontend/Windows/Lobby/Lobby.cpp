@@ -177,10 +177,19 @@ void Lobby::on_pushButton_copyLobbyId_clicked()
 	clipboard->setText(ui.lineEdit_viewLobbyId->text());
 }
 
+void Lobby::on_pushButton_lobbySettings_clicked()
+{
+	emit goToLobbySettingsWindow();
+}
+
 void Lobby::getLobbyId(int lobbyId)
 {
     m_lobbyData.SetLobbyID(lobbyId);
     updateLobbyStatus();
+}
+
+void Lobby::getUpdatedSettings(bool isPrivate, int gameMode)
+{
 }
 
 void Lobby::getLobbyData(const LobbyData& lobbyData)

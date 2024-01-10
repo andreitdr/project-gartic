@@ -56,9 +56,9 @@ void Contexts::getUserInfo(int userId, std::function<void(bool, const std::strin
 	});
 }
 
-void Contexts::createLobby(int userId, std::function<void(bool, const std::string&, const LobbyData&)> callback)
+void Contexts::createLobby(int userId, bool isPrivate, int lobbyType, std::function<void(bool, const std::string&, const LobbyData&)> callback)
 {
-	auto response = requests.createLobby(userId);
+	auto response = requests.createLobby(userId,isPrivate,lobbyType);
 	if (response.status_code != 200)
 	{
 		callback(false, "Server error",LobbyData());

@@ -8,6 +8,7 @@
 #include "../../Windows/JoinRoom/JoinRoom.h"
 #include "../../Windows/Lobby/Lobby.h"
 #include "../../Windows/GameWindow/GameWindow.h"
+#include "../../Windows/LobbySettings/LobbySettings.h"
 #include "../../API/Contexts/Contexts.h"
 
 class WindowManager : public QObject {
@@ -25,6 +26,7 @@ public slots:
     void showJoinRoomWindow();
     void showLobbyWindow();
     void showGameWindow();
+    void showLobbySettingsWindow();
     void onWindowHidden(const QPoint& position);
 
 private:
@@ -36,6 +38,7 @@ private:
     std::unique_ptr<JoinRoom> m_joinRoomWindow;
     std::unique_ptr<Lobby> m_lobbyWindow;
     std::unique_ptr<GameWindow> m_gameWindow;
+    std::unique_ptr<LobbySettings> m_lobbySettingsWindow;
     void setupConnections();
 
     QPoint lastWindowPosition;
