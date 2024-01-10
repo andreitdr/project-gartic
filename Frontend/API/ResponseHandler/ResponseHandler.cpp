@@ -176,3 +176,20 @@ void ResponseHandler::processLobbyStatusResponse(const crow::json::rvalue& respo
 		callback(false, message, LobbyData());
 	}
 }
+
+void ResponseHandler::processUpdateLobbyResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&)> callback)
+{
+	if (!response) {
+		callback(false, "Invalid response format");
+		return;
+	}
+
+	bool success = response["ResponseState"].b();
+	std::string message;
+	if (response["ResponseMessage"].size() > 0)
+		message = response["ResponseMessage"][0].s();
+	else
+		message = "";
+
+	callback(success, message);
+}

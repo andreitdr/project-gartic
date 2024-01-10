@@ -123,3 +123,19 @@ void Contexts::lobbyStatus(int lobbyId, std::function<void(bool, const std::stri
 			});
 		}).detach();
 }
+
+void Contexts::updateLobby(int lobbyId, int lobbyType, bool isPrivate, std::function<void(bool, const std::string&)> callback)
+{
+	auto response = requests.updateLobby(lobbyId, lobbyType, isPrivate);
+	if (response.status_code != 200)
+	{
+		callback(false, "Server error");
+		return;
+	};
+
+	auto response_json = crow::json::load(response.text);
+	handler.processUpdateLobbyResponse(response_json, [callback](bool success, const std::string& message)
+		{
+			callback(success, message);
+		});
+}

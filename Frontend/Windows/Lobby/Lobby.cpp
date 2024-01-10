@@ -216,7 +216,22 @@ void Lobby::on_pushButton_saveSettings_clicked()
     else
         if(ui.radioButton_DrawingContest->isChecked())
     m_lobbyData.SetLobbyType(2);
-    ui.groupBox_lobbyStatus->show();
+
+    contexts->updateLobby(m_lobbyData.GetLobbyID(), m_lobbyData.GetLobbyType(),m_lobbyData.GetIsPrivate(), [this](bool success, const std::string& message) {
+		if (success) {
+			ui.groupBox_lobbySettings->hide();
+			ui.groupBox_lobbyStatus->show();
+		}
+		else {
+			showErrorCustomMessageBox(
+				this,
+				"Gartic - Lobby Settings",
+				"Something went wrong. Please try again later!",
+				"Ok",
+				[]() {}
+			);
+		}
+	});
 }
 
 void Lobby::getLobbyId(int lobbyId)

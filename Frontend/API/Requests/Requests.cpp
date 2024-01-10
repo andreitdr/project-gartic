@@ -57,6 +57,22 @@ cpr::Response Requests::lobbyStatus(const int lobbyId)
     return SendRequest(ApiEndpoints::LOBBY_STATUS, payload, "GET");
 }
 
+cpr::Response Requests::updateLobby(const int lobbyId, const int lobbyType, const bool isPrivate)
+{
+    crow::json::wvalue payload;
+    payload["lobbyId"] = lobbyId;
+    payload["lobbyType"] = lobbyType;
+    payload["IsPrivate"] = isPrivate;
+	return SendRequest(ApiEndpoints::UPDATE_LOBBY, payload, "POST");
+}
+
+cpr::Response Requests::joinRandomLobby(const int userId)
+{
+    crow::json::wvalue payload;
+	payload["userId"] = userId;
+	return SendRequest(ApiEndpoints::JOIN_RANDOM_LOBBY, payload, "POST");
+}
+
 cpr::Response Requests::SendRequest(const std::string& url, const crow::json::wvalue& payload, const std::string& method)
 {
     std::string json_payload = payload.dump();
