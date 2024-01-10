@@ -155,6 +155,7 @@
     <ClCompile Include="Contexts\User\Info\UserInfoContext.cpp" />
     <ClCompile Include="Contexts\User\Login\UserLoginContext.cpp" />
     <ClCompile Include="Contexts\User\Registration\UserRegistrationContext.cpp" />
+    <ClCompile Include="GameManagement\GameManager.cpp" />
     <ClCompile Include="Infrastructure\BaseResponse.cpp" />
     <ClCompile Include="Infrastructure\GameStart\StartGameRequest.cpp" />
     <ClCompile Include="Infrastructure\GameStart\StartGameResponse.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="DataTypes\User\Credentials.h" />
     <ClInclude Include="DataTypes\User\User.h" />
     <ClInclude Include="DataTypes\User\UserGameData.h" />
+    <ClInclude Include="GameManagement\GameManager.h" />
     <ClInclude Include="Infrastructure\BaseResponse.h" />
     <ClInclude Include="Infrastructure\GameStart\StartGameRequest.h" />
     <ClInclude Include="Infrastructure\GameStart\StartGameResponse.h" />
