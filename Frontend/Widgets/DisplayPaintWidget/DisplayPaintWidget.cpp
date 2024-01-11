@@ -9,12 +9,10 @@ DisplayPaintWidget::DisplayPaintWidget(QWidget *parent)
 DisplayPaintWidget::~DisplayPaintWidget()
 {}
 
-void DisplayPaintWidget::loadImage()
+void DisplayPaintWidget::updateImage(QImage image)
 {
-	/*QString filePath = "C:/Users/pestr/Desktop/test.png";
-	m_image.load(filePath);
-	setFixedSize(m_image.size());
-	update();*/
+	m_image = image;
+	update();
 }
 
 void DisplayPaintWidget::paintEvent(QPaintEvent* event)

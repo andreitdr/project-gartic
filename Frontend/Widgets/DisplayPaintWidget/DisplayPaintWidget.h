@@ -14,7 +14,7 @@ public:
 	DisplayPaintWidget(QWidget *parent = nullptr);
 	~DisplayPaintWidget();
 
-	void loadImage();
+	void updateImage(QImage image);
 	void paintEvent(QPaintEvent* event) override;
 
 private:

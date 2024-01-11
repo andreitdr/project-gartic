@@ -28,7 +28,7 @@ private:
 	Contexts* contexts;
 	GameData m_gameData;
 	std::string wordToGuess;
-	DisplayPaintWidget* displayWidget = nullptr;
+	DisplayPaintWidget* displayPaintWidget = nullptr;
 	PaintWidget* paintWidget = nullptr;
 	void leaveGame();
 	void addPlayerToLeaderBoard(const UserInfo& userInfo, const int points, const bool isDrawing);
@@ -37,6 +37,7 @@ private:
 	void updateRoundNumber();
 	void updateWordToGuess();
 	void updateGameStatus();
+	void updateDrawingWidget();
 	void updateGameData();
 
 private slots:

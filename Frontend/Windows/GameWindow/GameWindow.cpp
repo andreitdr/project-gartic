@@ -8,10 +8,15 @@ GameWindow::GameWindow(Contexts* contexts, QWidget *parent)
 	contexts(contexts)
 {
 	ui.setupUi(this);
+    paintWidget = new PaintWidget();
+    displayPaintWidget = new DisplayPaintWidget();
 }
 
 GameWindow::~GameWindow()
-{}
+{
+    delete paintWidget;
+    delete displayPaintWidget;
+}
 
 void GameWindow::closeEvent(QCloseEvent * event)
 {
@@ -134,6 +139,24 @@ void GameWindow::updateGameStatus()
 	updateRoundNumber();
     updateLeaderBoard();
     updateWordToGuess();
+    updateDrawingWidget();
+}
+
+void GameWindow::updateDrawingWidget()
+{
+    QGridLayout* layout = new QGridLayout();
+    if (CurrentUser::getInstance().getUsername() == m_gameData.GetDrawingPlayer().getUsername())
+    {
+		layout->addWidget(paintWidget);
+        layout->setAlignment(paintWidget, Qt::AlignTop);
+    }
+    else
+    {
+		layout->addWidget(displayPaintWidget);
+        layout->setAlignment(displayPaintWidget, Qt::AlignTop);
+    }
+    layout->setContentsMargins(2, 2, 2, 2);
+    ui.groupBox_drawing->setLayout(layout);
 }
 
 void GameWindow::updateGameData()
@@ -173,7 +196,7 @@ void GameWindow::on_pushButton_leaveGame_clicked()
     UserInfo player3 = UserInfo("user3", "user3", "user3", 3);
     UserInfo player4 = UserInfo("user4", "user4", "user4", 4);
     CurrentUser::getInstance().setUsername("user1");
-    m_gameData.SetDrawingPlayer(player2);
+    m_gameData.SetDrawingPlayer(player1);
     m_gameData.SetPlayerPoints(player1.getUserId(), 100);
     m_gameData.SetPlayerPoints(player2.getUserId(), 200);
     m_gameData.SetPlayerPoints(player3.getUserId(), 500);
