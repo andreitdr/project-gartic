@@ -1,22 +1,409 @@
-<UI version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>GameWindowClass</class>
- <widget class="QMainWindow" name="GameWindowClass" >
-  <property name="objectName" >
-   <string notr="true">GameWindowClass</string>
-  </property>
-  <property name="geometry" >
+ <widget class="QMainWindow" name="GameWindowClass">
+  <property name="geometry">
    <rect>
-	<x>0</x>
-	<y>0</y>
-	<width>600</width>
-	<height>400</height>
+    <x>0</x>
+    <y>0</y>
+    <width>1115</width>
+    <height>623</height>
    </rect>
   </property>
-  <property name="windowTitle" >
-   <string>GameWindow</string>
-  </property>  <widget class="QMenuBar" name="menuBar" />  <widget class="QToolBar" name="mainToolBar" />  <widget class="QWidget" name="centralWidget" />  <widget class="QStatusBar" name="statusBar" />
+  <property name="windowTitle">
+   <string>Gartic - Game</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../Frontend.qrc">
+    <normaloff>:/Frontend/assets/images/appicon.ico</normaloff>:/Frontend/assets/images/appicon.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget {
+    background-image: url(:/Frontend/assets/images/background.png);
+    background-position: center;
+}</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_logo">
+          <property name="minimumSize">
+           <size>
+            <width>310</width>
+            <height>70</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>310</width>
+            <height>70</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background:none;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/gartic-logo.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <spacer name="verticalSpacer_logo">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>25</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_gameInfo">
+        <property name="minimumSize">
+         <size>
+          <width>1100</width>
+          <height>480</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>1100</width>
+          <height>480</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background:none;
+border:0px;</string>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QGroupBox" name="groupBox_topBar">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>6</y>
+           <width>1095</width>
+           <height>75</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:none;
+background-color: rgb(255, 255, 255);
+border-radius: 10px;
+border: 2px solid gray;</string>
+         </property>
+         <property name="title">
+          <string/>
+         </property>
+         <widget class="QLabel" name="label_roundNumber">
+          <property name="geometry">
+           <rect>
+            <x>80</x>
+            <y>30</y>
+            <width>161</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Nunito</family>
+            <pointsize>19</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border:none;
+background:none;</string>
+          </property>
+          <property name="text">
+           <string>Round 1 of 4</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_word">
+          <property name="geometry">
+           <rect>
+            <x>240</x>
+            <y>40</y>
+            <width>600</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Nunito</family>
+            <pointsize>19</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border:none;
+background:none;</string>
+          </property>
+          <property name="text">
+           <string>______ (6)</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_guessDrawThis">
+          <property name="geometry">
+           <rect>
+            <x>240</x>
+            <y>14</y>
+            <width>600</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Nunito</family>
+            <pointsize>15</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border:none;
+background:none;
+color:grey;</string>
+          </property>
+          <property name="text">
+           <string>GUESS THIS</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_leaveGame">
+          <property name="geometry">
+           <rect>
+            <x>1030</x>
+            <y>13</y>
+            <width>50</width>
+            <height>50</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border:none;
+background:none;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../Frontend.qrc">
+            <normaloff>:/Frontend/assets/images/logout-icon-2.png</normaloff>:/Frontend/assets/images/logout-icon-2.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_leaderboard">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>79</y>
+           <width>256</width>
+           <height>400</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:none;
+background-color: rgb(255, 255, 255);
+border-radius: 10px;
+border: 2px solid gray;</string>
+         </property>
+         <property name="title">
+          <string/>
+         </property>
+         <widget class="QListWidget" name="listWidget_playerList">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>256</width>
+            <height>401</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QScrollBar:vertical {
+	border:none;
+    border-radius:5px;
+    background: transparent;
+    width: 5px; 
+}
+
+QScrollBar::handle:vertical {
+    background: #a9a9a9; 
+    border-radius: 5px;
+    min-height: 20px;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QListWidget {
+    background-color: #f0f0f0;
+}
+
+QListWidget::item:hover {
+    background-color: transparent;
+}
+
+QListWidget::item:selected {
+    background-color: transparent;
+}
+
+QListWidget::item:selected:!active {
+    background-color: transparent;
+}
+
+QListWidget::item:selected:active {
+    background-color: transparent;
+}
+</string>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOn</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_drawing">
+         <property name="geometry">
+          <rect>
+           <x>254</x>
+           <y>79</y>
+           <width>600</width>
+           <height>400</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:none;
+background-color: rgb(255, 255, 255);
+border-radius: 10px;
+border: 2px solid gray;</string>
+         </property>
+         <property name="title">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_chat">
+         <property name="geometry">
+          <rect>
+           <x>852</x>
+           <y>79</y>
+           <width>243</width>
+           <height>400</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:none;
+background-color: rgb(255, 255, 255);
+border-radius: 10px;
+border: 2px solid gray;</string>
+         </property>
+         <property name="title">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_timerIcon">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>1</y>
+           <width>78</width>
+           <height>78</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border:0px;
+background:none;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/timer-icon.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_timerNumber">
+         <property name="geometry">
+          <rect>
+           <x>22</x>
+           <y>30</y>
+           <width>35</width>
+           <height>35</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <family>Nunito</family>
+           <pointsize>22</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border:none;
+background:none;</string>
+         </property>
+         <property name="text">
+          <string>60</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="../../Frontend.qrc"/>
+ </resources>
  <connections/>
-</UI>
+</ui>

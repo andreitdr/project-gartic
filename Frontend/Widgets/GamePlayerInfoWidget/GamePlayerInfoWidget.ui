@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>281</width>
+    <width>241</width>
     <height>80</height>
    </rect>
   </property>
@@ -18,13 +18,13 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>281</width>
+    <width>241</width>
     <height>80</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>281</width>
+    <width>241</width>
     <height>80</height>
    </size>
   </property>
@@ -36,7 +36,7 @@
     <rect>
      <x>5</x>
      <y>5</y>
-     <width>266</width>
+     <width>226</width>
      <height>70</height>
     </rect>
    </property>
@@ -51,7 +51,7 @@ border: 0px solid gray;</string>
    <widget class="QLabel" name="label_avatarBackgroundDrawing">
     <property name="geometry">
      <rect>
-      <x>-12</x>
+      <x>-16</x>
       <y>-8</y>
       <width>77</width>
       <height>71</height>
@@ -73,8 +73,8 @@ border: 0px solid gray;</string>
    <widget class="QLabel" name="label_avatarLetter">
     <property name="geometry">
      <rect>
-      <x>21</x>
-      <y>20</y>
+      <x>18</x>
+      <y>18</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -104,16 +104,16 @@ border:0px;</string>
    <widget class="QLabel" name="label_surnameGivenName">
     <property name="geometry">
      <rect>
-      <x>72</x>
+      <x>68</x>
       <y>36</y>
-      <width>181</width>
+      <width>151</width>
       <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Nunito Medium</family>
-      <pointsize>12</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -124,28 +124,44 @@ color: gray;</string>
      <string>GivenName Surname</string>
     </property>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget_2">
+   <widget class="QLabel" name="label_avatarBackground">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>7</y>
+      <width>55</width>
+      <height>55</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:0px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/letter-avatar-bg.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>70</x>
       <y>10</y>
-      <width>181</width>
-      <height>24</height>
+      <width>151</width>
+      <height>23</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1">
-     <property name="spacing">
-      <number>6</number>
-     </property>
-     <property name="sizeConstraint">
-      <enum>QLayout::SetDefaultConstraint</enum>
-     </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="label_username">
        <property name="font">
         <font>
          <family>Nunito Medium</family>
-         <pointsize>12</pointsize>
+         <pointsize>11</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -170,7 +186,7 @@ border-radius:7px;
 boder:0px;</string>
        </property>
        <property name="text">
-        <string>0 points</string>
+        <string>100 pts</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -178,28 +194,6 @@ boder:0px;</string>
       </widget>
      </item>
     </layout>
-   </widget>
-   <widget class="QLabel" name="label_avatarBackground">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>7</y>
-      <width>55</width>
-      <height>55</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border:0px;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="../../Frontend.qrc">:/Frontend/assets/images/letter-avatar-bg.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
    </widget>
    <zorder>label_avatarBackgroundDrawing</zorder>
    <zorder>label_surnameGivenName</zorder>

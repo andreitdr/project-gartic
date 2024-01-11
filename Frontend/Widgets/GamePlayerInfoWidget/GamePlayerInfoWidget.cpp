@@ -32,7 +32,7 @@ QString GamePlayerInfoWidget::getUsername() const
 
 QString GamePlayerInfoWidget::getPointsNumber() const
 {
-	ui.label_pointsNumber->text();
+	return ui.label_pointsNumber->text();
 }
 
 void GamePlayerInfoWidget::updatePointsNumber(const int points)
