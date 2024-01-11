@@ -37,6 +37,7 @@ private:
 	void updateLobbyPlayerListView();
 	void hideOrShowStartGameButton();
 	void updateLobbyStatus();
+	void updateSettingsStatus();
 	void leaveLobby();
 	void updateLobbyData();
 
@@ -46,6 +47,7 @@ private slots:
 	void on_pushButton_copyLobbyId_clicked();
 	void on_pushButton_lobbySettings_clicked();
 	void on_pushButton_saveSettings_clicked();
+	void on_pushButton_goBackSettings_clicked();
 
 public slots:
 	void getLobbyData(const LobbyData& lobbyData);

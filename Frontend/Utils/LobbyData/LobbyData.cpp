@@ -113,6 +113,8 @@ LobbyData& LobbyData::operator=(LobbyData&& other) noexcept
 		m_lobbyID = other.m_lobbyID;
 		m_lobbyAdmin = std::move(other.m_lobbyAdmin);
 		m_lobbyUsers = std::move(other.m_lobbyUsers);
+		m_isPrivate = other.m_isPrivate;
+		m_lobbyType = other.m_lobbyType;
 	}
 	return *this;
 }
@@ -126,6 +128,12 @@ bool LobbyData::operator==(const LobbyData& other) const
 		return false;
 
 	if(m_lobbyUsers.size()!=other.m_lobbyUsers.size())
+		return false;
+
+	if(m_isPrivate!=other.m_isPrivate)
+		return false;
+
+	if(m_lobbyType!=other.m_lobbyType)
 		return false;
 
 	for (int i = 0; i < m_lobbyUsers.size(); i++)

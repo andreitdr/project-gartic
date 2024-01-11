@@ -88,6 +88,21 @@ void Lobby::updateLobbyStatus()
     updateLobbyPlayerListView();
     updateLobbyAdmin();
     hideOrShowStartGameButton();
+
+    if(CurrentUser::getInstance().getUsername() != m_lobbyData.GetLobbyAdmin().getUsername())
+    updateSettingsStatus();
+}
+
+void Lobby::updateSettingsStatus()
+{
+    if (m_lobbyData.GetIsPrivate())
+        ui.radioButton_Private->setChecked(true);
+    else
+        ui.radioButton_Public->setChecked(true);
+    if (m_lobbyData.GetLobbyType() == 1)
+        ui.radioButton_GuessingMode->setChecked(true);
+    else
+        ui.radioButton_DrawingContest->setChecked(true);
 }
 
 void Lobby::leaveLobby()
@@ -179,59 +194,75 @@ void Lobby::on_pushButton_copyLobbyId_clicked()
 
 void Lobby::on_pushButton_lobbySettings_clicked()
 {
-    if (CurrentUser::getInstance().getUsername() != m_lobbyData.GetLobbyAdmin().getUsername())
-    {
-        showErrorCustomMessageBox(
-			this,
-			"Gartic - Lobby Settings",
-			"You are not the admin of this lobby!",
-			"Ok",
-			[]() {}
-		);
-		return;
-    }
-    if(m_lobbyData.GetIsPrivate())
-		ui.radioButton_Private->setChecked(true);
-	else
-		ui.radioButton_Public->setChecked(true);
-    if (m_lobbyData.GetLobbyType() == 1)
-		ui.radioButton_GuessingMode->setChecked(true);
-	else
-		ui.radioButton_DrawingContest->setChecked(true);
-
 	ui.groupBox_lobbyStatus->hide();
     ui.groupBox_lobbySettings->show();
+    updateSettingsStatus();
+
+    bool isAdmin = m_lobbyData.GetLobbyAdmin().getUsername() == CurrentUser::getInstance().getUsername();
+
+    if (!isAdmin)
+    {
+        ui.pushButton_saveSettings->hide();
+        ui.pushButton_goBackSettings->show();
+        ui.radioButton_Private->setFocusPolicy(Qt::NoFocus);
+        ui.radioButton_Private->setAttribute(Qt::WA_TransparentForMouseEvents);
+        ui.radioButton_Public->setFocusPolicy(Qt::NoFocus);
+        ui.radioButton_Public->setAttribute(Qt::WA_TransparentForMouseEvents);
+        ui.radioButton_GuessingMode->setFocusPolicy(Qt::NoFocus);
+        ui.radioButton_GuessingMode->setAttribute(Qt::WA_TransparentForMouseEvents);
+        ui.radioButton_DrawingContest->setFocusPolicy(Qt::NoFocus);
+        ui.radioButton_DrawingContest->setAttribute(Qt::WA_TransparentForMouseEvents);
+    }
+    else
+    {
+        ui.pushButton_saveSettings->show();
+        ui.pushButton_goBackSettings->hide();
+        ui.radioButton_Private->setFocusPolicy(Qt::StrongFocus);
+        ui.radioButton_Private->setAttribute(Qt::WA_TransparentForMouseEvents, false);
+        ui.radioButton_Public->setFocusPolicy(Qt::StrongFocus);
+        ui.radioButton_Public->setAttribute(Qt::WA_TransparentForMouseEvents, false);
+        ui.radioButton_GuessingMode->setFocusPolicy(Qt::StrongFocus);
+        ui.radioButton_GuessingMode->setAttribute(Qt::WA_TransparentForMouseEvents, false);
+        ui.radioButton_DrawingContest->setFocusPolicy(Qt::StrongFocus);
+        ui.radioButton_DrawingContest->setAttribute(Qt::WA_TransparentForMouseEvents, false);
+    }
 }
 
 void Lobby::on_pushButton_saveSettings_clicked()
 {
-    if(ui.radioButton_Private->isChecked())
-        m_lobbyData.SetIsPrivate(true);
-    else
-        if(ui.radioButton_Public->isChecked())
-		m_lobbyData.SetIsPrivate(false);
+        if (ui.radioButton_Private->isChecked())
+            m_lobbyData.SetIsPrivate(true);
+        else
+            if (ui.radioButton_Public->isChecked())
+                m_lobbyData.SetIsPrivate(false);
 
-    if (ui.radioButton_GuessingMode->isChecked())
-        m_lobbyData.SetLobbyType(1);
-    else
-        if(ui.radioButton_DrawingContest->isChecked())
-    m_lobbyData.SetLobbyType(2);
+        if (ui.radioButton_GuessingMode->isChecked())
+            m_lobbyData.SetLobbyType(1);
+        else
+            if (ui.radioButton_DrawingContest->isChecked())
+                m_lobbyData.SetLobbyType(2);
 
-    contexts->updateLobby(m_lobbyData.GetLobbyID(), m_lobbyData.GetLobbyType(),m_lobbyData.GetIsPrivate(), [this](bool success, const std::string& message) {
-		if (success) {
-			ui.groupBox_lobbySettings->hide();
-			ui.groupBox_lobbyStatus->show();
-		}
-		else {
-			showErrorCustomMessageBox(
-				this,
-				"Gartic - Lobby Settings",
-				"Something went wrong. Please try again later!",
-				"Ok",
-				[]() {}
-			);
-		}
-	});
+        contexts->updateLobby(m_lobbyData.GetLobbyID(), m_lobbyData.GetLobbyType(), m_lobbyData.GetIsPrivate(), [this](bool success, const std::string& message) {
+            if (success) {
+                ui.groupBox_lobbySettings->hide();
+                ui.groupBox_lobbyStatus->show();
+            }
+            else {
+                showErrorCustomMessageBox(
+                    this,
+                    "Gartic - Lobby Settings",
+                    "Something went wrong. Please try again later!",
+                    "Ok",
+                    []() {}
+                );
+            }
+            });
+}
+
+void Lobby::on_pushButton_goBackSettings_clicked()
+{
+    ui.groupBox_lobbySettings->hide();
+	ui.groupBox_lobbyStatus->show();
 }
 
 void Lobby::getLobbyId(int lobbyId)

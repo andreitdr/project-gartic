@@ -328,7 +328,7 @@ QPushButton:hover, QPushButton:pressed {
             <bool>true</bool>
            </property>
           </widget>
-          <widget class="QWidget" name="">
+          <widget class="QWidget" name="layoutWidget">
            <property name="geometry">
             <rect>
              <x>80</x>
@@ -366,13 +366,13 @@ QPushButton:hover, QPushButton:pressed {
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="">
+          <widget class="QWidget" name="layoutWidget">
            <property name="geometry">
             <rect>
              <x>80</x>
              <y>100</y>
              <width>182</width>
-             <height>51</height>
+             <height>66</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -407,13 +407,55 @@ QPushButton:hover, QPushButton:pressed {
             </item>
            </layout>
           </widget>
+          <widget class="QPushButton" name="pushButton_goBackSettings">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>173</y>
+             <width>271</width>
+             <height>45</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>Nunito Medium</family>
+             <pointsize>18</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+background-color: rgb(255, 191, 0);
+color:rgb(0,0,0);
+}
+
+QPushButton:hover, QPushButton:pressed {
+   background-color: rgb(225, 165, 0);
+}</string>
+           </property>
+           <property name="text">
+            <string>Go Back</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../Frontend.qrc">
+             <normaloff>:/Frontend/assets/images/go-back-icon-black.png</normaloff>:/Frontend/assets/images/go-back-icon-black.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>18</width>
+             <height>18</height>
+            </size>
+           </property>
+           <property name="autoDefault">
+            <bool>true</bool>
+           </property>
+          </widget>
          </widget>
          <widget class="QGroupBox" name="groupBox_lobbyStatus">
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>75</y>
-            <width>281</width>
+            <y>72</y>
+            <width>282</width>
             <height>241</height>
            </rect>
           </property>
