@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="Frontend">
+    <file>assets/images/letter-avatar-bg-drawing.png</file>
     <file>assets/images/game-mode-icon-blue.png</file>
     <file>assets/images/game-mode-icon-yellow.png</file>
     <file>assets/images/lock-icon-blue.png</file>
