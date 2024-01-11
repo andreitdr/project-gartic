@@ -98,6 +98,7 @@
     <ClCompile Include="API\Contexts\Contexts.cpp" />
     <ClCompile Include="API\ResponseHandler\ResponseHandler.cpp" />
     <ClCompile Include="Utils\CurrentUser\CurrentUser.cpp" />
+    <ClCompile Include="Utils\GameData\GameData.cpp" />
     <ClCompile Include="Utils\LobbyData\LobbyData.cpp" />
     <ClCompile Include="Utils\UserInfoCache\UserInfoCache.cpp" />
     <ClCompile Include="Utils\UserInfo\UserInfo.cpp" />
@@ -124,6 +125,7 @@
     <ClInclude Include="API\Requests\Requests.h" />
     <ClInclude Include="API\ResponseHandler\ResponseHandler.h" />
     <ClInclude Include="Utils\CurrentUser\CurrentUser.h" />
+    <ClInclude Include="Utils\GameData\GameData.h" />
     <ClInclude Include="Utils\LobbyData\LobbyData.h" />
     <ClInclude Include="Utils\UserInfoCache\UserInfoCache.h" />
     <ClInclude Include="Utils\UserInfo\UserInfo.h" />
