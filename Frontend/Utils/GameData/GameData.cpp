@@ -1,4 +1,5 @@
 ﻿#include "GameData.h"
+#include <algorithm>
 
 GameData::GameData() : m_gameId(0), m_currentRound(0), m_timer(0) {}
 
@@ -171,4 +172,13 @@ void GameData::AddChatMessage(const std::string& message) {
 
 std::vector<std::string> GameData::GetChatMessages() const {
     return m_chatMessages;
+} 
+
+void GameData::SortPlayersByPoints()
+{
+    std::sort(m_players.begin(), m_players.end(),
+        [this](const UserInfo& a, const UserInfo& b) {
+            return m_playerPoints[a.getUserId()] > m_playerPoints[b.getUserId()];
+        }
+    );
 }

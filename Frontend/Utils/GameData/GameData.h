@@ -46,6 +46,8 @@ public:
     void AddChatMessage(const std::string& message);
     std::vector<std::string> GetChatMessages() const;
 
+    void SortPlayersByPoints();
+
 private:
     int m_gameId;
     std::vector<UserInfo> m_players;

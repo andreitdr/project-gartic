@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>241</width>
+    <width>256</width>
     <height>80</height>
    </rect>
   </property>
@@ -18,13 +18,13 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>241</width>
+    <width>256</width>
     <height>80</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>241</width>
+    <width>256</width>
     <height>80</height>
    </size>
   </property>
@@ -34,10 +34,10 @@
   <widget class="QGroupBox" name="groupBox_playerInfo">
    <property name="geometry">
     <rect>
-     <x>5</x>
+     <x>7</x>
      <y>5</y>
-     <width>226</width>
-     <height>70</height>
+     <width>235</width>
+     <height>72</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -51,8 +51,8 @@ border: 0px solid gray;</string>
    <widget class="QLabel" name="label_avatarBackgroundDrawing">
     <property name="geometry">
      <rect>
-      <x>-16</x>
-      <y>-8</y>
+      <x>-17</x>
+      <y>-9</y>
       <width>77</width>
       <height>71</height>
      </rect>
@@ -73,8 +73,8 @@ border: 0px solid gray;</string>
    <widget class="QLabel" name="label_avatarLetter">
     <property name="geometry">
      <rect>
-      <x>18</x>
-      <y>18</y>
+      <x>17</x>
+      <y>19</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -146,7 +146,7 @@ color: gray;</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -195,9 +195,9 @@ boder:0px;</string>
      </item>
     </layout>
    </widget>
+   <zorder>layoutWidget</zorder>
    <zorder>label_avatarBackgroundDrawing</zorder>
    <zorder>label_surnameGivenName</zorder>
-   <zorder>verticalLayoutWidget_2</zorder>
    <zorder>label_avatarBackground</zorder>
    <zorder>label_avatarLetter</zorder>
   </widget>

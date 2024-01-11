@@ -2,8 +2,12 @@
 
 #include <QMainWindow>
 #include "ui_GameWindow.h"
+#include "../../Utils/GameData/GameData.h"
+#include "../../Utils/CurrentUser/CurrentUser.h"
+#include "../../Widgets/CustomQMessageBox/CustomQMessageBox.h"
 #include "../../Widgets/DisplayPaintWidget/DisplayPaintWidget.h"
 #include "../../Widgets/PaintWidget/PaintWidget.h"
+#include "../../Widgets/GamePlayerInfoWidget/GamePlayerInfoWidget.h"
 #include "../../API/Contexts/Contexts.h"
 
 class GameWindow : public QMainWindow
@@ -22,8 +26,18 @@ protected:
 private:
 	Ui::GameWindowClass ui;
 	Contexts* contexts;
+	GameData m_gameData;
+	std::string wordToGuess;
 	DisplayPaintWidget* displayWidget = nullptr;
 	PaintWidget* paintWidget = nullptr;
+	void leaveGame();
+	void addPlayerToLeaderBoard(const UserInfo& userInfo, const int points, const bool isDrawing);
+	void updateLeaderBoard();
+	void updateTimer();
+	void updateRoundNumber();
+	void updateWordToGuess();
+	void updateGameStatus();
+	void updateGameData();
 
 private slots:
 	void on_pushButton_leaveGame_clicked();
