@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1115</width>
-    <height>623</height>
+    <width>1120</width>
+    <height>622</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,13 +36,13 @@
          <widget class="QLabel" name="label_logo">
           <property name="minimumSize">
            <size>
-            <width>310</width>
+            <width>28</width>
             <height>70</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>310</width>
+            <width>280</width>
             <height>70</height>
            </size>
           </property>
@@ -274,12 +274,12 @@ QScrollBar::handle:vertical {
 }
 QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
     border: none;
-    background: none;
+    background: grey;
     height: 0px;
 }
 
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-    background: none;
+    background: grey;
 }
 
 QListWidget {
@@ -320,7 +320,7 @@ QListWidget::item:selected:active {
         <widget class="QGroupBox" name="groupBox_drawing">
          <property name="geometry">
           <rect>
-           <x>255</x>
+           <x>254</x>
            <y>79</y>
            <width>600</width>
            <height>400</height>
@@ -350,7 +350,8 @@ border-bottom:2px solid white;</string>
           <string notr="true">background:none;
 background-color: rgb(255, 255, 255);
 border-radius:0px;
-border: 2px solid gray;</string>
+border: 2px solid gray;
+border-bottom:0px;</string>
          </property>
          <property name="title">
           <string/>
@@ -378,36 +379,33 @@ QScrollBar::handle:vertical {
     min-height: 20px;
 }
 QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
-    border: none;
+    border: grey; 
     background: none;
     height: 0px;
 }
 
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-    background: none;
+    background: grey; 
 }
 
 QListWidget {
     background-color: #f0f0f0;
 	border-radius:0px;
     border-left:2px solid white;
+	margin-left:-2px;
+	 font: 500 12pt &quot;Nunito Medium&quot;;
 }
 
-QListWidget::item:hover {
-    background-color: transparent;
+QListWidget::item {
+    background-color: white; 
+    border: none; 
+    border-radius: 5px; 
+    margin-top: 4px; 
+	margin-left:4px;
+	margin-right:4px;
+    padding: 5px; 
 }
 
-QListWidget::item:selected {
-    background-color: transparent;
-}
-
-QListWidget::item:selected:!active {
-    background-color: transparent;
-}
-
-QListWidget::item:selected:active {
-    background-color: transparent;
-}
 </string>
           </property>
           <property name="verticalScrollBarPolicy">
@@ -415,6 +413,15 @@ QListWidget::item:selected:active {
           </property>
           <property name="horizontalScrollBarPolicy">
            <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::NoSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectColumns</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
           </property>
           <property name="sortingEnabled">
            <bool>false</bool>
@@ -424,7 +431,7 @@ QListWidget::item:selected:active {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>365</y>
+            <y>367</y>
             <width>181</width>
             <height>35</height>
            </rect>
@@ -437,9 +444,10 @@ QListWidget::item:selected:active {
           </property>
           <property name="styleSheet">
            <string notr="true">QLineEdit {
-    color: grey; 
+    color: black; 
 	border-radius:0px;
 	border-bottom:2px solid white;
+	padding-left:5px;
 }
 
 QLineEdit::placeholder-text {
@@ -448,16 +456,19 @@ QLineEdit::placeholder-text {
 </string>
           </property>
           <property name="text">
-           <string> Enter message</string>
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string>Enter message</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="pushButton_sendMessage">
           <property name="geometry">
            <rect>
             <x>181</x>
             <y>367</y>
-            <width>60</width>
-            <height>31</height>
+            <width>62</width>
+            <height>35</height>
            </rect>
           </property>
           <property name="font">

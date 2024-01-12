@@ -10,6 +10,7 @@ GameWindow::GameWindow(Contexts* contexts, QWidget *parent)
 	ui.setupUi(this);
     paintWidget = new PaintWidget();
     displayPaintWidget = new DisplayPaintWidget();
+    connect(ui.lineEdit_message, &QLineEdit::returnPressed, this, &GameWindow::on_pushButton_sendMessage_clicked);
 }
 
 GameWindow::~GameWindow()
@@ -173,9 +174,15 @@ void GameWindow::updateDrawingWidget()
 
 void GameWindow::addChatMessage(const std::string& message)
 {
-    QListWidgetItem* item = new QListWidgetItem(ui.listWidget_chat);
-    QString messageText = QString::fromUtf8(message.c_str());
-    ui.listWidget_chat->addItem(messageText);
+   QString messageText = QString::fromUtf8(message.c_str());
+    QListWidgetItem *newItem = new QListWidgetItem(messageText);
+    
+    if (messageText.contains("guessed the word"))
+    {
+        newItem->setForeground(QBrush(Qt::darkGreen));
+    }
+    
+    ui.listWidget_chat->addItem(newItem);
 }
 
 void GameWindow::updateChat()
@@ -193,6 +200,14 @@ void GameWindow::updateGameData()
     updateGameStatus();
 }
 
+void GameWindow::on_pushButton_sendMessage_clicked()
+{
+    std::string message = ui.lineEdit_message->text().toUtf8().constData();
+    //apelare ruta
+    addChatMessage(message);
+    ui.lineEdit_message->clear();
+}
+
 void GameWindow::showEvent(QShowEvent* event)
 {
     //timers start
@@ -200,7 +215,7 @@ void GameWindow::showEvent(QShowEvent* event)
 
 void GameWindow::on_pushButton_leaveGame_clicked()
 {
-    /*bool shouldClose = false;
+    bool shouldClose = false;
 
     showConfirmActionCustomMessageBox(
         this,
@@ -214,29 +229,5 @@ void GameWindow::on_pushButton_leaveGame_clicked()
     );
 
     if (shouldClose)
-        leaveGame();*/
-    m_gameData.SetTimer(5);
-    m_gameData.SetCurrentRound(2);
-    m_gameData.SetCurrentWord("cuvantul");
-    m_wordToGuess = std::string(m_gameData.GetCurrentWord().size(), '_');
-    initializeRevealPositions(m_gameData.GetCurrentWord(), m_gameData.GetCurrentWord().size() / 2);
-    UserInfo player1 = UserInfo("user1", "user1", "user1", 1);
-    UserInfo player2 = UserInfo("user2", "user2", "user2", 2);
-    UserInfo player3 = UserInfo("user3", "user3", "user3", 3);
-    UserInfo player4 = UserInfo("user4", "user4", "user4", 4);
-    CurrentUser::getInstance().setUsername("user1");
-    m_gameData.SetDrawingPlayer(player2);
-    m_gameData.SetPlayerPoints(player1.getUserId(), 100);
-    m_gameData.SetPlayerPoints(player2.getUserId(), 200);
-    m_gameData.SetPlayerPoints(player3.getUserId(), 500);
-    m_gameData.SetPlayerPoints(player4.getUserId(), 400);
-    m_gameData.AddPlayer(player1);
-    m_gameData.AddPlayer(player2);
-    m_gameData.AddPlayer(player3);
-    m_gameData.AddPlayer(player4);
-    m_gameData.AddChatMessage("user1: mesaj 1");
-    m_gameData.AddChatMessage("user2: mesaj 2");
-    m_gameData.AddChatMessage("user3: mesaj 3");    
-    m_gameData.AddChatMessage("user4: mesaj 4");
-    updateGameData();
+        leaveGame();
 }

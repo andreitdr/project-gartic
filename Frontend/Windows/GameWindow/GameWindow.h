@@ -46,6 +46,7 @@ private:
 
 private slots:
 	void on_pushButton_leaveGame_clicked();
+	void on_pushButton_sendMessage_clicked();
 
 signals:
 	void windowPositionChanged(const QPoint& newPosition);
