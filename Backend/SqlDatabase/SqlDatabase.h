@@ -9,6 +9,7 @@
 #include "../DataTypes/Game/FinishedGame.h"
 #include "../DataTypes/Game/RunningGame.h"
 #include "../DataTypes/Game/Lobby.h"
+#include "../DataTypes/Game/PlayerFinishedGame.h"
 
 
 #include <optional>
@@ -50,20 +51,14 @@ inline auto CreateDatabase(const std::string& fileName)
                                                                "Id", &FinishedGame::m_gameId,
                                                                sqlite_orm::primary_key().autoincrement()),
                                                            sqlite_orm::make_column(
-                                                               "WinnerID", &FinishedGame::m_winnerId),
-                                                           sqlite_orm::make_column(
                                                                "GameDuration", &FinishedGame::m_gameDuration),
                                                            sqlite_orm::make_column(
-                                                               "GameWords", &FinishedGame::m_gameWords),
-                                                           sqlite_orm::foreign_key(&FinishedGame::m_winnerId).
-                                                           references(&User::m_user_id)),
-                                    sqlite_orm::make_table("RunningGames",
-                                                           sqlite_orm::make_column(
-                                                               "Id", &RunningGame::m_gameId,
-                                                               sqlite_orm::primary_key().autoincrement()),
-                                                           sqlite_orm::make_column(
-                                                               "GameWords", &RunningGame::m_gameWords),
-                                                           sqlite_orm::make_column("UserIds", &RunningGame::m_userIds)),
+                                                               "GameWords", &FinishedGame::m_gameWords)),
+                                    sqlite_orm::make_table("PlayerFinishedGame",
+                                        sqlite_orm::make_column("Id", &PlayerFinishedGame::m_index, sqlite_orm::primary_key().autoincrement()),
+                                                           sqlite_orm::make_column("PlayerId", &PlayerFinishedGame::m_userId),
+                                                           sqlite_orm::make_column("GameId", &PlayerFinishedGame::m_gameId),
+                                                           sqlite_orm::make_column("PointsEarned", &PlayerFinishedGame::m_pointsEarned)),
                                     sqlite_orm::make_table("Lobbies",
                                                            sqlite_orm::make_column(
                                                                "Index", &Lobby::m_index, sqlite_orm::primary_key()),

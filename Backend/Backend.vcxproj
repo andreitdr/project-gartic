@@ -151,9 +151,11 @@
   <ItemGroup>
     <ClCompile Include="Configuration\Config.cppm" />
     <ClCompile Include="Contexts\Game\Lobby\GetLobbyStatusContext.cpp" />
+    <ClCompile Include="Contexts\User\Info\UserMatchHistoryContext.cpp" />
     <ClCompile Include="Contexts\User\Info\UserInfoContext.cpp" />
     <ClCompile Include="Contexts\User\Login\UserLoginContext.cpp" />
     <ClCompile Include="Contexts\User\Registration\UserRegistrationContext.cpp" />
+    <ClCompile Include="GameManagement\GameManager.cpp" />
     <ClCompile Include="Infrastructure\BaseResponse.cpp" />
     <ClCompile Include="Infrastructure\GameStart\StartGameRequest.cpp" />
     <ClCompile Include="Infrastructure\GameStart\StartGameResponse.cpp" />
@@ -171,6 +173,8 @@
     <ClCompile Include="Infrastructure\Lobby\Update\UpdateLobbyResponse.cpp" />
     <ClCompile Include="Infrastructure\UserInfo\UserInfoRequest.cpp" />
     <ClCompile Include="Infrastructure\UserInfo\UserInfoResponse.cpp" />
+    <ClCompile Include="Infrastructure\UserInfo\UserMatchHistoryRequest.cpp" />
+    <ClCompile Include="Infrastructure\UserInfo\UserMatchHistoryResponse.cpp" />
     <ClCompile Include="Infrastructure\UserLogin\UserLoginRequest.cpp" />
     <ClCompile Include="Infrastructure\UserLogin\UserLoginResponse.cpp" />
     <ClCompile Include="Infrastructure\UserRegistration\UserRegistrationRequest.cpp" />
@@ -187,6 +191,7 @@
     <ClInclude Include="API\Game\StartGame.h" />
     <ClInclude Include="API\Game\UpdateLobby.h" />
     <ClInclude Include="API\User\GetUserInfo.h" />
+    <ClInclude Include="API\User\GetUserMatchHistoryData.h" />
     <ClInclude Include="API\User\UserLogin.h" />
     <ClInclude Include="API\User\UserRegistration.h" />
     <ClInclude Include="Constants.h" />
@@ -198,15 +203,18 @@
     <ClInclude Include="Contexts\Game\Lobby\GetLobbyStatusContext.h" />
     <ClInclude Include="Contexts\Game\StartGameContext.h" />
     <ClInclude Include="Contexts\Game\UpdateLobbyContext.h" />
+    <ClInclude Include="Contexts\User\Info\UserMatchHistoryContext.h" />
     <ClInclude Include="Contexts\User\Info\UserInfoContext.h" />
     <ClInclude Include="Contexts\User\Login\UserLoginContext.h" />
     <ClInclude Include="Contexts\User\Registration\UserRegistrationContext.h" />
     <ClInclude Include="DataTypes\Game\FinishedGame.h" />
     <ClInclude Include="DataTypes\Game\Lobby.h" />
+    <ClInclude Include="DataTypes\Game\PlayerFinishedGame.h" />
     <ClInclude Include="DataTypes\Game\RunningGame.h" />
     <ClInclude Include="DataTypes\User\Credentials.h" />
     <ClInclude Include="DataTypes\User\User.h" />
     <ClInclude Include="DataTypes\User\UserGameData.h" />
+    <ClInclude Include="GameManagement\GameManager.h" />
     <ClInclude Include="Infrastructure\BaseResponse.h" />
     <ClInclude Include="Infrastructure\GameStart\StartGameRequest.h" />
     <ClInclude Include="Infrastructure\GameStart\StartGameResponse.h" />
@@ -224,6 +232,8 @@
     <ClInclude Include="Infrastructure\Lobby\Update\UpdateLobbyResponse.h" />
     <ClInclude Include="Infrastructure\UserInfo\UserInfoRequest.h" />
     <ClInclude Include="Infrastructure\UserInfo\UserInfoResponse.h" />
+    <ClInclude Include="Infrastructure\UserInfo\UserMatchHistoryRequest.h" />
+    <ClInclude Include="Infrastructure\UserInfo\UserMatchHistoryResponse.h" />
     <ClInclude Include="Infrastructure\UserLogin\UserLoginRequest.h" />
     <ClInclude Include="Infrastructure\UserLogin\UserLoginResponse.h" />
     <ClInclude Include="Infrastructure\UserRegistration\UserRegistrationRequest.h" />

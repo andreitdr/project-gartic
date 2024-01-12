@@ -29,7 +29,7 @@ inline JoinRandomLobbyResponse JoinRandomLobbyContext::ApplyChanges(const JoinRa
     {
         int userId = request.GetUserId();
         
-        auto allLobbies = SqlDatabase::GetAll<Lobby>(sqlite_orm::where(sqlite_orm::c(&Lobby::m_index) > 0));
+        auto allLobbies = SqlDatabase::GetAll<Lobby>(WHERE(Lobby::m_isPrivate, false));
 
         if (!allLobbies.empty())
         {
@@ -49,10 +49,8 @@ inline JoinRandomLobbyResponse JoinRandomLobbyContext::ApplyChanges(const JoinRa
 
             return JoinRandomLobbyResponse();
         }
-        else
-        {
-            return JoinRandomLobbyResponse("No available lobbies found.");
-        }
+
+        return JoinRandomLobbyResponse("No available lobbies found.");
     }
     catch (const std::system_error& error)
     {
