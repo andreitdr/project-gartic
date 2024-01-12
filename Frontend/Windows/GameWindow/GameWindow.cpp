@@ -2,6 +2,7 @@
 #include <random>
 #include <algorithm>
 #include <set>
+#include <regex>
 
 GameWindow::GameWindow(Contexts* contexts, QWidget *parent)
 	: QMainWindow(parent),
@@ -188,6 +189,12 @@ void GameWindow::addChatMessage(const std::string& message)
     ui.listWidget_chat->addItem(newItem);
 }
 
+bool GameWindow::containsOnlyWhitespace(const std::string& str)
+{
+    std::regex whitespaceRegex("^\\s*$");
+    return std::regex_match(str, whitespaceRegex);
+}
+
 void GameWindow::updateChat()
 {
 	ui.listWidget_chat->clear();
@@ -206,6 +213,18 @@ void GameWindow::updateGameData()
 void GameWindow::on_pushButton_sendMessage_clicked()
 {
     std::string message = ui.lineEdit_message->text().toUtf8().constData();
+    if (message.empty()||containsOnlyWhitespace(message))
+    {
+        showErrorCustomMessageBox(
+            this,
+            "Gartic - Game",
+            "You can't send an empty message!",
+            "Ok",
+            []() {}
+        );
+        return;
+    }
+       
     //apelare ruta
     addChatMessage(message);
     ui.lineEdit_message->clear();

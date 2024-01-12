@@ -41,6 +41,7 @@ private:
 	void updateGameStatus();
 	void updateDrawingWidget();
 	void addChatMessage(const std::string& message);
+	bool containsOnlyWhitespace(const std::string& str);
 	void updateChat();
 	void updateGameData();
 
