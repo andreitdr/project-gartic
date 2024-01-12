@@ -80,8 +80,11 @@ void GameWindow::updateLeaderBoard()
 void GameWindow::updateTimer()
 {
     ui.label_timerNumber->setText(QString::number(m_gameData.GetTimer()));
-    if(m_gameData.GetTimer() == 60)
-        wordToGuess = std::string(m_gameData.GetCurrentWord().size(), '_');
+    if (m_gameData.GetTimer() == 60)
+    {
+        initializeRevealPositions(m_gameData.GetCurrentWord(), m_gameData.GetCurrentWord().size() / 2);
+        m_wordToGuess = std::string(m_gameData.GetCurrentWord().size(), '_');
+    }
 }
 
 void GameWindow::updateRoundNumber()
@@ -91,45 +94,53 @@ void GameWindow::updateRoundNumber()
     ui.label_roundNumber->setText(temp);
 }
 
+void GameWindow::initializeRevealPositions(const std::string& word, int maxReveal)
+{
+    std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dis(0, word.size() - 1);
+
+	std::set<int> positions;
+    while (positions.size() < maxReveal)
+    {
+		positions.insert(dis(gen));
+	}
+
+    m_revealedPositions.clear();
+    for (const auto& pos : positions)
+    {
+        m_revealedPositions.push_back(pos);
+	}
+}
+
 void GameWindow::updateWordToGuess()
 {
     const std::string& currentWord = m_gameData.GetCurrentWord();
     int timeRemaining = m_gameData.GetTimer();
 
     if (CurrentUser::getInstance().getUsername() == m_gameData.GetDrawingPlayer().getUsername()) {
-        wordToGuess = currentWord;
-        ui.label_word->setText(QString::fromUtf8(wordToGuess.c_str()) + " (" + QString::number(currentWord.size()) + ")");
-        ui.label_guessDrawThis->setText("DRAW THIS");
-        return;
+        m_wordToGuess = currentWord;
     }
+    else {
+        int lettersToRevealNow = 0;
+        if (timeRemaining <= 10) {
+            lettersToRevealNow = m_revealedPositions.size();
+        }
+        else if (timeRemaining <= 20) {
+            lettersToRevealNow = m_revealedPositions.size() / 2;
+        }
+        else if (timeRemaining <= 30) {
+            lettersToRevealNow = m_revealedPositions.size() / 3;
+        }
 
-    int maxLettersToReveal = currentWord.size() / 2;
-    int lettersToRevealNow = 0;
-    if (timeRemaining <= 10) {
-        lettersToRevealNow = maxLettersToReveal;
-    }
-    else if (timeRemaining <= 20) {
-        lettersToRevealNow = maxLettersToReveal / 2;
-    }
-    else if (timeRemaining <= 30) {
-        lettersToRevealNow = maxLettersToReveal / 3;
-    }
-
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(0, currentWord.size() - 1);
-
-    while (lettersToRevealNow > 0) {
-        int pos = dis(gen);
-        if (wordToGuess[pos] == '_') {
-            wordToGuess[pos] = currentWord[pos];
-            lettersToRevealNow--;
+        for (int i = 0; i < lettersToRevealNow; ++i) {
+            int pos = m_revealedPositions[i];
+           m_wordToGuess[pos] = currentWord[pos];
         }
     }
 
-    QString wordToGuess = QString::fromUtf8(this->wordToGuess.c_str());
-    QString tempWord = wordToGuess + " (" + QString::number(currentWord.size()) + ")";
-    ui.label_word->setText(tempWord);
+    QString displayWord = QString::fromStdString(m_wordToGuess) + " (" + QString::number(currentWord.size()) + ")";
+    ui.label_word->setText(displayWord);
     ui.label_guessDrawThis->setText("GUESS THIS");
 }
 
@@ -207,13 +218,14 @@ void GameWindow::on_pushButton_leaveGame_clicked()
     m_gameData.SetTimer(5);
     m_gameData.SetCurrentRound(2);
     m_gameData.SetCurrentWord("cuvantul");
-    wordToGuess = std::string(m_gameData.GetCurrentWord().size(), '_');
+    m_wordToGuess = std::string(m_gameData.GetCurrentWord().size(), '_');
+    initializeRevealPositions(m_gameData.GetCurrentWord(), m_gameData.GetCurrentWord().size() / 2);
     UserInfo player1 = UserInfo("user1", "user1", "user1", 1);
     UserInfo player2 = UserInfo("user2", "user2", "user2", 2);
     UserInfo player3 = UserInfo("user3", "user3", "user3", 3);
     UserInfo player4 = UserInfo("user4", "user4", "user4", 4);
     CurrentUser::getInstance().setUsername("user1");
-    m_gameData.SetDrawingPlayer(player1);
+    m_gameData.SetDrawingPlayer(player2);
     m_gameData.SetPlayerPoints(player1.getUserId(), 100);
     m_gameData.SetPlayerPoints(player2.getUserId(), 200);
     m_gameData.SetPlayerPoints(player3.getUserId(), 500);
