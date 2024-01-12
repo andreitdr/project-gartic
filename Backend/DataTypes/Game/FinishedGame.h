@@ -5,7 +5,6 @@
 struct FinishedGame
 {
     int m_gameId;
-    int m_winnerId;
     int m_gameDuration;
 
     /*
