@@ -27,7 +27,8 @@ private:
 	Ui::GameWindowClass ui;
 	Contexts* contexts;
 	GameData m_gameData;
-	std::string wordToGuess;
+	std::string m_wordToGuess;
+	std::vector<int> m_revealedPositions;
 	DisplayPaintWidget* displayPaintWidget = nullptr;
 	PaintWidget* paintWidget = nullptr;
 	void leaveGame();
@@ -35,6 +36,7 @@ private:
 	void updateLeaderBoard();
 	void updateTimer();
 	void updateRoundNumber();
+	void initializeRevealPositions(const std::string& word, int maxReveal);
 	void updateWordToGuess();
 	void updateGameStatus();
 	void updateDrawingWidget();
