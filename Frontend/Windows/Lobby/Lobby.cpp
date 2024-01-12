@@ -279,4 +279,7 @@ void Lobby::getLobbyData(const LobbyData& lobbyData)
 
 void Lobby::on_pushButton_startGame_clicked()
 {   
+    emit windowPositionChanged(this->pos());
+    emit goToGameWindow();
+    this->hide();
 }

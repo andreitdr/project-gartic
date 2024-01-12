@@ -47,6 +47,9 @@ void GameWindow::hideEvent(QHideEvent* event)
 
 void GameWindow::leaveGame()
 {
+    emit windowPositionChanged(this->pos());
+    emit goToJoinGameWindow();
+    this->hide();
     //leave game route
 }
 

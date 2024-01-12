@@ -55,5 +55,6 @@ public slots:
 
 signals:
 	void goToJoinGameWindow();
+	void goToGameWindow();
 	void windowPositionChanged(const QPoint& newPosition);
 };

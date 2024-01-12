@@ -6,6 +6,6 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     WindowManager windowManager;
     //windowManager.showLoginWindow();
-    windowManager.showGameWindow();
+    windowManager.showJoinGameWindow();
     return a.exec();
 }

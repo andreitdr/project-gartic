@@ -49,5 +49,6 @@ private slots:
 	void on_pushButton_sendMessage_clicked();
 
 signals:
+	void goToJoinGameWindow();
 	void windowPositionChanged(const QPoint& newPosition);
 };
