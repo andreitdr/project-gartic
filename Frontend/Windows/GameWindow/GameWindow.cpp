@@ -140,6 +140,7 @@ void GameWindow::updateGameStatus()
     updateLeaderBoard();
     updateWordToGuess();
     updateDrawingWidget();
+    updateChat();
 }
 
 void GameWindow::updateDrawingWidget()
@@ -157,6 +158,22 @@ void GameWindow::updateDrawingWidget()
     }
     layout->setContentsMargins(2, 2, 2, 2);
     ui.groupBox_drawing->setLayout(layout);
+}
+
+void GameWindow::addChatMessage(const std::string& message)
+{
+    QListWidgetItem* item = new QListWidgetItem(ui.listWidget_chat);
+    QString messageText = QString::fromUtf8(message.c_str());
+    ui.listWidget_chat->addItem(messageText);
+}
+
+void GameWindow::updateChat()
+{
+	ui.listWidget_chat->clear();
+    for (const auto& message : m_gameData.GetChatMessages())
+    {
+		addChatMessage(message);
+	}
 }
 
 void GameWindow::updateGameData()
@@ -205,5 +222,9 @@ void GameWindow::on_pushButton_leaveGame_clicked()
     m_gameData.AddPlayer(player2);
     m_gameData.AddPlayer(player3);
     m_gameData.AddPlayer(player4);
+    m_gameData.AddChatMessage("user1: mesaj 1");
+    m_gameData.AddChatMessage("user2: mesaj 2");
+    m_gameData.AddChatMessage("user3: mesaj 3");    
+    m_gameData.AddChatMessage("user4: mesaj 4");
     updateGameData();
 }

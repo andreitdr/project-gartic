@@ -111,8 +111,13 @@ border:0px;</string>
          <property name="styleSheet">
           <string notr="true">background:none;
 background-color: rgb(255, 255, 255);
-border-radius: 10px;
-border: 2px solid gray;</string>
+border-radius:0px;
+border: 2px solid gray;
+border-top-left-radius: 10px; 
+border-top-right-radius: 10px;
+border-top: 2px solid white;
+border-right: 2px solid white;
+border-left: 2px solid white;</string>
          </property>
          <property name="title">
           <string/>
@@ -187,7 +192,8 @@ background:none;</string>
           <property name="styleSheet">
            <string notr="true">border:none;
 background:none;
-color:grey;</string>
+color:grey;
+</string>
           </property>
           <property name="text">
            <string>GUESS THIS</string>
@@ -237,7 +243,9 @@ background:none;</string>
           <string notr="true">background:none;
 background-color: rgb(255, 255, 255);
 border-radius: 10px;
-border: 2px solid gray;</string>
+border: 2px solid gray;
+border-bottom:2px solid white;
+border-bottom-left-radius:10px;</string>
          </property>
          <property name="title">
           <string/>
@@ -245,10 +253,10 @@ border: 2px solid gray;</string>
          <widget class="QListWidget" name="listWidget_playerList">
           <property name="geometry">
            <rect>
-            <x>0</x>
+            <x>-2</x>
             <y>0</y>
-            <width>256</width>
-            <height>401</height>
+            <width>258</width>
+            <height>402</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -276,6 +284,113 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 
 QListWidget {
     background-color: #f0f0f0;
+	border-radius:0px;
+    border-left:2px solid white;
+}
+
+QListWidget::item:hover {
+    background-color: transparent;
+}
+
+QListWidget::item:selected {
+    background-color: transparent;
+}
+
+QListWidget::item:selected:!active {
+    background-color: transparent;
+}
+
+QListWidget::item:selected:active {
+    background-color: transparent;
+}
+
+</string>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOn</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_drawing">
+         <property name="geometry">
+          <rect>
+           <x>255</x>
+           <y>79</y>
+           <width>600</width>
+           <height>400</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:none;
+background-color: rgb(255, 255, 255);
+border-radius:0px;
+border: 2px solid gray;
+border-bottom:2px solid white;</string>
+         </property>
+         <property name="title">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QGroupBox" name="groupBox_chat">
+         <property name="geometry">
+          <rect>
+           <x>852</x>
+           <y>79</y>
+           <width>243</width>
+           <height>400</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:none;
+background-color: rgb(255, 255, 255);
+border-radius:0px;
+border: 2px solid gray;</string>
+         </property>
+         <property name="title">
+          <string/>
+         </property>
+         <widget class="QListWidget" name="listWidget_chat">
+          <property name="geometry">
+           <rect>
+            <x>2</x>
+            <y>0</y>
+            <width>241</width>
+            <height>367</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QScrollBar:vertical {
+	border:none;
+    border-radius:5px;
+    background: transparent;
+    width: 5px; 
+}
+
+QScrollBar::handle:vertical {
+    background: #a9a9a9; 
+    border-radius: 5px;
+    min-height: 20px;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QListWidget {
+    background-color: #f0f0f0;
+	border-radius:0px;
+    border-left:2px solid white;
 }
 
 QListWidget::item:hover {
@@ -305,44 +420,70 @@ QListWidget::item:selected:active {
            <bool>false</bool>
           </property>
          </widget>
-        </widget>
-        <widget class="QGroupBox" name="groupBox_drawing">
-         <property name="geometry">
-          <rect>
-           <x>254</x>
-           <y>79</y>
-           <width>600</width>
-           <height>400</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background:none;
-background-color: rgb(255, 255, 255);
-border-radius: 10px;
-border: 2px solid gray;</string>
-         </property>
-         <property name="title">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QGroupBox" name="groupBox_chat">
-         <property name="geometry">
-          <rect>
-           <x>852</x>
-           <y>79</y>
-           <width>243</width>
-           <height>400</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background:none;
-background-color: rgb(255, 255, 255);
-border-radius: 10px;
-border: 2px solid gray;</string>
-         </property>
-         <property name="title">
-          <string/>
-         </property>
+         <widget class="QLineEdit" name="lineEdit_message">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>365</y>
+            <width>181</width>
+            <height>35</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Nunito Medium</family>
+            <pointsize>13</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+    color: grey; 
+	border-radius:0px;
+	border-bottom:2px solid white;
+}
+
+QLineEdit::placeholder-text {
+    color: grey;
+}
+</string>
+          </property>
+          <property name="text">
+           <string> Enter message</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton">
+          <property name="geometry">
+           <rect>
+            <x>181</x>
+            <y>367</y>
+            <width>60</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Nunito Medium</family>
+            <pointsize>15</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+background-color: rgb(255, 191, 0);
+color:rgb(0,0,0);
+border:none;
+border-radius:0px;
+}
+
+QPushButton:hover, QPushButton:pressed {
+   background-color: rgb(225, 165, 0);
+border:none;
+}</string>
+          </property>
+          <property name="text">
+           <string>Send</string>
+          </property>
+         </widget>
         </widget>
         <widget class="QLabel" name="label_timerIcon">
          <property name="geometry">

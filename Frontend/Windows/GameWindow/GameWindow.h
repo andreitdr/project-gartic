@@ -38,6 +38,8 @@ private:
 	void updateWordToGuess();
 	void updateGameStatus();
 	void updateDrawingWidget();
+	void addChatMessage(const std::string& message);
+	void updateChat();
 	void updateGameData();
 
 private slots:
