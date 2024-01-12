@@ -34,12 +34,14 @@ inline StartGameResponse StartGameContext::ApplyChanges(const StartGameRequest& 
         auto users = request.GetUsers();
 
         std::vector<std::string> wordsGenerated = GenerateWords(users.size());
-        running_game.m_gameWords                = JsonConvertor::ConvertFromVector<std::string>(wordsGenerated).dump();
-        running_game.m_userIds                  = JsonConvertor::ConvertFromVector<int>(users).dump();
+        for(auto word : wordsGenerated)
+            running_game.m_gameWords.push(word);
+        
+        running_game.m_playerIds = users;
 
-        int gameID = SqlDatabase::Insert(running_game);
+        // int gameID = SqlDatabase::Insert(running_game);
 
-        auto response = StartGameResponse(gameID, wordsGenerated);
+        auto response = StartGameResponse(1, wordsGenerated);
         return response;
     }
     catch (const std::exception& e)

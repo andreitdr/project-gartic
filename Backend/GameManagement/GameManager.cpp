@@ -94,8 +94,8 @@ void GameManager::UpdatePoints(int gameId, int playerId, int pointsToAdd)
 
 std::string GameManager::FormatMessage(const std::string& sender, const std::string& message) const
 {
-    std::string message = std::format("{} {}", sender, message);
-    return message;
+    std::string _message = std::format("{} {}", sender, message);
+    return _message;
 }
 
 
