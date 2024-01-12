@@ -1,4 +1,5 @@
 ﻿#include "Register.h"
+#include <regex>
 
 Register::Register(Contexts* contexts,QWidget *parent)
 	: QMainWindow(parent),
@@ -9,6 +10,24 @@ Register::Register(Contexts* contexts,QWidget *parent)
 
 Register::~Register()
 {}
+
+bool Register::validateName(const std::string & name)
+{
+    std::regex nameRegex("^[A-Z][a-z]+$");
+    return std::regex_match(name, nameRegex);
+}
+
+bool Register::validateUsername(const std::string& username)
+{
+    std::regex usernameRegex("^[a-zA-Z0-9_]{5,20}$");
+    return std::regex_match(username, usernameRegex);
+}
+
+bool Register::validatePassword(const std::string& password)
+{
+    std::regex passwowrdRegex("^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{8,}$");
+    return std::regex_match(password, passwowrdRegex);
+}
 
 void Register::on_pushButton_goToLogin_clicked()
 {
@@ -35,11 +54,44 @@ void Register::on_pushButton_register_clicked()
         return;
     }
 
-    if (password.length() < 8) {
+    if (!validateName(surname)) {
         showErrorCustomMessageBox(
             this,
             "Gartic - Register",
-            "Password should be at least 8 characters. Please try again!",
+            "Surname should:\n • Start with a capital letter\n • Contain only letters",
+            "Try Again",
+            []() {}
+        );
+        return;
+    }
+
+    if (!validateName(given_name)) {
+        showErrorCustomMessageBox(
+			this,
+			"Gartic - Register",
+			"Given name should:\n • Start with a capital letter\n • Contain only letters",
+			"Try Again",
+			[]() {}
+		);
+		return;
+	}
+
+    if (!validateUsername(username)) {
+        showErrorCustomMessageBox(
+			this,
+			"Gartic - Register",
+			"Username should:\n • Contain only letters, digits and underscores\n • Be between 5 and 20 characters long",
+			"Try Again",
+			[]() {}
+		);
+		return;
+	}
+
+    if (!validatePassword(password)) {
+        showErrorCustomMessageBox(
+            this,
+            "Gartic - Register",
+            "Password should:\n • Be at least 8 charachers long\n • Contain both letters and numbers\n • Contain one capital letter",
             "Try Again",
             []() {}
         );
