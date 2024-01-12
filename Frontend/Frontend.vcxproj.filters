@@ -94,6 +94,9 @@
     <ClCompile Include="Utils\GameData\GameData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Utils\QImageConverter\QImageConverter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API\Requests\Requests.h">
@@ -124,6 +127,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utils\GameData\GameData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\QImageConverter\QImageConverter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

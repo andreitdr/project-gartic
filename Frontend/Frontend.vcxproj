@@ -100,6 +100,7 @@
     <ClCompile Include="Utils\CurrentUser\CurrentUser.cpp" />
     <ClCompile Include="Utils\GameData\GameData.cpp" />
     <ClCompile Include="Utils\LobbyData\LobbyData.cpp" />
+    <ClCompile Include="Utils\QImageConverter\QImageConverter.cpp" />
     <ClCompile Include="Utils\UserInfoCache\UserInfoCache.cpp" />
     <ClCompile Include="Utils\UserInfo\UserInfo.cpp" />
     <ClCompile Include="Utils\WindowManager\WindowManager.cpp" />
@@ -127,6 +128,7 @@
     <ClInclude Include="Utils\CurrentUser\CurrentUser.h" />
     <ClInclude Include="Utils\GameData\GameData.h" />
     <ClInclude Include="Utils\LobbyData\LobbyData.h" />
+    <ClInclude Include="Utils\QImageConverter\QImageConverter.h" />
     <ClInclude Include="Utils\UserInfoCache\UserInfoCache.h" />
     <ClInclude Include="Utils\UserInfo\UserInfo.h" />
     <QtMoc Include="Widgets\GamePlayerInfoWidget\GamePlayerInfoWidget.h" />
