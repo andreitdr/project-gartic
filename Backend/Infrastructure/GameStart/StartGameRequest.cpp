@@ -1,10 +1,10 @@
 #include "StartGameRequest.h"
 
-StartGameRequest::StartGameRequest(const std::vector<int>& userIds) : m_userIds{userIds}
+StartGameRequest::StartGameRequest(int lobbyId) : m_lobbyId{lobbyId}
 {
 }
 
-std::vector<int> StartGameRequest::GetUsers() const
+int StartGameRequest::GetLobbyId() const
 {
-    return m_userIds;
+    return m_lobbyId;
 }

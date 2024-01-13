@@ -4,6 +4,38 @@
 
 #define GAME(gameId) m_runningGames[gameId]
 
+bool GameManager::GameExists(int gameId) const
+{
+    if (gameId < 0)
+        return false;
+
+    if (m_runningGames.size() <= gameId)
+        return false;
+
+    return true;
+}
+
+int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector<std::string>& words)
+{
+    RunningGame game;
+    game.m_playerIds = playerIds;
+    game.m_indexPlayerDrawing = 0;
+    game.m_currrentRound = 0;
+    game.m_gameWords = std::queue<std::string>(words.begin(), words.end());
+    game.m_timer = k_defaultTimerValue;
+    game.m_drawing = std::string();
+    game.m_chatMessages.clear();
+    game.m_playerPoints.clear();
+    for(auto playerId : playerIds)
+        game.m_playerPoints[playerId] = 0;
+
+    game.m_gameId = m_runningGames.size();
+    m_runningGames.emplace_back(game);
+
+    return game.m_gameId;
+    
+}
+
 int GameManager::GetTimer(int gameId) const
 {
     return GAME(gameId).m_timer;

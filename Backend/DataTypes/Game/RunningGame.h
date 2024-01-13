@@ -7,6 +7,7 @@
 
 struct RunningGame
 {
+    
     int m_gameId;
     int m_indexPlayerDrawing;
     int m_currrentRound;

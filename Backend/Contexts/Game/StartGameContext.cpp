@@ -1,38 +1,40 @@
 ﻿#include "StartGameContext.h"
+#include "../../GameManagement/GameManager.h"
 #include "../../Utils/JsonConvertor.h"
-#include "../../DataTypes/Game/RunningGame.h"
+#include "../../SqlDatabase/SqlDatabase.h"
+
 #include <string>
+#include <vector>
+#include <random>
 
 StartGameResponse StartGameContext::HandleRequest(const StartGameRequest& request)
 {
-    // TODO: Validate data
+    const int id = request.GetLobbyId();
+    if (id < 0)
+    {
+        return StartGameResponse("Invalid lobby id");
+    }
+
+    if (!SqlDatabase::GetInstance().Exists<Lobby>(WHERE(Lobby::m_lobbyId, id)))
+        return StartGameResponse("Lobby does not exist");
+
+    
     return ApplyChanges(request);
+
+    
 }
 
-inline StartGameResponse StartGameContext::ApplyChanges(const StartGameRequest& request)
+StartGameResponse StartGameContext::ApplyChanges(const StartGameRequest& request)
 {
-    try
-    {
-        auto running_game     = RunningGame();
-        running_game.m_gameId = -1;
+    const int lobbyId = request.GetLobbyId();
 
-        auto users = request.GetUsers();
+    const Lobby lobby = SqlDatabase::GetInstance().Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
 
-        std::vector<std::string> wordsGenerated = GenerateWords(users.size());
-        for(auto word : wordsGenerated)
-            running_game.m_gameWords.push(word);
-        
-        running_game.m_playerIds = users;
+    const std::vector<int> playerIds              = JsonConvertor::ConvertToVector<int>(lobby.m_userIds);
+    const std::vector<std::string> generatedWords = GenerateWords(playerIds.size() * GameManager::k_defaultNumberOfCycles);
+    const int gameId                              = GameManager::GetInstance().CreateGame(playerIds, generatedWords);
 
-        // int gameID = SqlDatabase::GetInstance().Insert(running_game);
-
-        auto response = StartGameResponse(1, wordsGenerated);
-        return response;
-    }
-    catch (const std::exception& e)
-    {
-        return StartGameResponse(e.what());
-    }
+    return StartGameResponse(gameId);
 }
 
 std::vector<std::string> StartGameContext::GenerateWords(size_t count)
@@ -47,7 +49,7 @@ std::vector<std::string> StartGameContext::GenerateWords(size_t count)
 
     for (int i = 0; i < count; i++)
     {
-        int random_line_index = std::rand() % lines.size();
+        const int random_line_index = std::rand() % lines.size();
         words.push_back(lines[random_line_index]);
     }
 

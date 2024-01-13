@@ -2,41 +2,38 @@
 #include <crow.h>
 
 #include "../../Utils/JsonConvertor.h"
-#include "Contexts/Game/StartGameContext.h"
+#include "../../Contexts/Game/StartGameContext.h"
 
 #include "../../Infrastructure/GameStart/StartGameRequest.h"
 #include "../../Infrastructure/GameStart/StartGameResponse.h"
 
 /*
  * Json input:
- * PlayerList: [int] -> List of user ids
+ * Lobby -> Lobby Data (Lobby struct):
+ *       PlayerList -> List of player IDs (int)
+ *       LobbyId -> Lobby ID (int)
+ *       LobbyLeader -> Lobby Leader ID (int)
+ *       LobbyType -> Lobby Type (int)
+ *       LobbyIsPrivate -> Lobby Privacy (bool)
+ *
  *
  *
  *  Returns:
- *  Json Output:
- *  GameID: int,
- *  SuccessState: bool,
- *  Words: [string]
+ *      - GameID (int)
+ *      - started (bool)
  */
 
 inline crow::json::wvalue StartGame(const crow::json::rvalue& request)
 {
-    std::vector<int> playerList;
-    for (auto& player : request["PlayerList"])
-    {
-        playerList.push_back(player.i());
-    }
+    int lobbyId = request["Lobby"]["lobbyId"].i();
 
-    auto _request = StartGameRequest(playerList);
-    auto context  = StartGameContext();
+    StartGameRequest startGameRequest{lobbyId};
+    StartGameContext startGameContext{};
 
-    StartGameResponse response = context.HandleRequest(_request);
+    StartGameResponse startGameResponse = startGameContext.HandleRequest(startGameRequest);
 
-    crow::json::wvalue json;
-    json               = JsonConvertor::ConvertBaseResponse(response);
-    json["GameID"]     = response.GetGameID();
-    json["Words"]      = response.GetWords();
-    json["PlayerList"] = playerList;
+    WJSON JResponse = JsonConvertor::ConvertBaseResponse(startGameResponse);
+    JResponse["gameId"] = startGameResponse.GetGameID();
 
-    return json;
+    return JResponse;
 }

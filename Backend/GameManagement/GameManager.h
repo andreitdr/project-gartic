@@ -12,8 +12,12 @@ public:
         return instance;
     }
     
-    const int k_defaultTimerValue = 60;
-    const int k_defaultNumberOfCycles = 4;
+    static constexpr int k_defaultTimerValue = 60;
+    static constexpr int k_defaultNumberOfCycles = 4;
+
+    bool GameExists(int gameId) const;
+
+    int CreateGame(const std::vector<int>& playerIds, const std::vector<std::string>& words);
     
     int GetTimer(int gameId) const;
     int GetNowDrawingPlayer(int gameId) const;

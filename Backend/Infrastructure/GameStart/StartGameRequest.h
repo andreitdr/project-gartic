@@ -1,12 +1,11 @@
 #pragma once
-#include <vector>
 
 class StartGameRequest
 {
 public:
-    StartGameRequest(const std::vector<int>& userIds);
-    std::vector<int> GetUsers() const;
+    StartGameRequest(int lobbyId);
+    int GetLobbyId() const;
 
 private:
-    std::vector<int> m_userIds;
+    int m_lobbyId;
 };

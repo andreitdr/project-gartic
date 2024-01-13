@@ -1,6 +1,7 @@
 ﻿#pragma once
+#include <string>
+#include <vector>
 
-#include "../../SqlDatabase/SqlDatabase.h"
 #include "../../Infrastructure/GameStart/StartGameRequest.h"
 #include "../../Infrastructure/GameStart/StartGameResponse.h"
 #include "../BaseContext.h"
@@ -12,6 +13,6 @@ public:
 
 private:
     StartGameResponse ApplyChanges(const StartGameRequest& request) override;
-    std::vector<std::string> GenerateWords(size_t count);
+    static std::vector<std::string> GenerateWords(size_t count);
 };
 
