@@ -6,6 +6,7 @@
 
 #include "API/Game/CreateLobby.h"
 #include "API/Game/ExitGame.h"
+#include "API/Game/GetDrawing.h"
 #include "API/Game/GetRunningGameForUser.h"
 #include "API/Game/StartGame.h"
 #include "API/Game/JoinLobby.h"
@@ -280,6 +281,24 @@ int main()
         }
 
         auto response = SendDrawing(json);
+        return crow::response(response);
+    });
+
+    CROW_ROUTE(app, "/game/get_drawing").methods("GET"_method)([](const crow::request& request)
+    {
+        const auto json = crow::json::load(request.body);
+
+        if (!json)
+        {
+            BaseResponse response;
+            response.m_successState = false;
+            response.AppendMessage("The json was in an incorrect format");
+
+            auto responseJson = JsonConvertor::ConvertBaseResponse(response);
+            return crow::response(responseJson);
+        }
+
+        auto response = GetDrawing(json);
         return crow::response(response);
     });
 

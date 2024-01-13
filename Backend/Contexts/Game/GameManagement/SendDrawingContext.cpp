@@ -1,5 +1,7 @@
 #include "SendDrawingContext.h"
 
+#include <crow/app.h>
+
 #include "../../../GameManagement/GameManager.h"
 
 SendDrawingResponse SendDrawingContext::HandleRequest(const SendDrawingRequest& request)
@@ -10,6 +12,7 @@ SendDrawingResponse SendDrawingContext::HandleRequest(const SendDrawingRequest& 
         return SendDrawingResponse("Invalid game id");
     if(!GameManager::GetInstance().GameExists(gameId))
         return SendDrawingResponse("Game does not exist");
+    ApplyChanges(request);
 }
 
 SendDrawingResponse SendDrawingContext::ApplyChanges(const SendDrawingRequest& request)
