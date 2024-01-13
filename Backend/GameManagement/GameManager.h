@@ -38,6 +38,8 @@ public:
 
     void RemovePlayer(int gameId, int playerId);
 
+    void UpdateDrawing(int gameId,const std::string& drawing);
+
     void operator=(const GameManager&) = delete;
     GameManager(const GameManager&) = delete;
     

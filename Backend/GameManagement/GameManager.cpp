@@ -131,6 +131,11 @@ void GameManager::RemovePlayer(int gameId, int playerId)
             GAME(gameId).m_playerIds[i]=-1;
 }
 
+void GameManager::UpdateDrawing(int gameId, const std::string& drawing)
+{
+    GAME(gameId).m_drawing=drawing;
+}
+
 std::string GameManager::FormatMessage(const std::string& sender, const std::string& message) const
 {
     std::string _message = std::format("{} {}", sender, message);
