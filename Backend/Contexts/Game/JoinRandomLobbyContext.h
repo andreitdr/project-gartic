@@ -29,7 +29,7 @@ inline JoinRandomLobbyResponse JoinRandomLobbyContext::ApplyChanges(const JoinRa
     {
         int userId = request.GetUserId();
         
-        auto allLobbies = SqlDatabase::GetAll<Lobby>(WHERE(Lobby::m_isPrivate, false));
+        auto allLobbies = SqlDatabase::GetInstance().GetAll<Lobby>(WHERE(Lobby::m_isPrivate, false));
 
         if (!allLobbies.empty())
         {
@@ -45,7 +45,7 @@ inline JoinRandomLobbyResponse JoinRandomLobbyContext::ApplyChanges(const JoinRa
             userIds.emplace_back(userId);
             randomLobby.m_userIds = JsonConvertor::ConvertFromVector(userIds).dump();
 
-            SqlDatabase::Update(randomLobby);
+            SqlDatabase::GetInstance().Update(randomLobby);
 
             return JoinRandomLobbyResponse();
         }

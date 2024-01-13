@@ -77,40 +77,53 @@ inline Storage storage{CreateDatabase("test.db")};
 class SqlDatabase
 {
 public:
-    static void Init();
+
+    static SqlDatabase& GetInstance()
+    {
+        static SqlDatabase instance;
+        return instance;
+    }
+    
+    template <typename TypeAsStruct>
+    int Insert(const TypeAsStruct& model);
 
     template <typename TypeAsStruct>
-    static int Insert(const TypeAsStruct& model);
+    TypeAsStruct Get(int id);
 
     template <typename TypeAsStruct>
-    static TypeAsStruct Get(int id);
-
-    template <typename TypeAsStruct>
-    static TypeAsStruct Get(auto whereCondition);
+     TypeAsStruct Get(auto whereCondition);
 
     template <typename TupleElements>
-    static std::vector<TupleElements> Select(auto columnsTuple, auto whereCondition);
+     std::vector<TupleElements> Select(auto columnsTuple, auto whereCondition);
 
     template <typename TypeAsStruct>
-    static std::vector<TypeAsStruct> GetAll(auto whereClause);
+     std::vector<TypeAsStruct> GetAll(auto whereClause);
 
     template <typename TypeAsStruct, typename Field>
-    static std::optional<TypeAsStruct> GetByProperty(const Field& value, const std::string& propertyName);
+     std::optional<TypeAsStruct> GetByProperty(const Field& value, const std::string& propertyName);
 
     template <typename TypeAsStruct>
-    static bool Exists(auto whereClause);
+     bool Exists(auto whereClause);
 
     template <typename TypeAsStruct>
-    static bool Exists(int id);
+     bool Exists(int id);
 
     template <typename TypeAsStruct>
-    static bool ExistsModel(const TypeAsStruct& model);
+     bool ExistsModel(const TypeAsStruct& model);
 
     template <typename TypeAsStruct>
-    static bool Update(const TypeAsStruct& model);
+     bool Update(const TypeAsStruct& model);
 
     template <typename TypeAsStruct>
-    static bool Delete(int id);
+     bool Delete(int id);
+
+    void operator=(const SqlDatabase&) = delete;
+    SqlDatabase(const SqlDatabase&) = delete;
+
+private:
+    SqlDatabase();
+    
+    
 };
 
 template <typename TypeAsStruct>
@@ -216,25 +229,6 @@ bool SqlDatabase::ExistsModel(const TypeAsStruct& model)
         sqlite_orm::where(sqlite_orm::c(&TypeAsStruct::m_username) == model.m_username));
     return result.size() > 0;
 }
-
-//A
-/*template <typename TypeAsStruct, typename Field>
-bool SqlDatabase::ExistsModel(const TypeAsStruct& model, const Field& field)
-{
-    auto result = storage.get_all<TypeAsStruct>(sqlite_orm::where(sqlite_orm::c(field) == field(model)));
-    return result.size() > 0;
-}*/
-
-//OR B; TO IMPLEMENT operator==
-/*template <typename TypeAsStruct>
-bool SqlDatabase::ExistsModel(const TypeAsStruct& model)
-{
-    auto result = storage.get_all<TypeAsStruct>(
-        sqlite_orm::where([&model](const TypeAsStruct& row){
-            return row == model;})
-    );
-    return result.size() > 0;
-}*/
 
 template <typename TypeAsStruct>
 bool SqlDatabase::Update(const TypeAsStruct& model)

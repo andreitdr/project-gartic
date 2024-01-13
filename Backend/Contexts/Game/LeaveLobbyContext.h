@@ -31,7 +31,7 @@ inline LeaveLobbyResponse LeaveLobbyContext::ValidateData(const LeaveLobbyReques
     int lobbyId = request.GetLobbyId();
     try
     {
-        if (!SqlDatabase::Exists<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId))) throw std::system_error(
+        if (!SqlDatabase::GetInstance().Exists<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId))) throw std::system_error(
             sqlite_orm::orm_error_code::not_found);
 
         return LeaveLobbyResponse();
@@ -52,7 +52,7 @@ inline LeaveLobbyResponse LeaveLobbyContext::ApplyChanges(const LeaveLobbyReques
     int lobbyId  = request.GetLobbyId();
     int playerId = request.GetUserId();
 
-    auto currentLobby = SqlDatabase::Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
+    auto currentLobby = SqlDatabase::GetInstance().Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
 
     std::vector<int> playersList = JsonConvertor::ConvertToVector<int>(currentLobby.m_userIds);
     std::vector<int> newList;
@@ -64,7 +64,7 @@ inline LeaveLobbyResponse LeaveLobbyContext::ApplyChanges(const LeaveLobbyReques
 
     if (newList.empty())
     {
-        SqlDatabase::Delete<Lobby>(currentLobby.m_index);
+        SqlDatabase::GetInstance().Delete<Lobby>(currentLobby.m_index);
         auto response = LeaveLobbyResponse();
         response.AppendMessage("Lobby Deleted");
 
@@ -75,7 +75,7 @@ inline LeaveLobbyResponse LeaveLobbyContext::ApplyChanges(const LeaveLobbyReques
 
     currentLobby.m_userIds = JsonConvertor::ConvertFromVector(newList).dump();
 
-    SqlDatabase::Update(currentLobby);
+    SqlDatabase::GetInstance().Update(currentLobby);
 
     return LeaveLobbyResponse();
 }

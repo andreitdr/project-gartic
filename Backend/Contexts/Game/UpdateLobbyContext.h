@@ -32,7 +32,7 @@ inline UpdateLobbyResponse UpdateLobbyContext::ValidateData(const UpdateLobbyReq
 
     try
     {
-        if (!SqlDatabase::Exists<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId))) throw std::system_error(
+        if (!SqlDatabase::GetInstance().Exists<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId))) throw std::system_error(
             sqlite_orm::orm_error_code::not_found);
 
         return UpdateLobbyResponse();
@@ -56,12 +56,12 @@ inline UpdateLobbyResponse UpdateLobbyContext::ApplyChanges(const UpdateLobbyReq
 
     try
     {
-        auto currentLobby = SqlDatabase::Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
+        auto currentLobby = SqlDatabase::GetInstance().Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
 
         currentLobby.m_isPrivate = lobbyIsPrivate;
         currentLobby.m_lobbyType = lobbyType;
 
-        SqlDatabase::Update(currentLobby);
+        SqlDatabase::GetInstance().Update(currentLobby);
 
         return UpdateLobbyResponse();
     }

@@ -5,11 +5,16 @@
 class GameManager
 {
 public:
-    static GameManager game_manager;
+
+    static GameManager& GetInstance()
+    {
+        static GameManager instance;
+        return instance;
+    }
+    
     const int k_defaultTimerValue = 60;
     const int k_defaultNumberOfCycles = 4;
     
-    GameManager() = default;
     int GetTimer(int gameId) const;
     int GetNowDrawingPlayer(int gameId) const;
     int GetCurrentRound(int gameId)const;
@@ -26,10 +31,15 @@ public:
     int GetGameIdByPlayer(int playerId) const;
 
     void UpdatePoints(int gameId, int playerId, int pointsToAdd);
+
+    void operator=(const GameManager&) = delete;
+    GameManager(const GameManager&) = delete;
+    
     
 private:
     std::vector<RunningGame> m_runningGames;
     std::string FormatMessage(const std::string& sender, const std::string& message) const;
 
+    GameManager() = default;
     
 };

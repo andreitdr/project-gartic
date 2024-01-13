@@ -59,7 +59,7 @@ inline CreateLobbyResponse CreateLobbyContext::ApplyChanges(const CreateLobbyReq
 
     auto lobby = Lobby(-1, lobbyId, userId, request.GetLobbyType(), request.GetIsPrivate(), std::move(str));
 
-    int lobbyIndex = SqlDatabase::Insert<Lobby>(lobby);
+    int lobbyIndex = SqlDatabase::GetInstance().GetInstance().Insert<Lobby>(lobby);
 
     lobby.m_index = lobbyIndex;
 
@@ -68,5 +68,5 @@ inline CreateLobbyResponse CreateLobbyContext::ApplyChanges(const CreateLobbyReq
 
 inline bool CreateLobbyContext::LobbyExists(int lobbyId)
 {
-    return SqlDatabase::Exists<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
+    return SqlDatabase::GetInstance().GetInstance().Exists<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
 }

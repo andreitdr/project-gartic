@@ -14,7 +14,7 @@ UserMatchHistoryResponse UserMatchHistoryContext::HandleRequest(const UserMatchH
 UserMatchHistoryResponse UserMatchHistoryContext::ApplyChanges(const UserMatchHistoryRequest& request)
 {
     const int userId = request.GetUserId();
-    const std::vector<PlayerFinishedGame> finished_games = SqlDatabase::GetAll<PlayerFinishedGame>(WHERE(PlayerFinishedGame::m_userId, userId));
+    const std::vector<PlayerFinishedGame> finished_games = SqlDatabase::GetInstance().GetAll<PlayerFinishedGame>(WHERE(PlayerFinishedGame::m_userId, userId));
 
     return UserMatchHistoryResponse(finished_games);
 }
@@ -22,7 +22,7 @@ UserMatchHistoryResponse UserMatchHistoryContext::ApplyChanges(const UserMatchHi
 UserMatchHistoryResponse UserMatchHistoryContext::ValidateData(const UserMatchHistoryRequest& request)
 {
     const int userId = request.GetUserId();
-    if(!SqlDatabase::Exists<User>(userId))
+    if(!SqlDatabase::GetInstance().Exists<User>(userId))
         return UserMatchHistoryResponse("User does not exist");
 
 

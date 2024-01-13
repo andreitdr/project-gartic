@@ -25,16 +25,16 @@ UserRegistrationResponse UserRegistrationContext::RegisterUser(const UserRegistr
 
 bool UserRegistrationContext::UserExists(const User &user)
 {
-    return SqlDatabase::ExistsModel(user);
+    return SqlDatabase::GetInstance().ExistsModel(user);
 }
 
 void UserRegistrationContext::ApplyChangesUser(User &user)
 {
-    int id = SqlDatabase::Insert(user);
+    int id = SqlDatabase::GetInstance().Insert(user);
     user.m_user_id = id;
 }
 
 void UserRegistrationContext::ApplyChangesCredentials(const Credentials &userCredentials)
 {
-    SqlDatabase::Insert(userCredentials);
+    SqlDatabase::GetInstance().Insert(userCredentials);
 }

@@ -36,8 +36,6 @@ int main()
 #if ENABLETEST
     tests();
 #else
-
-    SqlDatabase::Init();
     crow::SimpleApp app;
 
     k_logger.LogMessage("Starting server...", "MAIN");
@@ -81,7 +79,7 @@ int main()
      */
     CROW_ROUTE(app, "/<int>").methods("GET"_method)([](const int v)
     {
-        const auto result = SqlDatabase::Select<std::tuple<std::string, std::string>>(
+        const auto result = SqlDatabase::GetInstance().Select<std::tuple<std::string, std::string>>(
             sqlite_orm::columns(&User::m_surname, &User::m_givenName), WHERE(User::m_user_id, v));
         auto user1 = result[0];
 
@@ -259,7 +257,7 @@ int main()
 
         std::string username = json["username"].s();
 
-        auto users = SqlDatabase::GetAll<User>(where(c(&User::m_username) == username));
+        auto users = SqlDatabase::GetInstance().GetAll<User>(where(c(&User::m_username) == username));
         if (users.empty())
         {
             BaseResponse response;

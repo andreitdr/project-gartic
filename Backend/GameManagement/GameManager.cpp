@@ -72,7 +72,7 @@ void GameManager::AppendChatMessage(int gameId, int playerId, const std::string&
         GAME(gameId).m_chatMessages.emplace_back(FormatMessage("GAME", message));
     else
     {
-        auto player = SqlDatabase::Get<User>(playerId);
+        auto player = SqlDatabase::GetInstance().Get<User>(playerId);
         GAME(gameId).m_chatMessages.emplace_back(FormatMessage(player.m_username, message));
     }
 }

@@ -39,7 +39,7 @@ inline StartGameResponse StartGameContext::ApplyChanges(const StartGameRequest& 
         
         running_game.m_playerIds = users;
 
-        // int gameID = SqlDatabase::Insert(running_game);
+        // int gameID = SqlDatabase::GetInstance().Insert(running_game);
 
         auto response = StartGameResponse(1, wordsGenerated);
         return response;

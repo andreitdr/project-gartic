@@ -5,7 +5,7 @@
 
 bool GetLobbyStatusContext::ValidateLobbyExists(int lobbyId)
 {
-    if (!SqlDatabase::Exists<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId))) return false;
+    if (!SqlDatabase::GetInstance().GetInstance().Exists<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId))) return false;
     return true;
 }
 
@@ -23,7 +23,7 @@ GetLobbyStatusResponse GetLobbyStatusContext::ApplyChanges(const GetLobbyStatusR
 {
     try
     {
-        const Lobby lobby = SqlDatabase::Get<Lobby>(WHERE(Lobby::m_lobbyId, request.GetLobbyId()));
+        const Lobby lobby = SqlDatabase::GetInstance().GetInstance().Get<Lobby>(WHERE(Lobby::m_lobbyId, request.GetLobbyId()));
 
         return GetLobbyStatusResponse(lobby);
     }

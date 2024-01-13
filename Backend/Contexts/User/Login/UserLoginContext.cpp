@@ -18,7 +18,7 @@ UserLoginResponse UserLoginContext::Login(const UserLoginRequest &request)
 
 bool UserLoginContext::UserExists(const Credentials &credentials)
 {
-    return SqlDatabase::ExistsModel(credentials);
+    return SqlDatabase::GetInstance().ExistsModel(credentials);
 }
 
 bool UserLoginContext::PasswordMatches(const Credentials &credentials)
@@ -26,5 +26,5 @@ bool UserLoginContext::PasswordMatches(const Credentials &credentials)
     auto whereCondition = where(
         (c(&Credentials::m_username) == credentials.m_username) and (c(&Credentials::m_hashedPassword) == credentials.m_hashedPassword));
 
-    return SqlDatabase::Exists<Credentials>(whereCondition);
+    return SqlDatabase::GetInstance().Exists<Credentials>(whereCondition);
 }

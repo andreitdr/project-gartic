@@ -1,6 +1,7 @@
 ﻿#include "SqlDatabase.h"
 
-void SqlDatabase::Init()
+
+SqlDatabase::SqlDatabase()
 {
     storage.sync_schema();
 }

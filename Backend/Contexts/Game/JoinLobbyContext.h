@@ -31,7 +31,7 @@ inline JoinLobbyResponse JoinLobbyContext::ValidateData(const JoinLobbyRequest& 
     int lobbyId = request.GetLobbyId();
     try
     {
-        if (!SqlDatabase::Exists<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId))) throw std::system_error(
+        if (!SqlDatabase::GetInstance().Exists<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId))) throw std::system_error(
             sqlite_orm::orm_error_code::not_found);
 
         return JoinLobbyResponse();
@@ -55,13 +55,13 @@ inline JoinLobbyResponse JoinLobbyContext::ApplyChanges(const JoinLobbyRequest& 
         int playerId = request.GetUserId();
 
 
-        auto currentLobby = SqlDatabase::Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
+        auto currentLobby = SqlDatabase::GetInstance().Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
 
         std::vector<int> playersList = JsonConvertor::ConvertToVector<int>(currentLobby.m_userIds);
         playersList.emplace_back(playerId);
         currentLobby.m_userIds = JsonConvertor::ConvertFromVector(playersList).dump();
 
-        SqlDatabase::Update(currentLobby);
+        SqlDatabase::GetInstance().Update(currentLobby);
 
         return JoinLobbyResponse();
     }
