@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Configuration\Config.cppm" />
+    <ClCompile Include="Contexts\Game\GameManagement\GetRunningGameStatusContext.cpp" />
     <ClCompile Include="Contexts\Game\Lobby\CreateLobbyContext.cpp" />
     <ClCompile Include="Contexts\Game\Lobby\GetLobbyStatusContext.cpp" />
     <ClCompile Include="Contexts\Game\Lobby\JoinLobbyContext.cpp" />
@@ -163,8 +164,8 @@
     <ClCompile Include="Contexts\User\Registration\UserRegistrationContext.cpp" />
     <ClCompile Include="GameManagement\GameManager.cpp" />
     <ClCompile Include="Infrastructure\BaseResponse.cpp" />
-    <ClCompile Include="Infrastructure\GameManager\RunningGameStatusRequest.cpp" />
-    <ClCompile Include="Infrastructure\GameManager\RunningGameStatusResponse.cpp" />
+    <ClCompile Include="Infrastructure\GameManager\GetRunningGameStatusRequest.cpp" />
+    <ClCompile Include="Infrastructure\GameManager\GetRunningGameStatusResponse.cpp" />
     <ClCompile Include="Infrastructure\GameStart\StartGameRequest.cpp" />
     <ClCompile Include="Infrastructure\GameStart\StartGameResponse.cpp" />
     <ClCompile Include="Infrastructure\Lobby\Create\CreateLobbyRequest.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="API\User\UserLogin.h" />
     <ClInclude Include="API\User\UserRegistration.h" />
     <ClInclude Include="Contexts\BaseContext.h" />
+    <ClInclude Include="Contexts\Game\GameManagement\GetRunningGameStatusContext.h" />
     <ClInclude Include="Contexts\Game\Lobby\CreateLobbyContext.h" />
     <ClInclude Include="Contexts\Game\Lobby\GetLobbyStatusContext.h" />
     <ClInclude Include="Contexts\Game\Lobby\JoinLobbyContext.h" />
@@ -223,8 +225,8 @@
     <ClInclude Include="DataTypes\User\UserGameData.h" />
     <ClInclude Include="GameManagement\GameManager.h" />
     <ClInclude Include="Infrastructure\BaseResponse.h" />
-    <ClInclude Include="Infrastructure\GameManager\RunningGameStatusRequest.h" />
-    <ClInclude Include="Infrastructure\GameManager\RunningGameStatusResponse.h" />
+    <ClInclude Include="Infrastructure\GameManager\GetRunningGameStatusRequest.h" />
+    <ClInclude Include="Infrastructure\GameManager\GetRunningGameStatusResponse.h" />
     <ClInclude Include="Infrastructure\GameStart\StartGameRequest.h" />
     <ClInclude Include="Infrastructure\GameStart\StartGameResponse.h" />
     <ClInclude Include="Infrastructure\Lobby\Create\CreateLobbyRequest.h" />

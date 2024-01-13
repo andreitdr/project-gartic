@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-class RunningGameStatusRequest
+class GetRunningGameStatusRequest
 {
 public:
     
