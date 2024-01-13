@@ -31,7 +31,8 @@
     const std::vector<int> userIds = {userId};
     const std::string str          = JsonConvertor::ConvertFromVector(std::move(userIds)).dump();
 
-    auto lobby = Lobby(-1, lobbyId, userId, request.GetLobbyType(), request.GetIsPrivate(), std::move(str));
+    auto lobby = Lobby(-1, lobbyId, userId,
+        request.GetLobbyType(), request.GetIsPrivate(),false, std::move(str));
 
     int lobbyIndex = SqlDatabase::GetInstance().GetInstance().Insert<Lobby>(lobby);
 

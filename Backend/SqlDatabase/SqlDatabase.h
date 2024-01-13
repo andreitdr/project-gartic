@@ -67,7 +67,9 @@ inline auto CreateDatabase(const std::string& fileName)
                                                            sqlite_orm::make_column("UserIds", &Lobby::m_userIds),
                                                            sqlite_orm::make_column("LobbyType", &Lobby::m_lobbyType),
                                                            sqlite_orm::make_column(
-                                                               "IsPrivateLobby", &Lobby::m_isPrivate)));
+                                                               "IsPrivateLobby", &Lobby::m_isPrivate),
+                                                           sqlite_orm::make_column("IsStarted", &Lobby::m_isStarted)
+                                    ));
 }
 
 using Storage = decltype(CreateDatabase(""));

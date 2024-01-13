@@ -18,6 +18,7 @@ inline WJSON GetLobbyStatus(const crow::json::rvalue& request)
     response["Lobby"]["PlayerList"] = JsonConvertor::ConvertToVector<int>(lobby.m_userIds);
     response["Lobby"]["LobbyType"]  = lobby.m_lobbyType;
     response["Lobby"]["IsPrivate"]  = lobby.m_isPrivate;
+    response["Lobby"]["IsStarted"]  = lobby.m_isStarted;
 
     return response;
 }

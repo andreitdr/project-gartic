@@ -1,13 +1,12 @@
 #include "GetLobbyStatusResponse.h"
 
-GetLobbyStatusResponse::GetLobbyStatusResponse(const Lobby& lobby) : BaseResponse(), m_lobby(lobby)
+GetLobbyStatusResponse::GetLobbyStatusResponse(const Lobby& lobby) : BaseResponse(true), m_lobby{lobby}
 {
-    m_successState = true;
+    
 }
 
-GetLobbyStatusResponse::GetLobbyStatusResponse(const std::string& message) : BaseResponse()
+GetLobbyStatusResponse::GetLobbyStatusResponse(const std::string& message) : BaseResponse(false)
 {
-    m_successState = false;
     AppendMessage(message);
 }
 

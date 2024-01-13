@@ -24,7 +24,7 @@ GetLobbyStatusResponse GetLobbyStatusContext::ApplyChanges(const GetLobbyStatusR
     try
     {
         const Lobby lobby = SqlDatabase::GetInstance().GetInstance().Get<Lobby>(WHERE(Lobby::m_lobbyId, request.GetLobbyId()));
-
+        
         return GetLobbyStatusResponse(lobby);
     }
     catch (const std::exception& err)
