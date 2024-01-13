@@ -15,6 +15,9 @@ public:
 private:
 	Ui::RegisterClass ui;
 	Contexts* contexts;
+	bool validateName(const std::string& name);
+	bool validateUsername(const std::string& username);
+	bool validatePassword(const std::string& password);
 
 private slots:
 	void on_pushButton_register_clicked();

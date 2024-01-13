@@ -25,10 +25,12 @@ cpr::Response Requests::getUserInfo(const int userId)
     return SendRequest(ApiEndpoints::GET_USER_INFO, payload, "GET");
 }
 
-cpr::Response Requests::createLobby(const int userId)
+cpr::Response Requests::createLobby(const int userId, const bool isPrivate, const int lobbyType)
 {
     crow::json::wvalue payload;
     payload["userId"] = userId;
+    payload["lobbyType"] = lobbyType;
+    payload["isPrivateLobby"] = isPrivate;
     return SendRequest(ApiEndpoints::CREATE_LOBBY, payload, "POST");
 }
 
@@ -53,6 +55,22 @@ cpr::Response Requests::lobbyStatus(const int lobbyId)
     crow::json::wvalue payload;
     payload["lobbyId"] = lobbyId;
     return SendRequest(ApiEndpoints::LOBBY_STATUS, payload, "GET");
+}
+
+cpr::Response Requests::updateLobby(const int lobbyId, const int lobbyType, const bool isPrivate)
+{
+    crow::json::wvalue payload;
+    payload["lobbyId"] = lobbyId;
+    payload["lobbyType"] = lobbyType;
+    payload["IsPrivate"] = isPrivate;
+	return SendRequest(ApiEndpoints::UPDATE_LOBBY, payload, "POST");
+}
+
+cpr::Response Requests::joinRandomLobby(const int userId)
+{
+    crow::json::wvalue payload;
+	payload["userId"] = userId;
+	return SendRequest(ApiEndpoints::JOIN_RANDOM_LOBBY, payload, "POST");
 }
 
 cpr::Response Requests::SendRequest(const std::string& url, const crow::json::wvalue& payload, const std::string& method)

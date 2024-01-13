@@ -3,6 +3,8 @@
 LobbyData::LobbyData()
 {
 	m_lobbyID = 0;
+	m_isPrivate = true;
+	m_lobbyType = 1;
 }
 
 LobbyData::~LobbyData()
@@ -29,6 +31,27 @@ UserInfo LobbyData::GetLobbyAdmin() const
 	return m_lobbyAdmin;
 }
 
+void LobbyData::SetLobbyType(int lobbyType)
+{
+	m_lobbyType = lobbyType;
+}
+
+int LobbyData::GetLobbyType() const
+{
+	return m_lobbyType;
+}
+
+void LobbyData::SetIsPrivate(bool isPrivate)
+{
+	m_isPrivate = isPrivate;
+}
+
+bool LobbyData::GetIsPrivate() const
+{
+	return m_isPrivate;
+}
+
+
 void LobbyData::AddUser(const UserInfo& user)
 {
 	m_lobbyUsers.push_back(user);
@@ -54,7 +77,9 @@ std::vector<UserInfo> LobbyData::GetUsers() const
 LobbyData::LobbyData(const LobbyData& other) :
 	m_lobbyID{ other.m_lobbyID }, 
 	m_lobbyAdmin{ other.m_lobbyAdmin }, 
-	m_lobbyUsers{ other.m_lobbyUsers }
+	m_lobbyUsers{ other.m_lobbyUsers },
+	m_isPrivate{other.m_isPrivate},
+	m_lobbyType{other.m_lobbyType}
 {
 
 }
@@ -66,6 +91,8 @@ LobbyData& LobbyData::operator=(const LobbyData& other)
 		m_lobbyID = other.m_lobbyID;
 		m_lobbyAdmin = other.m_lobbyAdmin;
 		m_lobbyUsers = other.m_lobbyUsers;
+	m_isPrivate = other.m_isPrivate;
+	m_lobbyType = other.m_lobbyType;
 	}
 	return *this;
 }
@@ -73,7 +100,9 @@ LobbyData& LobbyData::operator=(const LobbyData& other)
 LobbyData::LobbyData(LobbyData&& other) noexcept : 
 	m_lobbyID{ other.m_lobbyID },
 	m_lobbyAdmin{ std::move(other.m_lobbyAdmin) },
-	m_lobbyUsers{ std::move(other.m_lobbyUsers) }
+	m_lobbyUsers{ std::move(other.m_lobbyUsers) },
+	m_isPrivate{ other.m_isPrivate },
+	m_lobbyType{ other.m_lobbyType }
 {
 }
 
@@ -84,6 +113,8 @@ LobbyData& LobbyData::operator=(LobbyData&& other) noexcept
 		m_lobbyID = other.m_lobbyID;
 		m_lobbyAdmin = std::move(other.m_lobbyAdmin);
 		m_lobbyUsers = std::move(other.m_lobbyUsers);
+		m_isPrivate = other.m_isPrivate;
+		m_lobbyType = other.m_lobbyType;
 	}
 	return *this;
 }
@@ -97,6 +128,12 @@ bool LobbyData::operator==(const LobbyData& other) const
 		return false;
 
 	if(m_lobbyUsers.size()!=other.m_lobbyUsers.size())
+		return false;
+
+	if(m_isPrivate!=other.m_isPrivate)
+		return false;
+
+	if(m_lobbyType!=other.m_lobbyType)
 		return false;
 
 	for (int i = 0; i < m_lobbyUsers.size(); i++)

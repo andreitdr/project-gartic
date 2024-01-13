@@ -20,6 +20,7 @@
     <ProjectGuid>{DACEC2CB-5F28-4F6F-B599-EFFB2D5FD4F9}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -63,11 +64,13 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -98,12 +101,15 @@
     <ClCompile Include="API\Contexts\Contexts.cpp" />
     <ClCompile Include="API\ResponseHandler\ResponseHandler.cpp" />
     <ClCompile Include="Utils\CurrentUser\CurrentUser.cpp" />
+    <ClCompile Include="Utils\GameData\GameData.cpp" />
     <ClCompile Include="Utils\LobbyData\LobbyData.cpp" />
+    <ClCompile Include="Utils\QImageConverter\QImageConverter.cpp" />
     <ClCompile Include="Utils\UserInfoCache\UserInfoCache.cpp" />
     <ClCompile Include="Utils\UserInfo\UserInfo.cpp" />
     <ClCompile Include="Utils\WindowManager\WindowManager.cpp" />
     <ClCompile Include="Widgets\CustomQMessageBox\CustomQMessageBox.cpp" />
     <ClCompile Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.cpp" />
+    <ClCompile Include="Widgets\GamePlayerInfoWidget\GamePlayerInfoWidget.cpp" />
     <ClCompile Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.cpp" />
     <ClCompile Include="Widgets\PaintWidget\PaintWidget.cpp" />
     <ClCompile Include="Windows\GameWindow\GameWindow.cpp" />
@@ -123,9 +129,12 @@
     <ClInclude Include="API\Requests\Requests.h" />
     <ClInclude Include="API\ResponseHandler\ResponseHandler.h" />
     <ClInclude Include="Utils\CurrentUser\CurrentUser.h" />
+    <ClInclude Include="Utils\GameData\GameData.h" />
     <ClInclude Include="Utils\LobbyData\LobbyData.h" />
+    <ClInclude Include="Utils\QImageConverter\QImageConverter.h" />
     <ClInclude Include="Utils\UserInfoCache\UserInfoCache.h" />
     <ClInclude Include="Utils\UserInfo\UserInfo.h" />
+    <QtMoc Include="Widgets\GamePlayerInfoWidget\GamePlayerInfoWidget.h" />
     <QtMoc Include="Windows\UserProfile\UserProfile.h" />
     <QtMoc Include="Windows\Login\Login.h" />
     <QtMoc Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.h" />
@@ -141,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Widgets\DisplayPaintWidget\DisplayPaintWidget.ui" />
+    <QtUic Include="Widgets\GamePlayerInfoWidget\GamePlayerInfoWidget.ui" />
     <QtUic Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.ui" />
     <QtUic Include="Widgets\PaintWidget\PaintWidget.ui" />
     <QtUic Include="Windows\GameWindow\GameWindow.ui" />

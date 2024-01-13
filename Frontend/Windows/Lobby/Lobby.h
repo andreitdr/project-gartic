@@ -37,13 +37,17 @@ private:
 	void updateLobbyPlayerListView();
 	void hideOrShowStartGameButton();
 	void updateLobbyStatus();
+	void updateSettingsStatus();
 	void leaveLobby();
 	void updateLobbyData();
 
 private slots:
-	virtual void on_pushButton_startGame_clicked();
-	virtual void on_pushButton_exitLobby_clicked();
-	virtual void on_pushButton_copyLobbyId_clicked();
+	void on_pushButton_startGame_clicked();
+	void on_pushButton_exitLobby_clicked();
+	void on_pushButton_copyLobbyId_clicked();
+	void on_pushButton_lobbySettings_clicked();
+	void on_pushButton_saveSettings_clicked();
+	void on_pushButton_goBackSettings_clicked();
 
 public slots:
 	void getLobbyData(const LobbyData& lobbyData);
@@ -51,5 +55,6 @@ public slots:
 
 signals:
 	void goToJoinGameWindow();
+	void goToGameWindow();
 	void windowPositionChanged(const QPoint& newPosition);
 };

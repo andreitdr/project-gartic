@@ -22,6 +22,7 @@ public:
 	void setPenColor(const QColor& newColor);
 	void setPenWidth(int newWidth);
 	void saveImage();
+	QImage getImage() const;
 
 	QColor penColor() const;
 	int penWidth() const;
@@ -46,14 +47,14 @@ public slots:
 	void clearImage();
 
 private slots:
-	//options
+	
 	virtual void on_pushButton_clearImage_clicked();
 	virtual void on_pushButton_saveImage_clicked();
-	//pen size
+	
 	virtual void on_pushButton_smallLineSize_clicked();
 	virtual void on_pushButton_mediumLineSize_clicked();
 	virtual void on_pushButton_largeLineSize_clicked();
-	//pen color
+	
 	virtual void on_pushButton_white_clicked();
 	virtual void on_pushButton_black_clicked();
 	virtual void on_pushButton_grey_clicked();

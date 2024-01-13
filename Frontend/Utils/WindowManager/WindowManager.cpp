@@ -44,7 +44,12 @@ void WindowManager::setupConnections()
 
 	//Lobby connections
 	connect(m_lobbyWindow.get(), &Lobby::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
+	connect(m_lobbyWindow.get(), &Lobby::goToGameWindow, this, &WindowManager::showGameWindow);
 	connect(m_lobbyWindow.get(), &Lobby::windowPositionChanged, this, &WindowManager::onWindowHidden);
+
+	//Game connections
+	connect(m_gameWindow.get(), &GameWindow::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
+	connect(m_gameWindow.get(), &GameWindow::windowPositionChanged, this, &WindowManager::onWindowHidden);
 }
 
 void WindowManager::setWindowPosition(QWidget* window)

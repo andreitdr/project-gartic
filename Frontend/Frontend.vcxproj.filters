@@ -88,6 +88,15 @@
     <ClCompile Include="Utils\UserInfoCache\UserInfoCache.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Widgets\GamePlayerInfoWidget\GamePlayerInfoWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\GameData\GameData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\QImageConverter\QImageConverter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API\Requests\Requests.h">
@@ -115,6 +124,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utils\UserInfoCache\UserInfoCache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\GameData\GameData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\QImageConverter\QImageConverter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -152,6 +167,9 @@
     <QtMoc Include="Windows\UserProfile\UserProfile.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="Widgets\GamePlayerInfoWidget\GamePlayerInfoWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Widgets\LobbyPlayerInfoWidget\LobbyPlayerInfoWidget.ui">
@@ -182,6 +200,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Windows\UserProfile\UserProfile.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Widgets\GamePlayerInfoWidget\GamePlayerInfoWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

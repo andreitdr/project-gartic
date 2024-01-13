@@ -34,6 +34,11 @@ void PaintWidget::saveImage()
 	}
 }
 
+QImage PaintWidget::getImage() const
+{
+	return m_image;
+}
+
 QColor PaintWidget::penColor() const
 {
 	return m_PenColor;
