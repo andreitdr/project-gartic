@@ -5,12 +5,16 @@
 #include "Infrastructure/BaseResponse.h"
 
 #include "API/Game/CreateLobby.h"
+#include "API/Game/ExitGame.h"
+#include "API/Game/GetDrawing.h"
+#include "API/Game/GetRunningGameForUser.h"
 #include "API/Game/StartGame.h"
 #include "API/Game/JoinLobby.h"
 #include "API/Game/LeaveLobby.h"
 #include "API/Game/UpdateLobby.h"
 #include "API/Game/LobbyStatus.h"
 #include "API/Game/JoinRandomLobby.h"
+#include "API/Game/SendDrawing.h"
 
 #include "API/Game/GetRunningGameStatus.h"
 #include "API/Game/CheckWord.h"
@@ -276,6 +280,78 @@ int main()
         
         auto wjson = UserLogin(json);
         return crow::response(wjson);
+    });
+
+    CROW_ROUTE(app, "/game/get_game_for_user").methods("GET"_method)([](const crow::request& request)
+    {
+        const auto json = crow::json::load(request.body);
+
+        if (!json)
+        {
+            BaseResponse response;
+            response.m_successState = false;
+            response.AppendMessage("The json was in an incorrect format");
+
+            auto responseJson = JsonConvertor::ConvertBaseResponse(response);
+            return crow::response(responseJson);
+        }
+
+        auto response = GetRunningGameForUser(json);
+        return crow::response(response);
+    });
+
+    CROW_ROUTE(app, "/game/exit_game").methods("GET"_method)([](const crow::request& request)
+    {
+        const auto json = crow::json::load(request.body);
+
+        if (!json)
+        {
+            BaseResponse response;
+            response.m_successState = false;
+            response.AppendMessage("The json was in an incorrect format");
+
+            auto responseJson = JsonConvertor::ConvertBaseResponse(response);
+            return crow::response(responseJson);
+        }
+
+        auto response = ExitGame(json);
+        return crow::response(response);
+    });
+
+    CROW_ROUTE(app, "/game/send_drawing").methods("GET"_method)([](const crow::request& request)
+    {
+        const auto json = crow::json::load(request.body);
+
+        if (!json)
+        {
+            BaseResponse response;
+            response.m_successState = false;
+            response.AppendMessage("The json was in an incorrect format");
+
+            auto responseJson = JsonConvertor::ConvertBaseResponse(response);
+            return crow::response(responseJson);
+        }
+
+        auto response = SendDrawing(json);
+        return crow::response(response);
+    });
+
+    CROW_ROUTE(app, "/game/get_drawing").methods("GET"_method)([](const crow::request& request)
+    {
+        const auto json = crow::json::load(request.body);
+
+        if (!json)
+        {
+            BaseResponse response;
+            response.m_successState = false;
+            response.AppendMessage("The json was in an incorrect format");
+
+            auto responseJson = JsonConvertor::ConvertBaseResponse(response);
+            return crow::response(responseJson);
+        }
+
+        auto response = GetDrawing(json);
+        return crow::response(response);
     });
 
     app.loglevel(crow::LogLevel::Info);

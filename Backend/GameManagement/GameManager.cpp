@@ -76,6 +76,11 @@ std::vector<int> GameManager::GetPlayerIds(int gameId) const
     return GAME(gameId).m_playerIds;
 }
 
+std::string GameManager::GetDrawing(int gameId) const
+{
+    return GAME(gameId).m_drawing;
+}
+
 bool GameManager::ToNextRound(int gameId)
 {
     GAME(gameId).m_indexPlayerDrawing ++;
@@ -132,6 +137,18 @@ int GameManager::GetGameIdByPlayer(int playerId) const
 void GameManager::UpdatePoints(int gameId, int playerId, int pointsToAdd)
 {
     GAME(gameId).m_playerPoints[playerId] += pointsToAdd;
+}
+
+void GameManager::RemovePlayer(int gameId, int playerId)
+{
+    for(int i=0; i < GAME(gameId).m_playerIds.size();i++)
+        if(GAME(gameId).m_playerIds[i]==playerId)
+            GAME(gameId).m_playerIds[i]=-1;
+}
+
+void GameManager::UpdateDrawing(int gameId, const std::string& drawing)
+{
+    GAME(gameId).m_drawing=drawing;
 }
 
 std::string GameManager::FormatMessage(const std::string& sender, const std::string& message) const

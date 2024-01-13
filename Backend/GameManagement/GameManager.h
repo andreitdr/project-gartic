@@ -29,6 +29,7 @@ public:
     std::vector<std::string> GetChat(int gameId) const;
     std::string GetCurrentWord(int gameId) const;
     std::vector<int> GetPlayerIds(int gameId) const;
+    std::string GetDrawing(int gameId) const;
 
     bool ToNextRound(int gameId);
 
@@ -38,6 +39,10 @@ public:
     int GetGameIdByPlayer(int playerId) const;
 
     void UpdatePoints(int gameId, int playerId, int pointsToAdd);
+
+    void RemovePlayer(int gameId, int playerId);
+
+    void UpdateDrawing(int gameId,const std::string& drawing);
 
     void operator=(const GameManager&) = delete;
     GameManager(const GameManager&) = delete;
