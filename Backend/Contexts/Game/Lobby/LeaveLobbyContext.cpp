@@ -1,22 +1,9 @@
-#pragma once
+﻿#include "LeaveLobbyContext.h"
 #include <vector>
-#include "../../SqlDatabase/SqlDatabase.h"
-#include "../../Utils/JsonConvertor.h"
-#include "../../Infrastructure/Lobby/Leave/LeaveLobbyRequest.h"
-#include "../../Infrastructure/Lobby/Leave/LeaveLobbyResponse.h"
-#include "../BaseContext.h"
+#include "../../../SqlDatabase/SqlDatabase.h"
+#include "../../../Utils/JsonConvertor.h"
 
-class LeaveLobbyContext final : public BaseContext<LeaveLobbyRequest, LeaveLobbyResponse>
-{
-public:
-    LeaveLobbyResponse HandleRequest(const LeaveLobbyRequest& request) override;
-
-private:
-    LeaveLobbyResponse ValidateData(const LeaveLobbyRequest& request);
-    LeaveLobbyResponse ApplyChanges(const LeaveLobbyRequest& request) override;
-};
-
-inline LeaveLobbyResponse LeaveLobbyContext::HandleRequest(const LeaveLobbyRequest& request)
+LeaveLobbyResponse LeaveLobbyContext::HandleRequest(const LeaveLobbyRequest& request)
 {
     auto response = ValidateData(request);
     if (!response.m_successState) return response;
@@ -26,7 +13,7 @@ inline LeaveLobbyResponse LeaveLobbyContext::HandleRequest(const LeaveLobbyReque
     return response;
 }
 
-inline LeaveLobbyResponse LeaveLobbyContext::ValidateData(const LeaveLobbyRequest& request)
+ LeaveLobbyResponse LeaveLobbyContext::ValidateData(const LeaveLobbyRequest& request)
 {
     int lobbyId = request.GetLobbyId();
     try
@@ -47,7 +34,7 @@ inline LeaveLobbyResponse LeaveLobbyContext::ValidateData(const LeaveLobbyReques
     }
 }
 
-inline LeaveLobbyResponse LeaveLobbyContext::ApplyChanges(const LeaveLobbyRequest& request)
+ LeaveLobbyResponse LeaveLobbyContext::ApplyChanges(const LeaveLobbyRequest& request)
 {
     int lobbyId  = request.GetLobbyId();
     int playerId = request.GetUserId();

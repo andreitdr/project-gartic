@@ -17,7 +17,8 @@ inline WJSON RegisterUser(const crow::json::rvalue& request)
     credentials.m_hashedPassword = request["password"].s();
 
     UserRegistrationRequest userRegistrationRequest = UserRegistrationRequest(user, credentials);
-    UserRegistrationResponse response               = UserRegistrationContext::RegisterUser(userRegistrationRequest);
+    UserRegistrationContext userRegistrationContext{};
+    UserRegistrationResponse response               = userRegistrationContext.HandleRequest(userRegistrationRequest);
 
     WJSON responseJson        = JsonConvertor::ConvertBaseResponse(response);
     responseJson["NewUserID"] = response.GetUser().value().m_user_id;

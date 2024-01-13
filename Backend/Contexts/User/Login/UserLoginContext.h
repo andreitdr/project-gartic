@@ -1,14 +1,15 @@
 #pragma once
 
+#include "../../BaseContext.h"
 #include "../../../Infrastructure/UserLogin/UserLoginRequest.h"
 #include "../../../Infrastructure/UserLogin/UserLoginResponse.h"
 
-class UserLoginContext
+class UserLoginContext : BaseContext<UserLoginRequest, UserLoginResponse>
 {
 public:
-    static UserLoginResponse Login(const UserLoginRequest &request);
+    UserLoginResponse HandleRequest(const UserLoginRequest& request) override;
+    UserLoginResponse ApplyChanges(const UserLoginRequest& request) override;
 
 private:
-    static bool UserExists(const Credentials &credentials);
-    static bool PasswordMatches(const Credentials &credentials);
+    UserLoginResponse ValidateData(const UserLoginRequest& request);
 };

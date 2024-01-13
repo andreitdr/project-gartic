@@ -150,7 +150,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Configuration\Config.cppm" />
+    <ClCompile Include="Contexts\Game\Lobby\CreateLobbyContext.cpp" />
     <ClCompile Include="Contexts\Game\Lobby\GetLobbyStatusContext.cpp" />
+    <ClCompile Include="Contexts\Game\Lobby\JoinLobbyContext.cpp" />
+    <ClCompile Include="Contexts\Game\Lobby\JoinRandomLobbyContext.cpp" />
+    <ClCompile Include="Contexts\Game\Lobby\LeaveLobbyContext.cpp" />
+    <ClCompile Include="Contexts\Game\Lobby\UpdateLobbyContext.cpp" />
+    <ClCompile Include="Contexts\Game\StartGameContext.cpp" />
     <ClCompile Include="Contexts\User\Info\UserMatchHistoryContext.cpp" />
     <ClCompile Include="Contexts\User\Info\UserInfoContext.cpp" />
     <ClCompile Include="Contexts\User\Login\UserLoginContext.cpp" />
@@ -194,15 +200,14 @@
     <ClInclude Include="API\User\GetUserMatchHistoryData.h" />
     <ClInclude Include="API\User\UserLogin.h" />
     <ClInclude Include="API\User\UserRegistration.h" />
-    <ClInclude Include="Constants.h" />
     <ClInclude Include="Contexts\BaseContext.h" />
-    <ClInclude Include="Contexts\Game\CreateLobbyContext.h" />
-    <ClInclude Include="Contexts\Game\JoinLobbyContext.h" />
-    <ClInclude Include="Contexts\Game\JoinRandomLobbyContext.h" />
-    <ClInclude Include="Contexts\Game\LeaveLobbyContext.h" />
+    <ClInclude Include="Contexts\Game\Lobby\CreateLobbyContext.h" />
     <ClInclude Include="Contexts\Game\Lobby\GetLobbyStatusContext.h" />
+    <ClInclude Include="Contexts\Game\Lobby\JoinLobbyContext.h" />
+    <ClInclude Include="Contexts\Game\Lobby\JoinRandomLobbyContext.h" />
+    <ClInclude Include="Contexts\Game\Lobby\LeaveLobbyContext.h" />
+    <ClInclude Include="Contexts\Game\Lobby\UpdateLobbyContext.h" />
     <ClInclude Include="Contexts\Game\StartGameContext.h" />
-    <ClInclude Include="Contexts\Game\UpdateLobbyContext.h" />
     <ClInclude Include="Contexts\User\Info\UserMatchHistoryContext.h" />
     <ClInclude Include="Contexts\User\Info\UserInfoContext.h" />
     <ClInclude Include="Contexts\User\Login\UserLoginContext.h" />

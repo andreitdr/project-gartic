@@ -1,9 +1,12 @@
 #include "BaseResponse.h"
 
-BaseResponse::BaseResponse()
+BaseResponse::BaseResponse() : m_successState{true}
 {
-    m_successState = false;
     m_messages     = {};
+}
+
+BaseResponse::BaseResponse(bool state) : m_successState{state}
+{
 }
 
 void BaseResponse::AppendMessage(const std::string& message)

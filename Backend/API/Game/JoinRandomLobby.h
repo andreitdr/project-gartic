@@ -2,7 +2,7 @@
 
 #include <crow.h>
 #include "../../Utils/JsonConvertor.h"
-#include "../../Contexts/Game/JoinRandomLobbyContext.h"
+#include "../../Contexts/Game/Lobby/JoinRandomLobbyContext.h"
 
 inline crow::json::wvalue JoinRandomLobby(const crow::json::rvalue& request)
 {

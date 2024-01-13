@@ -4,7 +4,7 @@
 #include "../../Infrastructure/Lobby/Update/UpdateLobbyRequest.h"
 #include "../../Infrastructure/Lobby/Update/UpdateLobbyResponse.h"
 #include "../../Utils/JsonConvertor.h"
-#include "../../Contexts/Game/UpdateLobbyContext.h"
+#include "../../Contexts/Game/Lobby/UpdateLobbyContext.h"
 
 inline crow::json::wvalue UpdateLobby(const crow::json::rvalue& request)
 {

@@ -6,7 +6,11 @@ UserRegistrationResponse::UserRegistrationResponse(const std::string& message, b
     m_successState = state;
 }
 
-UserRegistrationResponse::UserRegistrationResponse() : BaseResponse()
+UserRegistrationResponse::UserRegistrationResponse(bool state) : BaseResponse(state)
+{
+}
+
+UserRegistrationResponse::UserRegistrationResponse(const User& user) : BaseResponse(true), m_user{user}
 {
 }
 

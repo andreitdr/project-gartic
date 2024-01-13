@@ -2,31 +2,39 @@
 
 #include "../../../SqlDatabase/SqlDatabase.h"
 
-UserRegistrationResponse UserRegistrationContext::RegisterUser(const UserRegistrationRequest &request)
+UserRegistrationResponse UserRegistrationContext::HandleRequest(const UserRegistrationRequest& request)
 {
     auto user = request.GetUser();               // user
     auto credentials = request.GetCredentials(); // credentials
-
-    if (UserExists(user))
-    {
-        auto response = UserRegistrationResponse("The user already exists", false);
-        response.SetUser(user);
-
+    
+    auto response = ValidateData(user);
+    if (!ValidateData(user))
         return response;
-    }
 
-    auto response = UserRegistrationResponse("Success", true);
-    ApplyChangesUser(user);
-    ApplyChangesCredentials(credentials);
-    response.SetUser(user);
-
+    response = ApplyChanges(request);
+    
     return response;
 }
 
-bool UserRegistrationContext::UserExists(const User &user)
+UserRegistrationResponse UserRegistrationContext::ApplyChanges(const UserRegistrationRequest& request)
 {
-    return SqlDatabase::GetInstance().ExistsModel(user);
+    auto user              = request.GetUser();        // user
+    const auto credentials = request.GetCredentials(); // credentials
+
+    ApplyChangesUser(user);
+    ApplyChangesCredentials(credentials);
+
+    return UserRegistrationResponse(user);
 }
+
+UserRegistrationResponse UserRegistrationContext::ValidateData(const User& user)
+{
+    if(!SqlDatabase::GetInstance().ExistsModel(user))
+        return UserRegistrationResponse("The user already exists", false);
+
+    return UserRegistrationResponse(true);
+}
+
 
 void UserRegistrationContext::ApplyChangesUser(User &user)
 {

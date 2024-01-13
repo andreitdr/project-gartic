@@ -1,14 +1,16 @@
 #pragma once
 #include "../../../Infrastructure/UserRegistration/UserRegistrationRequest.h"
 #include "../../../Infrastructure/UserRegistration/UserRegistrationResponse.h"
+#include "../../BaseContext.h"
 
-class UserRegistrationContext
+class UserRegistrationContext : BaseContext<UserRegistrationRequest, UserRegistrationResponse>
 {
 public:
-    static UserRegistrationResponse RegisterUser(const UserRegistrationRequest &request);
+    UserRegistrationResponse HandleRequest(const UserRegistrationRequest &request) override;
+    UserRegistrationResponse ApplyChanges(const UserRegistrationRequest &request) override;
 
 private:
-    static bool UserExists(const User &user);
-    static void ApplyChangesUser(User &user);
-    static void ApplyChangesCredentials(const Credentials &userCredentials);
+     UserRegistrationResponse ValidateData(const User &user);
+     void ApplyChangesUser(User &user);
+     void ApplyChangesCredentials(const Credentials &userCredentials);
 };

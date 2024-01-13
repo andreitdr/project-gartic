@@ -4,7 +4,7 @@
 #include "../../Infrastructure/Lobby/Create/CreateLobbyRequest.h"
 #include "../../Infrastructure/Lobby/Create/CreateLobbyResponse.h"
 #include "../../Utils/JsonConvertor.h"
-#include "../../Contexts/Game/CreateLobbyContext.h"
+#include "../../Contexts/Game/Lobby/CreateLobbyContext.h"
 
 inline crow::json::wvalue CreateLobby(const crow::json::rvalue& request)
 {

@@ -1,22 +1,10 @@
-#pragma once
+﻿#include "JoinLobbyContext.h"
+
+#include "../../../SqlDatabase/SqlDatabase.h"
+#include "../../../Utils/JsonConvertor.h"
+
 #include <vector>
-#include "../../SqlDatabase/SqlDatabase.h"
-#include "../../Utils/JsonConvertor.h"
-#include "../../Infrastructure/Lobby/Join/JoinLobbyRequest.h"
-#include "../../Infrastructure/Lobby/Join/JoinLobbyResponse.h"
-#include "../BaseContext.h"
-
-class JoinLobbyContext final : public BaseContext<JoinLobbyRequest, JoinLobbyResponse>
-{
-public:
-    JoinLobbyResponse HandleRequest(const JoinLobbyRequest& request) override;
-
-private:
-    JoinLobbyResponse ValidateData(const JoinLobbyRequest& request);
-    JoinLobbyResponse ApplyChanges(const JoinLobbyRequest& request) override;
-};
-
-inline JoinLobbyResponse JoinLobbyContext::HandleRequest(const JoinLobbyRequest& request)
+ JoinLobbyResponse JoinLobbyContext::HandleRequest(const JoinLobbyRequest& request)
 {
     auto response = ValidateData(request);
     if (!response) return response;
@@ -26,7 +14,7 @@ inline JoinLobbyResponse JoinLobbyContext::HandleRequest(const JoinLobbyRequest&
     return response;
 }
 
-inline JoinLobbyResponse JoinLobbyContext::ValidateData(const JoinLobbyRequest& request)
+ JoinLobbyResponse JoinLobbyContext::ValidateData(const JoinLobbyRequest& request)
 {
     int lobbyId = request.GetLobbyId();
     try
@@ -47,7 +35,7 @@ inline JoinLobbyResponse JoinLobbyContext::ValidateData(const JoinLobbyRequest& 
     }
 }
 
-inline JoinLobbyResponse JoinLobbyContext::ApplyChanges(const JoinLobbyRequest& request)
+ JoinLobbyResponse JoinLobbyContext::ApplyChanges(const JoinLobbyRequest& request)
 {
     try
     {

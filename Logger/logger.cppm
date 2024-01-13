@@ -1,12 +1,13 @@
-export module Logger;
+#pragma once
+#include <Windows.h>
 
+export module Logger;
 
 import <iostream>;
 import <string_view>;
 import <format>;
 import <chrono>;
 import <fstream>;
-#include <Windows.h>
 
 #define COLOR_WHITE 7
 #define COLOR_GREEN 10

@@ -2,29 +2,33 @@
 
 #include "../../../SqlDatabase/SqlDatabase.h"
 
-using namespace sqlite_orm;
 
-UserLoginResponse UserLoginContext::Login(const UserLoginRequest &request)
+UserLoginResponse UserLoginContext::HandleRequest(const UserLoginRequest& request)
+{
+    UserLoginResponse response = ValidateData(request);
+    if (!response)
+        return response;
+
+    return ApplyChanges(request);
+}
+
+UserLoginResponse UserLoginContext::ApplyChanges(const UserLoginRequest& request)
+{
+    const User user = SqlDatabase::GetInstance().Get<User>(WHERE(User::m_username, request.GetCredentials().m_username));
+    return UserLoginResponse(user);
+}
+
+
+UserLoginResponse UserLoginContext::ValidateData(const UserLoginRequest& request)
 {
     Credentials credentials = request.GetCredentials();
-    if (!UserExists(credentials))
+    if (!SqlDatabase::GetInstance().ExistsModel(credentials))
         return UserLoginResponse("Inexistent user", false);
 
-    if (!PasswordMatches(credentials))
+    using namespace sqlite_orm;
+    auto whereCondition = where(c(&Credentials::m_username) == credentials.m_username and c(&Credentials::m_hashedPassword) == credentials.m_hashedPassword);
+    if (!SqlDatabase::GetInstance().Exists<Credentials>(whereCondition))
         return UserLoginResponse("Incorrect password", false);
 
-    return UserLoginResponse("Success", true);
-}
-
-bool UserLoginContext::UserExists(const Credentials &credentials)
-{
-    return SqlDatabase::GetInstance().ExistsModel(credentials);
-}
-
-bool UserLoginContext::PasswordMatches(const Credentials &credentials)
-{
-    auto whereCondition = where(
-        (c(&Credentials::m_username) == credentials.m_username) and (c(&Credentials::m_hashedPassword) == credentials.m_hashedPassword));
-
-    return SqlDatabase::GetInstance().Exists<Credentials>(whereCondition);
+    return UserLoginResponse(true);
 }

@@ -1,22 +1,8 @@
-#pragma once
+﻿#include "UpdateLobbyContext.h"
+#include "../../../SqlDatabase/SqlDatabase.h"
+#include "../../../Utils/JsonConvertor.h"
 
-#include "../../Infrastructure/Lobby/Update/UpdateLobbyRequest.h"
-#include "../../Infrastructure/Lobby/Update/UpdateLobbyResponse.h"
-#include "../../SqlDatabase/SqlDatabase.h"
-#include "../../Utils/JsonConvertor.h"
-#include "../BaseContext.h"
-
-class UpdateLobbyContext final : public BaseContext<UpdateLobbyRequest, UpdateLobbyResponse>
-{
-public:
-    UpdateLobbyResponse HandleRequest(const UpdateLobbyRequest& request) override;
-
-private:
-    UpdateLobbyResponse ValidateData(const UpdateLobbyRequest& request);
-    UpdateLobbyResponse ApplyChanges(const UpdateLobbyRequest& request) override;
-};
-
-inline UpdateLobbyResponse UpdateLobbyContext::HandleRequest(const UpdateLobbyRequest& request)
+UpdateLobbyResponse UpdateLobbyContext::HandleRequest(const UpdateLobbyRequest& request)
 {
     auto response = ValidateData(request);
     if (!response) return response;
@@ -26,7 +12,7 @@ inline UpdateLobbyResponse UpdateLobbyContext::HandleRequest(const UpdateLobbyRe
     return response;
 }
 
-inline UpdateLobbyResponse UpdateLobbyContext::ValidateData(const UpdateLobbyRequest& request)
+ UpdateLobbyResponse UpdateLobbyContext::ValidateData(const UpdateLobbyRequest& request)
 {
     int lobbyId = request.GetLobbyId();
 
@@ -48,7 +34,7 @@ inline UpdateLobbyResponse UpdateLobbyContext::ValidateData(const UpdateLobbyReq
     }
 }
 
-inline UpdateLobbyResponse UpdateLobbyContext::ApplyChanges(const UpdateLobbyRequest& request)
+ UpdateLobbyResponse UpdateLobbyContext::ApplyChanges(const UpdateLobbyRequest& request)
 {
     int lobbyId        = request.GetLobbyId();
     int lobbyType      = request.GetLobbyType();

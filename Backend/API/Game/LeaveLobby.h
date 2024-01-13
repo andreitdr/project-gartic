@@ -3,7 +3,7 @@
 #include <crow.h>
 
 #include "../../Utils/JsonConvertor.h"
-#include "../../Contexts/Game/LeaveLobbyContext.h"
+#include "../../Contexts/Game/Lobby/LeaveLobbyContext.h"
 
 inline crow::json::wvalue LeaveLobby(const crow::json::rvalue& request)
 {

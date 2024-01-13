@@ -1,29 +1,14 @@
-#pragma once
-
-#include "../../SqlDatabase/SqlDatabase.h"
-#include "../../Utils/JsonConvertor.h"
-
-#include "../../Infrastructure/Lobby/Join/JoinRandomLobbyRequest.h"
-#include "../../Infrastructure/Lobby/Join/JoinRandomLobbyResponse.h"
-
-#include "../BaseContext.h"
+﻿#include "JoinRandomLobbyContext.h"
 #include <random>
+#include "../../../SqlDatabase/SqlDatabase.h"
+#include "../../../Utils/JsonConvertor.h"
 
-class JoinRandomLobbyContext final : public BaseContext<JoinRandomLobbyRequest, JoinRandomLobbyResponse>
-{
-public:
-    JoinRandomLobbyResponse HandleRequest(const JoinRandomLobbyRequest& request) override;
-
-private:
-    JoinRandomLobbyResponse ApplyChanges(const JoinRandomLobbyRequest& request) override;
-};
-
-inline JoinRandomLobbyResponse JoinRandomLobbyContext::HandleRequest(const JoinRandomLobbyRequest& request)
+JoinRandomLobbyResponse JoinRandomLobbyContext::HandleRequest(const JoinRandomLobbyRequest& request)
 {
     return ApplyChanges(request);
 }
 
-inline JoinRandomLobbyResponse JoinRandomLobbyContext::ApplyChanges(const JoinRandomLobbyRequest& request)
+ JoinRandomLobbyResponse JoinRandomLobbyContext::ApplyChanges(const JoinRandomLobbyRequest& request)
 {
     try
     {

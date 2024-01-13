@@ -1,13 +1,12 @@
 ﻿#pragma once
+
 #include <string>
 #include <sqlite_orm/sqlite_orm.h>
-#include "../Constants.h"
 
 #include "../DataTypes/User/User.h"
 #include "../DataTypes/User/Credentials.h"
 #include "../DataTypes/User/UserGameData.h"
 #include "../DataTypes/Game/FinishedGame.h"
-#include "../DataTypes/Game/RunningGame.h"
 #include "../DataTypes/Game/Lobby.h"
 #include "../DataTypes/Game/PlayerFinishedGame.h"
 
@@ -129,23 +128,23 @@ private:
 template <typename TypeAsStruct>
 int SqlDatabase::Insert(const TypeAsStruct& model)
 {
-    k_logger.LogMessage(std::format("Inserting {}", typeid(model).name()));
+   // k_logger.LogMessage(std::format("Inserting {}", typeid(model).name()));
     int id = storage.insert(model);
-    k_logger.LogMessage("Success");
+   // k_logger.LogMessage("Success");
     return id;
 }
 
 template <typename TypeAsStruct>
 TypeAsStruct SqlDatabase::Get(int id)
 {
-    k_logger.LogMessage(std::format("Getting {} with id {}", typeid(TypeAsStruct).name(), id));
+  //  k_logger.LogMessage(std::format("Getting {} with id {}", typeid(TypeAsStruct).name(), id));
     try
     {
         return storage.get<TypeAsStruct>(id);
     }
     catch (const std::exception& err)
     {
-        k_logger.LogError(err);
+  //      k_logger.LogError(err);
         throw err;
     }
 }
@@ -166,7 +165,7 @@ template <typename TupleElements>
 std::vector<TupleElements> SqlDatabase::Select(auto columnsTuple, auto whereCondition)
 {
     auto selectStatement = storage.prepare(sqlite_orm::select(columnsTuple, whereCondition));
-    k_logger.LogMessage(selectStatement.sql(), "SQL");
+//k_logger.LogMessage(selectStatement.sql(), "SQL");
     return storage.execute(selectStatement);
 }
 
@@ -199,7 +198,7 @@ bool SqlDatabase::Exists(auto whereClause)
     }
     catch (std::system_error& err)
     {
-        k_logger.LogError(err);
+     //   k_logger.LogError(err);
         return false;
     }
 }
@@ -214,7 +213,7 @@ bool SqlDatabase::Exists(int id)
     }
     catch (std::system_error& err)
     {
-        k_logger.LogError(err);
+    //    k_logger.LogError(err);
         return false;
     }
 }
@@ -235,13 +234,13 @@ bool SqlDatabase::Update(const TypeAsStruct& model)
 {
     try
     {
-        k_logger.LogMessage(std::format("Updating {}", typeid(model).name()));
+      //  k_logger.LogMessage(std::format("Updating {}", typeid(model).name()));
         storage.update(model);
         return true;
     }
     catch (const std::exception& ex)
     {
-        k_logger.LogError(ex);
+       // k_logger.LogError(ex);
         return false;
     }
 }
@@ -251,13 +250,13 @@ bool SqlDatabase::Delete(int id)
 {
     try
     {
-        k_logger.LogMessage(std::format("Deleting {}", typeid(TypeAsStruct).name()));
+       // k_logger.LogMessage(std::format("Deleting {}", typeid(TypeAsStruct).name()));
         storage.remove<TypeAsStruct>(id);
         return true;
     }
     catch (const std::exception& ex)
     {
-        k_logger.LogError(ex);
+      //  k_logger.LogError(ex);
         return false;
     }
 }

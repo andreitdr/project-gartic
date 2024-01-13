@@ -2,7 +2,6 @@
 #include <tuple>
 
 #include <crow.h>
-#include "SqlDatabase/SqlDatabase.h"
 #include "Infrastructure/BaseResponse.h"
 
 #include "API/Game/CreateLobby.h"
@@ -20,8 +19,6 @@
 
 #define ENABLETEST 0
 
-using namespace sqlite_orm;
-
 void tests()
 {
     // ConfigFile config_file("./test.ini");
@@ -37,8 +34,6 @@ int main()
     tests();
 #else
     crow::SimpleApp app;
-
-    k_logger.LogMessage("Starting server...", "MAIN");
 
     CROW_ROUTE(app, "/user/match_history_data").methods("GET"_method)([] (const crow::request& request)
     {
@@ -254,30 +249,12 @@ int main()
             auto responseJson = JsonConvertor::ConvertBaseResponse(response);
             return crow::response(responseJson);
         }
-
-        std::string username = json["username"].s();
-
-        auto users = SqlDatabase::GetInstance().GetAll<User>(where(c(&User::m_username) == username));
-        if (users.empty())
-        {
-            BaseResponse response;
-            response.m_successState = false;
-            response.AppendMessage("Inexistent user");
-
-            auto responseJson = JsonConvertor::ConvertBaseResponse(response);
-            return crow::response(responseJson);
-        }
-
-
+        
         auto wjson = UserLogin(json);
-
-        wjson["UserData"] = JsonConvertor::ConvertUser(users[0], true);
-
         return crow::response(wjson);
     });
 
-    app.loglevel(crow::LogLevel::Error);
-    k_logger.LogMessage("Server is running at http://localhost:18080", "MAIN");
+    app.loglevel(crow::LogLevel::Info);
     app.port(18080).multithreaded().run();
 #endif
 

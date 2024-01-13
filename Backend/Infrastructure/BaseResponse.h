@@ -6,6 +6,7 @@ class BaseResponse
 {
 public:
     BaseResponse();
+    BaseResponse(bool state);
     std::vector<std::string> m_messages;
     bool m_successState;
 

@@ -9,7 +9,8 @@ class UserRegistrationResponse : public BaseResponse
 {
 public:
     UserRegistrationResponse(const std::string& message, bool state);
-    UserRegistrationResponse();
+    UserRegistrationResponse(bool state);
+    UserRegistrationResponse(const User& user);
 
     void SetUser(const User& user);
     std::optional<User> GetUser() const;
