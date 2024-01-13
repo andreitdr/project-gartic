@@ -153,6 +153,7 @@
     <ClCompile Include="Contexts\Game\GameManagement\ExitGameContext.cpp" />
     <ClCompile Include="Contexts\Game\GameManagement\GetRunningGameForUserContext.cpp" />
     <ClCompile Include="Contexts\Game\GameManagement\GetRunningGameStatusContext.cpp" />
+    <ClCompile Include="Contexts\Game\GameManagement\SendDrawingContext.cpp" />
     <ClCompile Include="Contexts\Game\Lobby\CreateLobbyContext.cpp" />
     <ClCompile Include="Contexts\Game\Lobby\GetLobbyStatusContext.cpp" />
     <ClCompile Include="Contexts\Game\Lobby\JoinLobbyContext.cpp" />
@@ -172,6 +173,8 @@
     <ClCompile Include="Infrastructure\GameManager\GetRunningGameForUserResponse.cpp" />
     <ClCompile Include="Infrastructure\GameManager\GetRunningGameStatusRequest.cpp" />
     <ClCompile Include="Infrastructure\GameManager\GetRunningGameStatusResponse.cpp" />
+    <ClCompile Include="Infrastructure\GameManager\SendDrawingRequest.cpp" />
+    <ClCompile Include="Infrastructure\GameManager\SendDrawingResponse.cpp" />
     <ClCompile Include="Infrastructure\GameStart\StartGameRequest.cpp" />
     <ClCompile Include="Infrastructure\GameStart\StartGameResponse.cpp" />
     <ClCompile Include="Infrastructure\Lobby\Create\CreateLobbyRequest.cpp" />
@@ -205,6 +208,7 @@
     <ClInclude Include="API\Game\JoinRandomLobby.h" />
     <ClInclude Include="API\Game\LeaveLobby.h" />
     <ClInclude Include="API\Game\LobbyStatus.h" />
+    <ClInclude Include="API\Game\SendDrawing.h" />
     <ClInclude Include="API\Game\StartGame.h" />
     <ClInclude Include="API\Game\UpdateLobby.h" />
     <ClInclude Include="API\User\GetUserInfo.h" />
@@ -215,6 +219,7 @@
     <ClInclude Include="Contexts\Game\GameManagement\ExitGameContext.h" />
     <ClInclude Include="Contexts\Game\GameManagement\GetRunningGameForUserContext.h" />
     <ClInclude Include="Contexts\Game\GameManagement\GetRunningGameStatusContext.h" />
+    <ClInclude Include="Contexts\Game\GameManagement\SendDrawingContext.h" />
     <ClInclude Include="Contexts\Game\Lobby\CreateLobbyContext.h" />
     <ClInclude Include="Contexts\Game\Lobby\GetLobbyStatusContext.h" />
     <ClInclude Include="Contexts\Game\Lobby\JoinLobbyContext.h" />
@@ -241,6 +246,8 @@
     <ClInclude Include="Infrastructure\GameManager\GetRunningGameForUserResponse.h" />
     <ClInclude Include="Infrastructure\GameManager\GetRunningGameStatusRequest.h" />
     <ClInclude Include="Infrastructure\GameManager\GetRunningGameStatusResponse.h" />
+    <ClInclude Include="Infrastructure\GameManager\SendDrawingRequest.h" />
+    <ClInclude Include="Infrastructure\GameManager\SendDrawingResponse.h" />
     <ClInclude Include="Infrastructure\GameStart\StartGameRequest.h" />
     <ClInclude Include="Infrastructure\GameStart\StartGameResponse.h" />
     <ClInclude Include="Infrastructure\Lobby\Create\CreateLobbyRequest.h" />
