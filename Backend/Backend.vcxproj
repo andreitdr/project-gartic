@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="Configuration\Config.cppm" />
     <ClCompile Include="Contexts\Game\GameManagement\CheckWordContext.cpp" />
+    <ClCompile Include="Contexts\Game\GameManagement\GetChatMessagesContext.cpp" />
     <ClCompile Include="Contexts\Game\GameManagement\GetRunningGameStatusContext.cpp" />
     <ClCompile Include="Contexts\Game\Lobby\CreateLobbyContext.cpp" />
     <ClCompile Include="Contexts\Game\Lobby\GetLobbyStatusContext.cpp" />
@@ -167,6 +168,8 @@
     <ClCompile Include="Infrastructure\BaseResponse.cpp" />
     <ClCompile Include="Infrastructure\GameManager\CheckWordRequest.cpp" />
     <ClCompile Include="Infrastructure\GameManager\CheckWordResponse.cpp" />
+    <ClCompile Include="Infrastructure\GameManager\GetChatMessagesRequest.cpp" />
+    <ClCompile Include="Infrastructure\GameManager\GetChatMessagesResponse.cpp" />
     <ClCompile Include="Infrastructure\GameManager\GetRunningGameStatusRequest.cpp" />
     <ClCompile Include="Infrastructure\GameManager\GetRunningGameStatusResponse.cpp" />
     <ClCompile Include="Infrastructure\GameStart\StartGameRequest.cpp" />
@@ -197,6 +200,7 @@
   <ItemGroup>
     <ClInclude Include="API\Game\CheckWord.h" />
     <ClInclude Include="API\Game\CreateLobby.h" />
+    <ClInclude Include="API\Game\GetChatMessages.h" />
     <ClInclude Include="API\Game\GetRunningGameStatus.h" />
     <ClInclude Include="API\Game\JoinLobby.h" />
     <ClInclude Include="API\Game\JoinRandomLobby.h" />
@@ -210,6 +214,7 @@
     <ClInclude Include="API\User\UserRegistration.h" />
     <ClInclude Include="Contexts\BaseContext.h" />
     <ClInclude Include="Contexts\Game\GameManagement\CheckWordContext.h" />
+    <ClInclude Include="Contexts\Game\GameManagement\GetChatMessagesContext.h" />
     <ClInclude Include="Contexts\Game\GameManagement\GetRunningGameStatusContext.h" />
     <ClInclude Include="Contexts\Game\Lobby\CreateLobbyContext.h" />
     <ClInclude Include="Contexts\Game\Lobby\GetLobbyStatusContext.h" />
@@ -233,6 +238,8 @@
     <ClInclude Include="Infrastructure\BaseResponse.h" />
     <ClInclude Include="Infrastructure\GameManager\CheckWordRequest.h" />
     <ClInclude Include="Infrastructure\GameManager\CheckWordResponse.h" />
+    <ClInclude Include="Infrastructure\GameManager\GetChatMessagesRequest.h" />
+    <ClInclude Include="Infrastructure\GameManager\GetChatMessagesResponse.h" />
     <ClInclude Include="Infrastructure\GameManager\GetRunningGameStatusRequest.h" />
     <ClInclude Include="Infrastructure\GameManager\GetRunningGameStatusResponse.h" />
     <ClInclude Include="Infrastructure\GameStart\StartGameRequest.h" />

@@ -14,6 +14,7 @@
 
 #include "API/Game/GetRunningGameStatus.h"
 #include "API/Game/CheckWord.h"
+#include "API/Game/GetChatMessages.h"
 
 #include "API/User/GetUserInfo.h"
 #include "API/User/UserLogin.h"
@@ -37,6 +38,22 @@ int main()
     tests();
 #else
     crow::SimpleApp app;
+
+    CROW_ROUTE(app, "/game/get_chat_messages").methods("GET"_method)([](const crow::request& request)
+    {
+        const auto json = crow::json::load(request.body);
+        if (!json)
+        {
+            BaseResponse response;
+            response.m_successState = false;
+            response.AppendMessage("The json was in an incorrect format");
+            auto responseJson = JsonConvertor::ConvertBaseResponse(response);
+            return crow::response(responseJson);
+        }
+
+        auto response = GetChatMessages(json);
+        return crow::response(response);
+    });
 
     CROW_ROUTE(app, "/game/check_word").methods("GET"_method)([](const crow::request& request)
     {
