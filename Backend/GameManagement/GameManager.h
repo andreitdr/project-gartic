@@ -17,6 +17,8 @@ public:
 
     bool GameExists(int gameId) const;
 
+    RunningGame GetGame(int gameId) const;
+
     int CreateGame(const std::vector<int>& playerIds, const std::vector<std::string>& words);
     
     int GetTimer(int gameId) const;
@@ -26,6 +28,7 @@ public:
     std::unordered_map<int, int> GetPlayerLeaderboard(int gameId) const;
     std::vector<std::string> GetChat(int gameId) const;
     std::string GetCurrentWord(int gameId) const;
+    std::vector<int> GetPlayerIds(int gameId) const;
 
     bool ToNextRound(int gameId);
 

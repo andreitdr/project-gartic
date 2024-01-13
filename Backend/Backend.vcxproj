@@ -193,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API\Game\CreateLobby.h" />
+    <ClInclude Include="API\Game\GetRunningGameStatus.h" />
     <ClInclude Include="API\Game\JoinLobby.h" />
     <ClInclude Include="API\Game\JoinRandomLobby.h" />
     <ClInclude Include="API\Game\LeaveLobby.h" />

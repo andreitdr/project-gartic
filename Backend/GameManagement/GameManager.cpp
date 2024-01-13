@@ -15,6 +15,11 @@ bool GameManager::GameExists(int gameId) const
     return true;
 }
 
+RunningGame GameManager::GetGame(int gameId) const
+{
+    return GAME(gameId);
+}
+
 int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector<std::string>& words)
 {
     RunningGame game;
@@ -64,6 +69,11 @@ std::vector<std::string> GameManager::GetChat(int gameId) const
 std::string GameManager::GetCurrentWord(int gameId) const
 {
     return GAME(gameId).m_gameWords.front();
+}
+
+std::vector<int> GameManager::GetPlayerIds(int gameId) const
+{
+    return GAME(gameId).m_playerIds;
 }
 
 bool GameManager::ToNextRound(int gameId)
