@@ -66,6 +66,11 @@ std::string GameManager::GetCurrentWord(int gameId) const
     return GAME(gameId).m_gameWords.front();
 }
 
+std::string GameManager::GetDrawing(int gameId) const
+{
+    return GAME(gameId).m_drawing;
+}
+
 bool GameManager::ToNextRound(int gameId)
 {
     GAME(gameId).m_indexPlayerDrawing ++;

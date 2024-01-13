@@ -26,6 +26,7 @@ public:
     std::unordered_map<int, int> GetPlayerLeaderboard(int gameId) const;
     std::vector<std::string> GetChat(int gameId) const;
     std::string GetCurrentWord(int gameId) const;
+    std::string GetDrawing(int gameId) const;
 
     bool ToNextRound(int gameId);
 
