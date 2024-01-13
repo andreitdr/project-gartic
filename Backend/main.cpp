@@ -13,6 +13,7 @@
 #include "API/Game/JoinRandomLobby.h"
 
 #include "API/Game/GetRunningGameStatus.h"
+#include "API/Game/CheckWord.h"
 
 #include "API/User/GetUserInfo.h"
 #include "API/User/UserLogin.h"
@@ -36,6 +37,22 @@ int main()
     tests();
 #else
     crow::SimpleApp app;
+
+    CROW_ROUTE(app, "/game/check_word").methods("GET"_method)([](const crow::request& request)
+    {
+        const auto json = crow::json::load(request.body);
+        if (!json)
+        {
+            BaseResponse response;
+            response.m_successState = false;
+            response.AppendMessage("The json was in an incorrect format");
+            auto responseJson = JsonConvertor::ConvertBaseResponse(response);
+            return crow::response(responseJson);
+        }
+
+        auto response = CheckWord(json);
+        return crow::response(response);
+    });
 
     CROW_ROUTE(app, "/game/get_running_game_status").methods("GET"_method)([](const crow::request& request)
     {
