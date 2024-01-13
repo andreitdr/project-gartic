@@ -124,6 +124,13 @@ void GameManager::UpdatePoints(int gameId, int playerId, int pointsToAdd)
     GAME(gameId).m_playerPoints[playerId] += pointsToAdd;
 }
 
+void GameManager::RemovePlayer(int gameId, int playerId)
+{
+    for(int i=0; i < GAME(gameId).m_playerIds.size();i++)
+        if(GAME(gameId).m_playerIds[i]==playerId)
+            GAME(gameId).m_playerIds[i]=-1;
+}
+
 std::string GameManager::FormatMessage(const std::string& sender, const std::string& message) const
 {
     std::string _message = std::format("{} {}", sender, message);

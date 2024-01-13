@@ -36,6 +36,8 @@ public:
 
     void UpdatePoints(int gameId, int playerId, int pointsToAdd);
 
+    void RemovePlayer(int gameId, int playerId);
+
     void operator=(const GameManager&) = delete;
     GameManager(const GameManager&) = delete;
     
