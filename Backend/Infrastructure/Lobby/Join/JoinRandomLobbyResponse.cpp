@@ -1,12 +1,19 @@
 #include "JoinRandomLobbyResponse.h"
 
-JoinRandomLobbyResponse::JoinRandomLobbyResponse()
+JoinRandomLobbyResponse::JoinRandomLobbyResponse(int lobbyId) : BaseResponse{true}, m_lobbyId{lobbyId}
 {
-    m_successState = true;
 }
 
-JoinRandomLobbyResponse::JoinRandomLobbyResponse(const std::string &message)
+JoinRandomLobbyResponse::JoinRandomLobbyResponse(const std::string &message) : BaseResponse{false}
 {
-    m_successState = false;
     AppendMessage(message);
+}
+
+JoinRandomLobbyResponse::JoinRandomLobbyResponse(bool state) : BaseResponse{state}
+{
+}
+
+int JoinRandomLobbyResponse::GetLobbyId() const
+{
+    return m_lobbyId;
 }

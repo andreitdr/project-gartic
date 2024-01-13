@@ -13,5 +13,7 @@ public:
 
 private:
     JoinRandomLobbyResponse ApplyChanges(const JoinRandomLobbyRequest& request) override;
+    JoinRandomLobbyResponse ValidateData(const JoinRandomLobbyRequest& request) ;
+    int GetRandomLobbyId() const;
 };
 

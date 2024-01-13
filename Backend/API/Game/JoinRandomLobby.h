@@ -13,5 +13,6 @@ inline crow::json::wvalue JoinRandomLobby(const crow::json::rvalue& request)
     const JoinRandomLobbyResponse joinRandomLobbyResponse = joinRandomLobbyContext.HandleRequest(joinRandomLobbyRequest);
 
     WJSON json = JsonConvertor::ConvertBaseResponse(joinRandomLobbyResponse);
+    json["lobbyId"] = joinRandomLobbyResponse.GetLobbyId();
     return json;
 }
