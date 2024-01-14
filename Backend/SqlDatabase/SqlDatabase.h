@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include <iostream>
 #include <string>
 #include <sqlite_orm/sqlite_orm.h>
 
@@ -200,7 +201,7 @@ bool SqlDatabase::Exists(auto whereClause)
     }
     catch (std::system_error& err)
     {
-     //   k_logger.LogError(err);
+        std::cout << err.what() << std::endl;
         return false;
     }
 }
