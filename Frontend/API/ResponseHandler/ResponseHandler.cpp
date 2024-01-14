@@ -226,3 +226,26 @@ void ResponseHandler::processJoinRandomLobbyResponse(const crow::json::rvalue& r
 
     callback(success, message, lobby_id);
 }
+
+void ResponseHandler::processStartGameResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, int)> callback)
+{
+    if (!response) {
+        callback(false, "Invalid response format", -1);
+        return;
+    }
+
+    bool success = response["ResponseState"].b();
+    std::string message;
+    if (response["ResponseMessage"].size() > 0)
+        message = response["ResponseMessage"][0].s();
+    else
+        message = "";
+
+    int game_id = -1;
+
+    if (success) {
+        game_id = response["gameId"].i();
+    }
+
+    callback(success, message, game_id);
+}

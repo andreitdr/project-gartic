@@ -73,6 +73,13 @@ cpr::Response Requests::joinRandomLobby(const int userId)
 	return SendRequest(ApiEndpoints::JOIN_RANDOM_LOBBY, payload, "POST");
 }
 
+cpr::Response Requests::startGame(const int lobbyId)
+{
+    crow::json::wvalue payload;
+    payload["lobbyId"] = lobbyId;
+    return SendRequest(ApiEndpoints::START_GAME, payload, "POST");
+}
+
 cpr::Response Requests::SendRequest(const std::string& url, const crow::json::wvalue& payload, const std::string& method)
 {
     std::string json_payload = payload.dump();

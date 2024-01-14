@@ -16,5 +16,6 @@ public:
 	void processLobbyStatusResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const LobbyData&)> callback);
 	void processUpdateLobbyResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&)> callback);\
 	void processJoinRandomLobbyResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, int)> callback);
+	void processStartGameResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, int)> callback);
 };
 
