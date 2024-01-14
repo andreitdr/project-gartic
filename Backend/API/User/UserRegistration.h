@@ -21,7 +21,8 @@ inline WJSON RegisterUser(const crow::json::rvalue& request)
     UserRegistrationResponse response               = userRegistrationContext.HandleRequest(userRegistrationRequest);
 
     WJSON responseJson        = JsonConvertor::ConvertBaseResponse(response);
-    responseJson["NewUserID"] = response.GetUser().m_user_id;
+    if(response.GetUser().has_value())
+        responseJson["NewUserID"] = response.GetUser().value().m_user_id;
 
     return responseJson;
 }
