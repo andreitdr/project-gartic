@@ -128,6 +128,7 @@ cpr::Response Requests::getDrawing(const int gameId)
 cpr::Response Requests::SendRequest(const std::string& url, const crow::json::wvalue& payload, const std::string& method)
 {
     std::string json_payload = payload.dump();
+    cpr::VerifySsl(false);
     cpr::Header header = { {"Content-Type", "application/json"} };
 
     if (method == "GET") {

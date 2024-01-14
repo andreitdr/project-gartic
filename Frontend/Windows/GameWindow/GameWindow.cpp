@@ -11,6 +11,16 @@ GameWindow::GameWindow(Contexts* contexts, QWidget *parent)
 	ui.setupUi(this);
     paintWidget = new PaintWidget();
     displayPaintWidget = new DisplayPaintWidget();
+
+    m_drawingLayout = new QGridLayout();
+    m_drawingLayout->addWidget(paintWidget);
+    m_drawingLayout->addWidget(displayPaintWidget);
+
+    ui.groupBox_drawing->setLayout(m_drawingLayout);
+
+    paintWidget->setVisible(false);
+    displayPaintWidget->setVisible(false);
+
     connect(ui.lineEdit_message, &QLineEdit::returnPressed, this, &GameWindow::on_pushButton_sendMessage_clicked);
 
     m_statusTimer = new QTimer(this);
@@ -101,16 +111,17 @@ void GameWindow::updateLeaderBoard()
 void GameWindow::updateTimer()
 {
     ui.label_timerNumber->setText(QString::number(m_gameData.GetTimer()));
-    if (m_gameData.GetTimer() == 60)
+    if (m_gameData.GetTimer() == 59)
     {
-        initializeRevealPositions(m_gameData.GetCurrentWord(), m_gameData.GetCurrentWord().size() / 2);
+        paintWidget->clearImage();
         m_wordToGuess = std::string(m_gameData.GetCurrentWord().size(), '_');
+        initializeRevealPositions(m_gameData.GetCurrentWord(), m_gameData.GetCurrentWord().size() / 2);
     }
 }
 
 void GameWindow::updateRoundNumber()
 {
-    QString roundNumber = QString::number(m_gameData.GetCurrentRound()+1);
+    QString roundNumber = QString::number(m_gameData.GetCurrentRound()/m_gameData.GetPlayers().size()+1);
     QString temp = "Round " + roundNumber + " of 4";
     ui.label_roundNumber->setText(temp);
 }
@@ -141,6 +152,10 @@ void GameWindow::updateWordToGuess()
 
     if (CurrentUser::getInstance().getUsername() == m_gameData.GetDrawingPlayer().getUsername()) {
         m_wordToGuess = currentWord;
+        QString displayWord = QString::fromStdString(m_wordToGuess) + " (" + QString::number(currentWord.size()) + ")";
+        ui.label_word->setText(displayWord);
+        ui.label_guessDrawThis->setText("DRAW THIS");
+        return;
     }
     else {
         int lettersToRevealNow = 0;
@@ -158,11 +173,11 @@ void GameWindow::updateWordToGuess()
             int pos = m_revealedPositions[i];
            m_wordToGuess[pos] = currentWord[pos];
         }
+        QString displayWord = QString::fromStdString(m_wordToGuess) + " (" + QString::number(currentWord.size()) + ")";
+        ui.label_word->setText(displayWord);
+        ui.label_guessDrawThis->setText("GUESS THIS");
     }
 
-    QString displayWord = QString::fromStdString(m_wordToGuess) + " (" + QString::number(currentWord.size()) + ")";
-    ui.label_word->setText(displayWord);
-    ui.label_guessDrawThis->setText("GUESS THIS");
 }
 
 void GameWindow::updateGameStatus()
@@ -172,24 +187,24 @@ void GameWindow::updateGameStatus()
     updateLeaderBoard();
     updateWordToGuess();
     updateDrawingWidget();
-    updateChat();
 }
 
 void GameWindow::updateDrawingWidget()
 {
-    QGridLayout* layout = new QGridLayout();
-    if (CurrentUser::getInstance().getUsername() == m_gameData.GetDrawingPlayer().getUsername())
+    bool isDrawingPlayer = (CurrentUser::getInstance().getUsername() == m_gameData.GetDrawingPlayer().getUsername());
+
+    if (isDrawingPlayer)
     {
-		layout->addWidget(paintWidget);
-        layout->setAlignment(paintWidget, Qt::AlignTop);
+        paintWidget->setVisible(true);
+        displayPaintWidget->setVisible(false);
+        m_drawingLayout->setAlignment(paintWidget, Qt::AlignCenter);
     }
     else
     {
-		layout->addWidget(displayPaintWidget);
-        layout->setAlignment(displayPaintWidget, Qt::AlignTop);
+        paintWidget->setVisible(false);
+        displayPaintWidget->setVisible(true);
+        m_drawingLayout->setAlignment(displayPaintWidget, Qt::AlignCenter);
     }
-    layout->setContentsMargins(2, 2, 2, 2);
-    ui.groupBox_drawing->setLayout(layout);
 }
 
 void GameWindow::updateDrawing()
@@ -317,7 +332,7 @@ void GameWindow::showEvent(QShowEvent* event)
 		m_chatTimer->start(500);
 
 	if (m_drawingTimer && !m_drawingTimer->isActive())
-		m_drawingTimer->start(500);
+		m_drawingTimer->start(250);
 }
 
 void GameWindow::on_pushButton_leaveGame_clicked()

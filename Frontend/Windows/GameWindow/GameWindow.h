@@ -34,6 +34,7 @@ private:
 	std::vector<int> m_revealedPositions;
 	DisplayPaintWidget* displayPaintWidget = nullptr;
 	PaintWidget* paintWidget = nullptr;
+	QGridLayout* m_drawingLayout;
 	QTimer* m_statusTimer = nullptr;
 	QTimer* m_chatTimer = nullptr;
 	QTimer* m_drawingTimer = nullptr;

@@ -25,7 +25,7 @@ QImage QImageConverter::convertStringToImage(const std::string& encodedString)
     QByteArray byteArray = QByteArray::fromBase64(encodedString.c_str());
 
     QImage image;
-    image.loadFromData(byteArray, "jPG");
+    image.loadFromData(byteArray, "JPG");
 
     return image;
 }
