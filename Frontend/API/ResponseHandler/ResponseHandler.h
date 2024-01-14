@@ -25,5 +25,6 @@ public:
 	void processGetChatMessages(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const std::vector<std::string>&)> callback);
 	void processSendDrawing(const crow::json::rvalue& response, std::function<void(bool, const std::string&)> callback);
 	void processGetDrawing(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const std::string&)> callback);
+	void processExitGameResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&)> callback);
 };
 

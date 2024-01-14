@@ -74,10 +74,37 @@ void GameWindow::hideEvent(QHideEvent* event)
 
 void GameWindow::leaveGame()
 {
-    emit windowPositionChanged(this->pos());
-    emit goToJoinGameWindow();
-    this->hide();
-    //leave game route
+    contexts->exitGame(m_gameData.GetGameId(), CurrentUser::getInstance().getUserId(), [this](bool success, const std::string& message)
+        {
+            if (success)
+            {
+				emit windowPositionChanged(this->pos());
+				emit goToJoinGameWindow();
+				this->hide();
+			}
+            else
+                if(message!="")
+            {
+				QString qmessage = QString::fromUtf8(message.c_str());
+                showErrorCustomMessageBox(
+					this,
+					"Gartic - Game",
+					qmessage,
+					"Ok",
+					[]() {}
+				);
+			}
+            else
+            {
+                showErrorCustomMessageBox(
+					this,
+					"Gartic - Game",
+					"Something went wrong. Please try again!",
+					"Ok",
+					[]() {}
+				);
+            }
+		});
 }
 
 void GameWindow::addPlayerToLeaderBoard(const UserInfo& userInfo, const int points, const bool isDrawing)
@@ -102,9 +129,12 @@ void GameWindow::updateLeaderBoard()
     ui.listWidget_playerList->clear();
     for (const auto& player : m_gameData.GetPlayers())
     {
-        int points = m_gameData.GetPlayerPoints(player.getUserId());
-        bool isDrawing = player.getUserId() == m_gameData.GetDrawingPlayer().getUserId();
-        addPlayerToLeaderBoard(player, points, isDrawing);
+        if (player.getUserId() != -1)
+        {
+            int points = m_gameData.GetPlayerPoints(player.getUserId());
+            bool isDrawing = player.getUserId() == m_gameData.GetDrawingPlayer().getUserId();
+            addPlayerToLeaderBoard(player, points, isDrawing);
+        }
     }
 }
 
@@ -227,6 +257,7 @@ void GameWindow::updateDrawing()
     }
 }
 
+
 void GameWindow::addChatMessage(const std::string& message)
 {
    QString messageText = QString::fromUtf8(message.c_str());
@@ -271,6 +302,7 @@ void GameWindow::updateGameData()
 {
     contexts->getRunningGameStatus(m_gameData.GetGameId(), [this](bool success, const std::string& message, const GameData& gameData)
         {
+
             if (success)
             {
                 if (!(gameData == m_gameData))
@@ -284,6 +316,13 @@ void GameWindow::updateGameData()
                 }
                 updateGameStatus();
             }
+            else
+                if (message == "Game does not exist")
+                {
+                    emit windowPositionChanged(this->pos());
+                    emit goToJoinGameWindow();
+                    this->hide();
+                }
         });
 }
 

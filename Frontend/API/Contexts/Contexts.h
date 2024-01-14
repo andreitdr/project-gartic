@@ -23,6 +23,7 @@ public:
 	void getChatMessages(int gameId, std::function<void(bool, const std::string&, const std::vector<std::string>&)> callback);
 	void sendDrawing(int gameId, const std::string& drawing, std::function<void(bool, const std::string&)> callback);
 	void getDrawing(int gameId, std::function<void(bool, const std::string&, const std::string&)> callback);
+	void exitGame(int gameId, int userId, std::function<void(bool, const std::string&)> callback);
 private:
 	ResponseHandler handler;
 	Requests requests;

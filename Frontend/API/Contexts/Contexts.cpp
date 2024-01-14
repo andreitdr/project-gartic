@@ -283,3 +283,19 @@ void Contexts::getDrawing(int gameId, std::function<void(bool, const std::string
 			});
 		}).detach();
 }
+
+void Contexts::exitGame(int gameId, int userId, std::function<void(bool, const std::string&)> callback)
+{
+	auto response = requests.exitGame(gameId, userId);
+	if (response.status_code != 200)
+	{
+		callback(false, "Server error");
+		return;
+	};
+
+	auto response_json = crow::json::load(response.text);
+	handler.processExitGameResponse(response_json, [callback](bool success, const std::string& message)
+		{
+			callback(success, message);
+		});
+}

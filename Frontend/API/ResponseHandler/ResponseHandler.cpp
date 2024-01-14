@@ -299,7 +299,11 @@ void ResponseHandler::processGameStatusResponse(const crow::json::rvalue& respon
 
         auto& playerListJson = response["GameData"]["PlayerIds"];
         for (const auto& playerIdJson : playerListJson) {
-            UserInfo player = UserInfoCache::getInstance().getUserInfo(playerIdJson.i());
+            UserInfo player;
+            if (playerIdJson.i() != -1)
+            player = UserInfoCache::getInstance().getUserInfo(playerIdJson.i());
+            else
+                player.setUserId(-1);
             gameData.AddPlayer(player);
         }
 
@@ -396,4 +400,21 @@ void ResponseHandler::processGetDrawing(const crow::json::rvalue& response, std:
 	}
 
 	callback(success, message, drawing);
+}
+
+void ResponseHandler::processExitGameResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&)> callback)
+{
+    if (!response) {
+        callback(false, "Invalid response format");
+        return;
+    }
+
+    bool success = response["ResponseState"].b();
+    std::string message;
+    if (response["ResponseMessage"].size() > 0)
+        message = response["ResponseMessage"][0].s();
+    else
+        message = "";
+
+    callback(success, message);
 }

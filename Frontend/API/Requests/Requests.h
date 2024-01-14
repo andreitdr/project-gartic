@@ -22,6 +22,7 @@ public:
     static cpr::Response getChatMessages(const int gameId);
     static cpr::Response sendDrawing(const int gameId, const std::string& drawing);
     static cpr::Response getDrawing(const int gameId);
+    static cpr::Response exitGame(const int gameId, const int userId);
 private:
     static cpr::Response SendRequest(const std::string& url, const crow::json::wvalue& payload, const std::string& method);
 };
