@@ -119,10 +119,10 @@ std::vector<std::string> GameManager::GetChat(int gameId) const
 std::string GameManager::GetCurrentWord(int gameId) const
 {
     const RunningGame& game = GAME(gameId);
-    if (game.m_gameWords.empty())
-        throw std::exception("The queue is empty");
+    if (!game.m_gameWords.empty())
+        return game.m_gameWords.front();
 
-    return game.m_gameWords.front();
+    throw "The queue is empty";
 }
 
 std::vector<int> GameManager::GetPlayerIds(int gameId) const
@@ -147,10 +147,10 @@ void GameManager::FinishRound(int gameId)
 
         const float average = maxTime / game.m_playerIds.size();
 
-        game.m_playerPoints[game.m_indexPlayerDrawing] += (k_defaultTimerValue - average) * 100 / k_defaultTimerValue;
+        game.m_playerPoints[game.m_playerIds[game.m_indexPlayerDrawing]] += (k_defaultTimerValue - average) * 100 / k_defaultTimerValue;
     }
     else
-		game.m_playerPoints[game.m_indexPlayerDrawing] -= 100;
+		game.m_playerPoints[game.m_playerIds[game.m_indexPlayerDrawing]] -= 100;
 
 
     std::vector<int> playersFail;
