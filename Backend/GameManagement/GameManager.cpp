@@ -2,8 +2,6 @@
 #include "../SqlDatabase/SqlDatabase.h"
 #include <format>
 
-#include "../Constants.h"
-
 #define GAME(gameId) m_runningGames[gameId]
 
 bool GameManager::GameExists(int gameId) const
@@ -161,8 +159,8 @@ std::string GameManager::FormatMessage(const std::string& sender, const std::str
 
 GameManager::GameManager()
 {
-    k_defaultTimerValue = std::stoi(configFile.ReadConfig("DefaultRoundTimer"));
-    k_defaultNumberOfCycles = std::stoi(configFile.ReadConfig("DefaultNumberOfRounds"));
+    k_defaultTimerValue = 60;
+    k_defaultNumberOfCycles = 4;
 }
 
 
