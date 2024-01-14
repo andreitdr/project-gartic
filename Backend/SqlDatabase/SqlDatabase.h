@@ -11,7 +11,6 @@
 #include "../DataTypes/Game/Lobby.h"
 #include "../DataTypes/Game/PlayerFinishedGame.h"
 
-
 #include <optional>
 
 //====================
@@ -74,7 +73,7 @@ inline auto CreateDatabase(const std::string& fileName)
 }
 
 using Storage = decltype(CreateDatabase(""));
-inline Storage storage{CreateDatabase("test.db")};
+extern Storage storage;
 
 class SqlDatabase
 {

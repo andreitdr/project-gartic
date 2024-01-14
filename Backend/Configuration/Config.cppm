@@ -1,8 +1,12 @@
-export module Config;
+#pragma once
 
-import <string>;
-import <fstream>;
-import <vector>;
+#include <string>
+#include <vector>
+#include <fstream>
+
+
+
+export module Config;
 
 
 export class ConfigFile
@@ -16,11 +20,11 @@ private:
     const std::string m_fileName;
 };
 
-inline ConfigFile::ConfigFile(const std::string& fileName): m_fileName{fileName}
+ ConfigFile::ConfigFile(const std::string& fileName): m_fileName{fileName}
 {
 }
 
-inline auto ConfigFile::ReadConfig(const std::string& key) const
+ auto ConfigFile::ReadConfig(const std::string& key) const
 {
     std::ifstream f(m_fileName);
     while (!f.eof())
@@ -42,7 +46,7 @@ inline auto ConfigFile::ReadConfig(const std::string& key) const
 }
 
 
-inline void ConfigFile::WriteConfig(const std::string& key, const std::string& value) const
+ void ConfigFile::WriteConfig(const std::string& key, const std::string& value) const
 {
     std::fstream f(m_fileName);
     bool found = false;

@@ -160,6 +160,7 @@
     <ClInclude Include="Infrastructure\UserLogin\UserLoginResponse.h" />
     <ClInclude Include="Infrastructure\UserRegistration\UserRegistrationRequest.h" />
     <ClInclude Include="Infrastructure\UserRegistration\UserRegistrationResponse.h" />
+    <ClInclude Include="Constants.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="unique_words.txt" />

@@ -228,6 +228,7 @@
     <ClInclude Include="API\User\GetUserMatchHistoryData.h" />
     <ClInclude Include="API\User\UserLogin.h" />
     <ClInclude Include="API\User\UserRegistration.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="Contexts\BaseContext.h" />
     <ClInclude Include="Contexts\Game\GameManagement\CheckWordContext.h" />
     <ClInclude Include="Contexts\Game\GameManagement\GetChatMessagesContext.h" />
