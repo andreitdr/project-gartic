@@ -24,23 +24,10 @@
 #include "API/User/UserLogin.h"
 #include "API/User/UserRegistration.h"
 #include "API/User/GetUserMatchHistoryData.h"
-
-#define ENABLETEST 0
-
-void tests()
-{
-    // ConfigFile config_file("./test.ini");
-    // config_file.WriteConfig("key1", "value");
-    // config_file.WriteConfig("key1", "value2");
-    // config_file.WriteConfig("key2", "value3");
-    // std::cout << config_file.ReadConfig("key3");
-}
+#include "GameManagement/GameManager.h"
 
 int main()
 {
-#if ENABLETEST
-    tests();
-#else
     crow::SimpleApp app;
 
     CROW_ROUTE(app, "/game/get_chat_messages").methods("GET"_method)([](const crow::request& request)
@@ -354,9 +341,8 @@ int main()
         return crow::response(response);
     });
 
-    app.loglevel(crow::LogLevel::Warning);
+    app.loglevel(crow::LogLevel::Debug);
     app.port(18080).multithreaded().run();
-#endif
 
     return 0;
 }

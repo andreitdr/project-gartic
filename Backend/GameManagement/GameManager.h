@@ -2,6 +2,8 @@
 
 #include "../DataTypes/Game/RunningGame.h"
 
+#include <string>
+
 class GameManager
 {
 public:
@@ -12,8 +14,8 @@ public:
         return instance;
     }
     
-    static constexpr int k_defaultTimerValue = 60;
-    static constexpr int k_defaultNumberOfCycles = 4;
+    inline static int k_defaultTimerValue;
+    inline static int k_defaultNumberOfCycles;
 
     bool GameExists(int gameId) const;
 
@@ -52,6 +54,6 @@ private:
     std::vector<RunningGame> m_runningGames;
     std::string FormatMessage(const std::string& sender, const std::string& message) const;
 
-    GameManager() = default;
+    GameManager();
     
 };

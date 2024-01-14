@@ -157,4 +157,10 @@ std::string GameManager::FormatMessage(const std::string& sender, const std::str
     return _message;
 }
 
+GameManager::GameManager()
+{
+    k_defaultTimerValue = 60;
+    k_defaultNumberOfCycles = 4;
+}
+
 
