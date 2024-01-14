@@ -11,10 +11,12 @@ bool GameManager::GameExists(int gameId) const
     if (gameId < 0)
         return false;
 
-    if (m_runningGames.size() <= gameId)
-        return false;
+    bool exists = false;
+    for (int i = 0; i < m_runningGames.size() && !exists; i++)
+        if (m_runningGames[i].m_gameId == gameId)
+            exists = true;
 
-    return true;
+    return exists;
 }
 
 RunningGame& GameManager::GetGame(int gameId)
