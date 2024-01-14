@@ -19,7 +19,7 @@ void UserRegistrationResponse::SetUser(const User& user)
     m_user = user;
 }
 
-std::optional<User> UserRegistrationResponse::GetUser() const
+User UserRegistrationResponse::GetUser() const
 {
     return m_user;
 }

@@ -49,6 +49,9 @@ private slots:
 	void on_pushButton_leaveGame_clicked();
 	void on_pushButton_sendMessage_clicked();
 
+public slots:
+	void getGameId(const int gameId);
+
 signals:
 	void goToJoinGameWindow();
 	void windowPositionChanged(const QPoint& newPosition);

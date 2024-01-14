@@ -160,6 +160,7 @@ void ResponseHandler::processLobbyStatusResponse(const crow::json::rvalue& respo
 		lobbyData.SetLobbyID(response["Lobby"]["Id"].i());
         lobbyData.SetIsPrivate(response["Lobby"]["IsPrivate"].b());
         lobbyData.SetLobbyType(response["Lobby"]["LobbyType"].i());
+        lobbyData.SetIsStarted(response["Lobby"]["IsStarted"].b());
 		int userId = response["Lobby"]["LeaderId"].i();
 		UserInfo admin = UserInfoCache::getInstance().getUserInfo(userId);
 		lobbyData.SetLobbyAdmin(admin);

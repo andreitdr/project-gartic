@@ -40,6 +40,7 @@ private:
 	void updateSettingsStatus();
 	void leaveLobby();
 	void updateLobbyData();
+	void gameStarted();
 
 private slots:
 	void on_pushButton_startGame_clicked();
@@ -57,4 +58,5 @@ signals:
 	void goToJoinGameWindow();
 	void goToGameWindow();
 	void windowPositionChanged(const QPoint& newPosition);
+	void sendGameId(int gameId);
 };

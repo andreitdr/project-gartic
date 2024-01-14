@@ -5,6 +5,7 @@ LobbyData::LobbyData()
 	m_lobbyID = 0;
 	m_isPrivate = true;
 	m_lobbyType = 1;
+	m_isStarted = false;
 }
 
 LobbyData::~LobbyData()
@@ -49,6 +50,16 @@ void LobbyData::SetIsPrivate(bool isPrivate)
 bool LobbyData::GetIsPrivate() const
 {
 	return m_isPrivate;
+}
+
+void LobbyData::SetIsStarted(bool isStarted)
+{
+	m_isStarted=isStarted;
+}
+
+bool LobbyData::GetIsStarted() const
+{
+	return m_isStarted;
 }
 
 

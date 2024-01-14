@@ -20,6 +20,9 @@ public:
 	void SetIsPrivate(bool isPrivate);
 	bool GetIsPrivate() const;
 
+	void SetIsStarted(bool isStarted);
+	bool GetIsStarted() const;
+
 	void AddUser(const UserInfo& user);
 	void RemoveUser(const UserInfo& user);
 	std::vector<UserInfo> GetUsers() const;
@@ -37,5 +40,6 @@ private:
 	std::vector<UserInfo> m_lobbyUsers;
 	bool m_isPrivate;
 	int m_lobbyType;
+	bool m_isStarted;
 };
 

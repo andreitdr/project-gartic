@@ -91,6 +91,8 @@ void Lobby::updateLobbyStatus()
 
     if(CurrentUser::getInstance().getUsername() != m_lobbyData.GetLobbyAdmin().getUsername())
     updateSettingsStatus();
+
+    gameStarted();
 }
 
 void Lobby::updateSettingsStatus()
@@ -137,6 +139,15 @@ void Lobby::updateLobbyData()
 			updateLobbyStatus();
 		}
 	});
+}
+
+void Lobby::gameStarted()
+{
+    if (m_lobbyData.GetIsStarted())
+    {
+        emit sendGameId(1);
+        //apelare ruta
+    }
 }
 
 void Lobby::updateLobbyId()

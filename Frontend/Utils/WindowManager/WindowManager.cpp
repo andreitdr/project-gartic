@@ -46,6 +46,7 @@ void WindowManager::setupConnections()
 	connect(m_lobbyWindow.get(), &Lobby::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);
 	connect(m_lobbyWindow.get(), &Lobby::goToGameWindow, this, &WindowManager::showGameWindow);
 	connect(m_lobbyWindow.get(), &Lobby::windowPositionChanged, this, &WindowManager::onWindowHidden);
+	connect(m_lobbyWindow.get(), &Lobby::sendGameId, m_gameWindow.get(), &GameWindow::getGameId);
 
 	//Game connections
 	connect(m_gameWindow.get(), &GameWindow::goToJoinGameWindow, this, &WindowManager::showJoinGameWindow);

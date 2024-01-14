@@ -253,3 +253,8 @@ void GameWindow::on_pushButton_leaveGame_clicked()
     if (shouldClose)
         leaveGame();
 }
+
+void GameWindow::getGameId(const int gameId)
+{
+    m_gameData.SetGameId(gameId);
+}
