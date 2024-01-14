@@ -4,6 +4,7 @@
 
 #include "Infrastructure/BaseResponse.h"
 #include <crow.h>
+#include <filesystem>
 
 #include "API/Game/CreateLobby.h"
 #include "API/Game/ExitGame.h"
@@ -33,6 +34,13 @@
 int main()
 {
     crow::SimpleApp app;
+
+    if(!std::filesystem::exists("backend.data"))
+    {
+        configFile.WriteValue("DefaultRoundTimer", "60");
+        configFile.WriteValue("DefaultNumberOfRounds", "4");
+        configFile.WriteValue("DatabaseName", "test.db");
+    }
 
     CROW_ROUTE(app, "/game/get_chat_messages").methods("GET"_method)([](const crow::request& request)
     {
