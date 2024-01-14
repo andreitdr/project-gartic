@@ -13,6 +13,7 @@ inline WJSON GetRunningGameStatus(const crow::json::rvalue& request)
     const GetRunningGameStatusResponse response = context.HandleRequest(_request);
 
     WJSON jsonResponse = JsonConvertor::ConvertBaseResponse(response);
+    jsonResponse["GameData"]["GameId"] = gameId;
     jsonResponse["GameData"]["DrawingPlayerId"] = response.GetPlayerDrawingId();
     jsonResponse["GameData"]["CurrentRound"] = response.GetCurrentRound();
     jsonResponse["GameData"]["Timer"] = response.GetTimer();

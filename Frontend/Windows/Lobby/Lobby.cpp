@@ -91,7 +91,6 @@ void Lobby::updateLobbyStatus()
 
     if(CurrentUser::getInstance().getUsername() != m_lobbyData.GetLobbyAdmin().getUsername())
     updateSettingsStatus();
-
     gameStarted();
 }
 
@@ -144,10 +143,22 @@ void Lobby::updateLobbyData()
 void Lobby::gameStarted()
 {
     if (m_lobbyData.GetIsStarted())
-    {
-        emit sendGameId(1);
-        //apelare ruta
-    }
+        getRunningGameForUser();
+}
+
+void Lobby::getRunningGameForUser()
+{
+    contexts->getRunningGameForUser(CurrentUser::getInstance().getUserId(), [this](bool success, const std::string& message, int gameId) {
+		if (success) {
+			emit sendGameId(gameId);
+			emit windowPositionChanged(this->pos());
+			emit goToGameWindow();
+			this->hide();
+		}
+		else {
+			leaveLobby();
+		}
+		});
 }
 
 void Lobby::updateLobbyId()

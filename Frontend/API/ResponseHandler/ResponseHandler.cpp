@@ -249,3 +249,70 @@ void ResponseHandler::processStartGameResponse(const crow::json::rvalue& respons
 
     callback(success, message, game_id);
 }
+
+void ResponseHandler::processGetRunningGameForUser(const crow::json::rvalue& response, std::function<void(bool, const std::string&, int)> callback)
+{
+    if (!response) {
+        callback(false, "Invalid response format", -1);
+        return;
+    }
+
+    bool success = response["ResponseState"].b();
+    std::string message;
+    if (response["ResponseMessage"].size() > 0)
+        message = response["ResponseMessage"][0].s();
+    else
+        message = "";
+
+    int game_id = -1;
+
+    if (success) {
+        game_id = response["gameId"].i();
+    }
+
+    callback(success, message, game_id);
+}
+
+void ResponseHandler::processGameStatusResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const GameData&)> callback)
+{
+    if (!response) {
+        callback(false, "Invalid response format", GameData());
+        return;
+    }
+
+    bool success = response["ResponseState"].b();
+    std::string message;
+    if (response["ResponseMessage"].size() > 0)
+        message = response["ResponseMessage"][0].s();
+    else
+        message = "";
+
+    if (success) {
+        GameData gameData;
+        gameData.SetGameId(response["GameData"]["GameId"].i());
+        int drawingPlayerId = response["GameData"]["DrawingPlayerId"].i();
+        UserInfo drawingPlayer = UserInfoCache::getInstance().getUserInfo(drawingPlayerId);
+        gameData.SetDrawingPlayer(drawingPlayer);
+        gameData.SetCurrentRound(response["GameData"]["CurrentRound"].i());
+        gameData.SetTimer(response["GameData"]["Timer"].i());
+        gameData.SetCurrentWord(response["GameData"]["CurrentWord"].s());
+
+        auto& playerListJson = response["GameData"]["PlayerIds"];
+        for (const auto& playerIdJson : playerListJson) {
+            UserInfo player = UserInfoCache::getInstance().getUserInfo(playerIdJson.i());
+            gameData.AddPlayer(player);
+        }
+
+        auto& playerScoresJson = response["GameData"]["PlayerPoints"];
+        for(int i =0 ;i<gameData.GetPlayers().size();i++)
+		{
+			int playerId = gameData.GetPlayers()[i].getUserId();
+            int playerScore = playerScoresJson[std::to_string(playerId)].i();
+            gameData.SetPlayerPoints(playerId, playerScore);
+		}
+        callback(true, message, gameData);
+    }
+    else {
+        callback(false, message, GameData());
+    }
+}

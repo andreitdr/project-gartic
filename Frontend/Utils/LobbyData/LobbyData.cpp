@@ -90,7 +90,8 @@ LobbyData::LobbyData(const LobbyData& other) :
 	m_lobbyAdmin{ other.m_lobbyAdmin }, 
 	m_lobbyUsers{ other.m_lobbyUsers },
 	m_isPrivate{other.m_isPrivate},
-	m_lobbyType{other.m_lobbyType}
+	m_lobbyType{other.m_lobbyType},
+	m_isStarted{other.m_isStarted}
 {
 
 }
@@ -104,6 +105,7 @@ LobbyData& LobbyData::operator=(const LobbyData& other)
 		m_lobbyUsers = other.m_lobbyUsers;
 	m_isPrivate = other.m_isPrivate;
 	m_lobbyType = other.m_lobbyType;
+	m_isStarted = other.m_isStarted;
 	}
 	return *this;
 }
@@ -113,7 +115,8 @@ LobbyData::LobbyData(LobbyData&& other) noexcept :
 	m_lobbyAdmin{ std::move(other.m_lobbyAdmin) },
 	m_lobbyUsers{ std::move(other.m_lobbyUsers) },
 	m_isPrivate{ other.m_isPrivate },
-	m_lobbyType{ other.m_lobbyType }
+	m_lobbyType{ other.m_lobbyType },
+	m_isStarted{ other.m_isStarted }
 {
 }
 
@@ -126,6 +129,7 @@ LobbyData& LobbyData::operator=(LobbyData&& other) noexcept
 		m_lobbyUsers = std::move(other.m_lobbyUsers);
 		m_isPrivate = other.m_isPrivate;
 		m_lobbyType = other.m_lobbyType;
+		m_isStarted = other.m_isStarted;
 	}
 	return *this;
 }
@@ -145,6 +149,9 @@ bool LobbyData::operator==(const LobbyData& other) const
 		return false;
 
 	if(m_lobbyType!=other.m_lobbyType)
+		return false;
+
+	if(m_isStarted!=other.m_isStarted)
 		return false;
 
 	for (int i = 0; i < m_lobbyUsers.size(); i++)

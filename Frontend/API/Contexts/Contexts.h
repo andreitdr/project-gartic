@@ -17,6 +17,8 @@ public:
 	void updateLobby(int lobbyId, int lobbyType, bool isPrivate, std::function<void(bool, const std::string&)> callback);
 	void joinRandomLobby(int userId, std::function<void(bool, const std::string&, int)> callback);
 	void startGame(int lobbyId, std::function<void(bool, const std::string&, int)> callback);
+	void getRunningGameForUser(int userId, std::function<void(bool, const std::string&, int)> callback);
+	void getRunningGameStatus(int gameId, std::function<void(bool, const std::string&, const GameData&)> callback);
 private:
 	ResponseHandler handler;
 	Requests requests;

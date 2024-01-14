@@ -80,6 +80,20 @@ cpr::Response Requests::startGame(const int lobbyId)
     return SendRequest(ApiEndpoints::START_GAME, payload, "POST");
 }
 
+cpr::Response Requests::getRunningGameForUser(const int userId)
+{
+    crow::json::wvalue payload;
+    payload["userId"] = userId;
+    return SendRequest(ApiEndpoints::GET_RUNNING_GAME_FOR_USER, payload, "GET");
+}
+
+cpr::Response Requests::getRunningGameStatus(const int gameId)
+{
+    crow::json::wvalue payload;
+    payload["gameId"] = gameId;
+    return SendRequest(ApiEndpoints::GET_RUNNING_GAME_STATUS, payload, "GET");
+}
+
 cpr::Response Requests::SendRequest(const std::string& url, const crow::json::wvalue& payload, const std::string& method)
 {
     std::string json_payload = payload.dump();
