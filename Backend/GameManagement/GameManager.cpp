@@ -299,7 +299,7 @@ void GameManager::DeleteGame(int gameId)
     {
 	    if(m_runningGames[gameIndex].m_gameId == gameId)
 	    {
-            m_runningGames.erase(std::next(m_runningGames.begin(), gameIndex + 1));
+            m_runningGames.erase(std::next(m_runningGames.begin(), gameIndex));
 	    }
     }
 }
