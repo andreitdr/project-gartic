@@ -207,3 +207,79 @@ void Contexts::getRunningGameStatus(int gameId, std::function<void(bool, const s
 			});
 		}).detach();
 }
+
+void Contexts::checkWord(int gameId, int userId, const std::string& word, std::function<void(bool, const std::string&)> callback)
+{
+	auto response = requests.checkWord(gameId, userId, word);
+	if (response.status_code != 200)
+	{
+		callback(false, "Server error");
+		return;
+	};
+
+	auto response_json = crow::json::load(response.text);
+	handler.processCheckWord(response_json, [callback](bool success, const std::string& message)
+		{
+			callback(success, message);
+		});
+}
+
+void Contexts::getChatMessages(int gameId, std::function<void(bool, const std::string&, const std::vector<std::string>&)> callback)
+{
+	std::thread ([this, gameId, callback]() {
+		auto response = requests.getChatMessages(gameId);
+		if (response.status_code != 200) {
+			QMetaObject::invokeMethod(qApp, [callback]() {
+				callback(false, "Server error", std::vector<std::string>());
+				});
+			return;
+		}
+
+		auto response_json = crow::json::load(response.text);
+		handler.processGetChatMessages(response_json, [callback](bool success, const std::string& message, const std::vector<std::string>& messages) {
+			QMetaObject::invokeMethod(qApp, [callback, success, message, messages]() {
+				callback(success, message, messages);
+				});
+			});
+		}).detach();
+}
+
+void Contexts::sendDrawing(int gameId, const std::string& drawing, std::function<void(bool, const std::string&)> callback)
+{
+	std::thread ([this, gameId, drawing, callback]() {
+		auto response = requests.sendDrawing(gameId, drawing);
+		if (response.status_code != 200) {
+			QMetaObject::invokeMethod(qApp, [callback]() {
+				callback(false, "Server error");
+				});
+			return;
+		}
+
+		auto response_json = crow::json::load(response.text);
+		handler.processSendDrawing(response_json, [callback](bool success, const std::string& message) {
+			QMetaObject::invokeMethod(qApp, [callback, success, message]() {
+				callback(success, message);
+				});
+			});
+		}).detach();
+}
+
+void Contexts::getDrawing(int gameId, std::function<void(bool, const std::string&, const std::string&)> callback)
+{
+	std::thread ([this, gameId, callback]() {
+	auto response = requests.getDrawing(gameId);
+		if (response.status_code != 200) {
+			QMetaObject::invokeMethod(qApp, [callback]() {
+				callback(false, "Server error", "");
+				});
+			return;
+		}
+
+		auto response_json = crow::json::load(response.text);
+		handler.processGetDrawing(response_json, [callback](bool success, const std::string& message, const std::string& drawing) {
+			QMetaObject::invokeMethod(qApp, [callback, success, message, drawing]() {
+				callback(success, message, drawing);
+				});
+			});
+		}).detach();
+}

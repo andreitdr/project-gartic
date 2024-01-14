@@ -18,6 +18,10 @@ public:
     static cpr::Response startGame(const int lobbyId);
     static cpr::Response getRunningGameForUser(const int userId);
     static cpr::Response getRunningGameStatus(const int gameId);
+    static cpr::Response checkWord(const int gameId, const int userId, const std::string& word);
+    static cpr::Response getChatMessages(const int gameId);
+    static cpr::Response sendDrawing(const int gameId, const std::string& drawing);
+    static cpr::Response getDrawing(const int gameId);
 private:
     static cpr::Response SendRequest(const std::string& url, const crow::json::wvalue& payload, const std::string& method);
 };

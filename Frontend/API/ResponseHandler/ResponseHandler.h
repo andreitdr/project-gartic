@@ -1,6 +1,7 @@
 #pragma once
 #include <crow/json.h>
 #include <functional>
+#include <vector>
 #include "../../Utils/LobbyData/LobbyData.h"
 #include "../../Utils/GameData/GameData.h"
 #include "../../Utils/UserInfoCache/UserInfoCache.h"
@@ -20,5 +21,9 @@ public:
 	void processStartGameResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, int)> callback);
 	void processGetRunningGameForUser(const crow::json::rvalue& response, std::function<void(bool, const std::string&, int)> callback);
 	void processGameStatusResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const GameData&)> callback);
+	void processCheckWord(const crow::json::rvalue& response, std::function<void(bool, const std::string&)> callback);
+	void processGetChatMessages(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const std::vector<std::string>&)> callback);
+	void processSendDrawing(const crow::json::rvalue& response, std::function<void(bool, const std::string&)> callback);
+	void processGetDrawing(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const std::string&)> callback);
 };
 

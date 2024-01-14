@@ -316,3 +316,84 @@ void ResponseHandler::processGameStatusResponse(const crow::json::rvalue& respon
         callback(false, message, GameData());
     }
 }
+
+void ResponseHandler::processCheckWord(const crow::json::rvalue& response, std::function<void(bool, const std::string&)> callback)
+{
+    if (!response) {
+        callback(false, "Invalid response format");
+        return;
+    }
+
+    bool success = response["ResponseState"].b();
+    std::string message;
+    if (response["ResponseMessage"].size() > 0)
+        message = response["ResponseMessage"][0].s();
+    else
+        message = "";
+
+    callback(success, message);
+}
+
+void ResponseHandler::processGetChatMessages(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const std::vector<std::string>&)> callback)
+{
+if (!response) {
+		callback(false, "Invalid response format", std::vector<std::string>());
+		return;
+	}
+
+	bool success = response["ResponseState"].b();
+	std::string message;
+	std::vector<std::string> chatMessages;
+	if (response["ResponseMessage"].size() > 0)
+		message = response["ResponseMessage"][0].s();
+	else
+		message = "";
+
+	if (success) {
+		auto& chatMessagesJson = response["ChatMessages"];
+		for (const auto& chatMessageJson : chatMessagesJson) {
+			chatMessages.push_back(chatMessageJson.s());
+		}
+	}
+
+	callback(success, message, chatMessages);
+}
+
+void ResponseHandler::processSendDrawing(const crow::json::rvalue& response, std::function<void(bool, const std::string&)> callback)
+{
+    if (!response) {
+		callback(false, "Invalid response format");
+		return;
+	}
+
+	bool success = response["ResponseState"].b();
+	std::string message;
+	if (response["ResponseMessage"].size() > 0)
+		message = response["ResponseMessage"][0].s();
+	else
+		message = "";
+
+	callback(success, message);
+}
+
+void ResponseHandler::processGetDrawing(const crow::json::rvalue& response, std::function<void(bool, const std::string&, const std::string&)> callback)
+{
+    if (!response) {
+		callback(false, "Invalid response format", "");
+		return;
+	}
+
+	bool success = response["ResponseState"].b();
+	std::string message;
+	std::string drawing;
+	if (response["ResponseMessage"].size() > 0)
+		message = response["ResponseMessage"][0].s();
+	else
+		message = "";
+
+	if (success) {
+		drawing = response["drawing"].s();
+	}
+
+	callback(success, message, drawing);
+}

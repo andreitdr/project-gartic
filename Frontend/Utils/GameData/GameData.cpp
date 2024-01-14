@@ -115,8 +115,18 @@ std::vector<UserInfo> GameData::GetPlayers() const {
     return m_players;
 }
 
+void GameData::SetPlayers(const std::vector<UserInfo>& players)
+{
+    m_players = std::move(players);
+}
+
 void GameData::SetPlayerPoints(int playerId, int points) {
     m_playerPoints[playerId] = points;
+}
+
+void GameData::SetPlayerPoints(const std::unordered_map<int, int>& playerPoints)
+{
+    m_playerPoints = std::move(playerPoints);
 }
 
 int GameData::GetPlayerPoints(int playerId) const {
@@ -125,6 +135,11 @@ int GameData::GetPlayerPoints(int playerId) const {
         return it->second;
     }
     return 0; 
+}
+
+std::unordered_map<int, int> GameData::GetPlayerPoints() const
+{
+    return m_playerPoints;
 }
 
 void GameData::SetDrawingPlayer(const UserInfo& user) {
@@ -173,7 +188,11 @@ void GameData::AddChatMessage(const std::string& message) {
 
 std::vector<std::string> GameData::GetChatMessages() const {
     return m_chatMessages;
-} 
+}
+void GameData::SetChatMessages(const std::vector<std::string>& chatMessages)
+{
+    m_chatMessages = std::move(chatMessages);
+}
 
 void GameData::SortPlayersByPoints()
 {

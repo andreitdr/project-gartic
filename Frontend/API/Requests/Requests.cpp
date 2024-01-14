@@ -94,6 +94,37 @@ cpr::Response Requests::getRunningGameStatus(const int gameId)
     return SendRequest(ApiEndpoints::GET_RUNNING_GAME_STATUS, payload, "GET");
 }
 
+cpr::Response Requests::checkWord(const int gameId, const int userId, const std::string& word)
+{
+    crow::json::wvalue payload;
+    payload["gameId"] = gameId;
+    payload["playerId"] = userId;
+    payload["word"] = word;
+    return SendRequest(ApiEndpoints::GAME_CHECK_WORD, payload, "POST");
+}
+
+cpr::Response Requests::getChatMessages(const int gameId)
+{
+    crow::json::wvalue payload;
+    payload["gameId"] = gameId;
+    return SendRequest(ApiEndpoints::GAME_GET_CHAT_MESSAGES, payload, "GET");
+}
+
+cpr::Response Requests::sendDrawing(const int gameId, const std::string& drawing)
+{
+    crow::json::wvalue payload;
+    payload["gameId"] = gameId;
+    payload["drawing"] = drawing;
+    return SendRequest(ApiEndpoints::GAME_SEND_DRAWING, payload, "POST");
+}
+
+cpr::Response Requests::getDrawing(const int gameId)
+{
+    crow::json::wvalue payload;
+    payload["gameId"] = gameId;
+    return SendRequest(ApiEndpoints::GAME_GET_DRAWING, payload, "GET");
+}
+
 cpr::Response Requests::SendRequest(const std::string& url, const crow::json::wvalue& payload, const std::string& method)
 {
     std::string json_payload = payload.dump();
