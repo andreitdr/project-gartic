@@ -2,6 +2,8 @@
 #include "../SqlDatabase/SqlDatabase.h"
 #include <format>
 
+#include "../Constants.h"
+
 #define GAME(gameId) m_runningGames[gameId]
 
 bool GameManager::GameExists(int gameId) const
@@ -44,6 +46,11 @@ int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector
 int GameManager::GetTimer(int gameId) const
 {
     return GAME(gameId).m_timer;
+}
+
+void GameManager::SetTime(int gameId, int value)
+{
+    GAME(gameId).m_timer = value;
 }
 
 int GameManager::GetNowDrawingPlayer(int gameId) const
@@ -159,8 +166,11 @@ std::string GameManager::FormatMessage(const std::string& sender, const std::str
 
 GameManager::GameManager()
 {
-    k_defaultTimerValue = 60;
-    k_defaultNumberOfCycles = 4;
+    //k_defaultTimerValue = 60;
+    //k_defaultNumberOfCycles = 4;
+
+    k_defaultTimerValue = std::stoi(configFile.ReadValue("DefaultRoundTimer"));
+    k_defaultNumberOfCycles = std::stoi(configFile.ReadValue("DefaultNumberOfRounds"));
 }
 
 

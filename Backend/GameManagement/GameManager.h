@@ -24,6 +24,8 @@ public:
     int CreateGame(const std::vector<int>& playerIds, const std::vector<std::string>& words);
     
     int GetTimer(int gameId) const;
+    void SetTime(int gameId, int value);
+
     int GetNowDrawingPlayer(int gameId) const;
     int GetCurrentRound(int gameId)const;
     
