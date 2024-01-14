@@ -18,6 +18,7 @@ public:
     
     std::unordered_map<int, int> m_playerPoints;
     std::vector<int> m_guessTimes;
+    std::vector<int> m_playersWhoGuessed;
     std::vector<int> m_playerIds;
     
     

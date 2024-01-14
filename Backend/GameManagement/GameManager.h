@@ -17,6 +17,8 @@ public:
     static constexpr int k_defaultTimerValue = 60;
     static constexpr int k_defaultNumberOfCycles=4;
 
+    static constexpr int k_defaultMaxPoints = 100;
+
     bool GameExists(int gameId) const;
 
     RunningGame& GetGame(int gameId);
@@ -37,13 +39,14 @@ public:
     std::string GetDrawing(int gameId) const;
 
     bool ToNextRound(int gameId);
+    void FinishRound(int gameId);
 
     bool CheckWord(int gameId, const std::string& message) const;
     void AppendChatMessage(int gameId, int playerId, const std::string& message);
     
     int GetGameIdByPlayer(int playerId) const;
 
-    void UpdatePoints(int gameId, int playerId, int pointsToAdd);
+    void ManageCorrectAnswer(int gameId, int playerId);
 
     void RemovePlayer(int gameId, int playerId);
 

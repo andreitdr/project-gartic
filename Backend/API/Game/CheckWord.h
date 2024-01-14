@@ -9,6 +9,7 @@ inline WJSON CheckWord(const crow::json::rvalue& request)
     int gameId = request["gameId"].i();
     int playerId = request["playerId"].i();
     std::string word = request["word"].s();
+
     CheckWordRequest _request {gameId, playerId, word};
     CheckWordContext context {};
 

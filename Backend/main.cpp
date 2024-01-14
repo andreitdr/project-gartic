@@ -2,6 +2,8 @@
 #include <tuple>
 #include <format>
 
+#include "Constants.h"
+
 #include "Infrastructure/BaseResponse.h"
 #include <crow.h>
 #include <filesystem>
@@ -28,8 +30,6 @@
 #include "API/User/UserRegistration.h"
 
 #include "GameManagement/GameManager.h"
-
-#include "Constants.h"
 
 int main()
 {

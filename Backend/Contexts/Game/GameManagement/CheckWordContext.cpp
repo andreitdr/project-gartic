@@ -27,7 +27,9 @@ CheckWordResponse CheckWordContext::ApplyChanges(const CheckWordRequest& request
     const User user = SqlDatabase::GetInstance().Get<User>(playerId);
 
     GameManager::GetInstance().AppendChatMessage(gameId, -1, std::format("{} guessed the word !", user.m_username));
-    return CheckWordResponse(true);
+    GameManager::GetInstance().ManageCorrectAnswer(gameId, playerId);
+
+	return CheckWordResponse(true);
 }
 
 CheckWordResponse CheckWordContext::ValidateData(const CheckWordRequest& request)
