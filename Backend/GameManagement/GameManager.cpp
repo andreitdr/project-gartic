@@ -182,6 +182,7 @@ bool GameManager::ToNextRound(int gameId)
 
     if(GAME(gameId).m_playerIds[GAME(gameId).m_indexPlayerDrawing] == -1)
     {
+        FinishRound(gameId);
         return ToNextRound(gameId);
     }
 
@@ -203,7 +204,7 @@ bool GameManager::CheckWord(int gameId, const std::string& message) const
 void GameManager::AppendChatMessage(int gameId, int playerId, const std::string& message)
 {
     
-    if(playerId != -1)
+    if(playerId == -1)
         GAME(gameId).m_chatMessages.emplace_back(FormatMessage("GAME", message));
     else
     {
