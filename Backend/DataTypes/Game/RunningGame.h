@@ -5,12 +5,12 @@
 #include <unordered_map>
 #include <queue>
 
-struct RunningGame
+class RunningGame
 {
-    
+public:
     int m_gameId;
     int m_indexPlayerDrawing;
-    int m_currrentRound;
+    int m_currentRound;
 
     int m_timer;
     std::string m_drawing;
@@ -23,4 +23,10 @@ struct RunningGame
     
     std::vector<std::string> m_chatMessages;
     std::queue<std::string> m_gameWords;
+
+    RunningGame(int gameId, const std::vector<int>& playerIds, const std::vector<std::string>& words);
+    RunningGame(const RunningGame& other);
+    RunningGame(RunningGame&& other) noexcept;
+    RunningGame() = default;
+    RunningGame& operator=(const RunningGame& other);
 };

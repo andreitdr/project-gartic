@@ -168,6 +168,7 @@
     <ClCompile Include="Contexts\User\Info\UserInfoContext.cpp" />
     <ClCompile Include="Contexts\User\Login\UserLoginContext.cpp" />
     <ClCompile Include="Contexts\User\Registration\UserRegistrationContext.cpp" />
+    <ClCompile Include="DataTypes\Game\RunningGame.cpp" />
     <ClCompile Include="GameManagement\GameManager.cpp" />
     <ClCompile Include="Infrastructure\BaseResponse.cpp" />
     <ClCompile Include="Infrastructure\GameManager\CheckWordRequest.cpp" />

@@ -74,6 +74,7 @@
     <ClCompile Include="Infrastructure\UserLogin\UserLoginResponse.cpp" />
     <ClCompile Include="Infrastructure\UserRegistration\UserRegistrationRequest.cpp" />
     <ClCompile Include="Infrastructure\UserRegistration\UserRegistrationResponse.cpp" />
+    <ClCompile Include="DataTypes\Game\RunningGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API\Game\CreateLobby.h" />

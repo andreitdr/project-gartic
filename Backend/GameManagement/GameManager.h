@@ -14,12 +14,13 @@ public:
         return instance;
     }
     
-    inline static int k_defaultTimerValue;
-    inline static int k_defaultNumberOfCycles;
+    static constexpr int k_defaultTimerValue = 60;
+    static constexpr int k_defaultNumberOfCycles=4;
 
     bool GameExists(int gameId) const;
 
-    RunningGame GetGame(int gameId) const;
+    RunningGame& GetGame(int gameId);
+    const RunningGame& GetGame(int gameId) const;
 
     int CreateGame(const std::vector<int>& playerIds, const std::vector<std::string>& words);
     
@@ -48,14 +49,16 @@ public:
 
     void UpdateDrawing(int gameId,const std::string& drawing);
 
-    void operator=(const GameManager&) = delete;
-    GameManager(const GameManager&) = delete;
+    //void operator=(const GameManager&);
+    GameManager(const GameManager&);
+
+
     
     
 private:
     std::vector<RunningGame> m_runningGames;
     std::string FormatMessage(const std::string& sender, const std::string& message) const;
 
-    GameManager();
+    GameManager() = default;
     
 };

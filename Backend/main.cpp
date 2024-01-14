@@ -35,13 +35,6 @@ int main()
 {
     crow::SimpleApp app;
 
-    if(!std::filesystem::exists("backend.data"))
-    {
-        configFile.WriteValue("DefaultRoundTimer", "60");
-        configFile.WriteValue("DefaultNumberOfRounds", "4");
-        configFile.WriteValue("DatabaseName", "test.db");
-    }
-
     CROW_ROUTE(app, "/game/get_chat_messages").methods("GET"_method)([](const crow::request& request)
     {
         const auto json = crow::json::load(request.body);
@@ -383,7 +376,7 @@ int main()
         return crow::response(response);
     });
 
-    app.loglevel(crow::LogLevel::Warning);
+    app.loglevel(crow::LogLevel::Debug);
     app.port(18080).multithreaded().run();
 
     return 0;

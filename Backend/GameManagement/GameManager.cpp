@@ -2,9 +2,7 @@
 #include "../SqlDatabase/SqlDatabase.h"
 #include <format>
 
-#include "../Constants.h"
-
-#define GAME(gameId) m_runningGames[gameId]
+#define GAME(gameId) GetGame(gameId)
 
 bool GameManager::GameExists(int gameId) const
 {
@@ -17,17 +15,30 @@ bool GameManager::GameExists(int gameId) const
     return true;
 }
 
-RunningGame GameManager::GetGame(int gameId) const
+RunningGame& GameManager::GetGame(int gameId)
 {
-    return GAME(gameId);
+    for(auto& game : m_runningGames)
+		if(game.m_gameId == gameId)
+			return game;
+
+    throw std::exception("Game not found");
+}
+
+const RunningGame& GameManager::GetGame(int gameId) const
+{
+    for (const auto& game : m_runningGames)
+        if (game.m_gameId == gameId)
+            return game;
+
+    throw std::exception("Game not found");
 }
 
 int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector<std::string>& words)
 {
-    RunningGame game;
+    RunningGame game = RunningGame();
     game.m_playerIds = playerIds;
     game.m_indexPlayerDrawing = 0;
-    game.m_currrentRound = 0;
+    game.m_currentRound = 0;
     game.m_gameWords = std::queue<std::string>(words.begin(), words.end());
     game.m_timer = k_defaultTimerValue;
     game.m_drawing = std::string();
@@ -55,12 +66,13 @@ void GameManager::SetTime(int gameId, int value)
 
 int GameManager::GetNowDrawingPlayer(int gameId) const
 {
-    return GAME(gameId).m_playerIds[GAME(gameId).m_indexPlayerDrawing];
+    const RunningGame& game = GAME(gameId);
+    return game.m_playerIds[game.m_indexPlayerDrawing];
 }
 
 int GameManager::GetCurrentRound(int gameId) const
 {
-    return GAME(gameId).m_currrentRound;
+    return GAME(gameId).m_currentRound;
 }
 
 std::unordered_map<int, int> GameManager::GetPlayerLeaderboard(int gameId) const
@@ -96,9 +108,9 @@ bool GameManager::ToNextRound(int gameId)
         GAME(gameId).m_indexPlayerDrawing = 0;
     
     GAME(gameId).m_gameWords.pop();
-    GAME(gameId).m_currrentRound ++;
+    GAME(gameId).m_currentRound ++;
 
-    if(GAME(gameId).m_currrentRound > k_defaultNumberOfCycles * GAME(gameId).m_playerIds.size())
+    if(GAME(gameId).m_currentRound > k_defaultNumberOfCycles * GAME(gameId).m_playerIds.size())
         return false;
 
     if(GAME(gameId).m_playerIds[GAME(gameId).m_indexPlayerDrawing] == -1)
@@ -158,19 +170,16 @@ void GameManager::UpdateDrawing(int gameId, const std::string& drawing)
     GAME(gameId).m_drawing=drawing;
 }
 
+GameManager::GameManager(const GameManager& otherGame)
+{
+    // Copy constructor
+    m_runningGames = otherGame.m_runningGames;
+
+}
+
 std::string GameManager::FormatMessage(const std::string& sender, const std::string& message) const
 {
     std::string _message = std::format("{} {}", sender, message);
     return _message;
 }
-
-GameManager::GameManager()
-{
-    //k_defaultTimerValue = 60;
-    //k_defaultNumberOfCycles = 4;
-
-    k_defaultTimerValue = std::stoi(configFile.ReadValue("DefaultRoundTimer"));
-    k_defaultNumberOfCycles = std::stoi(configFile.ReadValue("DefaultNumberOfRounds"));
-}
-
 
