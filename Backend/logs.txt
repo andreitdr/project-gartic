@@ -144,3 +144,11 @@
     "lobbyId": 1160554
 }
 2024-01-14 15:26:36 [Info] URL /game/create_game responded with {"ResponseState":true,"ResponseMessage":[],"gameId":0}
+2024-01-14 15:32:31 [Info] URL /game/create_game called with {
+    "lobbyId": 1160554
+}
+2024-01-14 15:32:31 [Info] URL /game/create_game responded with {"ResponseState":true,"ResponseMessage":[],"gameId":0}
+2024-01-14 15:33:07 [Info] URL /game/create_game called with {
+    "lobbyId": 1160554
+}
+2024-01-14 15:33:07 [Info] URL /game/create_game responded with {"ResponseState":true,"ResponseMessage":[],"gameId":0}

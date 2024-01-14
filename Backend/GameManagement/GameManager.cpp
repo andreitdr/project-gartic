@@ -58,7 +58,7 @@ int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector
             {
                 std::this_thread::sleep_for(std::chrono::seconds(1));
                 {
-                    // Utilizează un mutex sau un alt mecanism de sincronizare aici dacă este necesar
+
                     if (GAME(gameId).m_timer <= 0)
                     {
                         if (!ToNextRound(gameId))
@@ -73,7 +73,7 @@ int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector
                 }
             }
         });
-    timerThread.detach(); // Detasează thread-ul
+    timerThread.detach(); 
 
     return game.m_gameId;
     
