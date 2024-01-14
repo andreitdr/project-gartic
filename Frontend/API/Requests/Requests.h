@@ -16,6 +16,8 @@ public:
     static cpr::Response updateLobby(const int lobbyId, const int lobbyType, const bool isPrivate);
     static cpr::Response joinRandomLobby(const int userId);
     static cpr::Response startGame(const int lobbyId);
+    static cpr::Response getRunningGameForUser(const int userId);
+    static cpr::Response getRunningGameStatus(const int gameId);
 private:
     static cpr::Response SendRequest(const std::string& url, const crow::json::wvalue& payload, const std::string& method);
 };

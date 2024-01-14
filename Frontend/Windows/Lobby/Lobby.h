@@ -41,6 +41,7 @@ private:
 	void leaveLobby();
 	void updateLobbyData();
 	void gameStarted();
+	void getRunningGameForUser();
 
 private slots:
 	void on_pushButton_startGame_clicked();
