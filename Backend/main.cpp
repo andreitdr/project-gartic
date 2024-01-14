@@ -354,7 +354,7 @@ int main()
         return crow::response(response);
     });
 
-    app.loglevel(crow::LogLevel::Info);
+    app.loglevel(crow::LogLevel::Warning);
     app.port(18080).multithreaded().run();
 #endif
 

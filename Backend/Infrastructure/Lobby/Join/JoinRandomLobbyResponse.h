@@ -9,7 +9,7 @@ class JoinRandomLobbyResponse final : public BaseResponse
 public:
     JoinRandomLobbyResponse(int lobbyId);
     JoinRandomLobbyResponse(const std::string& message);
-    JoinRandomLobbyResponse(bool state);
+    JoinRandomLobbyResponse(bool isSuccess);
 
     int GetLobbyId() const;
 

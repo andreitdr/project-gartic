@@ -9,8 +9,9 @@ JoinRandomLobbyResponse::JoinRandomLobbyResponse(const std::string &message) : B
     AppendMessage(message);
 }
 
-JoinRandomLobbyResponse::JoinRandomLobbyResponse(bool state) : BaseResponse{state}, m_lobbyId{-1}
+JoinRandomLobbyResponse::JoinRandomLobbyResponse(bool isSuccess) : BaseResponse{isSuccess}, m_lobbyId{-1}
 {
+
 }
 
 int JoinRandomLobbyResponse::GetLobbyId() const

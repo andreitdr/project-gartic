@@ -25,15 +25,17 @@ JoinRandomLobbyResponse JoinRandomLobbyContext::HandleRequest(const JoinRandomLo
     if(!response)
         return response;
 
-    return ApplyChanges(request);
+    response = ApplyChanges(request);
+    return response;
 }
 
 JoinRandomLobbyResponse JoinRandomLobbyContext::ApplyChanges(const JoinRandomLobbyRequest& request)
 {
     int lobbyId = GetRandomLobbyId();
+    const std::string message = "No lobbies available";
 
     if(lobbyId == -1)
-        return JoinRandomLobbyResponse("No lobbies available");
+        return JoinRandomLobbyResponse(message);
 
     auto currentLobby = SqlDatabase::GetInstance().Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
 
