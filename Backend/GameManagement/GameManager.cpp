@@ -229,7 +229,7 @@ void GameManager::ManageCorrectAnswer(int gameId, int playerId)
     if(game.m_timer >= 30) // first 30 seconds
         game.m_playerPoints[playerId] += k_defaultMaxPoints;
     else
-        game.m_playerPoints[playerId] += (60 - game.m_timer) * 100 / 30;
+        game.m_playerPoints[playerId] += game.m_timer * 100 / 30;
 
     game.m_guessTimes.emplace_back(game.m_timer);
     game.m_playersWhoGuessed.emplace_back(playerId);
