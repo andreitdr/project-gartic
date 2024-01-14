@@ -135,11 +135,12 @@ void GameManager::FinishRound(int gameId)
     {
         int maxTime = 0;
         for (int time : game.m_guessTimes)
-            maxTime += time;
+            maxTime += k_defaultTimerValue - time;
+        maxTime += k_defaultTimerValue * (game.m_playerIds.size() - game.m_playersWhoGuessed.size());
 
-        float average = maxTime / game.m_guessTimes.size();
+        float average = maxTime / game.m_playerIds.size();
 
-        game.m_playerPoints[game.m_indexPlayerDrawing] += (60 - average) * 100 / 60;
+        game.m_playerPoints[game.m_indexPlayerDrawing] += (k_defaultTimerValue - average) * 100 / k_defaultTimerValue;
     }
     else
 		game.m_playerPoints[game.m_indexPlayerDrawing] -= 100;
@@ -151,11 +152,11 @@ void GameManager::FinishRound(int gameId)
         if (playerId == game.m_playerIds[game.m_indexPlayerDrawing])
             continue;
 
-        bool exists = true;
+        bool exists = false;
         for(int guessPlayerId : game.m_playersWhoGuessed)
             if(playerId == guessPlayerId)
             {
-                exists = false;
+                exists = true;
                 break;
             }
 
@@ -261,7 +262,7 @@ GameManager::GameManager(const GameManager& otherGame)
 
 std::string GameManager::FormatMessage(const std::string& sender, const std::string& message) const
 {
-    std::string _message = std::format("{} {}", sender, message);
+    std::string _message = std::format("{}: {}", sender, message);
     return _message;
 }
 
