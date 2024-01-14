@@ -70,7 +70,7 @@ std::string ConfigFile::ReadValue(const std::string& key) const
     std::string value = split(result, '=')[1];
     std::erase(value, ' ');
 
-    return result;
+    return value;
 
 }
 

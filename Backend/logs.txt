@@ -1,0 +1,21 @@
+2024-01-14 13:39:38 [Info] URL /user/register called with {
+    "username": "calos123355",
+    "password": "123",
+    "givenName": "andrei",
+    "surname": "abc"
+}
+2024-01-14 13:39:38 [Info] URL /user/register responded with {"NewUserID":1,"ResponseState":true,"ResponseMessage":[]}
+2024-01-14 13:39:39 [Info] URL /user/register called with {
+    "username": "calos123355",
+    "password": "123",
+    "givenName": "andrei",
+    "surname": "abc"
+}
+2024-01-14 13:39:39 [Info] URL /user/register responded with {"ResponseState":false,"ResponseMessage":["The user already exists"]}
+2024-01-14 13:40:50 [Info] URL /user/register called with {
+    "username": "calos123355",
+    "password": "123",
+    "givenName": "andrei",
+    "surname": "abc"
+}
+2024-01-14 13:40:50 [Info] URL /user/register responded with {"NewUserID":1,"ResponseState":true,"ResponseMessage":[]}
