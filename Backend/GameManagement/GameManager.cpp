@@ -44,6 +44,7 @@ int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector
     game.m_gameWords = std::queue<std::string>(words.begin(), words.end());
     game.m_timer = k_defaultTimerValue;
     game.m_drawing = std::string();
+    game.m_playersWhoGuessed.clear();
     game.m_chatMessages.clear();
     game.m_playerPoints.clear();
     for(auto playerId : playerIds)
@@ -61,6 +62,7 @@ int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector
 
                     if (GAME(gameId).m_timer <= 0)
                     {
+                        FinishRound(gameId);
                         if (!ToNextRound(gameId))
                         {
                             break;
@@ -125,12 +127,52 @@ std::string GameManager::GetDrawing(int gameId) const
     return GAME(gameId).m_drawing;
 }
 
+void GameManager::FinishRound(int gameId)
+{
+    RunningGame& game = GAME(gameId);
+    if(!game.m_playersWhoGuessed.empty())
+    {
+        int maxTime = 0;
+        for (int time : game.m_guessTimes)
+            maxTime += time;
+
+        float average = maxTime / game.m_guessTimes.size();
+
+        game.m_playerPoints[game.m_indexPlayerDrawing] += (60 - average) * 100 / 60;
+    }
+    else
+		game.m_playerPoints[game.m_indexPlayerDrawing] -= 100;
+
+
+    std::vector<int> playersFail;
+    for(int playerId : game.m_playerIds)
+    {
+        bool exists = true;
+        for(int guessPlayerId : game.m_playersWhoGuessed)
+            if(playerId == guessPlayerId)
+            {
+                exists = false;
+                break;
+            }
+
+        if (!exists) 
+            playersFail.emplace_back(playerId);
+    }
+
+    for (int pid : playersFail)
+        game.m_playerPoints[pid] -= 50;
+
+}
+
 bool GameManager::ToNextRound(int gameId)
 {
     GAME(gameId).m_indexPlayerDrawing ++;
 
     if(GAME(gameId).m_playerIds.size() <=  GAME(gameId).m_indexPlayerDrawing)
         GAME(gameId).m_indexPlayerDrawing = 0;
+
+    if (GAME(gameId).m_gameWords.empty())
+        return false;
     
     GAME(gameId).m_gameWords.pop();
     GAME(gameId).m_currentRound ++;
@@ -147,6 +189,8 @@ bool GameManager::ToNextRound(int gameId)
     GAME(gameId).m_drawing = std::string();
 
     GAME(gameId).m_chatMessages.clear();
+    GAME(gameId).m_playersWhoGuessed.clear();
+    GAME(gameId).m_guessTimes.clear();
     
     return true;
 }
@@ -178,9 +222,17 @@ int GameManager::GetGameIdByPlayer(int playerId) const
     return -1;
 }
 
-void GameManager::UpdatePoints(int gameId, int playerId, int pointsToAdd)
+void GameManager::ManageCorrectAnswer(int gameId, int playerId)
 {
-    GAME(gameId).m_playerPoints[playerId] += pointsToAdd;
+    RunningGame& game = GAME(gameId);
+
+    if(game.m_timer >= 30) // first 30 seconds
+        game.m_playerPoints[playerId] += k_defaultMaxPoints;
+    else
+        game.m_playerPoints[playerId] += game.m_timer * 100 / 30;
+
+    game.m_guessTimes.emplace_back(game.m_timer);
+    game.m_playersWhoGuessed.emplace_back(playerId);
 }
 
 void GameManager::RemovePlayer(int gameId, int playerId)

@@ -18,8 +18,5 @@
     <ClCompile Include="logger.cppm">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="logger.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

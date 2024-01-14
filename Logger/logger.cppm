@@ -1,13 +1,13 @@
+module;
 #pragma once
 #include <Windows.h>
 
+#include <format>
+#include <chrono>
+#include <fstream>
+
 export module Logger;
 
-import <iostream>;
-import <string_view>;
-import <format>;
-import <chrono>;
-import <fstream>;
 
 #define COLOR_WHITE 7
 #define COLOR_GREEN 10
@@ -15,7 +15,7 @@ import <fstream>;
 #define COLOR_RED 4
 
 
-export  class __declspec(dllexport)  Logger 
+export class __declspec(dllexport) Logger 
 {
 public:
 	enum class Level : char
