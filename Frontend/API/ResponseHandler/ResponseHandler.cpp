@@ -10,7 +10,11 @@ void ResponseHandler::processLoginResponse(const crow::json::rvalue& response, s
     }
 
     bool success = response["ResponseState"].b();
-    std::string message = response["ResponseMessage"][0].s();
+    std::string message;
+    if (response["ResponseMessage"].size() > 0)
+        message = response["ResponseMessage"][0].s();
+    else
+        message = "";
 
     if (success) {
         std::string username = response["UserData"]["username"].s();
@@ -33,7 +37,12 @@ void ResponseHandler::processRegisterResponse(const crow::json::rvalue& response
     }
 
     bool success = response["ResponseState"].b();
-    std::string message = response["ResponseMessage"][0].s();
+    std::string message;
+    if (response["ResponseMessage"].size() > 0)
+        message = response["ResponseMessage"][0].s();
+    else
+        message = "";
+
     int new_user_id = -1;
 
     if (success) {
@@ -193,4 +202,27 @@ void ResponseHandler::processUpdateLobbyResponse(const crow::json::rvalue& respo
 		message = "";
 
 	callback(success, message);
+}
+
+void ResponseHandler::processJoinRandomLobbyResponse(const crow::json::rvalue& response, std::function<void(bool, const std::string&, int)> callback)
+{
+    if (!response) {
+        callback(false, "Invalid response format", -1);
+        return;
+    }
+
+    bool success = response["ResponseState"].b();
+    std::string message;
+    if (response["ResponseMessage"].size() > 0)
+        message = response["ResponseMessage"][0].s();
+    else
+        message = "";
+
+    int lobby_id = -1;
+
+    if (success) {
+        lobby_id = response["lobbyId"].i();
+    }
+
+    callback(success, message, lobby_id);
 }

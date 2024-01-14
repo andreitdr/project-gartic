@@ -37,7 +37,7 @@ void Lobby::showEvent(QShowEvent* event)
 {
     QMainWindow::showEvent(event);
     if (m_timer && !m_timer->isActive())
-        m_timer->start(1000);
+        m_timer->start(500);
 }
 
 void Lobby::hideEvent(QHideEvent* event)

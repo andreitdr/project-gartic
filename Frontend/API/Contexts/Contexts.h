@@ -15,6 +15,7 @@ public:
 	void leaveLobby(int userId, int lobbyId, std::function<void(bool, const std::string&)> callback);
 	void lobbyStatus(int lobbyId, std::function<void(bool, const std::string&, const LobbyData&)> callback);
 	void updateLobby(int lobbyId, int lobbyType, bool isPrivate, std::function<void(bool, const std::string&)> callback);
+	void joinRandomLobby(int userId, std::function<void(bool, const std::string&, int)> callback);
 private:
 	ResponseHandler handler;
 	Requests requests;
