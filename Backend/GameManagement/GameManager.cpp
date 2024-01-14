@@ -68,6 +68,7 @@ int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector
                         FinishRound(gameId);
                         if (!ToNextRound(gameId))
                         {
+                            std::cout << "\n\n\n\n\nSTOPPING GAME ID " << gameId << "\n\n\n\n";
                             EndGame(gameId);
                             break;
                         }

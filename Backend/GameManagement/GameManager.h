@@ -4,8 +4,6 @@
 
 #include <string>
 
-#include "../DataTypes/Game/PlayerFinishedGame.h"
-
 class GameManager
 {
 public:
@@ -16,7 +14,7 @@ public:
         return instance;
     }
     
-    static constexpr int k_defaultTimerValue = 60;
+    static constexpr int k_defaultTimerValue = 2;
     static constexpr int k_defaultNumberOfCycles=4;
 
     static constexpr int k_defaultMaxPoints = 100;
