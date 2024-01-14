@@ -24,9 +24,12 @@ public:
     void AddPlayer(const UserInfo& user);
     void RemovePlayer(const UserInfo& user);
     std::vector<UserInfo> GetPlayers() const;
+    void SetPlayers(const std::vector<UserInfo>& players);
 
     void SetPlayerPoints(int playerId, int points);
+    void SetPlayerPoints(const std::unordered_map<int, int>& playerPoints);
     int GetPlayerPoints(int playerId) const;
+    std::unordered_map<int, int> GetPlayerPoints() const;
 
     void SetDrawingPlayer(const UserInfo& user);
     UserInfo GetDrawingPlayer() const;
@@ -45,6 +48,7 @@ public:
 
     void AddChatMessage(const std::string& message);
     std::vector<std::string> GetChatMessages() const;
+    void SetChatMessages(const std::vector<std::string>& chatMessages);
 
     void SortPlayersByPoints();
 

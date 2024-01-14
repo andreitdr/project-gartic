@@ -1,9 +1,11 @@
 #pragma once
 
 #include <QMainWindow>
+#include <QTimer>
 #include "ui_GameWindow.h"
 #include "../../Utils/GameData/GameData.h"
 #include "../../Utils/CurrentUser/CurrentUser.h"
+#include "../../Utils/QImageConverter/QImageConverter.h"
 #include "../../Widgets/CustomQMessageBox/CustomQMessageBox.h"
 #include "../../Widgets/DisplayPaintWidget/DisplayPaintWidget.h"
 #include "../../Widgets/PaintWidget/PaintWidget.h"
@@ -27,10 +29,14 @@ private:
 	Ui::GameWindowClass ui;
 	Contexts* contexts;
 	GameData m_gameData;
+	QImageConverter m_imageConverter;
 	std::string m_wordToGuess;
 	std::vector<int> m_revealedPositions;
 	DisplayPaintWidget* displayPaintWidget = nullptr;
 	PaintWidget* paintWidget = nullptr;
+	QTimer* m_statusTimer = nullptr;
+	QTimer* m_chatTimer = nullptr;
+	QTimer* m_drawingTimer = nullptr;
 	void leaveGame();
 	void addPlayerToLeaderBoard(const UserInfo& userInfo, const int points, const bool isDrawing);
 	void updateLeaderBoard();
@@ -39,11 +45,13 @@ private:
 	void initializeRevealPositions(const std::string& word, int maxReveal);
 	void updateWordToGuess();
 	void updateGameStatus();
+	void updateGameData();
 	void updateDrawingWidget();
 	void addChatMessage(const std::string& message);
 	bool containsOnlyWhitespace(const std::string& str);
 	void updateChat();
-	void updateGameData();
+	void updateChatData();
+	void updateDrawing();
 
 private slots:
 	void on_pushButton_leaveGame_clicked();

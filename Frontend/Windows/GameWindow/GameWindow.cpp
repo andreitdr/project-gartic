@@ -12,6 +12,14 @@ GameWindow::GameWindow(Contexts* contexts, QWidget *parent)
     paintWidget = new PaintWidget();
     displayPaintWidget = new DisplayPaintWidget();
     connect(ui.lineEdit_message, &QLineEdit::returnPressed, this, &GameWindow::on_pushButton_sendMessage_clicked);
+
+    m_statusTimer = new QTimer(this);
+    m_chatTimer = new QTimer(this);
+    m_drawingTimer = new QTimer(this);
+
+    connect(m_statusTimer, &QTimer::timeout, this, &GameWindow::updateGameData);
+    connect(m_chatTimer, &QTimer::timeout, this, &GameWindow::updateChatData);
+    connect(m_drawingTimer, &QTimer::timeout, this, &GameWindow::updateDrawing);
 }
 
 GameWindow::~GameWindow()
@@ -26,7 +34,7 @@ void GameWindow::closeEvent(QCloseEvent * event)
 
     showConfirmActionCustomMessageBox(
         this,
-        "Gartic - Leave Gane",
+        "Gartic - Leave Game",
         "Are you sure you want to leave the game?",
         "Yes",
         "No",
@@ -43,7 +51,15 @@ void GameWindow::closeEvent(QCloseEvent * event)
 
 void GameWindow::hideEvent(QHideEvent* event)
 {
-    //timers stop
+    QMainWindow::hideEvent(event);
+    if (m_statusTimer && m_statusTimer->isActive())
+        m_statusTimer->stop();
+
+    if (m_chatTimer && m_chatTimer->isActive())
+		m_chatTimer->stop();
+
+	if (m_drawingTimer && m_drawingTimer->isActive())
+		m_drawingTimer->stop();
 }
 
 void GameWindow::leaveGame()
@@ -94,7 +110,7 @@ void GameWindow::updateTimer()
 
 void GameWindow::updateRoundNumber()
 {
-    QString roundNumber = QString::number(m_gameData.GetCurrentRound());
+    QString roundNumber = QString::number(m_gameData.GetCurrentRound()+1);
     QString temp = "Round " + roundNumber + " of 4";
     ui.label_roundNumber->setText(temp);
 }
@@ -176,6 +192,26 @@ void GameWindow::updateDrawingWidget()
     ui.groupBox_drawing->setLayout(layout);
 }
 
+void GameWindow::updateDrawing()
+{
+    if (CurrentUser::getInstance().getUsername() == m_gameData.GetDrawingPlayer().getUsername())
+    {
+        std::string drawing = m_imageConverter.convertImageToString(paintWidget->getImage());
+        contexts->sendDrawing(m_gameData.GetGameId(), drawing, [this](bool success, const std::string& message){});
+    }
+    else
+    {
+        contexts->getDrawing(m_gameData.GetGameId(), [this](bool success, const std::string& message, const std::string& drawing)
+			{
+				if (success)
+				{
+                    QImage drawingImage = m_imageConverter.convertStringToImage(drawing);
+                    displayPaintWidget->updateImage(drawingImage);
+				}
+			});
+    }
+}
+
 void GameWindow::addChatMessage(const std::string& message)
 {
    QString messageText = QString::fromUtf8(message.c_str());
@@ -204,10 +240,36 @@ void GameWindow::updateChat()
 	}
 }
 
+void GameWindow::updateChatData()
+{
+    contexts->getChatMessages(m_gameData.GetGameId(), [this](bool success, const std::string& message, const std::vector<std::string>& chatMessages)
+		{
+			if (success)
+			{
+				m_gameData.SetChatMessages(chatMessages);
+				updateChat();
+			}
+		});
+}
+
 void GameWindow::updateGameData()
 {
-    //apelare ruta
-    updateGameStatus();
+    contexts->getRunningGameStatus(m_gameData.GetGameId(), [this](bool success, const std::string& message, const GameData& gameData)
+        {
+            if (success)
+            {
+                if (!(gameData == m_gameData))
+                {
+                    m_gameData.SetDrawingPlayer(gameData.GetDrawingPlayer());
+                    m_gameData.SetPlayers(gameData.GetPlayers());
+                    m_gameData.SetCurrentRound(gameData.GetCurrentRound());
+                    m_gameData.SetCurrentWord(gameData.GetCurrentWord());
+                    m_gameData.SetTimer(gameData.GetTimer());
+                    m_gameData.SetPlayerPoints(gameData.GetPlayerPoints());
+                }
+                updateGameStatus();
+            }
+        });
 }
 
 void GameWindow::on_pushButton_sendMessage_clicked()
@@ -225,14 +287,37 @@ void GameWindow::on_pushButton_sendMessage_clicked()
         return;
     }
        
-    //apelare ruta
-    addChatMessage(message);
-    ui.lineEdit_message->clear();
+    contexts->checkWord(m_gameData.GetGameId(), CurrentUser::getInstance().getUserId(), message, [this](bool success, const std::string& message)
+		{
+            if (success)
+            {
+                ui.lineEdit_message->clear();
+            }
+            else
+            {
+                QString qmessage = QString::fromUtf8(message.c_str());
+                showErrorCustomMessageBox(
+                    this,
+                    "Gartic - Game",
+                    qmessage,
+                    "Ok",
+                    []() {}
+                );
+            }
+		});
 }
 
 void GameWindow::showEvent(QShowEvent* event)
 {
-    //timers start
+    QMainWindow::showEvent(event);
+    if (m_statusTimer && !m_statusTimer->isActive())
+        m_statusTimer->start(500);
+
+    if (m_chatTimer && !m_chatTimer->isActive())
+		m_chatTimer->start(500);
+
+	if (m_drawingTimer && !m_drawingTimer->isActive())
+		m_drawingTimer->start(500);
 }
 
 void GameWindow::on_pushButton_leaveGame_clicked()
