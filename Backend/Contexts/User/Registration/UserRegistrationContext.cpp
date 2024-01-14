@@ -29,7 +29,7 @@ UserRegistrationResponse UserRegistrationContext::ApplyChanges(const UserRegistr
 
 UserRegistrationResponse UserRegistrationContext::ValidateData(const User& user)
 {
-    if(!SqlDatabase::GetInstance().ExistsModel(user))
+    if(SqlDatabase::GetInstance().Exists<User>(WHERE(User::m_username, user.m_username)))
         return UserRegistrationResponse("The user already exists", false);
 
     return UserRegistrationResponse(true);
