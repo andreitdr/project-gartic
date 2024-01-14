@@ -55,12 +55,13 @@ int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector
 
     std::thread timerThread([this, gameId = game.m_gameId]()
         {
+            RunningGame& game = GAME(gameId);
             while (true)
             {
                 std::this_thread::sleep_for(std::chrono::seconds(1));
                 {
 
-                    if (GAME(gameId).m_timer <= 0)
+                    if (game.m_timer <= 0 || game.m_playersWhoGuessed.size() == game.m_playerIds.size())
                     {
                         FinishRound(gameId);
                         if (!ToNextRound(gameId))
@@ -70,7 +71,7 @@ int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector
                     }
                     else
                     {
-                        GAME(gameId).m_timer--;
+                        game.m_timer--;
                     }
                 }
             }
@@ -147,6 +148,9 @@ void GameManager::FinishRound(int gameId)
     std::vector<int> playersFail;
     for(int playerId : game.m_playerIds)
     {
+        if (playerId == game.m_playerIds[game.m_indexPlayerDrawing])
+            continue;
+
         bool exists = true;
         for(int guessPlayerId : game.m_playersWhoGuessed)
             if(playerId == guessPlayerId)
