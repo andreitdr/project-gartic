@@ -28,12 +28,15 @@ StartGameResponse StartGameContext::ApplyChanges(const StartGameRequest& request
 {
     const int lobbyId = request.GetLobbyId();
 
-    const Lobby lobby = SqlDatabase::GetInstance().Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
+    Lobby lobby = SqlDatabase::GetInstance().Get<Lobby>(WHERE(Lobby::m_lobbyId, lobbyId));
 
     const std::vector<int> playerIds              = JsonConvertor::ConvertToVector<int>(lobby.m_userIds);
     const std::vector<std::string> generatedWords = GenerateWords(playerIds.size() * GameManager::k_defaultNumberOfCycles);
     const int gameId                              = GameManager::GetInstance().CreateGame(playerIds, generatedWords);
 
+    lobby.m_isStarted = true;
+
+    SqlDatabase::GetInstance().Update<Lobby>(lobby);
     return StartGameResponse(gameId);
 }
 
