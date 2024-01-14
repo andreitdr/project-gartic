@@ -17,7 +17,7 @@ GetRunningGameForUserResponse GetRunningGameForUserContext::ApplyChanges(const G
 {
     const int id = request.GetUserId();
     const int game_id = GameManager::GetInstance().GetGameIdByPlayer(id);
-    if(id==-1)
+    if(game_id ==-1)
         return GetRunningGameForUserResponse("User is not in a running game");
-    return GetRunningGameForUserResponse(id);
+    return GetRunningGameForUserResponse(game_id);
 }
