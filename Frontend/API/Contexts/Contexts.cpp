@@ -139,3 +139,35 @@ void Contexts::updateLobby(int lobbyId, int lobbyType, bool isPrivate, std::func
 			callback(success, message);
 		});
 }
+
+void Contexts::joinRandomLobby(int userId, std::function<void(bool, const std::string&, int)> callback)
+{
+	auto response = requests.joinRandomLobby(userId);
+	if (response.status_code != 200)
+	{
+		callback(false, "Server error", -1);
+		return;
+	};
+
+	auto response_json = crow::json::load(response.text);
+	handler.processJoinRandomLobbyResponse(response_json, [callback](bool success, const std::string& message, int lobbyId)
+		{
+		callback(success, message, lobbyId);
+	});
+}
+
+void Contexts::startGame(int lobbyId, std::function<void(bool, const std::string&, int)> callback)
+{
+	auto response = requests.startGame(lobbyId);
+	if (response.status_code != 200)
+	{
+		callback(false, "Server error", -1);
+		return;
+	};
+
+	auto response_json = crow::json::load(response.text);
+	handler.processStartGameResponse(response_json, [callback](bool success, const std::string& message, int gameId)
+		{
+			callback(success, message, gameId);
+		});
+}

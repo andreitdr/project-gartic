@@ -37,7 +37,7 @@ void Lobby::showEvent(QShowEvent* event)
 {
     QMainWindow::showEvent(event);
     if (m_timer && !m_timer->isActive())
-        m_timer->start(1000);
+        m_timer->start(500);
 }
 
 void Lobby::hideEvent(QHideEvent* event)
@@ -290,7 +290,32 @@ void Lobby::getLobbyData(const LobbyData& lobbyData)
 
 void Lobby::on_pushButton_startGame_clicked()
 {   
-    emit windowPositionChanged(this->pos());
-    emit goToGameWindow();
-    this->hide();
+    contexts->startGame(m_lobbyData.GetLobbyID(), [this](bool success, const std::string& message, int gameId) {
+        QString qmessage = QString::fromUtf8(message.c_str());
+		if (success) {
+			emit sendGameId(gameId);
+            emit windowPositionChanged(this->pos());
+            emit goToGameWindow();
+            this->hide();
+		}
+        else
+        if (message != "")
+            showErrorCustomMessageBox(
+                this,
+                "Gartic - Join Room",
+                qmessage,
+                "Ok",
+                []() {}
+        );
+        else
+        {
+			showErrorCustomMessageBox(
+				this,
+				"Gartic - Start Game",
+				"Something went wrong. Please try again later!",
+				"Ok",
+				[]() {}
+			);
+		}
+		});
 }

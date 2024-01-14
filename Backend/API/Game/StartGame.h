@@ -25,7 +25,7 @@
 
 inline crow::json::wvalue StartGame(const crow::json::rvalue& request)
 {
-    int lobbyId = request["Lobby"]["lobbyId"].i();
+    int lobbyId = request["lobbyId"].i();
 
     StartGameRequest startGameRequest{lobbyId};
     StartGameContext startGameContext{};
