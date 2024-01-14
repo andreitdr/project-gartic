@@ -1,29 +1,29 @@
 ﻿#include <string>
 #include <tuple>
 
-#include <crow.h>
 #include "Infrastructure/BaseResponse.h"
+#include <crow.h>
 
 #include "API/Game/CreateLobby.h"
 #include "API/Game/ExitGame.h"
 #include "API/Game/GetDrawing.h"
 #include "API/Game/GetRunningGameForUser.h"
-#include "API/Game/StartGame.h"
 #include "API/Game/JoinLobby.h"
-#include "API/Game/LeaveLobby.h"
-#include "API/Game/UpdateLobby.h"
-#include "API/Game/LobbyStatus.h"
 #include "API/Game/JoinRandomLobby.h"
+#include "API/Game/LeaveLobby.h"
+#include "API/Game/LobbyStatus.h"
 #include "API/Game/SendDrawing.h"
+#include "API/Game/StartGame.h"
+#include "API/Game/UpdateLobby.h"
 
-#include "API/Game/GetRunningGameStatus.h"
 #include "API/Game/CheckWord.h"
 #include "API/Game/GetChatMessages.h"
+#include "API/Game/GetRunningGameStatus.h"
 
 #include "API/User/GetUserInfo.h"
+#include "API/User/GetUserMatchHistoryData.h"
 #include "API/User/UserLogin.h"
 #include "API/User/UserRegistration.h"
-#include "API/User/GetUserMatchHistoryData.h"
 #include "GameManagement/GameManager.h"
 
 int main()

@@ -16,11 +16,11 @@ private:
     const std::string m_fileName;
 };
 
-ConfigFile::ConfigFile(const std::string& fileName): m_fileName{fileName}
+inline ConfigFile::ConfigFile(const std::string& fileName): m_fileName{fileName}
 {
 }
 
-auto ConfigFile::ReadConfig(const std::string& key) const
+inline auto ConfigFile::ReadConfig(const std::string& key) const
 {
     std::ifstream f(m_fileName);
     while (!f.eof())
@@ -42,7 +42,7 @@ auto ConfigFile::ReadConfig(const std::string& key) const
 }
 
 
-void ConfigFile::WriteConfig(const std::string& key, const std::string& value) const
+inline void ConfigFile::WriteConfig(const std::string& key, const std::string& value) const
 {
     std::fstream f(m_fileName);
     bool found = false;
