@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include <optional>
 
 #include "../../Infrastructure/BaseResponse.h"
 #include "../../DataTypes/User/User.h"
@@ -13,8 +12,8 @@ public:
     UserRegistrationResponse(const User& user);
 
     void SetUser(const User& user);
-    std::optional<User> GetUser() const;
+    User GetUser() const;
 
 private:
-    std::optional<User> m_user;
+    User m_user;
 };
