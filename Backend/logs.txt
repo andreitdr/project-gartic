@@ -121,3 +121,26 @@
     "gameId": 0
 }
 2024-01-14 15:08:34 [Info] URL /game/get_running_game_status responded with {"ResponseState":true,"ResponseMessage":[],"GameData":{"PlayerIds":[1,2,3],"Timer":60,"CurrentRound":0,"GameId":0,"DrawingPlayerId":1,"CurrentWord":"calculator","PlayerPoints":{"1":0,"2":0,"3":0}}}
+2024-01-14 15:14:57 [Info] URL /game/create_game called with {
+    "lobbyId": 1160554
+}
+2024-01-14 15:15:31 [Info] URL /game/create_game called with {
+    "lobbyId": 1160554
+}
+2024-01-14 15:19:19 [Info] URL /game/create_game called with {
+    "lobbyId": 1160554
+}
+2024-01-14 15:19:34 [Info] URL /game/create_game called with {
+    "lobbyId": 1160554
+}
+2024-01-14 15:20:45 [Info] URL /game/create_game called with {
+    "lobbyId": 1160554
+}
+2024-01-14 15:21:45 [Info] URL /game/create_game called with {
+    "lobbyId": 1160554
+}
+2024-01-14 15:21:48 [Info] URL /game/create_game responded with {"ResponseState":true,"ResponseMessage":[],"gameId":0}
+2024-01-14 15:26:36 [Info] URL /game/create_game called with {
+    "lobbyId": 1160554
+}
+2024-01-14 15:26:36 [Info] URL /game/create_game responded with {"ResponseState":true,"ResponseMessage":[],"gameId":0}

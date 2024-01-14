@@ -1,6 +1,8 @@
 ﻿#include "GameManager.h"
 #include "../SqlDatabase/SqlDatabase.h"
 #include <format>
+#include <thread>
+#include <chrono>
 
 #define GAME(gameId) GetGame(gameId)
 
@@ -49,6 +51,29 @@ int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector
 
     game.m_gameId = m_runningGames.size();
     m_runningGames.emplace_back(game);
+
+    std::thread timerThread([this, gameId = game.m_gameId]()
+        {
+            while (true)
+            {
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+                {
+                    // Utilizează un mutex sau un alt mecanism de sincronizare aici dacă este necesar
+                    if (GAME(gameId).m_timer <= 0)
+                    {
+                        if (!ToNextRound(gameId))
+                        {
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        GAME(gameId).m_timer--;
+                    }
+                }
+            }
+        });
+    timerThread.detach(); // Detasează thread-ul
 
     return game.m_gameId;
     
