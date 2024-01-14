@@ -1,0 +1,25 @@
+Rute:
+StartGame(Lobby data) -> gameId = Wizzy
+GetRunningGameForUser(int userId) -> [gameId, custom bool for game started] = Andrei
+GetRunningGameStatus(int gameId) -> [drawing_player, current_round,
+				     timer, current_word, player_list_ids, player_points] = Wizzy
+
+SendDrawing(int gameId, json drawing) -> base response = Andrei
+GetDrawing(int gameId) -> json drawing = Andrei
+
+ExitGame(int gameId, int playerId) -> base response = Andrei
+- set player id in list as -1
+
+CheckWord(int gameId, int playerId, string message) -> base response = Wizzy
+- if player guessed the word -> add specific message
+- else append the message to the chat list of strings
+
+GetChatMessages(int gameId) -> List<string> messages = Wizzy
+
+Backend:
+- RunningGame -> in memory vector
+- Timer -> for each game
+- Some functions to manage points
+
+- BaseGameContext: DI for GameManager
+

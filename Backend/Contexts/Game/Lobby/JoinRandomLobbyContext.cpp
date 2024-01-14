@@ -31,6 +31,7 @@ JoinRandomLobbyResponse JoinRandomLobbyContext::HandleRequest(const JoinRandomLo
 JoinRandomLobbyResponse JoinRandomLobbyContext::ApplyChanges(const JoinRandomLobbyRequest& request)
 {
     int lobbyId = GetRandomLobbyId();
+
     if(lobbyId == -1)
         return JoinRandomLobbyResponse("No lobbies available");
 

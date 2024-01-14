@@ -4,12 +4,12 @@ JoinRandomLobbyResponse::JoinRandomLobbyResponse(int lobbyId) : BaseResponse{tru
 {
 }
 
-JoinRandomLobbyResponse::JoinRandomLobbyResponse(const std::string &message) : BaseResponse{false}
+JoinRandomLobbyResponse::JoinRandomLobbyResponse(const std::string &message) : BaseResponse{false}, m_lobbyId{-1}
 {
     AppendMessage(message);
 }
 
-JoinRandomLobbyResponse::JoinRandomLobbyResponse(bool state) : BaseResponse{state}
+JoinRandomLobbyResponse::JoinRandomLobbyResponse(bool state) : BaseResponse{state}, m_lobbyId{-1}
 {
 }
 
