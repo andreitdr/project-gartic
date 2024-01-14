@@ -61,7 +61,7 @@ int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector
                 std::this_thread::sleep_for(std::chrono::seconds(1));
                 {
 
-                    if (game.m_timer <= 0 || game.m_playersWhoGuessed.size() == game.m_playerIds.size())
+                    if (game.m_timer <= 0 || game.m_playersWhoGuessed.size() == game.m_playerIds.size()-1)
                     {
                         FinishRound(gameId);
                         if (!ToNextRound(gameId))
