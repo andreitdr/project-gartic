@@ -1,6 +1,7 @@
 #include "GetDrawingResponse.h"
 
-GetDrawingResponse::GetDrawingResponse(const std::string& drawing, bool success) :BaseResponse{success}, m_drawing{drawing}
+GetDrawingResponse::GetDrawingResponse(const std::string& drawing, bool success)
+	: BaseResponse{success}, m_drawing{drawing}
 {
 }
 

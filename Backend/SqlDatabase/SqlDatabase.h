@@ -50,9 +50,7 @@ inline auto CreateDatabase(const std::string& fileName)
                                                                "Id", &FinishedGame::m_gameId,
                                                                sqlite_orm::primary_key().autoincrement()),
                                                            sqlite_orm::make_column(
-                                                               "GameDuration", &FinishedGame::m_gameDuration),
-                                                           sqlite_orm::make_column(
-                                                               "GameWords", &FinishedGame::m_gameWords)),
+                                                               "GameDuration", &FinishedGame::m_gameDuration)),
                                     sqlite_orm::make_table("PlayerFinishedGame",
                                         sqlite_orm::make_column("Id", &PlayerFinishedGame::m_index, sqlite_orm::primary_key().autoincrement()),
                                                            sqlite_orm::make_column("PlayerId", &PlayerFinishedGame::m_userId),

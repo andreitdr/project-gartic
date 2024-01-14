@@ -6,6 +6,7 @@
 
 #include "Infrastructure/BaseResponse.h"
 #include <crow.h>
+
 #include <filesystem>
 
 #include "API/Game/CreateLobby.h"
@@ -377,6 +378,7 @@ int main()
     });
 
     app.loglevel(crow::LogLevel::Debug);
+    
     app.port(18080).multithreaded().run();
 
     return 0;

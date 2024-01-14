@@ -50,6 +50,8 @@ std::vector<std::string> StartGameContext::GenerateWords(size_t count)
 
     while (std::getline(file, line)) lines.push_back(line);
 
+    std::srand((unsigned)time(NULL));
+
     for (int i = 0; i < count; i++)
     {
         const int random_line_index = std::rand() % lines.size();

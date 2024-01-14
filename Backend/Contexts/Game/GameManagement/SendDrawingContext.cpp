@@ -12,7 +12,7 @@ SendDrawingResponse SendDrawingContext::HandleRequest(const SendDrawingRequest& 
         return SendDrawingResponse("Invalid game id");
     if(!GameManager::GetInstance().GameExists(gameId))
         return SendDrawingResponse("Game does not exist");
-    ApplyChanges(request);
+    return ApplyChanges(request);
 }
 
 SendDrawingResponse SendDrawingContext::ApplyChanges(const SendDrawingRequest& request)

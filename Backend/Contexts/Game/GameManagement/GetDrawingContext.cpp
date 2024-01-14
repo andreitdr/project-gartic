@@ -11,7 +11,7 @@ GetDrawingResponse GetDrawingContext::HandleRequest(const GetDrawingRequest& req
     if(!GameManager::GetInstance().GameExists(gameId))
         return GetDrawingResponse("Game does not exist");
 
-    ApplyChanges(request);
+    return ApplyChanges(request);
 }
 
 GetDrawingResponse GetDrawingContext::ApplyChanges(const GetDrawingRequest& request)
@@ -20,5 +20,5 @@ GetDrawingResponse GetDrawingContext::ApplyChanges(const GetDrawingRequest& requ
 
     const std::string drawing = GameManager::GetInstance().GetDrawing(gameId);
 
-    return GetDrawingResponse(drawing,true);
+    return GetDrawingResponse(drawing, true);
 }

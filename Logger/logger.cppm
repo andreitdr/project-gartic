@@ -97,8 +97,8 @@ void Logger::LogMessage(std::string_view message, Logger::Level logLevel)
 	std::fstream f(m_fileName,std::ios::app);
 	const auto now = std::chrono::system_clock::now();
 	SetConsoleTextAttribute(hConsole, static_cast<WORD>(GetTextColorByLogLevel(logLevel)));
-	m_os << std::chrono::round<std::chrono::seconds>(now) << " "<< std::format("[{}] {}\n", LogLevelToString(logLevel), message);
-	f << std::chrono::round<std::chrono::seconds>(now) << " " << std::format("[{}] {}\n",LogLevelToString(logLevel),message);
+	m_os << std::chrono::round<std::chrono::seconds>(now) << " "<< std::format("[{}] {}\n\n", LogLevelToString(logLevel), message);
+	f << std::chrono::round<std::chrono::seconds>(now) << " " << std::format("[{}] {}\n\n",LogLevelToString(logLevel),message);
 	f.close();
 }
 void Logger::LogMessage(std::string_view message)

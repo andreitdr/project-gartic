@@ -51,12 +51,14 @@ int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector
         game.m_playerPoints[playerId] = 0;
 
     game.m_gameId = m_runningGames.size();
-    m_runningGames.emplace_back(game);
+    game.isRunning = true;
+
+    m_runningGames.push_back(game);
 
     std::thread timerThread([this, gameId = game.m_gameId]()
         {
             RunningGame& game = GAME(gameId);
-            while (true)
+            while (game.isRunning)
             {
                 std::this_thread::sleep_for(std::chrono::seconds(1));
                 {
@@ -66,6 +68,7 @@ int GameManager::CreateGame(const std::vector<int>& playerIds, const std::vector
                         FinishRound(gameId);
                         if (!ToNextRound(gameId))
                         {
+                            EndGame(gameId);
                             break;
                         }
                     }
@@ -115,7 +118,11 @@ std::vector<std::string> GameManager::GetChat(int gameId) const
 
 std::string GameManager::GetCurrentWord(int gameId) const
 {
-    return GAME(gameId).m_gameWords.front();
+    const RunningGame& game = GAME(gameId);
+    if (game.m_gameWords.empty())
+        throw std::exception("The queue is empty");
+
+    return game.m_gameWords.front();
 }
 
 std::vector<int> GameManager::GetPlayerIds(int gameId) const
@@ -138,7 +145,7 @@ void GameManager::FinishRound(int gameId)
             maxTime += k_defaultTimerValue - time;
         maxTime += k_defaultTimerValue * (game.m_playerIds.size() - game.m_playersWhoGuessed.size());
 
-        float average = maxTime / game.m_playerIds.size();
+        const float average = maxTime / game.m_playerIds.size();
 
         game.m_playerPoints[game.m_indexPlayerDrawing] += (k_defaultTimerValue - average) * 100 / k_defaultTimerValue;
     }
@@ -187,7 +194,6 @@ bool GameManager::ToNextRound(int gameId)
 
     if(GAME(gameId).m_playerIds[GAME(gameId).m_indexPlayerDrawing] == -1)
     {
-        FinishRound(gameId);
         return ToNextRound(gameId);
     }
 
@@ -213,7 +219,7 @@ void GameManager::AppendChatMessage(int gameId, int playerId, const std::string&
         GAME(gameId).m_chatMessages.emplace_back(FormatMessage("GAME", message));
     else
     {
-        auto player = SqlDatabase::GetInstance().Get<User>(playerId);
+	    const auto player = SqlDatabase::GetInstance().Get<User>(playerId);
         GAME(gameId).m_chatMessages.emplace_back(FormatMessage(player.m_username, message));
     }
 }
@@ -241,6 +247,27 @@ void GameManager::ManageCorrectAnswer(int gameId, int playerId)
     game.m_playersWhoGuessed.emplace_back(playerId);
 }
 
+void GameManager::EndGame(int gameId)
+{
+    RunningGame& game = GetGame(gameId);
+
+    for(int index = 0; index < game.m_playerIds.size(); index++)
+    {
+        PlayerFinishedGame fgame;
+        fgame.m_gameId = game.m_gameId;
+        fgame.m_userId = game.m_playerIds[index];
+        fgame.m_pointsEarned = game.m_playerPoints[fgame.m_userId];
+        fgame.m_index = -1;
+
+        SqlDatabase::GetInstance().Insert<PlayerFinishedGame>(fgame);
+    }
+
+    GetGame(gameId).isRunning = false;
+
+    DeleteGame(gameId);
+    
+}
+
 void GameManager::RemovePlayer(int gameId, int playerId)
 {
     for(int i=0; i < GAME(gameId).m_playerIds.size();i++)
@@ -264,5 +291,16 @@ std::string GameManager::FormatMessage(const std::string& sender, const std::str
 {
     std::string _message = std::format("{}: {}", sender, message);
     return _message;
+}
+
+void GameManager::DeleteGame(int gameId)
+{
+	for(int gameIndex = 0;gameIndex < m_runningGames.size();gameIndex++)
+    {
+	    if(m_runningGames[gameIndex].m_gameId == gameId)
+	    {
+            m_runningGames.erase(std::next(m_runningGames.begin(), gameIndex + 1));
+	    }
+    }
 }
 

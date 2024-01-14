@@ -25,6 +25,8 @@ public:
     std::vector<std::string> m_chatMessages;
     std::queue<std::string> m_gameWords;
 
+    bool isRunning;
+
     RunningGame(int gameId, const std::vector<int>& playerIds, const std::vector<std::string>& words);
     RunningGame(const RunningGame& other);
     RunningGame(RunningGame&& other) noexcept;

@@ -4,6 +4,8 @@
 
 #include <string>
 
+#include "../DataTypes/Game/PlayerFinishedGame.h"
+
 class GameManager
 {
 public:
@@ -48,11 +50,12 @@ public:
 
     void ManageCorrectAnswer(int gameId, int playerId);
 
+	void EndGame(int gameId);
+
     void RemovePlayer(int gameId, int playerId);
 
     void UpdateDrawing(int gameId,const std::string& drawing);
 
-    //void operator=(const GameManager&);
     GameManager(const GameManager&);
 
 
@@ -62,6 +65,7 @@ private:
     std::vector<RunningGame> m_runningGames;
     std::string FormatMessage(const std::string& sender, const std::string& message) const;
 
+    void DeleteGame(int gameId);
     GameManager() = default;
     
 };
