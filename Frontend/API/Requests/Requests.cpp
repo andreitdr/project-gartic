@@ -130,7 +130,7 @@ cpr::Response Requests::exitGame(const int gameId, const int userId)
     crow::json::wvalue payload;
     payload["gameId"] = gameId;
     payload["userId"] = userId;
-    return SendRequest(ApiEndpoints::GAME_GET_DRAWING, payload, "POST");
+    return SendRequest(ApiEndpoints::EXIT_GAME, payload, "POST");
 }
 
 cpr::Response Requests::SendRequest(const std::string& url, const crow::json::wvalue& payload, const std::string& method)

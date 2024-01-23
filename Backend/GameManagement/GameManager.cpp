@@ -192,7 +192,7 @@ bool GameManager::ToNextRound(int gameId)
     GAME(gameId).m_gameWords.pop();
     GAME(gameId).m_currentRound ++;
 
-    if(GAME(gameId).m_currentRound > k_defaultNumberOfCycles * GAME(gameId).m_playerIds.size())
+    if(GAME(gameId).m_currentRound + 1 > k_defaultNumberOfCycles * GAME(gameId).m_playerIds.size())
         return false;
 
     if(GAME(gameId).m_playerIds[GAME(gameId).m_indexPlayerDrawing] == -1)
@@ -298,12 +298,13 @@ std::string GameManager::FormatMessage(const std::string& sender, const std::str
 
 void GameManager::DeleteGame(int gameId)
 {
-	for(int gameIndex = 0;gameIndex < m_runningGames.size();gameIndex++)
+    for (auto it = m_runningGames.begin(); it != m_runningGames.end(); ++it)
     {
-	    if(m_runningGames[gameIndex].m_gameId == gameId)
-	    {
-            m_runningGames.erase(std::next(m_runningGames.begin(), gameIndex));
-	    }
+        if (it->m_gameId == gameId)
+        {
+            m_runningGames.erase(it);
+            break; 
+        }
     }
 }
 

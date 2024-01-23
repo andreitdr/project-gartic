@@ -342,7 +342,7 @@ int main()
     CROW_ROUTE(app, "/game/send_drawing").methods("POST"_method)([](const crow::request& request)
     {
         const auto json = crow::json::load(request.body);
-        k_logger.LogMessage(std::move(std::format("URL {} called with {}", request.url, request.body)));
+        //k_logger.LogMessage(std::move(std::format("URL {} called with {}", request.url, request.body)));
         if (!json)
         {
             BaseResponse response;
