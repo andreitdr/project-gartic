@@ -398,7 +398,7 @@ FodyWeavers.xsd
 *.sln.iml
 .idea
 
-/Backend/log.txt
+/Backend/logs.txt
 /Backend/test.db
 global.json
 /Backend/logs.txt
